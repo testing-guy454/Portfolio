@@ -1,0 +1,84 @@
+# YUVRAJ MEHTA - PORTFOLIO DETAILS
+
+## PERSONAL INFORMATION
+- Name: Yuvraj Mehta
+- Title: Full Stack Developer & CS Student
+- Email: yuvrajmmr.ug23.cs@nitp.ac.in
+- Phone: +91-9334083113
+- Location: Patna, India
+
+## EDUCATION
+- B.Tech Computer Science (2023-27)
+- National Institute of Technology, Patna
+- CGPA: 7.69
+
+## PROFESSIONAL SUMMARY
+A Computer Science student at NIT Patna with a passion for full stack development. Has a strong foundation in Data Structures and Algorithms (solved 180+ problems across platforms) and approaches technical challenges with an analytical mindset.
+
+## SKILLS
+
+### Technical Skills
+- Frontend: React, TypeScript, HTML/CSS, Tailwind CSS
+- Backend: Node.js, Express.js, RESTful APIs, C++
+- Database: MongoDB, Mongoose, MongoDB Atlas, Database Design
+- Tools: Git, GitHub, VS Code
+
+### Competitive Programming
+- LeetCode: Rated 1550+
+- CodeChef: Rated 1270+
+- Data Structures & Algorithms: Solved 180+ problems
+- Problem Solving (90%)
+- Algorithm Analysis (85%)
+- Data Structures (88%)
+- Competitive Coding (85%)
+
+## EXPERIENCE
+- Technical Member, Robotics Club at NIT Patna (2023-Present)
+- Class Representative, Department of CSE (2023-2024)
+- Contributed to organizing 3+ workshops on designing and building robotic bots
+- Led teams to build combat-ready bots and soccer bots for tech competitions
+- Won Bronze Medal in 50m Hurdles at NIT Patna Intramurals
+
+## PROJECTS
+
+### BookHive Manager
+- Full-stack MERN application for NIT Patna's library operations
+- Secure role-based access (Admin/User)
+- JWT authentication, OTP email verification
+- Automated reminders via NodeMailer and NodeCron
+- Technologies: React, Redux Toolkit, Node.js, Express, MongoDB, JWT
+
+### Portfolio Website
+- Personal developer portfolio showcasing projects and skills
+- Responsive single-page portfolio with smooth animations and dynamic navigation
+- Integrated contact form using EmailJS
+- Technologies: React, Tailwind CSS, Framer Motion, Vite
+
+### Soccer Bot
+- Led a team of 3 members to design and develop a soccer bot
+- Implemented autonomous ball tracking and goal-scoring capabilities
+- Technologies: Robotics, Sensors, Microcontrollers, Programming
+
+### Combat Battle Bot
+- Coordinated a 4-member team to build a combat-ready battle bot
+- Secured 3rd place among 15+ teams at NIT Patna's tech fest
+- Designed and implemented control systems and mechanical components
+- Technologies: Robotics, Electronics, Arduino, CAD
+
+### PYQ Resource Sharing
+- Integrated Multer and Cloudinary for media uploads within BookHive Manager
+- Enabled seniors to share academic resources and previous year question papers with juniors
+- Technologies: Multer, Cloudinary, Express, MongoDB
+
+### Robotics Workshop Platform
+- Created documentation and learning resources for workshop participants
+- Technologies: Documentation, Teaching, Robotics
+
+## ONLINE PROFILES
+- GitHub: https://github.com/yuvraj-mehta
+- LinkedIn: https://linkedin.com/in/yuvraj-mehta-a0274528a/
+
+## ADDITIONAL INFORMATION
+- Currently learning: GenAI integration with web applications
+- Interests: Competitive programming, Sports
+- Achievements: Bronze Medal in 50m Hurdles at NIT Patna Intramurals

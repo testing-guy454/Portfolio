@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180" fill="none">
+  <!-- Background circle gradient -->
+  <rect width="180" height="180" rx="40" fill="url(#paint0_linear)" />
+  
+  <!-- Code brackets -->
+  <path d="M68 56L42 90L68 124" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M112 56L138 90L112 124" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Forward slash (representing code) -->
+  <path d="M100 46L80 134" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Neural network dots -->
+  <circle cx="65" cy="75" r="6" fill="#6EE7B7"/>
+  <circle cx="90" cy="90" r="6" fill="#6EE7B7"/>
+  <circle cx="115" cy="75" r="6" fill="#6EE7B7"/>
+  <circle cx="65" cy="105" r="6" fill="#6EE7B7"/>
+  <circle cx="115" cy="105" r="6" fill="#6EE7B7"/>
+  
+  <!-- Neural network connections -->
+  <path d="M65 75L90 90L115 75" stroke="#6EE7B7" stroke-width="3" stroke-opacity="0.7"/>
+  <path d="M65 105L90 90L115 105" stroke="#6EE7B7" stroke-width="3" stroke-opacity="0.7"/>
+  
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="paint0_linear" x1="30" y1="30" x2="150" y2="150" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4F46E5"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+</svg>
