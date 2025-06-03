@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useTheme } from "../contexts/ThemeContext";
-import yuvrajImage from "../../public/yuvraj2.png";
+import DSACounter from "./DSACounter";
+import { FaCode } from "react-icons/fa";
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -104,7 +105,7 @@ const About = () => {
                 }`}
               >
                 <img
-                  src={yuvrajImage}
+                  src={"/yuvraj2.png"}
                   onError={(e) => {
                     e.currentTarget.src =
                       "https://placehold.co/400x500/6366F1/FFFFFF/png?text=YM";
@@ -175,10 +176,10 @@ const About = () => {
                 theme === "dark" ? "text-gray-300" : "text-gray-700"
               }`}
             >
-              I'm a Computer Science student at NIT Patna with a passion for
-              full stack development. With a strong foundation in Data
-              Structures and Algorithms (solved 180+ problems across platforms),
-              I approach technical challenges with an analytical mindset.
+              Computer Science student at NIT Patna passionate about full stack
+              development with a strong foundation in Data Structures &
+              Algorithms. I approach technical challenges analytically and
+              continually expand my skills in GenAI and modern web technologies.
             </p>
 
             <p
@@ -186,21 +187,50 @@ const About = () => {
                 theme === "dark" ? "text-gray-300" : "text-gray-700"
               }`}
             >
-              As a technical member of the Robotics Club at NIT Patna, I've
-              contributed to organizing workshops and led teams to build
-              combat-ready bots and soccer bots for tech competitions.
-            </p>
-
-            <p
-              className={`text-lg mb-8 leading-relaxed ${
-                theme === "dark" ? "text-gray-300" : "text-gray-700"
-              }`}
-            >
-              When I'm not coding, you'll find me participating in competitive
-              programming contests (rated 1550+ on LeetCode and 1270+ on
-              CodeChef) or engaging in sports, where I won a Bronze Medal in 50m
+              As a Robotics Club member, I've organized workshops and led teams
+              building combat and soccer bots. Outside coding, I enjoy
+              competitive programming and sports, having won Bronze in 50m
               Hurdles at NIT Patna Intramurals.
             </p>
+
+            {/* DSA Stats Banner */}
+            <div
+              className={`flex items-center mb-6 p-4 rounded-xl border ${
+                theme === "dark"
+                  ? "bg-gradient-to-r from-indigo-900/20 to-purple-900/20 border-indigo-800/30"
+                  : "bg-gradient-to-r from-indigo-50 to-purple-50 border-indigo-100"
+              }`}
+            >
+              <div className="mr-4">
+                <div
+                  className={`p-3 rounded-full ${
+                    theme === "dark" ? "bg-indigo-900/40" : "bg-indigo-100"
+                  }`}
+                >
+                  <FaCode
+                    className={`text-xl ${
+                      theme === "dark" ? "text-indigo-400" : "text-indigo-600"
+                    }`}
+                  />
+                </div>
+              </div>
+              <div className="flex-1">
+                <h4
+                  className={`text-lg font-semibold mb-1 ${
+                    theme === "dark" ? "text-indigo-300" : "text-indigo-700"
+                  }`}
+                >
+                  Competitive Programming
+                </h4>
+                <p
+                  className={`${
+                    theme === "dark" ? "text-gray-300" : "text-gray-700"
+                  }`}
+                >
+                  Solved 200+ DSA problems • LeetCode 1550+ • CodeChef 1270+
+                </p>
+              </div>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div
@@ -285,6 +315,27 @@ const About = () => {
                   </li>
                 </ul>
               </div>
+            </div>
+
+            {/* DSA Counter Section with Animation - Separate from the grid */}
+            <div className="my-10 max-w-3xl mx-auto">
+              <h4
+                className={`text-center text-xl font-bold mb-6 ${
+                  theme === "dark" ? "text-white" : "text-gray-800"
+                }`}
+              >
+                DSA Problems Solved on
+                <span
+                  className={
+                    theme === "dark"
+                      ? "bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text ml-2"
+                      : "text-gradient ml-2"
+                  }
+                >
+                  Different Platforms
+                </span>
+              </h4>
+              <DSACounter />
             </div>
 
             <div className="mt-8 flex flex-wrap gap-4">

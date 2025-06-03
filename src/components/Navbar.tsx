@@ -15,8 +15,7 @@ const Navbar = ({ scrolled = false }: NavbarProps) => {
   const navLinks = [
     { title: "Home", href: "#home" },
     { title: "About", href: "#about" },
-    { title: "Skills", href: "#skills" },
-    { title: "Coding", href: "#competitive-coding" },
+    { title: "Tech Stack", href: "#tech-stack" },
     { title: "Projects", href: "#projects" },
     { title: "Contact", href: "#contact" },
   ];

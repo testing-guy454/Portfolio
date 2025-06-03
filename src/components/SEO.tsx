@@ -1,43 +1,52 @@
 import { Helmet } from "react-helmet-async";
 
-interface SEOProps {
-  title?: string;
-  description?: string;
-  keywords?: string;
-}
-
-export const SEO = ({
-  title = "Full Stack Developer Portfolio",
-  description = "Portfolio website for a full stack developer with strong DSA skills and expertise in modern web technologies and generative AI.",
-  keywords = "full stack developer, react, typescript, portfolio, web developer, dsa, generative ai",
-}: SEOProps) => {
+export const SEO = () => {
   return (
     <Helmet>
-      <title>{title}</title>
-      <meta name="description" content={description} />
-      <meta name="keywords" content={keywords} />
+      <title>Yuvraj Mehta - Full Stack Developer | Portfolio</title>
+      <meta
+        name="description"
+        content="Full Stack Developer specializing in React, TypeScript, Node.js, and modern web technologies. Currently exploring Generative AI. Strong background in Data Structures and Algorithms."
+      />
+      <meta
+        name="keywords"
+        content="Full Stack Developer, React, TypeScript, Node.js, JavaScript, Web Development, Frontend, Backend, Portfolio, Yuvraj Mehta, GenAI, Data Structures, Algorithms"
+      />
+      <meta name="author" content="Yuvraj Mehta" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://yourdomain.com/" />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content="https://yourdomain.com/og-image.jpg" />
+      <meta property="og:url" content="https://yuvrajmehta.dev/" />
+      <meta property="og:title" content="Yuvraj Mehta - Full Stack Developer" />
+      <meta
+        property="og:description"
+        content="Full Stack Developer specializing in modern web technologies and algorithms, currently exploring Generative AI."
+      />
+      <meta property="og:image" content="/yuvraj.png" />
 
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content="https://yourdomain.com/" />
-      <meta property="twitter:title" content={title} />
-      <meta property="twitter:description" content={description} />
+      <meta property="twitter:url" content="https://yuvrajmehta.dev/" />
       <meta
-        property="twitter:image"
-        content="https://yourdomain.com/og-image.jpg"
+        property="twitter:title"
+        content="Yuvraj Mehta - Full Stack Developer"
       />
+      <meta
+        property="twitter:description"
+        content="Full Stack Developer specializing in modern web technologies and algorithms, currently exploring Generative AI."
+      />
+      <meta property="twitter:image" content="/yuvraj.png" />
 
       {/* Favicon */}
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" type="image/svg+xml" href="/portfolio-favicon.svg" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+      {/* Theme color */}
+      <meta name="theme-color" content="#6366f1" />
+
+      {/* Canonical URL */}
+      <link rel="canonical" href="https://yuvrajmehta.dev/" />
     </Helmet>
   );
 };
-
-// Using named export instead of default export

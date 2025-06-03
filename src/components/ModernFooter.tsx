@@ -90,7 +90,7 @@ const ModernFooter = () => {
 
   return (
     <footer
-      className={`relative mt-20 overflow-hidden ${
+      className={`relative mt-40 pt-16 overflow-hidden ${
         theme === "dark"
           ? "bg-[#090014] text-white"
           : "bg-gray-50 text-gray-800"
@@ -114,12 +114,12 @@ const ModernFooter = () => {
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
-          className={`absolute top-20 left-1/4 w-[400px] h-[400px] rounded-full blur-[150px] opacity-15 ${
+          className={`absolute top-40 left-1/4 w-[400px] h-[400px] rounded-full blur-[150px] opacity-15 ${
             theme === "dark" ? "bg-indigo-800" : "bg-indigo-300"
           }`}
         />
         <div
-          className={`absolute bottom-10 right-1/4 w-[350px] h-[350px] rounded-full blur-[120px] opacity-10 ${
+          className={`absolute bottom-20 right-1/4 w-[350px] h-[350px] rounded-full blur-[120px] opacity-10 ${
             theme === "dark" ? "bg-violet-700" : "bg-violet-300"
           }`}
         />
@@ -133,14 +133,14 @@ const ModernFooter = () => {
       </div>
 
       {/* Main Footer Content */}
-      <div className="container mx-auto px-6 py-16 md:py-24 relative z-10">
+      <div className="container mx-auto px-6 py-24 md:py-32 relative z-10">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ duration: 0.3 }}
           variants={fadeIn}
-          className="flex flex-col md:flex-row justify-between gap-16 mb-16"
+          className="flex flex-col md:flex-row justify-between gap-16 mb-16 "
         >
           {/* Brand Section */}
           <div className="w-full md:w-1/3">
@@ -489,7 +489,7 @@ const ModernFooter = () => {
         <div
           className={`border-t ${
             theme === "dark" ? "border-gray-800" : "border-gray-200"
-          } pt-8`}
+          } pt-2 pb-3`}
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <motion.p
