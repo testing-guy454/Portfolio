@@ -24,9 +24,7 @@ const NavbarRedesigned = ({ scrolled = false }: NavbarRedesignedProps) => {
   ];
 
   // Secondary navigation items - less important but still accessible
-  const secondaryNavLinks = [
-    { title: "Coding", href: "#coding" },
-  ];
+  const secondaryNavLinks = [{ title: "Coding", href: "#coding" }];
 
   const handleScrollSpy = () => {
     const sections = document.querySelectorAll("section");
@@ -89,8 +87,8 @@ const NavbarRedesigned = ({ scrolled = false }: NavbarRedesignedProps) => {
           transition={{ duration: 0.5 }}
         >
           <div className="h-10 w-10 rounded-full overflow-hidden border-2 border-indigo-500 shadow-md">
-            <img 
-              src="/yuvraj2.png" 
+            <img
+              src="/yuvraj2.png"
               alt="Yuvraj Mehta"
               className="h-full w-full object-cover"
               onError={(e) => {
@@ -195,8 +193,8 @@ const NavbarRedesigned = ({ scrolled = false }: NavbarRedesignedProps) => {
               {/* Profile section for mobile */}
               <div className="flex items-center gap-4 mb-6 pb-4 border-b dark:border-gray-800">
                 <div className="h-16 w-16 rounded-full overflow-hidden border-2 border-indigo-500">
-                  <img 
-                    src="/yuvraj2.png" 
+                  <img
+                    src="/yuvraj2.png"
                     alt="Yuvraj Mehta"
                     className="h-full w-full object-cover"
                     onError={(e) => {
@@ -206,14 +204,20 @@ const NavbarRedesigned = ({ scrolled = false }: NavbarRedesignedProps) => {
                   />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white">Yuvraj Mehta</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Full Stack Developer</p>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+                    Yuvraj Mehta
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    Full Stack Developer
+                  </p>
                 </div>
               </div>
 
               {/* Main navigation sections */}
               <div className="mb-6">
-                <h4 className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2 px-4">Main Navigation</h4>
+                <h4 className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2 px-4">
+                  Main Navigation
+                </h4>
                 <ul className="space-y-1">
                   {mainNavLinks.map((link, index) => (
                     <motion.li
@@ -240,7 +244,9 @@ const NavbarRedesigned = ({ scrolled = false }: NavbarRedesignedProps) => {
 
               {/* Secondary navigation sections */}
               <div className="mb-6">
-                <h4 className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2 px-4">More Sections</h4>
+                <h4 className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2 px-4">
+                  More Sections
+                </h4>
                 <ul className="space-y-1">
                   {secondaryNavLinks.map((link, index) => (
                     <motion.li

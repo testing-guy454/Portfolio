@@ -1,42 +1,28 @@
 import { Helmet } from "react-helmet-async";
+import { seoData } from "../data/seo";
 
 export const SEO = () => {
   return (
     <Helmet>
-      <title>Yuvraj Mehta - Full Stack Developer | Portfolio</title>
-      <meta
-        name="description"
-        content="Full Stack Developer specializing in React, TypeScript, Node.js, and modern web technologies. Currently exploring Generative AI. Strong background in Data Structures and Algorithms."
-      />
-      <meta
-        name="keywords"
-        content="Full Stack Developer, React, TypeScript, Node.js, JavaScript, Web Development, Frontend, Backend, Portfolio, Yuvraj Mehta, GenAI, Data Structures, Algorithms"
-      />
-      <meta name="author" content="Yuvraj Mehta" />
+      <title>{seoData.title}</title>
+      <meta name="description" content={seoData.description} />
+      <meta name="keywords" content={seoData.keywords} />
+      <meta name="author" content={seoData.author} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://yuvrajmehta.dev/" />
-      <meta property="og:title" content="Yuvraj Mehta - Full Stack Developer" />
-      <meta
-        property="og:description"
-        content="Full Stack Developer specializing in modern web technologies and algorithms, currently exploring Generative AI."
-      />
-      <meta property="og:image" content="/yuvraj.png" />
+      <meta property="og:url" content={seoData.siteUrl} />
+      <meta property="og:title" content={seoData.title} />
+      <meta property="og:description" content={seoData.description} />
+      <meta property="og:image" content={seoData.ogImage} />
 
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content="https://yuvrajmehta.dev/" />
-      <meta
-        property="twitter:title"
-        content="Yuvraj Mehta - Full Stack Developer"
-      />
-      <meta
-        property="twitter:description"
-        content="Full Stack Developer specializing in modern web technologies and algorithms, currently exploring Generative AI."
-      />
-      <meta property="twitter:image" content="/yuvraj.png" />
+      <meta property="twitter:url" content={seoData.siteUrl} />
+      <meta property="twitter:title" content={seoData.title} />
+      <meta property="twitter:description" content={seoData.description} />
+      <meta property="twitter:image" content={seoData.ogImage} />
 
       {/* Favicon */}
       <link rel="icon" type="image/svg+xml" href="/portfolio-favicon.svg" />
