@@ -275,7 +275,7 @@ const TechStack = () => {
 
         {/* Grid pattern */}
         <div
-          className={`absolute inset-0 bg-[url('/grid-pattern.svg')] bg-[length:30px_30px] opacity-[0.03] ${
+          className={`absolute inset-0 bg-[url('/src/assets/grid-pattern.svg')] bg-[length:30px_30px] opacity-[0.03] ${
             theme === "dark" ? "invert-0" : "invert"
           }`}
         ></div>

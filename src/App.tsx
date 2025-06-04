@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaArrowUp } from "react-icons/fa";
 import "./App.css";
-import Navbar from "./components/Navbar";
+import NavbarRedesigned from "./components/NavbarRedesigned";
 import Hero from "./components/Hero";
 import About from "./components/About";
+import Experience from "./components/Experience";
+import Education from "./components/Education";
+import Coding from "./components/Coding";
 import TechStack from "./components/TechStack";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
@@ -17,8 +20,17 @@ function App() {
   const { theme } = useTheme();
 
   useEffect(() => {
+    // Using a timer for smooth cursor following effect
+    let mouseTimer: number | null = null;
+
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      if (mouseTimer) {
+        cancelAnimationFrame(mouseTimer);
+      }
+
+      mouseTimer = requestAnimationFrame(() => {
+        setMousePosition({ x: e.clientX, y: e.clientY });
+      });
     };
 
     const handleScroll = () => {
@@ -29,6 +41,9 @@ function App() {
     window.addEventListener("scroll", handleScroll);
 
     return () => {
+      if (mouseTimer) {
+        cancelAnimationFrame(mouseTimer);
+      }
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("scroll", handleScroll);
     };
@@ -65,7 +80,7 @@ function App() {
       <div
         className={`glow-dot w-56 h-56 fixed ${
           theme === "dark"
-            ? "opacity-10 bg-indigo-500"
+            ? "opacity-25 bg-indigo-600"
             : "opacity-10 bg-indigo-300"
         }`}
         style={{
@@ -74,7 +89,7 @@ function App() {
         }}
       ></div>
 
-      <Navbar scrolled={scrolled} />
+      <NavbarRedesigned scrolled={scrolled} />
       <main
         className={`${
           theme === "dark"
@@ -84,6 +99,9 @@ function App() {
       >
         <Hero />
         <About />
+        <Experience />
+        <Education />
+        <Coding />
         <TechStack />
         <Projects />
         <Contact />

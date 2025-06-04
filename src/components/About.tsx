@@ -1,8 +1,16 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useTheme } from "../contexts/ThemeContext";
-import DSACounter from "./DSACounter";
-import { FaCode } from "react-icons/fa";
+import {
+  FaCode,
+  FaUserGraduate,
+  FaLaptopCode,
+  FaBrain,
+  FaRobot,
+  FaDownload,
+  FaEnvelope,
+  FaChevronRight,
+} from "react-icons/fa";
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -12,26 +20,35 @@ const About = () => {
 
   const { theme } = useTheme();
 
+  const skills = [
+    { name: "Web Development", level: 90, icon: <FaCode /> },
+    { name: "Data Structures", level: 85, icon: <FaBrain /> },
+    { name: "Algorithms", level: 85, icon: <FaLaptopCode /> },
+    { name: "Robotics", level: 75, icon: <FaRobot /> },
+  ];
+
+  // Removed competitive coding platform data as it will be handled in a dedicated section
+
   return (
     <section
       id="about"
       className={`section relative overflow-hidden py-24 ${
-        theme === "dark" ? "bg-gray-900" : ""
+        theme === "dark" ? "bg-gray-900" : "bg-gray-50"
       }`}
     >
-      {/* Background decoration */}
+      {/* Background elements */}
       <div
-        className={`absolute -top-40 -right-40 w-96 h-96 rounded-full ${
-          theme === "dark" ? "bg-indigo-600/5" : "bg-primary/5"
+        className={`absolute top-0 right-0 w-full h-full overflow-hidden opacity-10 select-none pointer-events-none ${
+          theme === "dark" ? "opacity-5" : ""
         }`}
-      ></div>
-      <div
-        className={`absolute -bottom-40 -left-40 w-96 h-96 rounded-full ${
-          theme === "dark" ? "bg-purple-600/5" : "bg-accent/5"
-        }`}
-      ></div>
+      >
+        <div className="absolute top-24 right-24 w-96 h-96 rounded-full bg-blue-200 mix-blend-multiply filter blur-xl"></div>
+        <div className="absolute bottom-24 left-24 w-96 h-96 rounded-full bg-purple-200 mix-blend-multiply filter blur-xl"></div>
+        <div className="absolute top-1/4 left-1/3 w-64 h-64 rounded-full bg-pink-200 mix-blend-multiply filter blur-xl"></div>
+      </div>
 
-      <div className="container relative z-10">
+      <div className="container relative z-10 mx-auto px-4">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -39,13 +56,14 @@ const About = () => {
           className="mb-16 text-center"
         >
           <span
-            className={`px-4 py-2 rounded-full font-medium text-sm ${
+            className={`px-4 py-2 rounded-full font-medium text-sm inline-flex items-center gap-2 ${
               theme === "dark"
                 ? "bg-gradient-to-r from-indigo-900/30 to-purple-900/30 text-indigo-400"
                 : "bg-gradient-to-r from-primary/10 to-secondary/10 text-primary"
             }`}
           >
-            Discover
+            <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+            Get to know me
           </span>
           <h2
             className={`text-4xl md:text-5xl font-bold mt-4 font-heading ${
@@ -72,297 +90,402 @@ const About = () => {
           ></div>
         </motion.div>
 
-        <motion.div
-          ref={ref}
-          className="flex flex-col md:flex-row items-center gap-12"
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="md:w-1/3">
-            <div className="relative">
-              {/* Animated background for profile image */}
-              <motion.div
-                className={`absolute -inset-4 rounded-2xl opacity-20 blur-lg ${
-                  theme === "dark"
-                    ? "bg-gradient-to-r from-indigo-600 to-purple-600"
-                    : "bg-gradient-to-r from-primary to-accent"
-                }`}
-                animate={{
-                  scale: [1, 1.05, 1],
-                  rotate: [0, 1, 0],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-
-              <div
-                className={`relative h-80 w-80 mx-auto overflow-hidden rounded-2xl shadow-custom border-4 ${
-                  theme === "dark" ? "border-gray-800" : "border-white"
-                }`}
-              >
-                <img
-                  src={"/yuvraj2.png"}
-                  onError={(e) => {
-                    e.currentTarget.src =
-                      "https://placehold.co/400x500/6366F1/FFFFFF/png?text=YM";
+        {/* Main Content Area */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+          {/* Left Column - Profile Picture with Decorative Elements */}
+          <motion.div
+            ref={ref}
+            initial={{ opacity: 0, x: -50 }}
+            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="col-span-1"
+          >
+            <div className="sticky top-24 space-y-6">
+              {/* Profile Image with Animation */}
+              <div className="relative mx-auto max-w-sm">
+                <motion.div
+                  className={`absolute -inset-4 rounded-2xl opacity-20 blur-lg z-0 ${
+                    theme === "dark"
+                      ? "bg-gradient-to-r from-indigo-600 to-purple-600"
+                      : "bg-gradient-to-r from-primary to-accent"
+                  }`}
+                  animate={{
+                    scale: [1, 1.05, 1],
                   }}
-                  alt="Yuvraj Mehta"
-                  className="w-full h-full object-cover"
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
                 />
+
+                <div
+                  className={`relative h-80 w-80 mx-auto overflow-hidden rounded-2xl shadow-custom border-4 ${
+                    theme === "dark" ? "border-gray-800" : "border-white"
+                  }`}
+                >
+                  <img
+                    src={"/yuvraj2.png"}
+                    onError={(e) => {
+                      e.currentTarget.src =
+                        "https://placehold.co/400x500/6366F1/FFFFFF/png?text=YM";
+                    }}
+                    alt="Yuvraj Mehta"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* Floating Badges */}
+                <motion.div
+                  className={`absolute -right-4 top-6 glass-effect px-4 py-2 rounded-xl shadow-lg flex items-center gap-2 ${
+                    theme === "dark" ? "bg-gray-800/80" : "bg-white/80"
+                  }`}
+                  initial={{ x: 50, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.3, duration: 0.5 }}
+                >
+                  <div
+                    className={`p-2 rounded-full ${
+                      theme === "dark" ? "bg-indigo-900/50" : "bg-indigo-100"
+                    }`}
+                  >
+                    <FaUserGraduate
+                      className={
+                        theme === "dark" ? "text-indigo-400" : "text-indigo-600"
+                      }
+                    />
+                  </div>
+                  <div>
+                    <div
+                      className={`font-bold ${
+                        theme === "dark" ? "text-white" : "text-gray-900"
+                      }`}
+                    >
+                      7.69
+                    </div>
+                    <div
+                      className={`text-xs ${
+                        theme === "dark" ? "text-gray-400" : "text-gray-500"
+                      }`}
+                    >
+                      CGPA
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className={`absolute -left-4 bottom-6 glass-effect px-4 py-2 rounded-xl shadow-lg flex items-center gap-2 ${
+                    theme === "dark" ? "bg-gray-800/80" : "bg-white/80"
+                  }`}
+                  initial={{ x: -50, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.4, duration: 0.5 }}
+                >
+                  <div
+                    className={`p-2 rounded-full ${
+                      theme === "dark" ? "bg-purple-900/50" : "bg-purple-100"
+                    }`}
+                  >
+                    <FaRobot
+                      className={
+                        theme === "dark" ? "text-purple-400" : "text-purple-600"
+                      }
+                    />
+                  </div>
+                  <div>
+                    <div
+                      className={`font-bold ${
+                        theme === "dark" ? "text-white" : "text-gray-900"
+                      }`}
+                    >
+                      Robotics
+                    </div>
+                    <div
+                      className={`text-xs ${
+                        theme === "dark" ? "text-gray-400" : "text-gray-500"
+                      }`}
+                    >
+                      Club Member
+                    </div>
+                  </div>
+                </motion.div>
               </div>
 
-              {/* Experience badge */}
-              <div className="absolute -right-5 top-10 glass-effect px-4 py-2 rounded-lg shadow-lg">
-                <span
-                  className={`font-semibold ${
-                    theme === "dark" ? "text-indigo-400" : "text-primary"
-                  }`}
+              {/* Quick Links */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.4, delay: 0.6 }}
+                className="flex flex-col gap-3 max-w-sm mx-auto"
+              >
+                <a
+                  href="#contact"
+                  className={`text-white px-6 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 ${
+                    theme === "dark"
+                      ? "bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700"
+                      : "btn-gradient"
+                  } transition-all shadow-md hover:shadow-lg`}
                 >
-                  CGPA 7.69
-                </span>
-                <p
-                  className={`text-sm ${
-                    theme === "dark" ? "text-gray-400" : "text-gray-600"
-                  }`}
-                >
-                  B.Tech
-                </p>
-              </div>
+                  <FaEnvelope />
+                  Get In Touch
+                </a>
 
-              {/* Skills badge */}
-              <div className="absolute -left-5 bottom-10 glass-effect px-4 py-2 rounded-lg shadow-lg">
-                <span
-                  className={`font-semibold ${
-                    theme === "dark" ? "text-purple-400" : "text-accent"
+                <a
+                  href="/Yuvraj_Resume_v2_1%20(1).pdf"
+                  download="Yuvraj_Mehta_Resume.pdf"
+                  className={`px-6 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 border-2 ${
+                    theme === "dark"
+                      ? "border-indigo-600/60 bg-indigo-600/5 text-indigo-400 hover:bg-indigo-600/10"
+                      : "border-primary/60 bg-primary/5 text-primary hover:bg-primary/10"
+                  } transition-all`}
+                >
+                  <FaDownload />
+                  Download Resume
+                </a>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Right Column - Content Area */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="col-span-2 space-y-10"
+          >
+            {/* Bio Section */}
+            <div className="space-y-6">
+              <div>
+                <h3
+                  className={`text-3xl font-bold font-heading relative inline-block ${
+                    theme === "dark" ? "text-white" : "text-gray-900"
                   }`}
                 >
-                  Robotics Club
-                </span>
-                <p
-                  className={`text-sm ${
-                    theme === "dark" ? "text-gray-400" : "text-gray-600"
-                  }`}
+                  <span
+                    className={`${
+                      theme === "dark"
+                        ? "bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text"
+                        : "text-gradient"
+                    }`}
+                  >
+                    Full Stack Developer
+                  </span>{" "}
+                  <span
+                    className={`${
+                      theme === "dark" ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    & CS Student
+                  </span>
+                </h3>
+
+                <motion.div
+                  className="mt-6 space-y-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3, duration: 0.6 }}
                 >
-                  Technical Member
-                </p>
+                  <p
+                    className={`text-lg leading-relaxed ${
+                      theme === "dark" ? "text-gray-300" : "text-gray-700"
+                    }`}
+                  >
+                    Computer Science student at{" "}
+                    <span
+                      className={`font-semibold ${
+                        theme === "dark" ? "text-indigo-400" : "text-indigo-600"
+                      }`}
+                    >
+                      NIT Patna
+                    </span>{" "}
+                    passionate about full stack development with a strong
+                    foundation in Data Structures & Algorithms. I approach
+                    technical challenges analytically and continually expand my
+                    skills in GenAI and modern web technologies.
+                  </p>
+                  <p
+                    className={`text-lg leading-relaxed ${
+                      theme === "dark" ? "text-gray-300" : "text-gray-700"
+                    }`}
+                  >
+                    As a{" "}
+                    <span
+                      className={`font-semibold ${
+                        theme === "dark" ? "text-purple-400" : "text-purple-600"
+                      }`}
+                    >
+                      Robotics Club member
+                    </span>
+                    , I've organized workshops and led teams building combat and
+                    soccer bots. Outside coding, I enjoy competitive programming
+                    and sports, having won Bronze in 50m Hurdles at NIT Patna
+                    Intramurals.
+                  </p>
+                </motion.div>
               </div>
             </div>
-          </div>
 
-          <div className="md:w-2/3">
-            <h3
-              className={`text-3xl font-bold mb-6 font-heading ${
-                theme === "dark" ? "text-white" : ""
+            {/* Skills Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className={`p-6 rounded-2xl ${
+                theme === "dark"
+                  ? "bg-gray-800/50 border border-gray-700/50"
+                  : "bg-white/80 border border-gray-100 shadow-md"
               }`}
             >
-              <span
-                className={`${
-                  theme === "dark"
-                    ? "bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text"
-                    : "text-gradient"
+              <h4
+                className={`text-xl font-bold mb-6 flex items-center gap-2 ${
+                  theme === "dark" ? "text-white" : "text-gray-900"
                 }`}
               >
-                Full Stack Developer
-              </span>{" "}
-              & CS Student
-            </h3>
-
-            <p
-              className={`text-lg mb-5 leading-relaxed ${
-                theme === "dark" ? "text-gray-300" : "text-gray-700"
-              }`}
-            >
-              Computer Science student at NIT Patna passionate about full stack
-              development with a strong foundation in Data Structures &
-              Algorithms. I approach technical challenges analytically and
-              continually expand my skills in GenAI and modern web technologies.
-            </p>
-
-            <p
-              className={`text-lg mb-5 leading-relaxed ${
-                theme === "dark" ? "text-gray-300" : "text-gray-700"
-              }`}
-            >
-              As a Robotics Club member, I've organized workshops and led teams
-              building combat and soccer bots. Outside coding, I enjoy
-              competitive programming and sports, having won Bronze in 50m
-              Hurdles at NIT Patna Intramurals.
-            </p>
-
-            {/* DSA Stats Banner */}
-            <div
-              className={`flex items-center mb-6 p-4 rounded-xl border ${
-                theme === "dark"
-                  ? "bg-gradient-to-r from-indigo-900/20 to-purple-900/20 border-indigo-800/30"
-                  : "bg-gradient-to-r from-indigo-50 to-purple-50 border-indigo-100"
-              }`}
-            >
-              <div className="mr-4">
-                <div
-                  className={`p-3 rounded-full ${
+                <span
+                  className={`p-2 rounded-full ${
                     theme === "dark" ? "bg-indigo-900/40" : "bg-indigo-100"
                   }`}
                 >
                   <FaCode
-                    className={`text-xl ${
+                    className={
+                      theme === "dark" ? "text-indigo-400" : "text-indigo-600"
+                    }
+                  />
+                </span>
+                Technical Expertise
+              </h4>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {skills.map((skill, index) => (
+                  <div key={index} className="space-y-2">
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center gap-2">
+                        <span
+                          className={
+                            theme === "dark" ? "text-gray-200" : "text-gray-800"
+                          }
+                        >
+                          {skill.name}
+                        </span>
+                      </div>
+                      <span
+                        className={`text-sm font-medium ${
+                          theme === "dark"
+                            ? "text-indigo-400"
+                            : "text-indigo-600"
+                        }`}
+                      >
+                        {skill.level}%
+                      </span>
+                    </div>
+                    <div
+                      className={`w-full h-2 rounded-full overflow-hidden ${
+                        theme === "dark" ? "bg-gray-700" : "bg-gray-200"
+                      }`}
+                    >
+                      <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: `${skill.level}%` }}
+                        transition={{ duration: 0.8, delay: 0.6 + index * 0.1 }}
+                        className={`h-full rounded-full ${
+                          theme === "dark"
+                            ? "bg-gradient-to-r from-indigo-600 to-purple-600"
+                            : "bg-gradient-to-r from-primary to-accent"
+                        }`}
+                      ></motion.div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Competitive Programming section removed as it will be shown in a dedicated component */}
+
+            {/* Note: Achievements & Experience section moved to dedicated Experience component */}
+
+            {/* Key Focus Areas */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: 0.7 }}
+              className={`p-6 rounded-2xl border ${
+                theme === "dark"
+                  ? "border-indigo-800/30 bg-gradient-to-br from-indigo-900/20 to-purple-900/20"
+                  : "border-indigo-100 bg-gradient-to-br from-indigo-50 to-purple-50"
+              }`}
+            >
+              <h4
+                className={`text-xl font-bold mb-6 ${
+                  theme === "dark" ? "text-white" : "text-gray-900"
+                }`}
+              >
+                Current Focus Areas
+              </h4>
+
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <FaChevronRight
+                    className={`min-w-5 mt-1 ${
                       theme === "dark" ? "text-indigo-400" : "text-indigo-600"
                     }`}
                   />
-                </div>
-              </div>
-              <div className="flex-1">
-                <h4
-                  className={`text-lg font-semibold mb-1 ${
-                    theme === "dark" ? "text-indigo-300" : "text-indigo-700"
-                  }`}
-                >
-                  Competitive Programming
-                </h4>
-                <p
-                  className={`${
-                    theme === "dark" ? "text-gray-300" : "text-gray-700"
-                  }`}
-                >
-                  Solved 200+ DSA problems • LeetCode 1550+ • CodeChef 1270+
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <div
-                className={`card-gradient p-6 rounded-xl transition-all duration-300 ${
-                  theme === "dark"
-                    ? "bg-gray-800 hover:bg-gray-700"
-                    : "shadow-card hover:shadow-lg"
-                }`}
-              >
-                <h4
-                  className={`text-xl font-semibold mb-3 ${
-                    theme === "dark" ? "text-indigo-400" : "text-primary"
-                  }`}
-                >
-                  Education
-                </h4>
-                <ul className="space-y-2">
-                  <li className="flex items-center gap-2">
-                    <span
-                      className={`w-2 h-2 rounded-full ${
-                        theme === "dark"
-                          ? "bg-gradient-to-r from-indigo-500 to-purple-500"
-                          : "bg-gradient-to-r from-primary to-secondary"
-                      }`}
-                    ></span>
-                    <span className={theme === "dark" ? "text-gray-200" : ""}>
-                      B.Tech Computer Science (2023-27)
-                    </span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span
-                      className={`w-2 h-2 rounded-full ${
-                        theme === "dark"
-                          ? "bg-gradient-to-r from-indigo-500 to-purple-500"
-                          : "bg-gradient-to-r from-primary to-secondary"
-                      }`}
-                    ></span>
-                    <span className={theme === "dark" ? "text-gray-200" : ""}>
-                      National Institute of Technology, Patna
-                    </span>
-                  </li>
-                </ul>
-              </div>
-              <div
-                className={`card-gradient p-6 rounded-xl transition-all duration-300 ${
-                  theme === "dark"
-                    ? "bg-gray-800 hover:bg-gray-700"
-                    : "shadow-card hover:shadow-lg"
-                }`}
-              >
-                <h4
-                  className={`text-xl font-semibold mb-3 ${
-                    theme === "dark" ? "text-indigo-400" : "text-primary"
-                  }`}
-                >
-                  Experience
-                </h4>
-                <ul className="space-y-2">
-                  <li className="flex items-center gap-2">
-                    <span
-                      className={`w-2 h-2 rounded-full ${
-                        theme === "dark"
-                          ? "bg-gradient-to-r from-indigo-500 to-purple-500"
-                          : "bg-gradient-to-r from-primary to-secondary"
-                      }`}
-                    ></span>
-                    <span className={theme === "dark" ? "text-gray-200" : ""}>
-                      Technical Member, Robotics Club (2023-Present)
-                    </span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span
-                      className={`w-2 h-2 rounded-full ${
-                        theme === "dark"
-                          ? "bg-gradient-to-r from-indigo-500 to-purple-500"
-                          : "bg-gradient-to-r from-primary to-secondary"
-                      }`}
-                    ></span>
-                    <span className={theme === "dark" ? "text-gray-200" : ""}>
-                      Class Representative, Dept. of CSE (2023-2024)
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* DSA Counter Section with Animation - Separate from the grid */}
-            <div className="my-10 max-w-3xl mx-auto">
-              <h4
-                className={`text-center text-xl font-bold mb-6 ${
-                  theme === "dark" ? "text-white" : "text-gray-800"
-                }`}
-              >
-                DSA Problems Solved on
-                <span
-                  className={
-                    theme === "dark"
-                      ? "bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text ml-2"
-                      : "text-gradient ml-2"
-                  }
-                >
-                  Different Platforms
-                </span>
-              </h4>
-              <DSACounter />
-            </div>
-
-            <div className="mt-8 flex flex-wrap gap-4">
-              <a
-                href="#contact"
-                className={`text-white px-8 py-3 rounded-lg font-semibold inline-block ${
-                  theme === "dark"
-                    ? "bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700"
-                    : "btn-gradient"
-                }`}
-              >
-                Get In Touch
-              </a>
-              <a
-                href="/Yuvraj_Resume_v2_1%20(1).pdf"
-                download="Yuvraj_Mehta_Resume.pdf"
-                className={`px-8 py-3 rounded-lg font-semibold inline-block border-2 ${
-                  theme === "dark"
-                    ? "border-indigo-600 text-indigo-400 hover:bg-indigo-600/10"
-                    : "border-primary text-primary hover:bg-primary/10"
-                } transition-all`}
-              >
-                Download Resume
-              </a>
-            </div>
-          </div>
-        </motion.div>
+                  <span
+                    className={
+                      theme === "dark" ? "text-gray-300" : "text-gray-700"
+                    }
+                  >
+                    Mastering advanced data structures like Segment Trees and
+                    Fenwick Trees
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <FaChevronRight
+                    className={`min-w-5 mt-1 ${
+                      theme === "dark" ? "text-indigo-400" : "text-indigo-600"
+                    }`}
+                  />
+                  <span
+                    className={
+                      theme === "dark" ? "text-gray-300" : "text-gray-700"
+                    }
+                  >
+                    Improving problem solving skills with dynamic programming
+                    challenges
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <FaChevronRight
+                    className={`min-w-5 mt-1 ${
+                      theme === "dark" ? "text-purple-400" : "text-purple-600"
+                    }`}
+                  />
+                  <span
+                    className={
+                      theme === "dark" ? "text-gray-300" : "text-gray-700"
+                    }
+                  >
+                    Exploring generative AI applications for web development
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <FaChevronRight
+                    className={`min-w-5 mt-1 ${
+                      theme === "dark" ? "text-purple-400" : "text-purple-600"
+                    }`}
+                  />
+                  <span
+                    className={
+                      theme === "dark" ? "text-gray-300" : "text-gray-700"
+                    }
+                  >
+                    Building full-stack applications with modern frameworks and
+                    architectures
+                  </span>
+                </li>
+              </ul>
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

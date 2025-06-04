@@ -126,7 +126,7 @@ const ModernFooter = () => {
 
         {/* Grid pattern overlay */}
         <div
-          className={`absolute inset-0 bg-grid-pattern bg-[length:35px_35px] opacity-[0.025] ${
+          className={`absolute inset-0 bg-[url('/src/assets/grid-pattern.svg')] bg-[length:35px_35px] opacity-[0.025] ${
             theme === "dark" ? "invert-0" : "invert"
           }`}
         ></div>
