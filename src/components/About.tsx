@@ -21,13 +21,11 @@ const About = () => {
   const { theme } = useTheme();
 
   const skills = [
-    { name: "Web Development", level: 90, icon: <FaCode /> },
+    { name: "Web Development", level: 80, icon: <FaCode /> },
     { name: "Data Structures", level: 85, icon: <FaBrain /> },
-    { name: "Algorithms", level: 85, icon: <FaLaptopCode /> },
-    { name: "Robotics", level: 75, icon: <FaRobot /> },
+    { name: "Algorithms", level: 75, icon: <FaLaptopCode /> },
+    // { name: "Robotics", level: 75, icon: <FaRobot /> },
   ];
-
-  // Removed competitive coding platform data as it will be handled in a dedicated section
 
   return (
     <section
@@ -402,88 +400,6 @@ const About = () => {
             {/* Competitive Programming section removed as it will be shown in a dedicated component */}
 
             {/* Note: Achievements & Experience section moved to dedicated Experience component */}
-
-            {/* Key Focus Areas */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.5, delay: 0.7 }}
-              className={`p-6 rounded-2xl border ${
-                theme === "dark"
-                  ? "border-indigo-800/30 bg-gradient-to-br from-indigo-900/20 to-purple-900/20"
-                  : "border-indigo-100 bg-gradient-to-br from-indigo-50 to-purple-50"
-              }`}
-            >
-              <h4
-                className={`text-xl font-bold mb-6 ${
-                  theme === "dark" ? "text-white" : "text-gray-900"
-                }`}
-              >
-                Current Focus Areas
-              </h4>
-
-              <ul className="space-y-3">
-                <li className="flex items-start gap-3">
-                  <FaChevronRight
-                    className={`min-w-5 mt-1 ${
-                      theme === "dark" ? "text-indigo-400" : "text-indigo-600"
-                    }`}
-                  />
-                  <span
-                    className={
-                      theme === "dark" ? "text-gray-300" : "text-gray-700"
-                    }
-                  >
-                    Mastering advanced data structures like Segment Trees and
-                    Fenwick Trees
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <FaChevronRight
-                    className={`min-w-5 mt-1 ${
-                      theme === "dark" ? "text-indigo-400" : "text-indigo-600"
-                    }`}
-                  />
-                  <span
-                    className={
-                      theme === "dark" ? "text-gray-300" : "text-gray-700"
-                    }
-                  >
-                    Improving problem solving skills with dynamic programming
-                    challenges
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <FaChevronRight
-                    className={`min-w-5 mt-1 ${
-                      theme === "dark" ? "text-purple-400" : "text-purple-600"
-                    }`}
-                  />
-                  <span
-                    className={
-                      theme === "dark" ? "text-gray-300" : "text-gray-700"
-                    }
-                  >
-                    Exploring generative AI applications for web development
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <FaChevronRight
-                    className={`min-w-5 mt-1 ${
-                      theme === "dark" ? "text-purple-400" : "text-purple-600"
-                    }`}
-                  />
-                  <span
-                    className={
-                      theme === "dark" ? "text-gray-300" : "text-gray-700"
-                    }
-                  >
-                    Building full-stack applications with modern frameworks and
-                    architectures
-                  </span>
-                </li>
-              </ul>
-            </motion.div>
           </motion.div>
         </div>
       </div>

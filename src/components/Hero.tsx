@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import {
   FaGithub,
   FaLinkedin,
-  FaTwitter,
+  FaInstagram,
   FaArrowRight,
   FaExternalLinkAlt,
 } from "react-icons/fa";
@@ -188,7 +188,7 @@ const Hero = () => {
               </div>
             </motion.a>
             <motion.a
-              href="https://linkedin.com/in/yuvraj-mehta-a0274528a//in/yuvraj-mehta-a0274528a/"
+              href="https://www.linkedin.com/in/yuvraj-mehta-a0274528a/"
               target="_blank"
               rel="noopener noreferrer"
               className={`w-12 h-12 rounded-lg flex items-center justify-center shadow-sm hover:shadow-lg icon-glow ${
@@ -204,7 +204,7 @@ const Hero = () => {
               </div>
             </motion.a>
             <motion.a
-              href="https://twitter.com/"
+              href="https://www.instagram.com/yuvraj.mehta4261/"
               target="_blank"
               rel="noopener noreferrer"
               className={`w-12 h-12 rounded-lg flex items-center justify-center shadow-sm hover:shadow-lg icon-glow ${
@@ -216,7 +216,7 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
             >
               <div className="icon-pulse">
-                <FaTwitter />
+                <FaInstagram />
               </div>
             </motion.a>
           </motion.div>
