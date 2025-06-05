@@ -25,41 +25,32 @@ const Experience = () => {
   // Professional experience data
   const experiences = [
     {
-      role: "Full Stack Developer Intern",
-      company: "TechInnovate Solutions",
-      period: "May 2023 - August 2023",
-      location: "Remote",
-      description:
-        "Developed and maintained features for a React.js and Node.js web application used by 2000+ users. Implemented responsive UI components and RESTful APIs that improved application performance by 30%. Collaborated with a team of 5 to deliver features on schedule.",
-      technologies: ["React.js", "Node.js", "MongoDB", "Express", "Redux"],
-    },
-    {
-      role: "Web Development Project Lead",
-      company: "College Tech Fest",
-      period: "January 2023 - March 2023",
+      role: "Technical Member",
+      company: "Robotics Club, NIT Patna",
+      period: "December 2023 - Present",
       location: "NIT Patna",
       description:
-        "Led a team of 3 developers to create the official tech fest website. Designed and implemented the event registration system which handled 1500+ sign-ups. Integrated payment gateway and real-time notifications.",
-      technologies: ["Next.js", "Firebase", "Tailwind CSS", "TypeScript"],
+        "Organized and facilitated 3+ workshops on designing and building robotic bots. Led a team of 4 to build a combat-ready battle bot, achieving 4th place among 15+ teams at NIT Patna’s tech fest. Directed a team of 3 in designing and developing a soccer bot for the annual tech fest, enhancing hands-on robotics and teamwork skills.",
+      technologies: [],
     },
     {
-      role: "Open Source Contributor",
-      company: "Various Projects",
-      period: "2022 - Present",
-      location: "Remote",
+      role: "Team Leader",
+      company: "Hackathons (including Smart India Hackathon)",
+      period: "2023",
+      location: "NIT Patna & Remote",
       description:
-        "Contributed to multiple open source projects focused on web development tools and libraries. Fixed bugs and implemented new features that were merged into the main repositories. Participated in code reviews and community discussions.",
-      technologies: ["JavaScript", "TypeScript", "Git", "React", "Python"],
+        "Led teams in 3 major hackathons, including the prestigious Smart India Hackathon. Guided my team to qualify at the internal NIT Patna hackathon and advance to the national level. Oversaw all phases from ideation to development and presentation, ensuring effective collaboration and timely delivery of innovative solutions.",
+      technologies: [],
     },
   ];
 
   // Notable achievements data
   const achievements = [
     {
-      title: "Winner - College Hackathon",
+      title: "Winner - Model United Nations",
       year: "2023",
       description:
-        "Developed an AI-powered learning assistant that won first place among 50+ competing teams.",
+        "Represented the Republic of Poland at NIT Patna’s Model United Nations. Earned the Best Delegate award for exceptional debate skills and impactful resolutions.",
       icon: (
         <FaTrophy
           className={theme === "dark" ? "text-yellow-400" : "text-yellow-600"}
@@ -107,18 +98,6 @@ const Experience = () => {
       provider: "Coursera",
       date: "2023",
       credential: "CRED123456",
-    },
-    {
-      name: "Microsoft Azure Fundamentals (AZ-900)",
-      provider: "Microsoft",
-      date: "2023",
-      credential: "MS123456",
-    },
-    {
-      name: "Data Structures & Algorithms Specialization",
-      provider: "Coursera",
-      date: "2022",
-      credential: "CRED234567",
     },
   ];
 
@@ -415,7 +394,7 @@ const Experience = () => {
             </div>
 
             {/* Certifications Section */}
-            <div
+            {/* <div
               className={`p-6 rounded-2xl ${
                 theme === "dark"
                   ? "bg-gray-800/50 border border-gray-700/50"
@@ -483,10 +462,10 @@ const Experience = () => {
                   </motion.div>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {/* Future Goals Card */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: 0.7 }}
@@ -556,7 +535,7 @@ const Experience = () => {
                   </span>
                 </li>
               </ul>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         </div>
       </div>

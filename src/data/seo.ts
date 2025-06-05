@@ -1,3 +1,5 @@
+import { ins } from "framer-motion/client";
+
 export const seoData = {
   title: "Yuvraj Mehta - Full Stack Developer | Portfolio",
   description:
@@ -5,7 +7,10 @@ export const seoData = {
   keywords:
     "Full Stack Developer, React, TypeScript, Node.js, JavaScript, Web Development, Frontend, Backend, Portfolio, Yuvraj Mehta, GenAI, Data Structures, Algorithms",
   author: "Yuvraj Mehta",
-  siteUrl: "https://yuvrajmehta.dev/",
+  siteUrl: "https://yuvrajmehta.codes/",
+  instagram: "https://www.instagram.com/yuvraj.mehta4261/",
+  github: "https://github.com/yuvraj-mehta",
+  linkedin: "https://www.linkedin.com/in/yuvraj-mehta-a0274528a/",
   ogImage: "/yuvraj.png",
   twitterHandle: "@yuvrajm",
   themeColor: "#6366f1",

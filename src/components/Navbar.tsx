@@ -17,7 +17,6 @@ const Navbar = ({ scrolled = false }: NavbarProps) => {
     { title: "About", href: "#about" },
     { title: "Experience", href: "#experience" },
     { title: "Education", href: "#education" },
-    { title: "Coding", href: "#coding" },
     { title: "Tech Stack", href: "#tech-stack" },
     { title: "Projects", href: "#projects" },
     { title: "Contact", href: "#contact" },

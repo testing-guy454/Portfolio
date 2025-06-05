@@ -3,6 +3,11 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { FaGithub, FaExternalLinkAlt, FaArrowRight } from "react-icons/fa";
 import { useTheme } from "../contexts/ThemeContext";
+// image imports
+import bookHiveImage from "../../public/projectImages/bookhive.png"
+import ecoGuardian from "../../public/projectImages/ecoGuardian.png"
+import portfolio from "../../public/projectImages/portfolio.png"
+import stickify from "../../public/projectImages/stickify.png"
 
 // Define the Project type
 interface Project {
@@ -29,10 +34,10 @@ const projectCategories = [
 // Projects data
 const projects: Project[] = [
   {
-    title: "BookHive Manager",
+    title: "BookHive",
     description:
-      "A full-stack MERN application for NIT Patna's library operations with secure role-based access (Admin/User). Implements JWT authentication, OTP email verification, and automated reminders via NodeMailer and NodeCron.",
-    image: "/project-bookhive.jpg",
+      "BookNest is a full-stack library management system with distinct user and admin roles. It features book and PYQ management, a borrowing system, OTP-verified authentication, and separate dashboards. Built with React, Node.js, Express.js, and MongoDB.",
+    image: bookHiveImage,
     fallbackImage:
       "https://placehold.co/600x400/6366F1/FFFFFF/png?text=BookHive",
     tags: ["React", "Redux Toolkit", "Node.js", "Express", "MongoDB", "JWT"],
@@ -44,7 +49,7 @@ const projects: Project[] = [
     title: "Portfolio Website",
     description:
       "Personal developer portfolio showcasing projects and skills. Designed and built a responsive single-page portfolio with smooth animations and dynamic navigation. Integrated a contact form using EmailJS and added a downloadable resume feature.",
-    image: "/project-portfolio.jpg",
+    image: portfolio,
     fallbackImage:
       "https://placehold.co/600x400/6366F1/FFFFFF/png?text=Portfolio",
     tags: ["React", "Tailwind CSS", "Framer Motion", "Vite"],
@@ -56,18 +61,19 @@ const projects: Project[] = [
     title: "Stickify",
     description:
       "This is a simple notes application built with React and Vite. It allows users to create, update, delete, and manage notes with different colors. The application uses Appwrite as the backend service for managing notes.",
-    image: "/project-stickify.jpg",
+    image: stickify,
     fallbackImage:
       "https://placehold.co/600x400/8B5CF6/FFFFFF/png?text=Stickify",
-    tags: ["Robotics", "Electronics", "Arduino", "CAD"],
+    tags: ["React", "Vite", "Appwrite"],
     github: "https://github.com/yuvraj-mehta/Stickify",
-    live: "https://stickify-lac.vercel.app/",
+    live: "https://stickify.vercel.app",
+    featured: false,
   },
   {
     title: "EcoGuardian",
     description:
       "An online community platform empowering individuals to collaborate on environmental projects, report cleanliness issues, access educational resources, and drive positive change for a cleaner, greener future. 🌍",
-    image: "/project-soccerbot.jpg",
+    image: ecoGuardian,
     fallbackImage:
       "https://placehold.co/600x400/EC4899/FFFFFF/png?text=EcoGuardian",
     tags: ["Robotics", "Sensors", "Microcontrollers", "Programming"],

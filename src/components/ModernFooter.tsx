@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useTheme } from "../contexts/ThemeContext";
+import resume from "../../public/Yuvraj_Resume_v2_1 (1).pdf"
 import {
   FaGithub,
   FaLinkedin,
@@ -52,8 +53,8 @@ const ModernFooter = () => {
     { icon: <FaMapMarkerAlt />, text: "Patna, Bihar, India" },
     {
       icon: <FaEnvelope />,
-      text: "yuvraj@mehta.com",
-      href: "mailto:yuvraj@mehta.com",
+      text: "yuvraj.mehta532@gmail.com",
+      href: "mailto:yuvraj.mehta532@gmail.com",
     },
   ];
 
@@ -74,18 +75,46 @@ const ModernFooter = () => {
   };
 
   const quickLinks = [
-    { name: "Resume", href: "#resume", icon: <FaDownload size={14} /> },
+    { name: "Resume", href: resume, icon: <FaDownload size={14}  /> },
     {
       name: "LeetCode",
-      href: "https://leetcode.com/",
+      href: "https://leetcode.com/u/mythical-UV/",
       icon: <SiLeetcode size={14} />,
     },
     {
       name: "GeeksforGeeks",
-      href: "https://www.geeksforgeeks.org/",
+      href: "https://www.geeksforgeeks.org/user/yuvrajmevbrx/",
       icon: <SiGeeksforgeeks size={14} />,
     },
     { name: "Projects", href: "#projects", icon: <FaCodeBranch size={14} /> },
+  ];
+
+  const socialLinks = [
+    {
+      icon: <FaGithub size={18} />,
+      href: "https://github.com/yuvraj-mehta",
+      label: "GitHub",
+    },
+    {
+      icon: <FaLinkedin size={18} />,
+      href: "https://linkedin.com/in/yuvraj-mehta-a0274528a/",
+      label: "LinkedIn",
+    },
+    {
+      icon: <FaTwitter size={18} />,
+      href: "https://twitter.com/",
+      label: "Twitter",
+    },
+    {
+      icon: <SiLeetcode size={18} />,
+      href: "https://leetcode.com/u/mythical-UV/",
+      label: "LeetCode",
+    },
+    {
+      icon: <FaEnvelope size={18} />,
+      href: "mailto:yuvraj@mehta.com",
+      label: "Email",
+    },
   ];
 
   return (
@@ -133,14 +162,14 @@ const ModernFooter = () => {
       </div>
 
       {/* Main Footer Content */}
-      <div className="container mx-auto px-6 py-24 md:py-32 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 relative z-10">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ duration: 0.3 }}
           variants={fadeIn}
-          className="flex flex-col md:flex-row justify-between gap-16 mb-16 "
+          className="flex flex-col md:flex-row justify-between gap-8 md:gap-12 lg:gap-16 mb-12"
         >
           {/* Brand Section */}
           <div className="w-full md:w-1/3">
@@ -176,35 +205,9 @@ const ModernFooter = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="flex flex-wrap gap-3"
+                className="flex flex-wrap gap-2 sm:gap-3"
               >
-                {[
-                  {
-                    icon: <FaGithub size={18} />,
-                    href: "https://github.com/yuvraj-mehta",
-                    label: "GitHub",
-                  },
-                  {
-                    icon: <FaLinkedin size={18} />,
-                    href: "https://linkedin.com/in/yuvraj-mehta-a0274528a/",
-                    label: "LinkedIn",
-                  },
-                  {
-                    icon: <FaTwitter size={18} />,
-                    href: "https://twitter.com/",
-                    label: "Twitter",
-                  },
-                  {
-                    icon: <SiLeetcode size={18} />,
-                    href: "https://leetcode.com/",
-                    label: "LeetCode",
-                  },
-                  {
-                    icon: <FaEnvelope size={18} />,
-                    href: "mailto:yuvraj@mehta.com",
-                    label: "Email",
-                  },
-                ].map((item, index) => (
+                {socialLinks.map((item, index) => (
                   <motion.a
                     key={index}
                     variants={fadeIn}
@@ -226,7 +229,7 @@ const ModernFooter = () => {
           </div>
 
           {/* Links & Contact Section */}
-          <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {/* Contact */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -235,13 +238,13 @@ const ModernFooter = () => {
               transition={{ duration: 0.4 }}
             >
               <h3
-                className={`text-lg font-semibold mb-5 ${
+                className={`text-lg font-semibold mb-4 md:mb-5 ${
                   theme === "dark" ? "text-white" : "text-gray-900"
                 }`}
               >
                 Contact
               </h3>
-              <div className="space-y-4">
+              <div className="space-y-3 md:space-y-4">
                 {contactInfo.map((item, index) => (
                   <div key={index} className="flex items-center gap-3">
                     <div
@@ -286,13 +289,13 @@ const ModernFooter = () => {
               transition={{ duration: 0.4, delay: 0.1 }}
             >
               <h3
-                className={`text-lg font-semibold mb-5 ${
+                className={`text-lg font-semibold mb-4 md:mb-5 ${
                   theme === "dark" ? "text-white" : "text-gray-900"
                 }`}
               >
                 Quick Links
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-2 md:space-y-3">
                 {quickLinks.map((link, index) => (
                   <li key={index}>
                     <a
@@ -337,13 +340,13 @@ const ModernFooter = () => {
               transition={{ duration: 0.4, delay: 0.2 }}
             >
               <h3
-                className={`text-lg font-semibold mb-5 ${
+                className={`text-lg font-semibold mb-4 md:mb-5 ${
                   theme === "dark" ? "text-white" : "text-gray-900"
                 }`}
               >
                 Navigation
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-2 md:space-y-3">
                 {links.map((link, index) => (
                   <li key={index}>
                     <a
@@ -368,13 +371,13 @@ const ModernFooter = () => {
 
         {/* Stats Section */}
         <div
-          className={`rounded-2xl px-8 py-6 mb-12 ${
+          className={`rounded-2xl px-6 md:px-8 py-4 md:py-6 mb-8 md:mb-10 ${
             theme === "dark"
               ? "bg-gray-800/20 backdrop-blur-sm shadow-[0_4px_24px_-12px_rgba(0,0,0,0.5)]"
               : "bg-white/70 backdrop-blur-sm shadow-lg"
           }`}
         >
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8">
             {/* Visitor Stats */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -384,13 +387,13 @@ const ModernFooter = () => {
               className="flex items-center"
             >
               <div
-                className={`w-12 h-12 rounded-full mr-4 flex items-center justify-center ${
+                className={`w-10 h-10 md:w-12 md:h-12 rounded-full mr-3 md:mr-4 flex items-center justify-center ${
                   theme === "dark"
                     ? "bg-indigo-900/50 text-indigo-300"
                     : "bg-indigo-100 text-indigo-600"
                 }`}
               >
-                <FaStar className="text-lg" />
+                <FaStar className="text-base md:text-lg" />
               </div>
               <div>
                 <h4
@@ -401,7 +404,7 @@ const ModernFooter = () => {
                   Total Visitors
                 </h4>
                 <p
-                  className={`text-2xl font-bold ${
+                  className={`text-xl md:text-2xl font-bold ${
                     theme === "dark" ? "text-white" : "text-gray-800"
                   }`}
                 >

@@ -10,6 +10,63 @@ const Education = () => {
 
   const { theme } = useTheme();
 
+  const educationData = [
+    {
+      level: "Bachelor's Degree",
+      title: "Bachelor of Technology in Computer Science and Engineering",
+      institution: "National Institute of Technology, Patna",
+      duration: "2023 - 2027",
+      details: [
+        "Cumulative CGPA: 7.69/10",
+        "Relevant Coursework: Data Structures, Algorithms, DBMS, Operating Systems, Computer Networks",
+        "Class Representative, Department of CSE (August, 2023 - December, 2024)",
+      ],
+      theme: {
+        iconBg: "bg-indigo-800",
+        iconText: "text-indigo-300",
+        cardBg: "bg-gray-900",
+        cardText: "text-white",
+        badgeBg: "bg-indigo-900/50",
+        badgeText: "text-indigo-300",
+      },
+      icon: "B.Tech",
+    },
+    {
+      level: "Senior Secondary Education",
+      title: "Senior Secondary Education (CBSE)",
+      institution: "Pragya Bharti Public School, Gaya",
+      duration: "2021 - 2022",
+      details: ["Percentage: 88.8%", "Stream: PCM"],
+      theme: {
+        iconBg: "bg-purple-800",
+        iconText: "text-purple-300",
+        cardBg: "bg-gray-900",
+        cardText: "text-white",
+        badgeBg: "bg-purple-900/50",
+        badgeText: "text-purple-300",
+      },
+      icon: "12th",
+    },
+    {
+      level: "Secondary Education",
+      title: "Secondary Education (CBSE)",
+      institution: "Pragya Bharti Public School, Gaya",
+      duration: "2019 - 2020",
+      details: [
+        "Percentage: 90%",
+      ],
+      theme: {
+        iconBg: "bg-pink-800",
+        iconText: "text-pink-300",
+        cardBg: "bg-gray-900",
+        cardText: "text-white",
+        badgeBg: "bg-pink-900/50",
+        badgeText: "text-pink-300",
+      },
+      icon: "10th",
+    },
+  ];
+
   return (
     <section
       id="education"
@@ -88,293 +145,67 @@ const Education = () => {
 
               {/* Education Items */}
               <div className="space-y-12 relative z-10">
-                {/* Bachelor's Degree */}
-                <div className="flex">
-                  <div
-                    className={`relative flex items-center justify-center w-16 h-16 rounded-full ${
-                      theme === "dark" ? "bg-gray-900" : "bg-white"
-                    } shadow-lg mr-6`}
-                  >
+                {educationData.map((edu, index) => (
+                  <div className="flex" key={index}>
                     <div
-                      className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                        theme === "dark" ? "bg-indigo-800" : "bg-indigo-100"
-                      }`}
+                      className={`relative flex items-center justify-center w-16 h-16 rounded-full ${
+                        theme === "dark" ? "bg-gray-900" : "bg-white"
+                      } shadow-lg mr-6`}
                     >
-                      <span
-                        className={
-                          theme === "dark"
-                            ? "text-indigo-300"
-                            : "text-indigo-600"
-                        }
+                      <div
+                        className={`w-10 h-10 rounded-full flex items-center justify-center ${edu.theme.iconBg}`}
                       >
-                        B.Tech
-                      </span>
+                        <span className={edu.theme.iconText}>{edu.icon}</span>
+                      </div>
                     </div>
-                  </div>
 
-                  <div
-                    className={`card-gradient p-6 rounded-xl flex-grow ${
-                      theme === "dark" ? "bg-gray-900" : "bg-white"
-                    } shadow-lg`}
-                  >
-                    <div className="flex flex-wrap justify-between items-start mb-2">
-                      <h3
-                        className={`text-xl font-bold ${
-                          theme === "dark" ? "text-white" : "text-gray-800"
-                        }`}
-                      >
-                        Bachelor of Technology in Computer Science
-                      </h3>
-                      <span
-                        className={`px-3 py-1 text-sm rounded-full ${
-                          theme === "dark"
-                            ? "bg-indigo-900/50 text-indigo-300"
-                            : "bg-indigo-100 text-indigo-700"
-                        }`}
-                      >
-                        2023 - 2027
-                      </span>
-                    </div>
-                    <h4
-                      className={`text-lg font-semibold mb-3 ${
-                        theme === "dark" ? "text-indigo-400" : "text-indigo-600"
-                      }`}
-                    >
-                      National Institute of Technology, Patna
-                    </h4>
-                    <ul className="space-y-2">
-                      <li className="flex items-start gap-2">
-                        <span
-                          className={`mt-1.5 w-2 h-2 rounded-full ${
-                            theme === "dark"
-                              ? "bg-gradient-to-r from-indigo-500 to-purple-500"
-                              : "bg-gradient-to-r from-primary to-secondary"
-                          }`}
-                        ></span>
-                        <span
-                          className={
-                            theme === "dark" ? "text-gray-300" : "text-gray-700"
-                          }
-                        >
-                          Cumulative CGPA: <strong>7.69</strong>/10
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span
-                          className={`mt-1.5 w-2 h-2 rounded-full ${
-                            theme === "dark"
-                              ? "bg-gradient-to-r from-indigo-500 to-purple-500"
-                              : "bg-gradient-to-r from-primary to-secondary"
-                          }`}
-                        ></span>
-                        <span
-                          className={
-                            theme === "dark" ? "text-gray-300" : "text-gray-700"
-                          }
-                        >
-                          Relevant Coursework: Data Structures, Algorithms,
-                          Database Systems, Web Development
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span
-                          className={`mt-1.5 w-2 h-2 rounded-full ${
-                            theme === "dark"
-                              ? "bg-gradient-to-r from-indigo-500 to-purple-500"
-                              : "bg-gradient-to-r from-primary to-secondary"
-                          }`}
-                        ></span>
-                        <span
-                          className={
-                            theme === "dark" ? "text-gray-300" : "text-gray-700"
-                          }
-                        >
-                          Class Representative, Department of CSE (2023-2024)
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Senior Secondary Education */}
-                <div className="flex">
-                  <div
-                    className={`relative flex items-center justify-center w-16 h-16 rounded-full ${
-                      theme === "dark" ? "bg-gray-900" : "bg-white"
-                    } shadow-lg mr-6`}
-                  >
                     <div
-                      className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                        theme === "dark" ? "bg-purple-800" : "bg-purple-100"
-                      }`}
+                      className={`card-gradient p-6 rounded-xl flex-grow ${
+                        theme === "dark" ? "bg-gray-900" : "bg-white"
+                      } shadow-lg`}
                     >
-                      <span
-                        className={
-                          theme === "dark"
-                            ? "text-purple-300"
-                            : "text-purple-600"
-                        }
+                      <div className="flex flex-wrap justify-between items-start mb-2">
+                        <h3
+                          className={`text-xl font-bold ${edu.theme.cardText}`}
+                        >
+                          {edu.title}
+                        </h3>
+                        <span
+                          className={`px-3 py-1 text-sm rounded-full ${edu.theme.badgeBg} ${edu.theme.badgeText}`}
+                        >
+                          {edu.duration}
+                        </span>
+                      </div>
+                      <h4
+                        className={`text-lg font-semibold mb-3 ${edu.theme.cardText}`}
                       >
-                        12th
-                      </span>
+                        {edu.institution}
+                      </h4>
+                      <ul className="space-y-2">
+                        {edu.details.map((detail, idx) => (
+                          <li className="flex items-start gap-2" key={idx}>
+                            <span
+                              className={`mt-1.5 w-2 h-2 rounded-full ${
+                                theme === "dark"
+                                  ? "bg-gradient-to-r from-indigo-500 to-purple-500"
+                                  : "bg-gradient-to-r from-primary to-secondary"
+                              }`}
+                            ></span>
+                            <span
+                              className={
+                                theme === "dark"
+                                  ? "text-gray-300"
+                                  : "text-gray-700"
+                              }
+                            >
+                              {detail}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
-
-                  <div
-                    className={`card-gradient p-6 rounded-xl flex-grow ${
-                      theme === "dark" ? "bg-gray-900" : "bg-white"
-                    } shadow-lg`}
-                  >
-                    <div className="flex flex-wrap justify-between items-start mb-2">
-                      <h3
-                        className={`text-xl font-bold ${
-                          theme === "dark" ? "text-white" : "text-gray-800"
-                        }`}
-                      >
-                        Senior Secondary Education (CBSE)
-                      </h3>
-                      <span
-                        className={`px-3 py-1 text-sm rounded-full ${
-                          theme === "dark"
-                            ? "bg-purple-900/50 text-purple-300"
-                            : "bg-purple-100 text-purple-700"
-                        }`}
-                      >
-                        2022 - 2023
-                      </span>
-                    </div>
-                    <h4
-                      className={`text-lg font-semibold mb-3 ${
-                        theme === "dark" ? "text-purple-400" : "text-purple-600"
-                      }`}
-                    >
-                      School Name Here
-                    </h4>
-                    <ul className="space-y-2">
-                      <li className="flex items-start gap-2">
-                        <span
-                          className={`mt-1.5 w-2 h-2 rounded-full ${
-                            theme === "dark"
-                              ? "bg-gradient-to-r from-purple-500 to-pink-500"
-                              : "bg-gradient-to-r from-purple-400 to-pink-400"
-                          }`}
-                        ></span>
-                        <span
-                          className={
-                            theme === "dark" ? "text-gray-300" : "text-gray-700"
-                          }
-                        >
-                          Percentage: <strong>95%</strong>
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span
-                          className={`mt-1.5 w-2 h-2 rounded-full ${
-                            theme === "dark"
-                              ? "bg-gradient-to-r from-purple-500 to-pink-500"
-                              : "bg-gradient-to-r from-purple-400 to-pink-400"
-                          }`}
-                        ></span>
-                        <span
-                          className={
-                            theme === "dark" ? "text-gray-300" : "text-gray-700"
-                          }
-                        >
-                          Stream: PCM with Computer Science
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Secondary Education */}
-                <div className="flex">
-                  <div
-                    className={`relative flex items-center justify-center w-16 h-16 rounded-full ${
-                      theme === "dark" ? "bg-gray-900" : "bg-white"
-                    } shadow-lg mr-6`}
-                  >
-                    <div
-                      className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                        theme === "dark" ? "bg-pink-800" : "bg-pink-100"
-                      }`}
-                    >
-                      <span
-                        className={
-                          theme === "dark" ? "text-pink-300" : "text-pink-600"
-                        }
-                      >
-                        10th
-                      </span>
-                    </div>
-                  </div>
-
-                  <div
-                    className={`card-gradient p-6 rounded-xl flex-grow ${
-                      theme === "dark" ? "bg-gray-900" : "bg-white"
-                    } shadow-lg`}
-                  >
-                    <div className="flex flex-wrap justify-between items-start mb-2">
-                      <h3
-                        className={`text-xl font-bold ${
-                          theme === "dark" ? "text-white" : "text-gray-800"
-                        }`}
-                      >
-                        Secondary Education (CBSE)
-                      </h3>
-                      <span
-                        className={`px-3 py-1 text-sm rounded-full ${
-                          theme === "dark"
-                            ? "bg-pink-900/50 text-pink-300"
-                            : "bg-pink-100 text-pink-700"
-                        }`}
-                      >
-                        2020 - 2021
-                      </span>
-                    </div>
-                    <h4
-                      className={`text-lg font-semibold mb-3 ${
-                        theme === "dark" ? "text-pink-400" : "text-pink-600"
-                      }`}
-                    >
-                      School Name Here
-                    </h4>
-                    <ul className="space-y-2">
-                      <li className="flex items-start gap-2">
-                        <span
-                          className={`mt-1.5 w-2 h-2 rounded-full ${
-                            theme === "dark"
-                              ? "bg-gradient-to-r from-pink-500 to-red-500"
-                              : "bg-gradient-to-r from-pink-400 to-red-400"
-                          }`}
-                        ></span>
-                        <span
-                          className={
-                            theme === "dark" ? "text-gray-300" : "text-gray-700"
-                          }
-                        >
-                          Percentage: <strong>93%</strong>
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span
-                          className={`mt-1.5 w-2 h-2 rounded-full ${
-                            theme === "dark"
-                              ? "bg-gradient-to-r from-pink-500 to-red-500"
-                              : "bg-gradient-to-r from-pink-400 to-red-400"
-                          }`}
-                        ></span>
-                        <span
-                          className={
-                            theme === "dark" ? "text-gray-300" : "text-gray-700"
-                          }
-                        >
-                          Achievements: School topper in Mathematics
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>

@@ -25,6 +25,7 @@ import {
   SiVite,
   SiGraphql,
   SiFirebase,
+  SiMysql,
   SiGit,
   SiGithub,
   SiCplusplus,
@@ -131,12 +132,12 @@ const techStack: Record<CategoryName, TechItem[]> = {
       level: "Advanced",
       type: "Frontend",
     },
-    {
-      name: "GraphQL",
-      icon: <SiGraphql className="text-pink-600" />,
-      level: "Intermediate",
-      type: "Backend",
-    },
+    // {
+    //   name: "GraphQL",
+    //   icon: <SiGraphql className="text-pink-600" />,
+    //   level: "Intermediate",
+    //   type: "Backend",
+    // },
     {
       name: "Next.js",
       icon: <SiNextdotjs className="text-black dark:text-white" />,
@@ -149,12 +150,12 @@ const techStack: Record<CategoryName, TechItem[]> = {
       level: "Advanced",
       type: "Frontend",
     },
-    {
-      name: "Firebase",
-      icon: <SiFirebase className="text-yellow-500" />,
-      level: "Intermediate",
-      type: "Backend",
-    },
+    // {
+    //   name: "Firebase",
+    //   icon: <SiFirebase className="text-yellow-500" />,
+    //   level: "Intermediate",
+    //   type: "Backend",
+    // },
     {
       name: "Vite",
       icon: <SiVite className="text-purple-500" />,
@@ -169,10 +170,15 @@ const techStack: Record<CategoryName, TechItem[]> = {
       level: "Advanced",
     },
     {
-      name: "PostgreSQL",
-      icon: <SiPostgresql className="text-blue-600" />,
+      name: "SQL",
+      icon: <SiMysql className="text-blue-600" />,
       level: "Intermediate",
     },
+    // {
+    //   name: "PostgreSQL",
+    //   icon: <SiPostgresql className="text-blue-600" />,
+    //   level: "Intermediate",
+    // },
     {
       name: "Database Design",
       icon: <FaDatabase className="text-purple-500" />,

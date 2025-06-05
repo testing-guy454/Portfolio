@@ -6,7 +6,6 @@ import { FaCode, FaLaptopCode } from "react-icons/fa";
 import {
   SiLeetcode,
   SiCodechef,
-  SiHackerrank,
   SiGeeksforgeeks,
 } from "react-icons/si";
 
@@ -28,28 +27,28 @@ const DSACounter = () => {
   const platforms: PlatformStats[] = [
     {
       name: "LeetCode",
-      count: 80,
+      count: 183,
       icon: <SiLeetcode />,
       color: "text-orange-500",
     },
     {
       name: "CodeChef",
-      count: 45,
+      count: 12,
       icon: <SiCodechef />,
       color: "text-brown-500",
     },
     {
-      name: "HackerRank",
-      count: 35,
-      icon: <SiHackerrank />,
-      color: "text-green-500",
-    },
-    {
       name: "GeeksForGeeks",
-      count: 40,
+      count: 70,
       icon: <SiGeeksforgeeks />,
       color: "text-green-600",
     },
+    {
+      name: "Codeforces",
+      count: 10,
+      icon: <FaCode className="text-blue-500" />,
+      color: "text-blue-500",
+    }
   ];
 
   // Total number of problems solved
