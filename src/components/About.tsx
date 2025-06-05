@@ -9,7 +9,6 @@ import {
   FaRobot,
   FaDownload,
   FaEnvelope,
-  FaChevronRight,
 } from "react-icons/fa";
 
 const About = () => {

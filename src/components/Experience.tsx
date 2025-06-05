@@ -5,13 +5,10 @@ import {
   FaBriefcase,
   FaMedal,
   FaTrophy,
-  FaLightbulb,
   FaCode,
   FaUserTie,
-  FaCertificate,
   FaCalendarAlt,
   FaMapMarkerAlt,
-  FaChevronRight,
 } from "react-icons/fa";
 
 const Experience = () => {
@@ -91,15 +88,7 @@ const Experience = () => {
     },
   ];
 
-  // Certifications data
-  const certifications = [
-    {
-      name: "Meta Frontend Developer Professional Certificate",
-      provider: "Coursera",
-      date: "2023",
-      credential: "CRED123456",
-    },
-  ];
+  // Certifications section removed as it's not being used
 
   return (
     <section

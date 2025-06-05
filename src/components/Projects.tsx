@@ -4,10 +4,10 @@ import { useInView } from "react-intersection-observer";
 import { FaGithub, FaExternalLinkAlt, FaArrowRight } from "react-icons/fa";
 import { useTheme } from "../contexts/ThemeContext";
 // image imports
-import bookHiveImage from "../../public/projectImages/bookhive.png"
-import ecoGuardian from "../../public/projectImages/ecoGuardian.png"
-import portfolio from "../../public/projectImages/portfolio.png"
-import stickify from "../../public/projectImages/stickify.png"
+import bookHiveImage from "../../public/projectImages/bookhive.png";
+import ecoGuardian from "../../public/projectImages/ecoGuardian.png";
+import portfolio from "../../public/projectImages/portfolio.png";
+import stickify from "../../public/projectImages/stickify.png";
 
 // Define the Project type
 interface Project {
@@ -23,13 +23,7 @@ interface Project {
 }
 
 // Project categories
-const projectCategories = [
-  { id: "all", name: "All Projects" },
-  { id: "fullstack", name: "Full Stack" },
-  { id: "frontend", name: "Frontend" },
-  { id: "ai", name: "AI/ML" },
-  { id: "algorithms", name: "Algorithms" },
-];
+// Removed unused projectCategories array
 
 // Projects data
 const projects: Project[] = [

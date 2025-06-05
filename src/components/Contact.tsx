@@ -11,12 +11,9 @@ import {
 } from "react-icons/fa";
 import { BiLoaderAlt } from "react-icons/bi";
 
-// Contact information and social links - for easier access when changing
+// Contact information for easier access when changing
 const CONTACT_EMAIL = "yuvraj@mehta.com";
 const CONTACT_PHONE = "+91-1234567890";
-const GITHUB_URL = "https://github.com/";
-const LINKEDIN_URL = "https://linkedin.com/in/yuvraj-mehta-a0274528a//";
-const TWITTER_URL = "https://twitter.com/";
 
 const Contact = () => {
   const { theme } = useTheme();
@@ -71,30 +68,7 @@ const Contact = () => {
     },
   ];
 
-  // Social media links array (can be extended)
-  const socialLinks = [
-    {
-      url: GITHUB_URL,
-      icon: <FaGithub className="icon-pulse" size={22} />,
-      gradient: "from-gray-700 to-gray-900",
-      shadow: "rgba(75,85,99,0.6)",
-      delay: 0.1,
-    },
-    {
-      url: LINKEDIN_URL,
-      icon: <FaLinkedin className="icon-pulse" size={22} />,
-      gradient: "from-blue-500 to-blue-700",
-      shadow: "rgba(59,130,246,0.6)",
-      delay: 0.2,
-    },
-    {
-      url: TWITTER_URL,
-      icon: <FaTwitter className="icon-pulse" size={22} />,
-      gradient: "from-blue-400 to-blue-600",
-      shadow: "rgba(96,165,250,0.6)",
-      delay: 0.3,
-    },
-  ];
+  // Social media links removed as they aren't currently being used
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

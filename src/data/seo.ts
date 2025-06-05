@@ -1,4 +1,4 @@
-import { ins } from "framer-motion/client";
+// import { ins } from "framer-motion/client";
 
 export const seoData = {
   title: "Yuvraj Mehta - Full Stack Developer | Portfolio",
