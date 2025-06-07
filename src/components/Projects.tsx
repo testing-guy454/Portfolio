@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { FaGithub, FaExternalLinkAlt, FaArrowRight } from "react-icons/fa";
@@ -78,34 +78,10 @@ const projects: Project[] = [
 ];
 
 const Projects = () => {
-  // State for featured project carousel
-  const [currentFeatured, setCurrentFeatured] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const featuredProjects = projects.filter((project) => project.featured);
-
-  // Auto-cycle through featured projects
-  useEffect(() => {
-    // Set up carousel interval - change slides every 5 seconds
-    const intervalTime = 5000;
-    let interval: number;
-
-    if (!isPaused && featuredProjects.length > 1) {
-      interval = window.setInterval(() => {
-        setCurrentFeatured((prev) =>
-          prev === featuredProjects.length - 1 ? 0 : prev + 1
-        );
-      }, intervalTime);
-    }
-
-    // Clean up interval on component unmount
-    return () => {
-      if (interval) clearInterval(interval);
-    };
-  }, [featuredProjects.length, isPaused]);
-
   // Tabs for project categories
-  const [activeTab, setActiveTab] = useState("all");
+  const [activeTab, setActiveTab] = useState("featured"); // Default to 'featured'
   const projectTabs = [
+    { id: "featured", label: "Featured" },
     { id: "all", label: "All Projects" },
     { id: "frontend", label: "Frontend" },
     { id: "ai", label: "AI & ML" },
@@ -133,6 +109,8 @@ const Projects = () => {
   const filteredProjects =
     activeTab === "all"
       ? projects
+      : activeTab === "featured"
+      ? projects.filter((p) => p.featured)
       : activeTab === "frontend"
       ? projects.filter((p) =>
           p.tags.some((t) => ["React", "TypeScript", "HTML/CSS"].includes(t))
@@ -241,209 +219,6 @@ const Projects = () => {
             applications.
           </p>
         </motion.div>
-
-        {/* Featured Project Carousel - Key section at top of the page */}
-        {featuredProjects.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mb-20"
-          >
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-secondary/10 z-0 rounded-2xl"></div>
-
-              {/* Featured Project */}
-              <div
-                className={`relative z-10 ${
-                  theme === "dark" ? "bg-gray-800/50" : "bg-white/80"
-                } backdrop-blur-lg rounded-2xl overflow-hidden shadow-xl transform transition-all duration-500`}
-              >
-                <div className="flex flex-col md:flex-row">
-                  <motion.div
-                    className="md:w-1/2 h-72 md:h-auto relative overflow-hidden"
-                    initial={{ opacity: 0.8 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5 }}
-                    key={currentFeatured}
-                  >
-                    <img
-                      src={featuredProjects[currentFeatured].image}
-                      alt={featuredProjects[currentFeatured].title}
-                      onError={(e) => {
-                        if (featuredProjects[currentFeatured].fallbackImage) {
-                          e.currentTarget.src =
-                            featuredProjects[currentFeatured].fallbackImage;
-                        }
-                      }}
-                      className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
-                      onMouseEnter={() => setIsPaused(true)}
-                      onMouseLeave={() => setIsPaused(false)}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent"></div>
-                    <div className="absolute top-4 left-4 z-20">
-                      <div
-                        className={`px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm ${
-                          theme === "dark"
-                            ? "bg-indigo-500/90 text-white shadow-lg shadow-indigo-500/30"
-                            : "bg-primary/90 text-white shadow-md shadow-primary/30"
-                        }`}
-                      >
-                        Featured Project
-                      </div>
-                    </div>
-                  </motion.div>
-
-                  <div
-                    className="p-6 md:p-10 md:w-1/2 flex flex-col justify-center"
-                    onMouseEnter={() => setIsPaused(true)}
-                    onMouseLeave={() => setIsPaused(false)}
-                  >
-                    <motion.h3
-                      key={`title-${currentFeatured}`}
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4 }}
-                      className={`text-2xl md:text-3xl font-bold mb-4 ${
-                        theme === "dark"
-                          ? "text-white bg-gradient-to-r from-white via-indigo-200 to-white bg-clip-text text-transparent"
-                          : "bg-gradient-to-r from-gray-900 to-primary/90 bg-clip-text text-transparent"
-                      }`}
-                    >
-                      {featuredProjects[currentFeatured].title}
-                    </motion.h3>
-                    <motion.p
-                      key={`desc-${currentFeatured}`}
-                      initial={{ opacity: 0, y: 5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4 }}
-                      className={`mb-6 ${
-                        theme === "dark" ? "text-gray-300" : "text-gray-600"
-                      } leading-relaxed`}
-                    >
-                      {featuredProjects[currentFeatured].description}
-                    </motion.p>
-
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {featuredProjects[currentFeatured].tags.map(
-                        (tag, idx) => (
-                          <span
-                            key={idx}
-                            className={`px-3 py-1 text-xs rounded-full ${
-                              theme === "dark"
-                                ? "bg-gray-700 text-gray-300"
-                                : "bg-gray-100 text-gray-700"
-                            }`}
-                          >
-                            {tag}
-                          </span>
-                        )
-                      )}
-                    </div>
-
-                    {/* Project links and carousel navigation combined */}
-                    <div className="flex flex-col gap-6">
-                      {/* Project links */}
-                      <div className="flex flex-wrap sm:flex-nowrap items-center gap-4">
-                        <motion.a
-                          href={featuredProjects[currentFeatured].github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`flex items-center justify-center gap-2 px-5 py-2 rounded-lg icon-glow ${
-                            theme === "dark"
-                              ? "bg-gradient-to-r from-gray-800 to-gray-900 text-white border border-gray-700"
-                              : "bg-gradient-to-r from-gray-100 to-gray-200 text-gray-800 border border-gray-200"
-                          } shadow-md hover:shadow-lg transition-all duration-300`}
-                          whileHover={{ scale: 1.05, y: -2 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <div className="icon-pulse flex items-center gap-2">
-                            <FaGithub className="text-lg" />
-                            <span>View Code</span>
-                          </div>
-                        </motion.a>
-
-                        <motion.a
-                          href={featuredProjects[currentFeatured].live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`flex items-center justify-center gap-2 px-5 py-2 rounded-lg icon-glow ${
-                            theme === "dark"
-                              ? "bg-gradient-to-r from-indigo-700 via-indigo-600 to-indigo-500 text-white"
-                              : "bg-gradient-to-r from-primary via-primary/90 to-secondary text-white"
-                          } shadow-lg hover:shadow-xl transition-all duration-300`}
-                          whileHover={{ scale: 1.05, y: -2 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <div className="icon-pulse flex items-center gap-2">
-                            <FaExternalLinkAlt className="text-sm" />
-                            <span>Live Demo</span>
-                          </div>
-                        </motion.a>
-                      </div>
-
-                      {/* Carousel Navigation - Repositioned next to project details */}
-                      {featuredProjects.length > 1 && (
-                        <div className="flex flex-col gap-4 mt-2">
-                          <div className="flex items-center gap-3">
-                            <h4
-                              className={`text-sm font-medium ${
-                                theme === "dark"
-                                  ? "text-gray-400"
-                                  : "text-gray-500"
-                              }`}
-                            >
-                              Project {currentFeatured + 1}/
-                              {featuredProjects.length}
-                            </h4>
-                            <span
-                              className={`text-xs px-2 py-0.5 rounded-full ${
-                                isPaused
-                                  ? theme === "dark"
-                                    ? "bg-gray-700 text-gray-300"
-                                    : "bg-gray-200 text-gray-600"
-                                  : theme === "dark"
-                                  ? "bg-indigo-900/30 text-indigo-400"
-                                  : "bg-primary/10 text-primary"
-                              }`}
-                            >
-                              {isPaused ? "Paused" : "Auto-cycling"}
-                            </span>
-                          </div>
-
-                          {/* Indicator Dots */}
-                          <div
-                            className="flex space-x-3 items-center"
-                            onMouseEnter={() => setIsPaused(true)}
-                            onMouseLeave={() => setIsPaused(false)}
-                          >
-                            {featuredProjects.map((_, idx) => (
-                              <button
-                                key={idx}
-                                onClick={() => setCurrentFeatured(idx)}
-                                className={`h-3 rounded-full transition-all duration-300 ${
-                                  currentFeatured === idx
-                                    ? theme === "dark"
-                                      ? "bg-gradient-to-r from-indigo-500 to-indigo-600 w-8 shadow-sm shadow-indigo-500/20"
-                                      : "bg-gradient-to-r from-primary to-primary/80 w-8 shadow-sm shadow-primary/20"
-                                    : theme === "dark"
-                                    ? "bg-gray-600 w-3 hover:bg-gray-500 hover:w-4"
-                                    : "bg-gray-300 w-3 hover:bg-gray-400 hover:w-4"
-                                }`}
-                                aria-label={`Go to slide ${idx + 1}`}
-                                title={`View project ${idx + 1}`}
-                              ></button>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
 
         {/* Project Category Tabs */}
         <div className="mb-12 flex justify-center">
