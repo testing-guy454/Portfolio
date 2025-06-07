@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useTheme } from "../contexts/ThemeContext";
-import resume from "../../public/Yuvraj_Resume_v2_1 (1).pdf"
+import resume from "../../public/Yuvraj_Resume_v2_1 (1).pdf";
 import {
   FaGithub,
   FaLinkedin,
@@ -75,7 +75,7 @@ const ModernFooter = () => {
   };
 
   const quickLinks = [
-    { name: "Resume", href: resume, icon: <FaDownload size={14}  /> },
+    { name: "Resume", href: resume, icon: <FaDownload size={14} /> },
     {
       name: "LeetCode",
       href: "https://leetcode.com/u/mythical-UV/",
@@ -112,7 +112,7 @@ const ModernFooter = () => {
     },
     {
       icon: <FaEnvelope size={18} />,
-      href: "mailto:yuvraj@mehta.com",
+      href: "mailto:yuvraj.mehta532@gmail.com",
       label: "Email",
     },
   ];

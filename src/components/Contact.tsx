@@ -12,8 +12,8 @@ import {
 import { BiLoaderAlt } from "react-icons/bi";
 
 // Contact information for easier access when changing
-const CONTACT_EMAIL = "yuvraj@mehta.com";
-const CONTACT_PHONE = "+91-1234567890";
+const CONTACT_EMAIL = "yuvraj.mehta532@gmail.com";
+const CONTACT_PHONE = "+91-9334083113";
 
 const Contact = () => {
   const { theme } = useTheme();

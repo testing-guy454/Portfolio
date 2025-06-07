@@ -96,7 +96,7 @@ const projects: Project[] = [
       "https://placehold.co/600x400/8B5CF6/FFFFFF/png?text=Stickify",
     tags: ["React", "Vite", "Tailwind CSS", "Appwrite"],
     github: "https://github.com/yuvraj-mehta/Stickify",
-    live: "https://stickify.vercel.app",
+    live: "https://stickify-git-master-yuvraj-mehtas-projects.vercel.app/",
     featured: false,
     category: "frontend",
   },

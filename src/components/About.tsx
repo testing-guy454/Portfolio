@@ -6,7 +6,6 @@ import {
   FaUserGraduate,
   FaLaptopCode,
   FaBrain,
-  FaRobot,
   FaDownload,
   FaEnvelope,
 } from "react-icons/fa";
@@ -158,52 +157,52 @@ const About = () => {
                         theme === "dark" ? "text-white" : "text-gray-900"
                       }`}
                     >
-                      7.69
+                      Top 26%
                     </div>
                     <div
                       className={`text-xs ${
                         theme === "dark" ? "text-gray-400" : "text-gray-500"
                       }`}
                     >
-                      CGPA
+                      LeetCode Global
                     </div>
                   </div>
                 </motion.div>
 
                 <motion.div
                   className={`absolute -left-4 bottom-6 glass-effect px-4 py-2 rounded-xl shadow-lg flex items-center gap-2 ${
-                    theme === "dark" ? "bg-gray-800/80" : "bg-white/80"
+                  theme === "dark" ? "bg-gray-800/80" : "bg-white/80"
                   }`}
                   initial={{ x: -50, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.4, duration: 0.5 }}
                 >
                   <div
-                    className={`p-2 rounded-full ${
-                      theme === "dark" ? "bg-purple-900/50" : "bg-purple-100"
-                    }`}
+                  className={`p-2 rounded-full ${
+                    theme === "dark" ? "bg-purple-900/50" : "bg-purple-100"
+                  }`}
                   >
-                    <FaRobot
-                      className={
-                        theme === "dark" ? "text-purple-400" : "text-purple-600"
-                      }
-                    />
+                  <FaCode
+                    className={
+                    theme === "dark" ? "text-purple-400" : "text-purple-600"
+                    }
+                  />
                   </div>
                   <div>
-                    <div
-                      className={`font-bold ${
-                        theme === "dark" ? "text-white" : "text-gray-900"
-                      }`}
-                    >
-                      Robotics
-                    </div>
-                    <div
-                      className={`text-xs ${
-                        theme === "dark" ? "text-gray-400" : "text-gray-500"
-                      }`}
-                    >
-                      Club Member
-                    </div>
+                  <div
+                    className={`font-bold ${
+                    theme === "dark" ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    Coding
+                  </div>
+                  <div
+                    className={`text-xs ${
+                    theme === "dark" ? "text-gray-400" : "text-gray-500"
+                    }`}
+                  >
+                    2+ years of coding
+                  </div>
                   </div>
                 </motion.div>
               </div>
