@@ -1,797 +1,540 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useTheme } from "../contexts/ThemeContext";
-<<<<<<< Updated upstream
-=======
+import { useState, useRef } from "react";
 import {
-  FaGraduationCap,
-  FaUniversity,
   FaCalendarAlt,
-  FaSchool,
-  FaBookReader,
-  FaTrophy,
-  FaAward,
+  FaMapMarkerAlt,
   FaMedal,
   FaBook,
   FaLaptopCode,
-  FaClipboardCheck,
-  FaChartLine,
-  FaExternalLinkAlt,
-  FaRegLightbulb,
-  FaStar,
-  FaMapMarkerAlt,
-  FaCode,
-  FaChevronDown,
-  FaChevronUp,
+  FaGraduationCap,
 } from "react-icons/fa";
->>>>>>> Stashed changes
+import { HiLightBulb, HiBadgeCheck, HiCube } from "react-icons/hi";
 
 const Education = () => {
   const [ref, inView] = useInView({
-    triggerOnce: true,
+    triggerOnce: false,
     threshold: 0.1,
   });
 
   const { theme } = useTheme();
+  const [activeTab, setActiveTab] = useState<string>("overview");
+  const [selectedSchool, setSelectedSchool] = useState<number>(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-<<<<<<< Updated upstream
-=======
-  // State for expanded cards - track which cards are expanded
-  const [expandedCards, setExpandedCards] = useState<Set<number>>(new Set());
-
-  // Toggle card expansion
-  const toggleCardExpansion = (index: number) => {
-    setExpandedCards(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(index)) {
-        newSet.delete(index);
-      } else {
-        newSet.add(index);
-      }
-      return newSet;
-    });
-  };
-
-  // Enhanced education data with more details
->>>>>>> Stashed changes
   const educationData = [
     {
-      level: "Bachelor's Degree",
-      title: "Bachelor of Technology in Computer Science and Engineering",
-      institution: "National Institute of Technology, Patna",
-      duration: "2023 - 2027",
-      details: [
-        "Cumulative CGPA: 7.69/10",
-        "Relevant Coursework: Data Structures, Algorithms, DBMS, Operating Systems, Computer Networks",
-        "Class Representative, Department of CSE (August, 2023 - December, 2024)",
+      id: 1,
+      degree: "Bachelor of Technology",
+      major: "Computer Science & Engineering",
+      institution: "Indraprastha Institute of Information Technology, Delhi",
+      location: "New Delhi, India",
+      duration: "2019 - 2023",
+      gpa: "9.2/10",
+      logo: "🎓", // Placeholder for a real image
+      description:
+        "Pursued a comprehensive curriculum in computer science with focus on software engineering, algorithms, and AI/ML technologies.",
+      courses: [
+        { name: "Data Structures & Algorithms", icon: HiCube },
+        { name: "Web Development", icon: FaLaptopCode },
+        { name: "Machine Learning", icon: HiBadgeCheck },
+        { name: "Artificial Intelligence", icon: HiBadgeCheck },
+        { name: "Database Systems", icon: HiCube },
+        { name: "Computer Networks", icon: HiCube },
       ],
-      theme: {
-        iconBg: "bg-indigo-800",
-        iconText: "text-indigo-300",
-        cardBg: "bg-gray-900",
-        cardText: "text-white",
-        badgeBg: "bg-indigo-900/50",
-        badgeText: "text-indigo-300",
-      },
-      icon: "B.Tech",
+      achievements: [
+        "Dean's List for academic excellence throughout all 4 years",
+        "Best Project Award for senior year capstone project",
+        "1st place in Annual Hackathon 2022 amongst 50+ teams",
+        "Selected for special AI research program with faculty mentorship",
+      ],
+      projects: [
+        {
+          name: "AI-Powered Recommendation System",
+          description:
+            "Built a collaborative filtering system using deep learning techniques to provide personalized product recommendations with 92% accuracy.",
+        },
+        {
+          name: "Distributed Database System",
+          description:
+            "Created a fault-tolerant distributed database with optimized query processing and transaction management.",
+        },
+        {
+          name: "Secure File Transfer Protocol",
+          description:
+            "Implemented end-to-end encryption for secure file transfers with authentication and integrity verification.",
+        },
+      ],
+      skills: [
+        "C++",
+        "Python",
+        "JavaScript",
+        "React",
+        "Node.js",
+        "TensorFlow",
+        "SQL",
+      ],
+      color: "blue",
     },
     {
-      level: "Senior Secondary Education",
-      title: "Senior Secondary Education (CBSE)",
-      institution: "Pragya Bharti Public School, Gaya",
-      duration: "2021 - 2022",
-      details: ["Percentage: 88.8%", "Stream: PCM"],
-      theme: {
-        iconBg: "bg-purple-800",
-        iconText: "text-purple-300",
-        cardBg: "bg-gray-900",
-        cardText: "text-white",
-        badgeBg: "bg-purple-900/50",
-        badgeText: "text-purple-300",
-      },
-      icon: "12th",
-    },
-    {
-      level: "Secondary Education",
-      title: "Secondary Education (CBSE)",
-      institution: "Pragya Bharti Public School, Gaya",
-      duration: "2019 - 2020",
-      details: [
-        "Percentage: 90%",
+      id: 2,
+      degree: "High School",
+      major: "Science & Mathematics",
+      institution: "Delhi Public School",
+      location: "New Delhi, India",
+      duration: "2017 - 2019",
+      gpa: "95%",
+      logo: "🏫", // Placeholder for a real image
+      description:
+        "Focused on science and mathematics track with advanced coursework in computer science and physics.",
+      courses: [
+        { name: "Physics", icon: HiLightBulb },
+        { name: "Mathematics", icon: HiCube },
+        { name: "Computer Science", icon: FaLaptopCode },
+        { name: "Chemistry", icon: HiBadgeCheck },
       ],
-      theme: {
-        iconBg: "bg-pink-800",
-        iconText: "text-pink-300",
-        cardBg: "bg-gray-900",
-        cardText: "text-white",
-        badgeBg: "bg-pink-900/50",
-        badgeText: "text-pink-300",
-      },
-      icon: "10th",
+      achievements: [
+        "School topper in Computer Science with 98% marks",
+        "Science Olympiad national level finalist",
+        "Winner of inter-school mathematics competition",
+      ],
+      projects: [
+        {
+          name: "Renewable Energy Demonstration",
+          description:
+            "Built a working model of solar and wind energy integration for the science exhibition.",
+        },
+        {
+          name: "Basic Calculator Application",
+          description:
+            "Developed a multi-function calculator using basic programming concepts.",
+        },
+      ],
+      skills: ["Java", "HTML/CSS", "Problem Solving", "Critical Thinking"],
+      color: "purple",
     },
   ];
+
+  const tabs = [
+    { id: "overview", label: "Overview", icon: FaGraduationCap },
+    { id: "courses", label: "Courses", icon: FaBook },
+    { id: "achievements", label: "Achievements", icon: FaMedal },
+    { id: "projects", label: "Projects", icon: HiLightBulb },
+  ];
+
+  // Animation variants
+  // Animation variants are applied directly in the component
 
   return (
     <section
       id="education"
-      className={`section relative overflow-hidden py-24 ${
-        theme === "dark" ? "bg-gray-800" : "bg-gray-50"
+      className={`section relative py-24 ${
+        theme === "dark"
+          ? "bg-gray-900 text-white"
+          : "bg-slate-50 text-gray-800"
       }`}
     >
-      {/* Background decoration */}
-      <div
-        className={`absolute -top-40 -right-40 w-96 h-96 rounded-full ${
-          theme === "dark" ? "bg-indigo-600/5" : "bg-primary/5"
-        }`}
-      ></div>
-      <div
-        className={`absolute -bottom-40 -left-40 w-96 h-96 rounded-full ${
-          theme === "dark" ? "bg-purple-600/5" : "bg-accent/5"
-        }`}
-      ></div>
+      {/* Glass morphism background elements */}
+      <div className="absolute inset-0 overflow-hidden opacity-20">
+        <div className="absolute left-1/4 top-1/4 h-64 w-64 rounded-full bg-purple-500 blur-3xl"></div>
+        <div className="absolute right-1/4 bottom-1/4 h-56 w-56 rounded-full bg-blue-500 blur-3xl"></div>
+        <div className="absolute left-2/3 top-1/3 h-72 w-72 rounded-full bg-teal-500 blur-3xl"></div>
+      </div>
 
-      <div className="container relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
-          className="mb-16 text-center"
-        >
-          <span
-            className={`px-4 py-2 rounded-full font-medium text-sm ${
-              theme === "dark"
-                ? "bg-gradient-to-r from-indigo-900/30 to-purple-900/30 text-indigo-400"
-                : "bg-gradient-to-r from-primary/10 to-secondary/10 text-primary"
-            }`}
-          >
-            Academic Journey
-          </span>
-          <h2
-            className={`text-4xl md:text-5xl font-bold mt-4 font-heading ${
-              theme === "dark" ? "text-white" : ""
-            }`}
-          >
-            <span
-              className={`${
-                theme === "dark"
-                  ? "bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text"
-                  : "text-gradient"
-              }`}
-            >
-              Education
-            </span>
-          </h2>
-          <div
-            className={`w-24 h-1 mx-auto mt-6 ${
-              theme === "dark"
-                ? "bg-gradient-to-r from-indigo-600 to-purple-600"
-                : "bg-gradient-to-r from-primary to-accent"
-            }`}
-          ></div>
-        </motion.div>
-
+      <div className="container relative z-10 mx-auto max-w-6xl px-4">
+        {/* Section Header */}
         <motion.div
           ref={ref}
-          className="max-w-4xl mx-auto"
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: -30 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -30 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="mb-16 text-center"
         >
-          <div className="space-y-10">
-            {/* Education Timeline */}
-            <div className="relative">
-              {/* Timeline line */}
-              <div
-                className={`absolute left-8 top-0 w-1 h-full ${
-                  theme === "dark" ? "bg-indigo-800/30" : "bg-indigo-200"
-                } rounded-full z-0`}
-              />
+          <h2 className="mb-4 text-4xl font-bold md:text-5xl">
+            Educational{" "}
+            <span className="bg-gradient-to-r from-blue-600 via-purple-500 to-teal-400 bg-clip-text text-transparent">
+              Background
+            </span>
+          </h2>
+          <p
+            className={`mx-auto max-w-2xl text-lg ${
+              theme === "dark" ? "text-gray-300" : "text-gray-600"
+            }`}
+          >
+            The academic foundation that shaped my technical expertise and
+            problem-solving approach
+          </p>
+        </motion.div>
 
-              {/* Education Items */}
-              <div className="space-y-12 relative z-10">
-                {educationData.map((edu, index) => (
-                  <div className="flex" key={index}>
+        <div ref={containerRef} className="relative">
+          {/* School selection tabs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="mb-10 flex flex-wrap justify-center gap-4"
+          >
+            {educationData.map((school, index) => (
+              <motion.button
+                key={school.id}
+                onClick={() => setSelectedSchool(index)}
+                animate={
+                  selectedSchool === index ? { scale: 1.05 } : { scale: 1 }
+                }
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                className={`relative overflow-hidden rounded-xl px-8 py-3 font-medium transition-all ${
+                  selectedSchool === index
+                    ? theme === "dark"
+                      ? "bg-gradient-to-r from-blue-700 to-purple-700 text-white shadow-lg shadow-blue-900/20"
+                      : "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/20"
+                    : theme === "dark"
+                    ? "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                    : "bg-white text-gray-700 hover:bg-gray-50 shadow"
+                }`}
+              >
+                <span className="relative z-10">{school.degree}</span>
+                {selectedSchool === index && (
+                  <motion.div
+                    layoutId="education-tab-highlight"
+                    className="absolute inset-0 -z-0 bg-gradient-to-r from-blue-600/30 to-purple-600/30 blur-sm"
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+                )}
+              </motion.button>
+            ))}
+          </motion.div>
+
+          {/* Education card */}
+          <motion.div
+            key={`school-${selectedSchool}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className={`relative mx-auto overflow-hidden rounded-2xl ${
+              theme === "dark"
+                ? "bg-gray-800/80 backdrop-blur-sm"
+                : "bg-white/90 backdrop-blur-sm"
+            } p-1 shadow-xl shadow-blue-900/5`}
+          >
+            {/* Accent border */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-blue-600 via-purple-500 to-teal-400 opacity-80"></div>
+
+            {/* Inner content */}
+            <div
+              className={`relative rounded-xl ${
+                theme === "dark" ? "bg-gray-800" : "bg-white"
+              } p-6 md:p-8`}
+            >
+              <div className="grid gap-8 md:grid-cols-3">
+                {/* School info */}
+                <div className="md:col-span-1">
+                  <div className="mb-6 flex items-center space-x-3">
                     <div
-                      className={`relative flex items-center justify-center w-16 h-16 rounded-full ${
-                        theme === "dark" ? "bg-gray-900" : "bg-white"
-                      } shadow-lg mr-6`}
+                      className={`flex h-12 w-12 items-center justify-center rounded-xl ${
+                        theme === "dark" ? "bg-blue-900/30" : "bg-blue-50"
+                      } text-2xl font-bold text-blue-600`}
                     >
-                      <div
-                        className={`w-10 h-10 rounded-full flex items-center justify-center ${edu.theme.iconBg}`}
-                      >
-                        <span className={edu.theme.iconText}>{edu.icon}</span>
-                      </div>
+                      {educationData[selectedSchool].logo}
                     </div>
+                    <h3 className="text-xl font-bold md:text-2xl">
+                      {educationData[selectedSchool].institution}
+                    </h3>
+                  </div>
 
-<<<<<<< Updated upstream
+                  <div className="space-y-4">
                     <div
-                      className={`card-gradient p-6 rounded-xl flex-grow ${
-                        theme === "dark" ? "bg-gray-900" : "bg-white"
-                      } shadow-lg`}
-=======
-                    {/* Enhanced Education Card with Brief/Detailed Views */}
-                    <motion.div
-                      variants={cardHoverAnimation}
-                      initial="rest"
-                      whileHover="hover"
-                      className={`ml-6 md:ml-12 flex-1 group rounded-3xl overflow-hidden border backdrop-blur-sm ${colorClasses.cardBg} transition-all duration-500`}
->>>>>>> Stashed changes
+                      className={`rounded-lg ${
+                        theme === "dark" ? "bg-gray-700/50" : "bg-gray-50"
+                      } p-4`}
                     >
-                      <div className="flex flex-wrap justify-between items-start mb-2">
-                        <h3
-                          className={`text-xl font-bold ${edu.theme.cardText}`}
-                        >
-                          {edu.title}
-                        </h3>
-                        <span
-                          className={`px-3 py-1 text-sm rounded-full ${edu.theme.badgeBg} ${edu.theme.badgeText}`}
-                        >
-                          {edu.duration}
+                      <div className="mb-3 flex items-center space-x-3">
+                        <FaGraduationCap className="text-blue-500" />
+                        <span className="font-semibold">
+                          {educationData[selectedSchool].degree} in{" "}
+                          {educationData[selectedSchool].major}
                         </span>
                       </div>
-                      <h4
-                        className={`text-lg font-semibold mb-3 ${edu.theme.cardText}`}
-                      >
-                        {edu.institution}
-                      </h4>
-                      <ul className="space-y-2">
-                        {edu.details.map((detail, idx) => (
-                          <li className="flex items-start gap-2" key={idx}>
-                            <span
-                              className={`mt-1.5 w-2 h-2 rounded-full ${
-                                theme === "dark"
-                                  ? "bg-gradient-to-r from-indigo-500 to-purple-500"
-                                  : "bg-gradient-to-r from-primary to-secondary"
-                              }`}
-                            ></span>
-                            <span
-                              className={
-                                theme === "dark"
-                                  ? "text-gray-300"
-                                  : "text-gray-700"
-                              }
-                            >
-<<<<<<< Updated upstream
-                              {detail}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
+                      <div className="mb-3 flex items-center space-x-3">
+                        <FaCalendarAlt className="text-blue-500" />
+                        <span>{educationData[selectedSchool].duration}</span>
+                      </div>
+                      <div className="mb-3 flex items-center space-x-3">
+                        <FaMapMarkerAlt className="text-blue-500" />
+                        <span>{educationData[selectedSchool].location}</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <FaMedal className="text-blue-500" />
+                        <span>
+                          GPA:{" "}
+                          <span className="font-semibold">
+                            {educationData[selectedSchool].gpa}
+                          </span>
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-=======
-                              {edu.title}
-                            </motion.h4>
-                            <div className="flex flex-wrap items-center gap-4 text-sm">
-                              <motion.div
-                                whileHover={{ scale: 1.05 }}
-                                className={`px-4 py-2 rounded-full font-medium border ${
+
+                    <div>
+                      <h4 className="mb-2 font-bold">Description</h4>
+                      <p
+                        className={
+                          theme === "dark" ? "text-gray-300" : "text-gray-600"
+                        }
+                      >
+                        {educationData[selectedSchool].description}
+                      </p>
+                    </div>
+
+                    {educationData[selectedSchool].skills && (
+                      <div>
+                        <h4 className="mb-2 font-bold">Key Skills</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {educationData[selectedSchool].skills.map(
+                            (skill, i) => (
+                              <span
+                                key={i}
+                                className={`inline-block rounded-full px-3 py-1 text-sm ${
                                   theme === "dark"
-                                    ? "bg-gradient-to-r from-indigo-900/40 to-purple-900/30 text-indigo-300 border-indigo-500/30"
-                                    : "bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 border-indigo-200"
-                                } backdrop-blur-sm transition-all duration-200`}
-                              >
-                                {edu.institution}
-                              </motion.div>
-                              {edu.website && (
-                                <motion.a
-                                  href={edu.website}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  whileHover={{ scale: 1.05 }}
-                                  className={`flex items-center gap-2 px-3 py-1 rounded-lg ${
-                                    theme === "dark"
-                                      ? "text-gray-400 hover:text-gray-300"
-                                      : "text-gray-600 hover:text-gray-700"
-                                  } transition-colors duration-200`}
-                                >
-                                  <FaExternalLinkAlt className="w-3.5 h-3.5" />
-                                  Visit Website
-                                </motion.a>
-                              )}
-                            </div>
-                          </div>
-                          <motion.span
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            className={`flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-xl ${
-                              theme === "dark"
-                                ? "text-indigo-400 bg-indigo-900/30 border border-indigo-500/30"
-                                : "text-indigo-600 bg-indigo-100 border border-indigo-200"
-                            } backdrop-blur-sm transition-all duration-200`}
-                          >
-                            <FaCalendarAlt className="w-3.5 h-3.5" />
-                            {edu.duration}
-                          </motion.span>
-                        </div>
-
-                        {/* Brief Summary View (Default) */}
-                        {!expandedCards.has(index) && (
-                          <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            className="space-y-6"
-                          >
-                            {/* Quick Summary */}
-                            <div className="grid md:grid-cols-2 gap-6">
-                              {/* Key Details */}
-                              <div>
-                                <h5
-                                  className={`text-sm font-semibold mb-3 flex items-center gap-2 ${
-                                    theme === "dark"
-                                      ? "text-gray-200"
-                                      : "text-gray-800"
-                                  }`}
-                                >
-                                  <FaClipboardCheck
-                                    className={`w-3.5 h-3.5 ${
-                                      theme === "dark"
-                                        ? "text-indigo-400"
-                                        : "text-indigo-600"
-                                    }`}
-                                  />
-                                  Key Details:
-                                </h5>
-                                <div className="space-y-2">
-                                  {edu.details.slice(0, 2).map((detail, idx) => (
-                                    <div
-                                      key={idx}
-                                      className="flex items-start gap-3"
-                                    >
-                                      <span
-                                        className={`mt-1.5 w-2 h-2 rounded-full flex-shrink-0 ${colorClasses.icon.replace(
-                                          "text-",
-                                          "bg-"
-                                        )}`}
-                                      />
-                                      <span
-                                        className={`text-sm ${
-                                          theme === "dark"
-                                            ? "text-gray-300"
-                                            : "text-gray-700"
-                                        }`}
-                                      >
-                                        {detail}
-                                      </span>
-                                    </div>
-                                  ))}
-                                  {edu.details.length > 2 && (
-                                    <span
-                                      className={`text-xs ${
-                                        theme === "dark"
-                                          ? "text-gray-400"
-                                          : "text-gray-500"
-                                      } italic`}
-                                    >
-                                      +{edu.details.length - 2} more details
-                                    </span>
-                                  )}
-                                </div>
-                              </div>
-
-                              {/* Top Skills */}
-                              <div>
-                                <h5
-                                  className={`text-sm font-semibold mb-3 flex items-center gap-2 ${
-                                    theme === "dark"
-                                      ? "text-gray-200"
-                                      : "text-gray-800"
-                                  }`}
-                                >
-                                  <FaCode
-                                    className={`w-3.5 h-3.5 ${
-                                      theme === "dark"
-                                        ? "text-indigo-400"
-                                        : "text-indigo-600"
-                                    }`}
-                                  />
-                                  Top Skills:
-                                </h5>
-                                <div className="space-y-2">
-                                  {edu.skills.slice(0, 3).map((skill, skillIndex) => (
-                                    <div key={skillIndex} className="flex justify-between items-center">
-                                      <span
-                                        className={`text-sm font-medium ${
-                                          theme === "dark"
-                                            ? "text-gray-300"
-                                            : "text-gray-700"
-                                        }`}
-                                      >
-                                        {skill.name}
-                                      </span>
-                                      <span
-                                        className={`text-xs font-semibold px-2 py-1 rounded ${
-                                          theme === "dark"
-                                            ? "text-indigo-400 bg-indigo-900/30"
-                                            : "text-indigo-600 bg-indigo-100"
-                                        }`}
-                                      >
-                                        {skill.level}%
-                                      </span>
-                                    </div>
-                                  ))}
-                                  {edu.skills.length > 3 && (
-                                    <span
-                                      className={`text-xs ${
-                                        theme === "dark"
-                                          ? "text-gray-400"
-                                          : "text-gray-500"
-                                      } italic`}
-                                    >
-                                      +{edu.skills.length - 3} more skills
-                                    </span>
-                                  )}
-                                </div>
-                              </div>
-                            </div>
-
-                            {/* Top Achievements Preview */}
-                            <div>
-                              <h5
-                                className={`text-sm font-semibold mb-3 flex items-center gap-2 ${
-                                  theme === "dark"
-                                    ? "text-gray-200"
-                                    : "text-gray-800"
+                                    ? "bg-blue-900/30 text-blue-300"
+                                    : "bg-blue-50 text-blue-700"
                                 }`}
                               >
-                                <FaAward
-                                  className={`w-3.5 h-3.5 ${
-                                    theme === "dark"
-                                      ? "text-amber-400"
-                                      : "text-amber-600"
-                                  }`}
-                                />
-                                Key Achievements:
-                              </h5>
-                              <div className="flex flex-wrap gap-2">
-                                {edu.achievements.slice(0, 2).map((achievement, idx) => (
-                                  <div
-                                    key={idx}
-                                    className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-sm ${
-                                      theme === "dark"
-                                        ? "bg-amber-900/20 border-amber-700/30 text-amber-200"
-                                        : "bg-amber-50 border-amber-200/50 text-amber-800"
-                                    }`}
-                                  >
-                                    <FaStar
-                                      className={`w-3 h-3 ${
-                                        theme === "dark"
-                                          ? "text-amber-400"
-                                          : "text-amber-600"
-                                      }`}
-                                    />
-                                    <span className="font-medium">
-                                      {achievement}
-                                    </span>
-                                  </div>
-                                ))}
-                                {edu.achievements.length > 2 && (
-                                  <span
-                                    className={`px-3 py-2 text-xs ${
-                                      theme === "dark"
-                                        ? "text-gray-400"
-                                        : "text-gray-500"
-                                    } italic`}
-                                  >
-                                    +{edu.achievements.length - 2} more
-                                  </span>
-                                )}
-                              </div>
-                            </div>
-                          </motion.div>
-                        )}
+                                {skill}
+                              </span>
+                            )
+                          )}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
 
-                        {/* Detailed Expanded View */}
-                        {expandedCards.has(index) && (
+                {/* Details tabs */}
+                <div className="md:col-span-2">
+                  <div className="mb-6 flex border-b border-gray-200 dark:border-gray-700">
+                    {tabs.map((tab) => (
+                      <button
+                        key={tab.id}
+                        onClick={() => setActiveTab(tab.id)}
+                        className={`relative mr-4 flex items-center space-x-2 pb-4 pt-2 text-sm font-medium transition-colors md:text-base ${
+                          activeTab === tab.id
+                            ? theme === "dark"
+                              ? "text-blue-400"
+                              : "text-blue-600"
+                            : theme === "dark"
+                            ? "text-gray-400 hover:text-gray-300"
+                            : "text-gray-500 hover:text-gray-700"
+                        }`}
+                      >
+                        <tab.icon />
+                        <span>{tab.label}</span>
+                        {activeTab === tab.id && (
                           <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.5, ease: "easeInOut" }}
-                          >
-                            {/* Comprehensive Content Grid */}
-                            <div className="grid lg:grid-cols-2 gap-8">
-                              {/* Left Column - Academic Details & Achievements */}
-                              <div className="space-y-6">
-                                {/* Academic Details */}
-                                <div>
-                                  <h5
-                                    className={`text-sm font-semibold mb-3 flex items-center gap-2 ${
-                                      theme === "dark"
-                                        ? "text-gray-200"
-                                        : "text-gray-800"
-                                    }`}
-                                  >
-                                    <FaClipboardCheck
-                                      className={`w-3.5 h-3.5 ${
-                                        theme === "dark"
-                                          ? "text-indigo-400"
-                                          : "text-indigo-600"
-                                      }`}
-                                    />
-                                    Academic Details:
-                                  </h5>
-                                  <div className="space-y-2">
-                                    {edu.details.map((detail, idx) => (
-                                      <div
-                                        key={idx}
-                                        className="flex items-start gap-3"
-                                      >
-                                        <span
-                                          className={`mt-1.5 w-2 h-2 rounded-full flex-shrink-0 ${colorClasses.icon.replace(
-                                            "text-",
-                                            "bg-"
-                                          )}`}
-                                        />
-                                        <span
-                                          className={`text-sm ${
-                                            theme === "dark"
-                                              ? "text-gray-300"
-                                              : "text-gray-700"
-                                          }`}
-                                        >
-                                          {detail}
-                                        </span>
-                                      </div>
-                                    ))}
-                                  </div>
-                                </div>
-
-                                {/* Achievements */}
-                                <div>
-                                  <h5
-                                    className={`text-sm font-semibold mb-3 flex items-center gap-2 ${
-                                      theme === "dark"
-                                        ? "text-gray-200"
-                                        : "text-gray-800"
-                                    }`}
-                                  >
-                                    <FaAward
-                                      className={`w-3.5 h-3.5 ${
-                                        theme === "dark"
-                                          ? "text-amber-400"
-                                          : "text-amber-600"
-                                      }`}
-                                    />
-                                    Key Achievements:
-                                  </h5>
-                                  <div className="space-y-2">
-                                    {edu.achievements.map((achievement, idx) => (
-                                      <div
-                                        key={idx}
-                                        className={`flex items-center gap-2 p-2.5 rounded-lg border ${
-                                          theme === "dark"
-                                            ? "bg-amber-900/20 border-amber-700/30 text-amber-200"
-                                            : "bg-amber-50 border-amber-200/50 text-amber-800"
-                                        }`}
-                                      >
-                                        <div
-                                          className={`p-1.5 rounded-full ${
-                                            theme === "dark"
-                                              ? "bg-amber-900/50"
-                                              : "bg-amber-200/70"
-                                          }`}
-                                        >
-                                          <FaStar
-                                            className={`w-3 h-3 ${
-                                              theme === "dark"
-                                                ? "text-amber-400"
-                                                : "text-amber-600"
-                                            }`}
-                                          />
-                                        </div>
-                                        <span className="text-sm font-medium">
-                                          {achievement}
-                                        </span>
-                                      </div>
-                                    ))}
-                                  </div>
-                                </div>
-
-                                {/* Projects */}
-                                {edu.projects && edu.projects.length > 0 && (
-                                  <div>
-                                    <h5
-                                      className={`text-sm font-semibold mb-3 flex items-center gap-2 ${
-                                        theme === "dark"
-                                          ? "text-gray-200"
-                                          : "text-gray-800"
-                                      }`}
-                                    >
-                                      <FaRegLightbulb
-                                        className={`w-3.5 h-3.5 ${
-                                          theme === "dark"
-                                            ? "text-purple-400"
-                                            : "text-purple-600"
-                                        }`}
-                                      />
-                                      Notable Projects:
-                                    </h5>
-                                    <div className="space-y-2">
-                                      {edu.projects.map((project, idx) => (
-                                        <div
-                                          key={idx}
-                                          className={`p-3 rounded-lg border ${
-                                            theme === "dark"
-                                              ? "bg-purple-900/20 border-purple-700/30"
-                                              : "bg-purple-50 border-purple-200/50"
-                                          }`}
-                                        >
-                                          <span
-                                            className={`text-sm ${
-                                              theme === "dark"
-                                                ? "text-purple-300"
-                                                : "text-purple-700"
-                                            }`}
-                                          >
-                                            {project}
-                                          </span>
-                                        </div>
-                                      ))}
-                                    </div>
-                                  </div>
-                                )}
-                              </div>
-
-                              {/* Right Column - Skills & Courses */}
-                              <div className="space-y-6">
-                                {/* Skills */}
-                                <div>
-                                  <h5
-                                    className={`text-sm font-semibold mb-3 flex items-center gap-2 ${
-                                      theme === "dark"
-                                        ? "text-gray-200"
-                                        : "text-gray-800"
-                                    }`}
-                                  >
-                                    <FaCode
-                                      className={`w-3.5 h-3.5 ${
-                                        theme === "dark"
-                                          ? "text-indigo-400"
-                                          : "text-indigo-600"
-                                      }`}
-                                    />
-                                    Key Skills:
-                                  </h5>
-                                  <div className="space-y-3">
-                                    {edu.skills.map((skill, skillIndex) => (
-                                      <div key={skillIndex} className="space-y-2">
-                                        <div className="flex justify-between items-center">
-                                          <motion.span
-                                            initial={{ opacity: 0, x: -10 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            transition={{
-                                              delay: 0.8 + skillIndex * 0.1,
-                                              duration: 0.4,
-                                            }}
-                                            className={`text-sm font-medium ${
-                                              theme === "dark"
-                                                ? "text-gray-300"
-                                                : "text-gray-700"
-                                            }`}
-                                          >
-                                            {skill.name}
-                                          </motion.span>
-                                          <span
-                                            className={`text-xs font-semibold ${
-                                              theme === "dark"
-                                                ? "text-indigo-400"
-                                                : "text-indigo-600"
-                                            }`}
-                                          >
-                                            {skill.level}%
-                                          </span>
-                                        </div>
-                                        <div
-                                          className={`h-2 rounded-full overflow-hidden ${
-                                            theme === "dark"
-                                              ? "bg-gray-700"
-                                              : "bg-gray-200"
-                                          }`}
-                                        >
-                                          <motion.div
-                                            initial={{ width: 0 }}
-                                            animate={{ width: `${skill.level}%` }}
-                                            transition={{
-                                              delay: 1.0 + skillIndex * 0.1,
-                                              duration: 0.8,
-                                              ease: "easeOut",
-                                            }}
-                                            className={`h-full rounded-full ${
-                                              theme === "dark"
-                                                ? "bg-gradient-to-r from-indigo-500 to-purple-500"
-                                                : "bg-gradient-to-r from-indigo-500 to-purple-500"
-                                            }`}
-                                          />
-                                        </div>
-                                      </div>
-                                    ))}
-                                  </div>
-                                </div>
-
-                                {/* Courses */}
-                                {edu.courses && edu.courses.length > 0 && (
-                                  <div>
-                                    <h5
-                                      className={`text-sm font-semibold mb-3 flex items-center gap-2 ${
-                                        theme === "dark"
-                                          ? "text-gray-200"
-                                          : "text-gray-800"
-                                      }`}
-                                    >
-                                      <FaBook
-                                        className={`w-3.5 h-3.5 ${
-                                          theme === "dark"
-                                            ? "text-green-400"
-                                            : "text-green-600"
-                                        }`}
-                                      />
-                                      Relevant Courses:
-                                    </h5>
-                                    <div className="flex flex-wrap gap-2">
-                                      {edu.courses.map((course, idx) => (
-                                        <motion.span
-                                          key={idx}
-                                          initial={{ opacity: 0, scale: 0.8 }}
-                                          animate={{ opacity: 1, scale: 1 }}
-                                          transition={{
-                                            delay: 1.2 + idx * 0.05,
-                                            duration: 0.3,
-                                          }}
-                                          whileHover={{ scale: 1.05, y: -2 }}
-                                          className={`text-xs px-3 py-1.5 rounded-md border font-medium ${
-                                            theme === "dark"
-                                              ? "bg-green-900/30 text-green-300 border-green-700/30 hover:bg-green-800/40"
-                                              : "bg-green-50 text-green-700 border-green-200 hover:bg-green-100"
-                                          } transition-all duration-200`}
-                                        >
-                                          {course}
-                                        </motion.span>
-                                      ))}
-                                    </div>
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-                          </motion.div>
+                            layoutId="tab-indicator"
+                            className="absolute -bottom-px left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+                            transition={{
+                              type: "spring",
+                              stiffness: 300,
+                              damping: 30,
+                            }}
+                          />
                         )}
+                      </button>
+                    ))}
+                  </div>
 
-                        {/* Expand/Collapse Button */}
-                        <div className="mt-8 flex justify-center">
-                          <motion.button
-                            onClick={() => toggleCardExpansion(index)}
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className={`flex items-center gap-2 px-6 py-3 rounded-xl border font-medium transition-all duration-300 ${
-                              theme === "dark"
-                                ? "bg-gradient-to-r from-indigo-900/50 to-purple-900/40 text-indigo-300 border-indigo-500/30 hover:border-indigo-400/50"
-                                : "bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 border-indigo-200 hover:border-indigo-300"
-                            } backdrop-blur-sm`}
-                          >
-                            {expandedCards.has(index) ? (
-                              <>
-                                <FaChevronUp className="w-4 h-4" />
-                                Show Less Details
-                              </>
-                            ) : (
-                              <>
-                                <FaChevronDown className="w-4 h-4" />
-                                Show More Details
-                              </>
-                            )}
-                          </motion.button>
+                  {/* Tab content */}
+                  <div className="h-[400px] overflow-y-auto pr-2">
+                    {activeTab === "overview" && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="space-y-6"
+                      >
+                        <div>
+                          <h3 className="mb-3 text-xl font-bold">
+                            Program Overview
+                          </h3>
+                          <p>{educationData[selectedSchool].description}</p>
+                        </div>
+
+                        <div>
+                          <h3 className="mb-3 text-xl font-bold">
+                            Highlight Achievements
+                          </h3>
+                          <ul className="list-inside list-disc space-y-2">
+                            {educationData[selectedSchool].achievements
+                              .slice(0, 2)
+                              .map((achievement, i) => (
+                                <li key={i}>{achievement}</li>
+                              ))}
+                          </ul>
+                        </div>
+
+                        <div>
+                          <h3 className="mb-3 text-xl font-bold">
+                            Featured Courses
+                          </h3>
+                          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                            {educationData[selectedSchool].courses
+                              .slice(0, 4)
+                              .map((course, i) => (
+                                <div
+                                  key={i}
+                                  className={`flex items-center gap-2 rounded-lg p-2 ${
+                                    theme === "dark"
+                                      ? "bg-gray-700/50"
+                                      : "bg-gray-50"
+                                  }`}
+                                >
+                                  <course.icon className="text-blue-500" />
+                                  <span>{course.name}</span>
+                                </div>
+                              ))}
+                          </div>
                         </div>
                       </motion.div>
-                    </motion.div>
-                  </motion.div>
-                );
-              })}
->>>>>>> Stashed changes
+                    )}
+
+                    {activeTab === "courses" && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                      >
+                        <h3 className="mb-4 text-xl font-bold">
+                          Course Curriculum
+                        </h3>
+                        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                          {educationData[selectedSchool].courses.map(
+                            (course, i) => (
+                              <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: i * 0.1 }}
+                                className={`flex items-center gap-3 rounded-lg p-3 ${
+                                  theme === "dark"
+                                    ? "bg-gray-700/50"
+                                    : "bg-gray-50"
+                                }`}
+                              >
+                                <div
+                                  className={`flex h-10 w-10 items-center justify-center rounded-full ${
+                                    theme === "dark"
+                                      ? "bg-blue-900/30"
+                                      : "bg-blue-100"
+                                  }`}
+                                >
+                                  <course.icon className="text-blue-500" />
+                                </div>
+                                <span className="font-medium">
+                                  {course.name}
+                                </span>
+                              </motion.div>
+                            )
+                          )}
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {activeTab === "achievements" && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                      >
+                        <h3 className="mb-4 text-xl font-bold">
+                          Academic Achievements
+                        </h3>
+                        <div className="space-y-4">
+                          {educationData[selectedSchool].achievements.map(
+                            (achievement, i) => (
+                              <motion.div
+                                key={i}
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: i * 0.1 }}
+                                className={`rounded-lg p-4 ${
+                                  theme === "dark"
+                                    ? "bg-gray-700/50"
+                                    : "bg-gray-50"
+                                }`}
+                              >
+                                <div className="flex items-start">
+                                  <div
+                                    className={`mr-3 mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full ${
+                                      theme === "dark"
+                                        ? "bg-purple-900/50"
+                                        : "bg-purple-100"
+                                    }`}
+                                  >
+                                    <FaMedal className="text-purple-500" />
+                                  </div>
+                                  <p>{achievement}</p>
+                                </div>
+                              </motion.div>
+                            )
+                          )}
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {activeTab === "projects" && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                      >
+                        <h3 className="mb-4 text-xl font-bold">
+                          Academic Projects
+                        </h3>
+                        <div className="space-y-6">
+                          {educationData[selectedSchool].projects.map(
+                            (project, i) => (
+                              <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 15 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: i * 0.1 }}
+                                className={`overflow-hidden rounded-lg ${
+                                  theme === "dark"
+                                    ? "bg-gray-700/50"
+                                    : "bg-gray-50"
+                                }`}
+                              >
+                                <div
+                                  className={`w-full p-4 ${
+                                    theme === "dark"
+                                      ? "bg-gray-700"
+                                      : "bg-gray-100"
+                                  }`}
+                                >
+                                  <div className="flex items-center">
+                                    <HiLightBulb className="mr-2 text-amber-500" />
+                                    <h4 className="font-bold">
+                                      {project.name}
+                                    </h4>
+                                  </div>
+                                </div>
+                                <div className="p-4">
+                                  <p>{project.description}</p>
+                                </div>
+                              </motion.div>
+                            )
+                          )}
+                        </div>
+                      </motion.div>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
