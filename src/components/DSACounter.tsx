@@ -3,11 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useTheme } from "../contexts/ThemeContext";
 import { FaCode, FaLaptopCode } from "react-icons/fa";
-import {
-  SiLeetcode,
-  SiCodechef,
-  SiGeeksforgeeks,
-} from "react-icons/si";
+import { SiLeetcode, SiCodechef, SiGeeksforgeeks } from "react-icons/si";
 
 interface PlatformStats {
   name: string;
@@ -48,7 +44,7 @@ const DSACounter = () => {
       count: 10,
       icon: <FaCode className="text-blue-500" />,
       color: "text-blue-500",
-    }
+    },
   ];
 
   // Total number of problems solved
@@ -121,25 +117,25 @@ const DSACounter = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.5 }}
-      className={`w-full rounded-2xl p-6 ${
+      className={`w-full rounded-xl p-6 ${
         theme === "dark"
-          ? "bg-gray-800/50 border border-gray-700"
-          : "bg-white border border-gray-100 shadow-card"
+          ? "bg-gray-800/80 border border-gray-700 backdrop-blur-sm"
+          : "bg-white/90 border border-gray-200 shadow-xl backdrop-blur-sm"
       }`}
     >
       <div className="flex items-center mb-4">
         <div
           className={`w-10 h-10 rounded-lg flex items-center justify-center mr-3 ${
             theme === "dark"
-              ? "bg-gradient-to-br from-indigo-700 to-purple-700"
-              : "bg-gradient-to-br from-indigo-500 to-purple-500"
+              ? "bg-gradient-to-br from-blue-800 to-purple-800"
+              : "bg-gradient-to-br from-blue-600 to-purple-600"
           }`}
         >
           <FaLaptopCode className="text-white text-xl" />
         </div>
         <h3
           className={`text-xl font-bold ${
-            theme === "dark" ? "text-white" : "text-gray-800"
+            theme === "dark" ? "text-indigo-300" : "text-indigo-700"
           }`}
         >
           DSA Problem Solving
@@ -149,13 +145,13 @@ const DSACounter = () => {
       {/* Total count badge */}
       <div className="flex justify-center mb-6">
         <div
-          className={`inline-flex items-center px-4 py-2 rounded-full ${
+          className={`inline-flex items-center px-6 py-2 rounded-full ${
             theme === "dark"
-              ? "bg-indigo-900/30 text-indigo-400"
-              : "bg-indigo-100 text-indigo-800"
-          }`}
+              ? "bg-gradient-to-r from-indigo-900/40 to-purple-900/40 text-indigo-300 border border-indigo-900/50"
+              : "bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 border border-indigo-200"
+          } shadow-lg`}
         >
-          <FaCode className="mr-2" />
+          <FaCode className="mr-3" />
           <span className="font-bold text-lg">{totalCounter}</span>
           <span className="ml-2">Total Problems Solved</span>
         </div>
@@ -167,9 +163,9 @@ const DSACounter = () => {
             key={platform.name}
             className={`p-4 rounded-xl ${
               theme === "dark"
-                ? "bg-gray-700/50 hover:bg-gray-700/70"
-                : "bg-gray-50 hover:bg-gray-100"
-            } transition-all duration-300`}
+                ? "bg-gray-700/50 hover:bg-gray-700/70 border border-gray-600/50"
+                : "bg-white hover:bg-gray-50 border border-gray-200"
+            } transition-all duration-300 shadow-md`}
           >
             <div className="flex flex-col items-center text-center">
               <div
@@ -179,15 +175,17 @@ const DSACounter = () => {
                 {platform.icon}
               </div>
               <div
-                className={`text-2xl font-bold mb-1 ${
-                  theme === "dark" ? "text-white" : "text-gray-800"
+                className={`text-3xl font-bold mb-1 ${
+                  theme === "dark"
+                    ? "bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text"
+                    : "bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text"
                 }`}
               >
                 {counters[index]}
               </div>
               <div
-                className={`text-sm ${
-                  theme === "dark" ? "text-gray-400" : "text-gray-600"
+                className={`text-sm font-medium ${
+                  theme === "dark" ? "text-gray-300" : "text-gray-700"
                 }`}
               >
                 {platform.name}
