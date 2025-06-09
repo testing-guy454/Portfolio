@@ -94,60 +94,43 @@ const Coding = () => {
     <section
       id="coding"
       className={`section relative overflow-hidden py-24 ${
-        theme === "dark" ? "bg-gray-900" : "bg-white"
+        theme === "dark" ? "bg-gray-900 text-white" : "bg-slate-50 text-gray-800"
       }`}
+      style={{
+        scrollMarginTop: "150px",
+        paddingTop: "40px",
+        scrollBehavior: "smooth",
+      }}
     >
-      {/* Background decoration */}
-      <div
-        className={`absolute -top-40 -right-40 w-96 h-96 rounded-full ${
-          theme === "dark" ? "bg-indigo-600/5" : "bg-primary/5"
-        }`}
-      ></div>
-      <div
-        className={`absolute -bottom-40 -left-40 w-96 h-96 rounded-full ${
-          theme === "dark" ? "bg-purple-600/5" : "bg-accent/5"
-        }`}
-      ></div>
+      {/* Glass morphism background elements */}
+      <div className="absolute inset-0 overflow-hidden opacity-20">
+        <div className="absolute left-1/4 top-1/4 h-64 w-64 rounded-full bg-purple-500 blur-3xl"></div>
+        <div className="absolute right-1/4 bottom-1/4 h-56 w-56 rounded-full bg-blue-500 blur-3xl"></div>
+        <div className="absolute left-2/3 top-1/3 h-72 w-72 rounded-full bg-teal-500 blur-3xl"></div>
+      </div>
 
-      <div className="container relative z-10">
+      <div className="container relative z-10 mx-auto max-w-6xl px-4">
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
+          ref={ref}
+          initial={{ opacity: 0, y: -30 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -30 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
           className="mb-16 text-center"
         >
-          <span
-            className={`px-4 py-2 rounded-full font-medium text-sm ${
-              theme === "dark"
-                ? "bg-gradient-to-r from-indigo-900/30 to-purple-900/30 text-indigo-400"
-                : "bg-gradient-to-r from-primary/10 to-secondary/10 text-primary"
-            }`}
-          >
-            Problem Solving
-          </span>
-          <h2
-            className={`text-4xl md:text-5xl font-bold mt-4 font-heading ${
-              theme === "dark" ? "text-white" : ""
-            }`}
-          >
-            <span
-              className={`${
-                theme === "dark"
-                  ? "bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text"
-                  : "text-gradient"
-              }`}
-            >
-              Coding
-            </span>{" "}
-            Journey
+          <h2 className="mb-4 text-4xl font-bold md:text-5xl">
+            Coding{" "}
+            <span className="bg-gradient-to-r from-blue-600 via-purple-500 to-teal-400 bg-clip-text text-transparent">
+              Journey
+            </span>
           </h2>
-          <div
-            className={`w-24 h-1 mx-auto mt-6 ${
-              theme === "dark"
-                ? "bg-gradient-to-r from-indigo-600 to-purple-600"
-                : "bg-gradient-to-r from-primary to-accent"
+          <p
+            className={`mx-auto max-w-2xl text-lg ${
+              theme === "dark" ? "text-gray-300" : "text-gray-600"
             }`}
-          ></div>
+          >
+            Problem-solving skills showcased through competitive programming and practice
+          </p>
         </motion.div>
 
         <motion.div
@@ -160,16 +143,22 @@ const Coding = () => {
           {/* DSA Counter Section */}
           <div className="mb-16 max-w-3xl mx-auto">
             <h4
-              className={`text-center text-xl font-bold mb-6 ${
-                theme === "dark" ? "text-white" : "text-gray-800"
-              }`}
+              className="text-center text-xl font-bold mb-6"
             >
-              DSA Problems Solved on
               <span
                 className={
                   theme === "dark"
-                    ? "bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text ml-2"
-                    : "text-gradient ml-2"
+                    ? "text-indigo-300" 
+                    : "text-indigo-700"
+                }
+              >
+                DSA Problems Solved on
+              </span>
+              <span
+                className={
+                  theme === "dark"
+                    ? "bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 text-transparent bg-clip-text ml-2"
+                    : "bg-gradient-to-r from-blue-600 via-purple-500 to-teal-500 text-transparent bg-clip-text ml-2"
                 }
               >
                 Different Platforms
@@ -188,16 +177,18 @@ const Coding = () => {
                 <motion.div
                   key={index}
                   className={`p-6 rounded-xl ${
-                    theme === "dark" ? "bg-gray-800" : "bg-white shadow-card"
-                  } relative overflow-hidden`}
+                    theme === "dark" 
+                      ? "border border-gray-700 bg-gray-800/80" 
+                      : "border border-gray-200 bg-white/90"
+                  } relative overflow-hidden backdrop-blur-sm shadow-lg`}
                   whileHover={{ y: -5 }}
                   transition={{ duration: 0.3 }}
                 >
                   <div
                     className={`absolute top-0 right-0 w-24 h-24 ${
                       theme === "dark"
-                        ? `bg-${colorName}-900/20`
-                        : `bg-${colorName}-100/70`
+                        ? `bg-${colorName}-900/30`
+                        : `bg-${colorName}-100/80`
                     } rounded-bl-full z-0`}
                   ></div>
                   <div className="relative z-10">
@@ -374,32 +365,28 @@ const Coding = () => {
           {/* Coding Achievements */}
           <div
             className={`p-6 rounded-xl ${
-              theme === "dark" ? "bg-gray-800" : "bg-white shadow-lg"
-            } mb-10`}
+              theme === "dark" 
+                ? "bg-gray-800/80 border border-gray-700" 
+                : "bg-white/90 border border-gray-200 shadow-xl"
+            } mb-10 backdrop-blur-sm`}
           >
             <h3
-              className={`text-2xl font-bold mb-6 ${
-                theme === "dark" ? "text-white" : "text-gray-800"
+              className={`text-2xl font-bold mb-6 flex items-center ${
+                theme === "dark" ? "text-indigo-300" : "text-indigo-600"
               }`}
             >
-              <span
-                className={
-                  theme === "dark" ? "text-indigo-400" : "text-indigo-600"
-                }
-              >
-                <FaMedal className="inline-block mr-2 mb-1" />
-              </span>
-              Coding Achievements
+              <FaMedal className="h-6 w-6 mr-2" />
+              <span>Coding Achievements</span>
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {codingData.achievements.map((achievement) => (
                 <div
                   key={achievement.id}
-                  className={`p-4 rounded-lg border ${
+                  className={`p-4 rounded-lg ${
                     theme === "dark"
-                      ? `border-${achievement.color}-800/30 bg-${achievement.color}-900/10`
-                      : `border-${achievement.color}-100 bg-${achievement.color}-50/50`
+                      ? `border border-${achievement.color}-800/30 bg-${achievement.color}-900/10`
+                      : `border border-${achievement.color}-200 bg-${achievement.color}-50/50 shadow-md`
                   }`}
                 >
                   <div className="flex items-start">
@@ -445,22 +432,21 @@ const Coding = () => {
           </div>
 
           {/* Current Focus */}
-          {/* <motion.div
+          <motion.div
             className={`p-6 rounded-xl ${
               theme === "dark"
-                ? "bg-gradient-to-br from-indigo-900/20 to-purple-900/20"
-                : "bg-gradient-to-br from-indigo-50 to-purple-50"
-            } border ${
-              theme === "dark" ? "border-indigo-800/30" : "border-indigo-100"
-            }`}
+                ? "bg-gray-800/80 border border-gray-700"
+                : "bg-white/90 border border-gray-200 shadow-xl"
+            } backdrop-blur-sm`}
             whileHover={{ scale: 1.01 }}
             transition={{ duration: 0.3 }}
           >
             <h3
-              className={`text-2xl font-bold mb-4 ${
-                theme === "dark" ? "text-white" : "text-gray-800"
+              className={`text-2xl font-bold mb-4 flex items-center ${
+                theme === "dark" ? "text-teal-300" : "text-teal-600"
               }`}
             >
+              <span className="mr-2">🎯</span>
               Current Focus Areas
             </h3>
             <ul className="space-y-3">
@@ -485,7 +471,7 @@ const Coding = () => {
                 </li>
               ))}
             </ul>
-          </motion.div> */}
+          </motion.div>
         </motion.div>
       </div>
     </section>
