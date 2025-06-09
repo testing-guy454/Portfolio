@@ -7,7 +7,8 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Experience from "./components/Experience";
 import EducationExperience from "./components/EducationExperience";
-import TechStack from "./components/TechStackWithCoding";
+import Coding from "./components/Coding";
+import TechStack from "./components/TechStack";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import ModernFooter from "./components/ModernFooter";
@@ -100,6 +101,7 @@ function App() {
         <About />
         <Experience />
         <EducationExperience />
+        <Coding />
         <TechStack />
         <Projects />
         <Contact />

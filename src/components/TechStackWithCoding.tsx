@@ -39,7 +39,12 @@ import DSACounter from "./DSACounter";
 // Define types for our tech stack
 type SkillLevel = "Beginner" | "Intermediate" | "Advanced";
 type SkillType = "Frontend" | "Backend";
-type CategoryName = "Web Development" | "Database" | "Languages" | "Tools" | "Coding Platforms";
+type CategoryName =
+  | "Web Development"
+  | "Database"
+  | "Languages"
+  | "Tools"
+  | "Coding Platforms";
 
 interface TechItem {
   name: string;
@@ -57,7 +62,7 @@ interface Category {
 const TechStack = () => {
   const { theme } = useTheme();
   const isDark = theme === "dark";
-  
+
   // References for scroll animations
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -80,14 +85,15 @@ const TechStack = () => {
   });
 
   // State for category navigation
-  const [activeCategory, setActiveCategory] = useState<CategoryName>("Web Development");
+  const [activeCategory, setActiveCategory] =
+    useState<CategoryName>("Web Development");
   const [isChangingCategory, setIsChangingCategory] = useState(false);
-  
+
   // Check for URL hash parameters to set initial category
   useEffect(() => {
     const handleHashChange = () => {
-      if (window.location.hash.includes('tech-stack?category=coding')) {
-        handleCategoryChange('Coding Platforms');
+      if (window.location.hash.includes("tech-stack?category=coding")) {
+        handleCategoryChange("Coding Platforms");
       }
     };
 
@@ -95,10 +101,10 @@ const TechStack = () => {
     handleHashChange();
 
     // Add event listener for hash changes
-    window.addEventListener('hashchange', handleHashChange);
-    
+    window.addEventListener("hashchange", handleHashChange);
+
     return () => {
-      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener("hashchange", handleHashChange);
     };
   }, []);
 
@@ -239,7 +245,7 @@ const TechStack = () => {
         icon: <SiGeeksforgeeks className="text-green-600" />,
         level: "Intermediate",
       },
-    ]
+    ],
   };
 
   // Coding data centralized for easier editing
@@ -288,7 +294,8 @@ const TechStack = () => {
       {
         id: 2,
         title: "GeeksForGeeks",
-        description: "160 Days of consistent problem solving challenge completed",
+        description:
+          "160 Days of consistent problem solving challenge completed",
         color: "green",
       },
     ],
@@ -320,7 +327,7 @@ const TechStack = () => {
       name: "Coding Platforms",
       color: "from-orange-500 to-amber-500",
       icon: <FaLaptopCode />,
-    }
+    },
   ];
 
   // Animation variants
@@ -482,7 +489,7 @@ const TechStack = () => {
 
         {/* DSA Counter Section */}
         {activeCategory === "Coding Platforms" && (
-          <motion.div 
+          <motion.div
             className="mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -751,7 +758,10 @@ const TechStack = () => {
             <div>
               {/* Coding Platforms Section */}
               <div className="mb-12">
-                <div ref={cardRef2} className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div
+                  ref={cardRef2}
+                  className="grid grid-cols-1 md:grid-cols-3 gap-6"
+                >
                   {codingData.platforms.map((platform, index) => {
                     const Icon = platform.icon;
                     return (
@@ -762,7 +772,10 @@ const TechStack = () => {
                             ? "bg-gray-800/80 border border-gray-700 backdrop-blur-sm"
                             : "bg-white border border-gray-200 shadow-lg backdrop-blur-sm"
                         }`}
-                        whileHover={{ y: -5, boxShadow: "0 10px 30px rgba(0, 0, 0, 0.15)" }}
+                        whileHover={{
+                          y: -5,
+                          boxShadow: "0 10px 30px rgba(0, 0, 0, 0.15)",
+                        }}
                         initial={{ opacity: 0, y: 30 }}
                         animate={{
                           opacity: cardInView2 ? 1 : 0,
@@ -803,32 +816,40 @@ const TechStack = () => {
                             <div className="flex justify-between">
                               <span
                                 className={`text-sm ${
-                                  theme === "dark" ? "text-gray-400" : "text-gray-600"
+                                  theme === "dark"
+                                    ? "text-gray-400"
+                                    : "text-gray-600"
                                 }`}
                               >
                                 Rating
                               </span>
                               <span
                                 className={`font-medium ${
-                                  theme === "dark" ? "text-white" : "text-gray-900"
+                                  theme === "dark"
+                                    ? "text-white"
+                                    : "text-gray-900"
                                 }`}
                               >
                                 {platform.rating}
                               </span>
                             </div>
                           )}
-                          
+
                           <div className="flex justify-between">
                             <span
                               className={`text-sm ${
-                                theme === "dark" ? "text-gray-400" : "text-gray-600"
+                                theme === "dark"
+                                  ? "text-gray-400"
+                                  : "text-gray-600"
                               }`}
                             >
                               Problems Solved
                             </span>
                             <span
                               className={`font-medium ${
-                                theme === "dark" ? "text-white" : "text-gray-900"
+                                theme === "dark"
+                                  ? "text-white"
+                                  : "text-gray-900"
                               }`}
                             >
                               {platform.problemsSolved}
@@ -839,14 +860,18 @@ const TechStack = () => {
                             <div className="flex justify-between">
                               <span
                                 className={`text-sm ${
-                                  theme === "dark" ? "text-gray-400" : "text-gray-600"
+                                  theme === "dark"
+                                    ? "text-gray-400"
+                                    : "text-gray-600"
                                 }`}
                               >
                                 Rank
                               </span>
                               <span
                                 className={`font-medium ${
-                                  theme === "dark" ? "text-white" : "text-gray-900"
+                                  theme === "dark"
+                                    ? "text-white"
+                                    : "text-gray-900"
                                 }`}
                               >
                                 {platform.rank}
@@ -858,14 +883,18 @@ const TechStack = () => {
                             <div className="flex justify-between">
                               <span
                                 className={`text-sm ${
-                                  theme === "dark" ? "text-gray-400" : "text-gray-600"
+                                  theme === "dark"
+                                    ? "text-gray-400"
+                                    : "text-gray-600"
                                 }`}
                               >
                                 Contests
                               </span>
                               <span
                                 className={`font-medium ${
-                                  theme === "dark" ? "text-white" : "text-gray-900"
+                                  theme === "dark"
+                                    ? "text-white"
+                                    : "text-gray-900"
                                 }`}
                               >
                                 {platform.contests}
@@ -877,14 +906,18 @@ const TechStack = () => {
                             <div className="flex justify-between">
                               <span
                                 className={`text-sm ${
-                                  theme === "dark" ? "text-gray-400" : "text-gray-600"
+                                  theme === "dark"
+                                    ? "text-gray-400"
+                                    : "text-gray-600"
                                 }`}
                               >
                                 Institution Rank
                               </span>
                               <span
                                 className={`font-medium ${
-                                  theme === "dark" ? "text-white" : "text-gray-900"
+                                  theme === "dark"
+                                    ? "text-white"
+                                    : "text-gray-900"
                                 }`}
                               >
                                 {platform.institutionRank}
@@ -896,14 +929,18 @@ const TechStack = () => {
                             <div className="flex justify-between">
                               <span
                                 className={`text-sm ${
-                                  theme === "dark" ? "text-gray-400" : "text-gray-600"
+                                  theme === "dark"
+                                    ? "text-gray-400"
+                                    : "text-gray-600"
                                 }`}
                               >
                                 Achievement
                               </span>
                               <span
                                 className={`font-medium ${
-                                  theme === "dark" ? "text-white" : "text-gray-900"
+                                  theme === "dark"
+                                    ? "text-white"
+                                    : "text-gray-900"
                                 }`}
                               >
                                 {platform.achievement}
@@ -916,14 +953,18 @@ const TechStack = () => {
                             <div className="flex justify-between text-xs mb-1">
                               <span
                                 className={`${
-                                  theme === "dark" ? "text-gray-400" : "text-gray-500"
+                                  theme === "dark"
+                                    ? "text-gray-400"
+                                    : "text-gray-500"
                                 }`}
                               >
                                 Progress
                               </span>
                               <span
                                 className={`font-medium ${
-                                  theme === "dark" ? "text-white" : "text-gray-900"
+                                  theme === "dark"
+                                    ? "text-white"
+                                    : "text-gray-900"
                                 }`}
                               >
                                 {platform.progress}
@@ -931,9 +972,7 @@ const TechStack = () => {
                             </div>
                             <div
                               className={`h-2 w-full rounded-full ${
-                                theme === "dark"
-                                  ? "bg-gray-700"
-                                  : "bg-gray-200"
+                                theme === "dark" ? "bg-gray-700" : "bg-gray-200"
                               }`}
                             >
                               <div
@@ -954,7 +993,9 @@ const TechStack = () => {
                             <div className="mt-4">
                               <span
                                 className={`block text-sm mb-2 ${
-                                  theme === "dark" ? "text-gray-400" : "text-gray-600"
+                                  theme === "dark"
+                                    ? "text-gray-400"
+                                    : "text-gray-600"
                                 }`}
                               >
                                 Problem Categories
@@ -1009,7 +1050,10 @@ const TechStack = () => {
                           ? "bg-gray-800/50 border border-gray-700"
                           : "bg-white border border-gray-200 shadow-md"
                       }`}
-                      whileHover={{ y: -3, boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)" }}
+                      whileHover={{
+                        y: -3,
+                        boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
+                      }}
                     >
                       <div
                         className={`h-10 w-10 rounded-full flex items-center justify-center flex-shrink-0 ${
@@ -1047,7 +1091,10 @@ const TechStack = () => {
             </div>
           ) : (
             // Display other categories in a similar grid layout
-            <div ref={cardRef2} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            <div
+              ref={cardRef2}
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
+            >
               {techStack[activeCategory]?.map((tech, index) => (
                 <motion.div
                   key={tech.name}
