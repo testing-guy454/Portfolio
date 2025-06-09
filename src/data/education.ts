@@ -20,8 +20,8 @@ interface EducationItem {
 
 export const educationData: EducationItem[] = [
   {
-    level: "Bachelor's Degree",
-    title: "Bachelor of Technology in Computer Science and Engineering",
+    level: "Bachelor of Technology",
+    title: "B.Tech in Computer Science and Engineering",
     institution: "National Institute of Technology, Patna",
     location: "Patna, Bihar",
     duration: "2023 - 2027",
@@ -41,12 +41,12 @@ export const educationData: EducationItem[] = [
     icon: "B.Tech",
   },
   {
-    level: "Senior Secondary Education",
-    title: "Senior Secondary Education (CBSE)",
+    level: "Higher Secondary",
+    title: "Class XII (CBSE)",
     institution: "Pragya Bharti Public School, Gaya",
     location: "Gaya, Bihar",
     duration: "2021 - 2022",
-    details: ["Percentage: 88.8%", "Stream: PCM"],
+    details: ["Percentage: 88.8%", "Stream: Science (PCM)"],
     theme: {
       iconBg: "bg-purple-800",
       iconText: "text-purple-300",
@@ -58,12 +58,12 @@ export const educationData: EducationItem[] = [
     icon: "12th",
   },
   {
-    level: "Secondary Education",
-    title: "Secondary Education (CBSE)",
+    level: "Secondary",
+    title: "Class X (CBSE)",
     institution: "Pragya Bharti Public School, Gaya",
     location: "Gaya, Bihar",
     duration: "2019 - 2020",
-    details: ["Percentage: 90%"],
+    details: ["Percentage: 90%", "All Subjects"],
     theme: {
       iconBg: "bg-pink-800",
       iconText: "text-pink-300",
