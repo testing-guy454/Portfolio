@@ -26,7 +26,7 @@ const NavbarEnhanced = ({ scrolled = false }: NavbarEnhancedProps) => {
   ];
 
   // Optional navigation that appears in dropdown on smaller screens
-  const secondaryNavLinks = [{ title: "Coding", href: "#tech-stack?category=coding" }];
+  const secondaryNavLinks = [{ title: "Coding", href: "#coding" }];
 
   const handleScrollSpy = () => {
     const sections = document.querySelectorAll("section");
