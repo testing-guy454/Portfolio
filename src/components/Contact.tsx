@@ -198,10 +198,10 @@ const Contact = () => {
                   whileHover={{ x: 5 }}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ 
-                    type: "spring", 
+                  transition={{
+                    type: "spring",
                     stiffness: 400,
-                    delay: 0.1 + index * 0.1 
+                    delay: 0.1 + index * 0.1,
                   }}
                 >
                   <motion.div
@@ -339,11 +339,15 @@ const Contact = () => {
           >
             <h3 className="text-2xl font-bold mb-6 font-heading">
               Send Me a{" "}
-              <span className={`${
-                theme === "dark"
-                  ? "bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-400 text-transparent bg-clip-text"
-                  : "bg-gradient-to-r from-indigo-600 via-purple-500 to-indigo-600 text-transparent bg-clip-text"
-              }`}>Message</span>
+              <span
+                className={`${
+                  theme === "dark"
+                    ? "bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-400 text-transparent bg-clip-text"
+                    : "bg-gradient-to-r from-indigo-600 via-purple-500 to-indigo-600 text-transparent bg-clip-text"
+                }`}
+              >
+                Message
+              </span>
             </h3>
 
             {formStatus.isSubmitted ? (
