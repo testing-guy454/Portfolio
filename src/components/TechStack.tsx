@@ -53,23 +53,23 @@ interface Category {
 const categories: Category[] = [
   {
     name: "Web Development",
-    color: "from-primary to-secondary",
-    icon: <FaLaptopCode className="text-primary" />,
+    color: "from-blue-600 to-indigo-600",
+    icon: <FaLaptopCode className="text-blue-500" />,
   },
   {
     name: "Database",
-    color: "from-secondary to-accent",
-    icon: <FaDatabase className="text-secondary" />,
+    color: "from-indigo-600 to-purple-600",
+    icon: <FaDatabase className="text-indigo-500" />,
   },
   {
     name: "Languages",
-    color: "from-accent to-primary",
-    icon: <FaCode className="text-accent" />,
+    color: "from-purple-600 to-teal-600",
+    icon: <FaCode className="text-purple-500" />,
   },
   {
     name: "Tools",
-    color: "from-gray-600 to-gray-700",
-    icon: <FaTools className="text-gray-600" />,
+    color: "from-teal-600 to-blue-600",
+    icon: <FaTools className="text-teal-500" />,
   },
 ];
 
@@ -226,7 +226,7 @@ const techStack: Record<CategoryName, TechItem[]> = {
 const levelColor: Record<SkillLevel, string> = {
   Beginner: "bg-yellow-500",
   Intermediate: "bg-blue-500",
-  Advanced: "bg-green-500",
+  Advanced: "bg-teal-500",
 };
 
 const TechStack = () => {
@@ -258,74 +258,39 @@ const TechStack = () => {
   return (
     <section
       id="tech-stack"
-      className={`py-24 relative overflow-hidden ${
-        theme === "dark" ? "bg-gray-900" : "bg-gray-50"
+      className={`section relative overflow-hidden py-24 ${
+        theme === "dark" ? "bg-gray-900 text-white" : "bg-slate-50 text-gray-800"
       }`}
+      style={{
+        scrollMarginTop: "150px",
+        paddingTop: "40px",
+        scrollBehavior: "smooth",
+      }}
     >
-      {/* Background decorations */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Abstract shapes */}
-        <div
-          className={`absolute top-20 left-20 w-96 h-96 rounded-full blur-[120px] opacity-20 ${
-            theme === "dark" ? "bg-indigo-900" : "bg-indigo-200"
-          }`}
-        ></div>
-        <div
-          className={`absolute bottom-20 right-20 w-80 h-80 rounded-full blur-[100px] opacity-20 ${
-            theme === "dark" ? "bg-purple-900" : "bg-purple-200"
-          }`}
-        ></div>
-
-        {/* Grid pattern */}
-        <div
-          className={`absolute inset-0 bg-[url('/src/assets/grid-pattern.svg')] bg-[length:30px_30px] opacity-[0.03] ${
-            theme === "dark" ? "invert-0" : "invert"
-          }`}
-        ></div>
+      {/* Glass morphism background elements */}
+      <div className="absolute inset-0 overflow-hidden opacity-20">
+        <div className="absolute left-1/4 top-1/4 h-64 w-64 rounded-full bg-purple-500 blur-3xl"></div>
+        <div className="absolute right-1/4 bottom-1/4 h-56 w-56 rounded-full bg-blue-500 blur-3xl"></div>
+        <div className="absolute left-2/3 top-1/3 h-72 w-72 rounded-full bg-teal-500 blur-3xl"></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Section header */}
+      <div className="container relative z-10 mx-auto max-w-6xl px-4">
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
+          ref={ref}
+          initial={{ opacity: 0, y: -30 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -30 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
           className="mb-16 text-center"
         >
-          <span
-            className={`px-4 py-2 rounded-full font-medium text-sm ${
-              theme === "dark"
-                ? "bg-gradient-to-r from-indigo-900/30 to-purple-900/30 text-indigo-400"
-                : "bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-600"
-            }`}
-          >
-            Technologies
-          </span>
-          <h2
-            className={`text-4xl md:text-5xl font-bold mt-4 font-heading ${
-              theme === "dark" ? "text-white" : ""
-            }`}
-          >
+          <h2 className="mb-4 text-4xl font-bold md:text-5xl">
             My{" "}
-            <span
-              className={`${
-                theme === "dark"
-                  ? "bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text"
-                  : "bg-gradient-to-r from-indigo-600 to-purple-600 text-transparent bg-clip-text"
-              }`}
-            >
+            <span className="bg-gradient-to-r from-blue-600 via-purple-500 to-teal-400 bg-clip-text text-transparent">
               Tech Stack
             </span>
           </h2>
-          <div
-            className={`w-24 h-1 mx-auto mt-6 ${
-              theme === "dark"
-                ? "bg-gradient-to-r from-indigo-600 to-purple-600"
-                : "bg-gradient-to-r from-indigo-500 to-purple-500"
-            }`}
-          ></div>
           <p
-            className={`mt-6 max-w-2xl mx-auto ${
+            className={`mx-auto max-w-2xl text-lg ${
               theme === "dark" ? "text-gray-300" : "text-gray-600"
             }`}
           >
@@ -344,15 +309,11 @@ const TechStack = () => {
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-medium transition-all ${
                   activeCategory === category.name
                     ? theme === "dark"
-                      ? `bg-gradient-to-r ${
-                          category.color
-                        } text-white shadow-lg shadow-${
-                          category.color.split(" ")[0]
-                        }/20`
-                      : `bg-gradient-to-r ${category.color} text-white shadow-lg`
+                      ? "bg-gradient-to-r from-blue-700 to-purple-700 text-white shadow-lg shadow-blue-900/20"
+                      : "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/20"
                     : theme === "dark"
-                    ? "bg-gray-800 text-gray-300 hover:text-white"
-                    : "bg-white text-gray-600 hover:text-gray-900 shadow-sm"
+                    ? "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                    : "bg-white text-gray-700 hover:bg-gray-50 shadow"
                 }`}
               >
                 <span className="text-lg">{category.icon}</span>
@@ -377,9 +338,9 @@ const TechStack = () => {
                 <div
                   className={`px-4 py-2 rounded-full font-medium ${
                     theme === "dark"
-                      ? "bg-blue-900/30 text-blue-400"
-                      : "bg-blue-100 text-blue-700"
-                  }`}
+                      ? "bg-gradient-to-r from-blue-900/40 to-indigo-900/40 text-blue-300 border border-blue-800/30"
+                      : "bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 border border-blue-200"
+                  } shadow-md`}
                 >
                   <span className="flex items-center gap-2">
                     <FaReact className="text-blue-500" />
@@ -389,9 +350,9 @@ const TechStack = () => {
                 <div
                   className={`px-4 py-2 rounded-full font-medium ${
                     theme === "dark"
-                      ? "bg-green-900/30 text-green-400"
-                      : "bg-green-100 text-green-700"
-                  }`}
+                      ? "bg-gradient-to-r from-teal-900/40 to-green-900/40 text-teal-300 border border-teal-800/30"
+                      : "bg-gradient-to-r from-teal-100 to-green-100 text-teal-700 border border-teal-200"
+                  } shadow-md`}
                 >
                   <span className="flex items-center gap-2">
                     <FaNodeJs className="text-green-600" />
@@ -408,28 +369,36 @@ const TechStack = () => {
                     variants={itemVariants}
                     className={`p-4 rounded-xl transition-all ${
                       theme === "dark"
-                        ? "bg-gray-800 hover:bg-gray-750 border border-gray-700/50"
-                        : "bg-white hover:bg-gray-50 border border-gray-100 shadow-card"
-                    }`}
+                        ? "bg-gray-800/80 border border-gray-700 backdrop-blur-sm"
+                        : "bg-white/90 border border-gray-200 shadow-xl backdrop-blur-sm"
+                    } hover:transform hover:-translate-y-1`}
+                    whileHover={{ y: -5 }}
+                    transition={{ duration: 0.3 }}
                   >
                     <div className="flex items-center gap-3">
                       <div
                         className={`w-9 h-9 rounded-lg flex items-center justify-center ${
                           theme === "dark"
                             ? tech.type === "Frontend"
-                              ? "bg-blue-900/30"
-                              : "bg-green-900/30"
+                              ? "bg-blue-900/40"
+                              : "bg-green-900/40"
                             : tech.type === "Frontend"
                             ? "bg-blue-100"
                             : "bg-green-100"
-                        }`}
+                        } shadow-inner`}
                       >
                         <span className="text-xl">{tech.icon}</span>
                       </div>
                       <div className="flex-1">
                         <h3
                           className={`text-sm font-semibold ${
-                            theme === "dark" ? "text-white" : "text-gray-900"
+                            theme === "dark" 
+                              ? tech.type === "Frontend" 
+                                ? "text-blue-300" 
+                                : "text-green-300"
+                              : tech.type === "Frontend" 
+                                ? "text-blue-700" 
+                                : "text-green-700"
                           }`}
                         >
                           {tech.name}
@@ -464,22 +433,44 @@ const TechStack = () => {
                   variants={itemVariants}
                   className={`p-4 rounded-xl transition-all ${
                     theme === "dark"
-                      ? "bg-gray-800 hover:bg-gray-750 border border-gray-700/50"
-                      : "bg-white hover:bg-gray-50 border border-gray-100 shadow-sm"
-                  }`}
+                      ? "bg-gray-800/80 border border-gray-700 backdrop-blur-sm"
+                      : "bg-white/90 border border-gray-200 shadow-xl backdrop-blur-sm"
+                  } hover:transform hover:-translate-y-1`}
+                  whileHover={{ y: -5 }}
+                  transition={{ duration: 0.3 }}
                 >
                   <div className="flex items-center gap-3">
                     <div
                       className={`w-9 h-9 rounded-lg flex items-center justify-center ${
-                        theme === "dark" ? "bg-gray-700/50" : "bg-gray-100"
-                      }`}
+                        theme === "dark" 
+                          ? activeCategory === "Database" 
+                            ? "bg-indigo-900/40" 
+                            : activeCategory === "Languages" 
+                              ? "bg-purple-900/40" 
+                              : "bg-teal-900/40"
+                          : activeCategory === "Database" 
+                            ? "bg-indigo-100" 
+                            : activeCategory === "Languages" 
+                              ? "bg-purple-100" 
+                              : "bg-teal-100"
+                      } shadow-inner`}
                     >
                       <span className="text-xl">{tech.icon}</span>
                     </div>
                     <div className="flex-1">
                       <h3
                         className={`text-sm font-semibold ${
-                          theme === "dark" ? "text-white" : "text-gray-900"
+                          theme === "dark" 
+                            ? activeCategory === "Database" 
+                              ? "text-indigo-300" 
+                              : activeCategory === "Languages" 
+                                ? "text-purple-300" 
+                                : "text-teal-300"
+                            : activeCategory === "Database" 
+                              ? "text-indigo-700" 
+                              : activeCategory === "Languages" 
+                                ? "text-purple-700" 
+                                : "text-teal-700"
                         }`}
                       >
                         {tech.name}
