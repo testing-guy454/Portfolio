@@ -13,7 +13,7 @@ const NavbarEnhanced = ({ scrolled = false }: NavbarEnhancedProps) => {
   const [scrollStatus, setScrollStatus] = useState(scrolled);
   const [showNavShadow, setShowNavShadow] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
-  
+
   // Main navigation items
   const navLinks = [
     { title: "Home", href: "#home" },
@@ -26,9 +26,7 @@ const NavbarEnhanced = ({ scrolled = false }: NavbarEnhancedProps) => {
   ];
 
   // Optional navigation that appears in dropdown on smaller screens
-  const secondaryNavLinks = [
-    { title: "Coding", href: "#coding" }
-  ];
+  const secondaryNavLinks = [{ title: "Coding", href: "#coding" }];
 
   const handleScrollSpy = () => {
     const sections = document.querySelectorAll("section");
@@ -37,13 +35,13 @@ const NavbarEnhanced = ({ scrolled = false }: NavbarEnhancedProps) => {
     // Find the current active section
     let currentActive = "";
     let closestDistance = Number.MAX_SAFE_INTEGER;
-    
+
     sections.forEach((section) => {
       const sectionId = section.getAttribute("id") || "";
       const sectionTop = section.offsetTop;
       const sectionHeight = section.offsetHeight;
       const sectionBottom = sectionTop + sectionHeight;
-      
+
       // Check if we're currently viewing this section
       if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
         const distance = Math.abs(scrollPosition - sectionTop);
@@ -53,7 +51,7 @@ const NavbarEnhanced = ({ scrolled = false }: NavbarEnhancedProps) => {
         }
       }
     });
-    
+
     if (currentActive) {
       setActiveLink(currentActive);
     } else if (window.scrollY < 100) {
@@ -62,7 +60,7 @@ const NavbarEnhanced = ({ scrolled = false }: NavbarEnhancedProps) => {
 
     // Update scroll status for navbar background
     setScrollStatus(window.scrollY > 50);
-    
+
     // Add shadow when scrolling down slightly
     setShowNavShadow(window.scrollY > 10);
   };
@@ -78,7 +76,11 @@ const NavbarEnhanced = ({ scrolled = false }: NavbarEnhancedProps) => {
   // Handle clicking outside of navbar to close mobile menu
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (navRef.current && !navRef.current.contains(event.target as Node) && isOpen) {
+      if (
+        navRef.current &&
+        !navRef.current.contains(event.target as Node) &&
+        isOpen
+      ) {
         closeMenu();
       }
     };
@@ -160,14 +162,14 @@ const NavbarEnhanced = ({ scrolled = false }: NavbarEnhancedProps) => {
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center space-x-4 ml-auto">
-          <motion.ul 
+          <motion.ul
             className="flex space-x-1"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
             {navLinks.map((link, index) => (
-              <motion.li 
+              <motion.li
                 key={link.href}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -259,7 +261,7 @@ const NavbarEnhanced = ({ scrolled = false }: NavbarEnhancedProps) => {
               exit={{ opacity: 0 }}
               onClick={closeMenu}
             />
-            
+
             {/* Mobile menu */}
             <motion.nav
               className="lg:hidden fixed right-0 top-0 h-full w-[80%] max-w-sm bg-white dark:bg-gray-900 shadow-xl z-50 overflow-y-auto"
