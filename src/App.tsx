@@ -6,7 +6,7 @@ import NavbarRedesigned from "./components/NavbarRedesigned";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Experience from "./components/Experience";
-import Education from "./components/Education";
+import EducationExperience from "./components/EducationExperience";
 import Coding from "./components/Coding";
 import TechStack from "./components/TechStack";
 import Projects from "./components/Projects";
@@ -100,7 +100,7 @@ function App() {
         <Hero />
         <About />
         <Experience />
-        <Education />
+        <EducationExperience />
         <Coding />
         <TechStack />
         <Projects />

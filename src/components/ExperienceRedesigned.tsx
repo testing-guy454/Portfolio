@@ -9,21 +9,11 @@ import {
   FaUserTie,
   FaCalendarAlt,
   FaMapMarkerAlt,
-  FaExternalLinkAlt,
   FaChevronRight,
-  FaLightbulb,
   FaRocket,
-  FaGraduationCap,
-  FaAward,
   FaStar,
-  FaUsers,
-  FaFlag,
 } from "react-icons/fa";
-import {
-  HiOutlineOfficeBuilding,
-  HiLightningBolt,
-  HiViewGrid,
-} from "react-icons/hi";
+import { HiOutlineOfficeBuilding } from "react-icons/hi";
 
 const Experience = () => {
   const [ref, inView] = useInView({
