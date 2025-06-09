@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaArrowUp } from "react-icons/fa";
 import "./App.css";
-import NavbarRedesigned from "./components/NavbarRedesigned";
+import NavbarEnhanced from "./components/NavbarEnhanced";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Experience from "./components/Experience";
@@ -89,7 +89,7 @@ function App() {
         }}
       ></div>
 
-      <NavbarRedesigned scrolled={scrolled} />
+      <NavbarEnhanced scrolled={scrolled} />
       <main
         className={`${
           theme === "dark"
