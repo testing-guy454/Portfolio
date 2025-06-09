@@ -1,34 +1,9 @@
-// filepath: /Users/yuvrajmehta/Developer/GitHub Desktop/Portfolio/src/components/Education.tsx
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useTheme } from "../contexts/ThemeContext";
-import { useState, useRef } from "react";
-import {
-  FaCalendarAlt,
-  FaMapMarkerAlt,
-  FaMedal,
-  FaBook,
-  FaLaptopCode,
-  FaGraduationCap,
-  FaSchool,
-  FaTrophy,
-  FaAward,
-  FaCode,
-  FaBookOpen,
-  FaChevronRight,
-} from "react-icons/fa";
-import { HiLightBulb, HiBadgeCheck, HiCube, HiAcademicCap, HiSparkles, HiLightningBolt } from "react-icons/hi";
+import { FaMapMarkerAlt, FaSchool, FaChevronRight } from "react-icons/fa";
+import { HiAcademicCap, HiSparkles } from "react-icons/hi";
 import { educationData } from "../data/education";
-
-interface Achievement {
-  title: string;
-  year: string;
-  icon: JSX.Element;
-  description: string;
-  category: string;
-  color: string;
-  featured?: boolean;
-}
 
 const Education = () => {
   const [ref, inView] = useInView({
@@ -37,67 +12,6 @@ const Education = () => {
   });
 
   const { theme } = useTheme();
-  const [activeTab, setActiveTab] = useState<string>("overview");
-  const [selectedSchool, setSelectedSchool] = useState<number>(0);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  // Enhanced achievements data
-  const achievements: Achievement[] = [
-    {
-      title: "Class Representative",
-      year: "2023-2024",
-      icon: <FaTrophy className="w-5 h-5" />,
-      description:
-        "Elected as Class Representative for CSE Department at NIT Patna",
-      category: "Leadership",
-      color: "yellow",
-      featured: true,
-    },
-    {
-      title: "Academic Excellence",
-      year: "2022",
-      icon: <FaAward className="w-5 h-5" />,
-      description: "88.8% in CBSE Class 12 with PCM stream",
-      category: "Academic",
-      color: "blue",
-      featured: true,
-    },
-    {
-      title: "CGPA Achievement",
-      year: "2023-Present",
-      icon: <FaMedal className="w-5 h-5" />,
-      description: "Maintaining CGPA of 7.69/10 at NIT Patna",
-      category: "Academic",
-      color: "green",
-      featured: false,
-    },
-    {
-      title: "Technical Coursework",
-      year: "2023-Present",
-      icon: <FaCode className="w-5 h-5" />,
-      description:
-        "Completed advanced courses in DSA, DBMS, OS, and Computer Networks",
-      category: "Technical",
-      color: "purple",
-      featured: false,
-    },
-  ];
-
-  // Course progress data
-  const coursework = [
-    { name: "Data Structures & Algorithms", progress: 90, color: "indigo" },
-    { name: "Database Management Systems", progress: 85, color: "blue" },
-    { name: "Operating Systems", progress: 80, color: "green" },
-    { name: "Computer Networks", progress: 75, color: "purple" },
-    { name: "Software Engineering", progress: 70, color: "pink" },
-  ];
-
-  const tabs = [
-    { id: "overview", label: "Overview", icon: FaGraduationCap },
-    { id: "courses", label: "Courses", icon: FaBookOpen },
-    { id: "achievements", label: "Achievements", icon: FaMedal },
-    { id: "projects", label: "Projects", icon: HiLightBulb },
-  ];
 
   // Animation variants
   const containerVariants = {
@@ -138,7 +52,9 @@ const Education = () => {
     <section
       id="education"
       className={`section relative overflow-hidden py-24 ${
-        theme === "dark" ? "bg-gray-900 text-white" : "bg-slate-50 text-gray-800"
+        theme === "dark"
+          ? "bg-gray-900 text-white"
+          : "bg-slate-50 text-gray-800"
       }`}
       style={{
         scrollMarginTop: "150px",
@@ -187,9 +103,7 @@ const Education = () => {
         >
           <div
             className={`mb-10 rounded-xl ${
-              theme === "dark"
-                ? "bg-gray-800/80"
-                : "bg-white/80"
+              theme === "dark" ? "bg-gray-800/80" : "bg-white/80"
             } p-6 shadow-xl backdrop-blur-lg`}
           >
             <h3
@@ -205,7 +119,7 @@ const Education = () => {
                 </span>
               </span>
             </h3>
-            
+
             <div className="mt-8 space-y-10">
               {educationData.map((edu, index) => (
                 <motion.div
@@ -214,7 +128,7 @@ const Education = () => {
                   className="relative"
                 >
                   <div className="relative z-10">
-                    <div 
+                    <div
                       className={`mb-6 inline-flex rounded-full px-4 py-1 text-sm font-medium ${
                         theme === "dark"
                           ? "bg-gradient-to-br from-indigo-900 to-purple-900 text-indigo-200"
@@ -223,7 +137,7 @@ const Education = () => {
                     >
                       {edu.level}
                     </div>
-                    
+
                     <motion.div
                       variants={cardVariants}
                       className={`rounded-xl border p-5 shadow-lg ${
@@ -235,9 +149,7 @@ const Education = () => {
                       <div className="mb-3 flex items-center justify-between">
                         <h4
                           className={`text-xl font-bold ${
-                            theme === "dark"
-                              ? "text-white"
-                              : "text-gray-800"
+                            theme === "dark" ? "text-white" : "text-gray-800"
                           }`}
                         >
                           {edu.title}
@@ -252,7 +164,7 @@ const Education = () => {
                           {edu.duration}
                         </div>
                       </div>
-                      
+
                       <div className="mb-4 flex flex-wrap items-center">
                         <div
                           className={`mr-4 flex items-center ${
@@ -283,7 +195,7 @@ const Education = () => {
                           {edu.location}
                         </div>
                       </div>
-                      
+
                       <div
                         className={`mt-4 space-y-2 ${
                           theme === "dark" ? "text-gray-300" : "text-gray-600"
@@ -314,11 +226,10 @@ const Education = () => {
               ))}
             </div>
           </div>
-          
+
           <p className="mt-6 text-center text-sm text-gray-500">
             Continuous learning through hands-on projects, competitive
-            programming, and real-world application of theoretical
-            concepts.
+            programming, and real-world application of theoretical concepts.
           </p>
         </motion.div>
       </div>
