@@ -287,7 +287,7 @@ const Coding = () => {
                                 category.color === "red"
                                   ? theme === "dark"
                                     ? "text-red-400"
-                                    : "text-red-600" 
+                                    : "text-red-600"
                                   : theme === "dark"
                                   ? `text-${category.color}-400`
                                   : `text-${category.color}-600`

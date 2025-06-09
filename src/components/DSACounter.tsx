@@ -3,11 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useTheme } from "../contexts/ThemeContext";
 import { FaCode, FaLaptopCode } from "react-icons/fa";
-import {
-  SiLeetcode,
-  SiCodechef,
-  SiGeeksforgeeks,
-} from "react-icons/si";
+import { SiLeetcode, SiCodechef, SiGeeksforgeeks } from "react-icons/si";
 
 interface PlatformStats {
   name: string;
@@ -48,7 +44,7 @@ const DSACounter = () => {
       count: 10,
       icon: <FaCode className="text-blue-500" />,
       color: "text-blue-500",
-    }
+    },
   ];
 
   // Total number of problems solved
@@ -180,8 +176,8 @@ const DSACounter = () => {
               </div>
               <div
                 className={`text-3xl font-bold mb-1 ${
-                  theme === "dark" 
-                    ? "bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text" 
+                  theme === "dark"
+                    ? "bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text"
                     : "bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text"
                 }`}
               >
