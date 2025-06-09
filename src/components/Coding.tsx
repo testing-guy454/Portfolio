@@ -45,8 +45,7 @@ const codingData = {
     {
       id: 1,
       title: "LeetCode Weekly Contest",
-      description:
-        "Ranked in the top 26.1% globally on LeetCode",
+      description: "Ranked in the top 26.1% globally on LeetCode",
       color: "indigo",
     },
     {
@@ -94,7 +93,9 @@ const Coding = () => {
     <section
       id="coding"
       className={`section relative overflow-hidden py-24 ${
-        theme === "dark" ? "bg-gray-900 text-white" : "bg-slate-50 text-gray-800"
+        theme === "dark"
+          ? "bg-gray-900 text-white"
+          : "bg-slate-50 text-gray-800"
       }`}
       style={{
         scrollMarginTop: "150px",
@@ -129,7 +130,8 @@ const Coding = () => {
               theme === "dark" ? "text-gray-300" : "text-gray-600"
             }`}
           >
-            Problem-solving skills showcased through competitive programming and practice
+            Problem-solving skills showcased through competitive programming and
+            practice
           </p>
         </motion.div>
 
@@ -142,14 +144,10 @@ const Coding = () => {
         >
           {/* DSA Counter Section */}
           <div className="mb-16 max-w-3xl mx-auto">
-            <h4
-              className="text-center text-xl font-bold mb-6"
-            >
+            <h4 className="text-center text-xl font-bold mb-6">
               <span
                 className={
-                  theme === "dark"
-                    ? "text-indigo-300" 
-                    : "text-indigo-700"
+                  theme === "dark" ? "text-indigo-300" : "text-indigo-700"
                 }
               >
                 DSA Problems Solved on
@@ -177,8 +175,8 @@ const Coding = () => {
                 <motion.div
                   key={index}
                   className={`p-6 rounded-xl ${
-                    theme === "dark" 
-                      ? "border border-gray-700 bg-gray-800/80" 
+                    theme === "dark"
+                      ? "border border-gray-700 bg-gray-800/80"
                       : "border border-gray-200 bg-white/90"
                   } relative overflow-hidden backdrop-blur-sm shadow-lg`}
                   whileHover={{ y: -5 }}
@@ -265,11 +263,15 @@ const Coding = () => {
                         {platform.categories.map((category, idx) => (
                           <div
                             key={idx}
-                            className={`p-2 rounded ${
-                              theme === "dark"
+                            className={`p-2 rounded text-center ${
+                              category.color === "red"
+                                ? theme === "dark"
+                                  ? "bg-red-900/30"
+                                  : "bg-red-100"
+                                : theme === "dark"
                                 ? `bg-${category.color}-900/30`
                                 : `bg-${category.color}-100`
-                            } text-center`}
+                            }`}
                           >
                             <p
                               className={`text-xs ${
@@ -282,7 +284,11 @@ const Coding = () => {
                             </p>
                             <p
                               className={`font-medium ${
-                                theme === "dark"
+                                category.color === "red"
+                                  ? theme === "dark"
+                                    ? "text-red-400"
+                                    : "text-red-600" 
+                                  : theme === "dark"
                                   ? `text-${category.color}-400`
                                   : `text-${category.color}-600`
                               }`}
@@ -316,9 +322,7 @@ const Coding = () => {
                                       ? `text-${colorName}-400`
                                       : `text-${colorName}-600`
                                   }
-                                >
-                                  
-                                </span>
+                                ></span>
                               )}
                               {platform.rank}
                             </p>
@@ -365,8 +369,8 @@ const Coding = () => {
           {/* Coding Achievements */}
           <div
             className={`p-6 rounded-xl ${
-              theme === "dark" 
-                ? "bg-gray-800/80 border border-gray-700" 
+              theme === "dark"
+                ? "bg-gray-800/80 border border-gray-700"
                 : "bg-white/90 border border-gray-200 shadow-xl"
             } mb-10 backdrop-blur-sm`}
           >
