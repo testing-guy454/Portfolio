@@ -418,7 +418,7 @@ const TechStack = () => {
           </defs>
           <rect width="100%" height="100%" fill="url(#tech-stack-grid)" />
         </svg>
-        
+
         {/* Animated background elements */}
         <motion.div
           className="absolute left-1/4 top-1/4 h-64 w-64 rounded-full bg-indigo-500 blur-3xl"
@@ -499,11 +499,13 @@ const TechStack = () => {
             }}
           >
             My{" "}
-            <span className={`bg-gradient-to-r ${
-              theme === "dark"
-                ? "from-blue-400 to-purple-400"
-                : "from-blue-600 to-purple-600"
-            } bg-clip-text text-transparent relative`}>
+            <span
+              className={`bg-gradient-to-r ${
+                theme === "dark"
+                  ? "from-blue-400 to-purple-400"
+                  : "from-blue-600 to-purple-600"
+              } bg-clip-text text-transparent relative`}
+            >
               Tech Stack
               <motion.span
                 className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 via-purple-500 to-indigo-400 rounded-full"
