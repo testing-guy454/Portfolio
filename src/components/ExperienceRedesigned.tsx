@@ -180,7 +180,9 @@ const Experience = () => {
     <section
       id="experience"
       className={`section relative overflow-hidden py-24 ${
-        theme === "dark" ? "bg-gray-900" : ""
+        theme === "dark"
+          ? "bg-gradient-to-b from-gray-900 to-gray-950"
+          : "bg-gradient-to-b from-gray-50 to-white"
       }`}
       style={{
         scrollMarginTop: "150px",
@@ -191,12 +193,12 @@ const Experience = () => {
       {/* Background decoration similar to Projects */}
       <div
         className={`absolute top-40 left-0 w-96 h-96 rounded-full blur-3xl ${
-          theme === "dark" ? "bg-indigo-600/5" : "bg-primary/5"
+          theme === "dark" ? "bg-indigo-600/10" : "bg-primary/10"
         }`}
       ></div>
       <div
         className={`absolute bottom-20 right-20 w-64 h-64 rounded-full blur-3xl ${
-          theme === "dark" ? "bg-purple-600/5" : "bg-accent/5"
+          theme === "dark" ? "bg-purple-600/10" : "bg-accent/10"
         }`}
       ></div>
 
