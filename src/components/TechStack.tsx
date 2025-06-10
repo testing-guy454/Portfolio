@@ -32,14 +32,12 @@ import {
 import { SiOpenjdk as SiJava } from "react-icons/si";
 
 // Define types for our tech stack
-type SkillLevel = "Beginner" | "Intermediate" | "Advanced";
 type SkillType = "Frontend" | "Backend";
 type CategoryName = "Web Development" | "Database" | "Languages" | "Tools";
 
 interface TechItem {
   name: string;
   icon: JSX.Element;
-  level: SkillLevel;
   type?: SkillType;
 }
 
@@ -78,85 +76,71 @@ const techStack: Record<CategoryName, TechItem[]> = {
     {
       name: "React",
       icon: <FaReact className="text-blue-500" />,
-      level: "Advanced",
       type: "Frontend",
     },
     {
       name: "Node.js",
       icon: <FaNodeJs className="text-green-600" />,
-      level: "Advanced",
       type: "Backend",
     },
     {
       name: "TypeScript",
       icon: <SiTypescript className="text-blue-600" />,
-      level: "Advanced",
       type: "Frontend",
     },
     {
       name: "Express.js",
       icon: <SiExpress className="text-gray-600 dark:text-gray-300" />,
-      level: "Advanced",
       type: "Backend",
     },
     {
       name: "JavaScript",
       icon: <SiJavascript className="text-yellow-400" />,
-      level: "Advanced",
       type: "Frontend",
     },
     {
       name: "RESTful APIs",
       icon: <FaServer className="text-blue-600" />,
-      level: "Advanced",
       type: "Backend",
     },
     {
       name: "HTML5",
       icon: <SiHtml5 className="text-orange-500" />,
-      level: "Advanced",
       type: "Frontend",
     },
     {
       name: "CSS3",
       icon: <SiCss3 className="text-blue-500" />,
-      level: "Advanced",
       type: "Frontend",
     },
     {
       name: "Tailwind CSS",
       icon: <SiTailwindcss className="text-cyan-500" />,
-      level: "Advanced",
       type: "Frontend",
     },
     // {
     //   name: "GraphQL",
     //   icon: <SiGraphql className="text-pink-600" />,
-    //   level: "Intermediate",
     //   type: "Backend",
     // },
     {
       name: "Next.js",
       icon: <SiNextdotjs className="text-black dark:text-white" />,
-      level: "Intermediate",
       type: "Frontend",
     },
     {
       name: "Redux",
       icon: <SiRedux className="text-purple-600" />,
-      level: "Advanced",
       type: "Frontend",
     },
     // {
     //   name: "Firebase",
     //   icon: <SiFirebase className="text-yellow-500" />,
-    //   level: "Intermediate",
     //   type: "Backend",
     // },
     {
       name: "Vite",
       icon: <SiVite className="text-purple-500" />,
-      level: "Intermediate",
       type: "Frontend",
     },
   ],
@@ -164,290 +148,179 @@ const techStack: Record<CategoryName, TechItem[]> = {
     {
       name: "MongoDB",
       icon: <SiMongodb className="text-green-600" />,
-      level: "Advanced",
     },
     {
       name: "SQL",
       icon: <SiMysql className="text-blue-600" />,
-      level: "Intermediate",
     },
     // {
     //   name: "PostgreSQL",
     //   icon: <SiPostgresql className="text-blue-600" />,
-    //   level: "Intermediate",
     // },
     {
       name: "Database Design",
       icon: <FaDatabase className="text-purple-500" />,
-      level: "Advanced",
     },
   ],
   Languages: [
     {
       name: "JavaScript",
       icon: <SiJavascript className="text-yellow-400" />,
-      level: "Advanced",
     },
     {
       name: "TypeScript",
       icon: <SiTypescript className="text-blue-600" />,
-      level: "Advanced",
     },
     {
       name: "C++",
       icon: <SiCplusplus className="text-blue-600" />,
-      level: "Advanced",
     },
     {
       name: "Java",
       icon: <SiJava className="text-red-500" />,
-      level: "Intermediate",
     },
     {
       name: "Python",
       icon: <SiPython className="text-blue-500" />,
-      level: "Intermediate",
     },
   ],
   Tools: [
     {
       name: "Git",
       icon: <SiGit className="text-orange-600" />,
-      level: "Advanced",
     },
     {
       name: "GitHub",
       icon: <SiGithub className="text-black dark:text-white" />,
-      level: "Advanced",
     },
   ],
 };
 
-const levelColor: Record<SkillLevel, string> = {
-  Beginner: "bg-yellow-500",
-  Intermediate: "bg-blue-500",
-  Advanced: "bg-teal-500",
-};
+// Removed level color mapping as we're no longer showing skill levels
 
 const TechStack = () => {
   const [activeCategory, setActiveCategory] =
     useState<CategoryName>("Web Development");
   const [ref, inView] = useInView({
     triggerOnce: false,
-    threshold: 0.1,
+    threshold: 0.05, // Lower threshold for earlier trigger
+    rootMargin: "0px 0px -5% 0px", // Trigger slightly earlier
   });
   const [contentRef, contentInView] = useInView({
     triggerOnce: false,
-    threshold: 0.05,
+    threshold: 0.02, // Lower threshold for earlier trigger
+    rootMargin: "0px 0px -5% 0px", // Trigger slightly earlier
   });
   // Track for category change animation
   const [isChangingCategory, setIsChangingCategory] = useState(false);
 
-  // Handle category change with animation
+  // Simplified category change with direct CSS transitions for smoother animation
   const handleCategoryChange = (newCategory: CategoryName) => {
     if (newCategory !== activeCategory) {
       setIsChangingCategory(true);
+      // Simple timeout for the fade-out effect
       setTimeout(() => {
         setActiveCategory(newCategory);
-        setIsChangingCategory(false);
-      }, 300);
+        // Quick timeout for the fade-in effect
+        setTimeout(() => {
+          setIsChangingCategory(false);
+        }, 50);
+      }, 150); // Shorter fade-out time for snappier response
     }
   };
 
   const { theme } = useTheme();
 
-  // Enhanced Animation variants
+  // Enhanced Animation variants with smoother transitions
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
+        staggerChildren: 0.05, // Reduced for smoother sequence
+        delayChildren: 0.1, // Reduced delay for quicker start
         when: "beforeChildren",
-        duration: 0.8,
+        duration: 0.6, // Slightly faster overall transition
+        ease: "easeOut",
       },
     },
     exit: {
       opacity: 0,
       transition: {
-        staggerChildren: 0.05,
+        staggerChildren: 0.03, // Smoother exit sequence
         staggerDirection: -1,
         when: "afterChildren",
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 40, scale: 0.9 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 24,
-        mass: 0.8,
-        duration: 0.7,
-        delay: i * 0.06,
-      },
-    }),
-    exit: {
-      opacity: 0,
-      y: -20,
-      transition: {
-        type: "tween",
-        ease: "easeInOut",
-        duration: 0.4,
-      },
-    },
-    hover: {
-      y: -8,
-      scale: 1.05,
-      boxShadow: "0 15px 30px -10px rgba(0, 0, 0, 0.2)",
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10,
-        mass: 0.6,
-      },
-    },
-  };
-
-  const iconFloatVariants = {
-    initial: { y: 0, opacity: 0.8 },
-    float: {
-      y: [-3, 3, -3],
-      opacity: [0.8, 1, 0.8],
-      filter: ["brightness(1)", "brightness(1.2)", "brightness(1)"],
-      transition: {
-        repeat: Infinity,
-        repeatType: "loop" as const,
-        duration: 3,
-        ease: "easeInOut",
-      },
-    },
-    hover: {
-      rotate: [0, -8, 8, -4, 0],
-      scale: 1.2,
-      opacity: 1,
-      filter: "brightness(1.3)",
-      transition: {
-        duration: 0.6,
         ease: "easeInOut",
       },
     },
   };
 
-  // Enhanced category tab animations
+  // We now use direct animation properties instead of variants for smoother animations
+
+  // We now use simplified direct animations instead of variants for smoother icon effects
+
+  // Enhanced category tab animations with smoother transitions
   const tabVariants = {
     inactive: {
-      scale: 0.95,
-      opacity: 0.7,
+      scale: 0.99, // Even less extreme scale difference
+      opacity: 0.85, // Even higher opacity in inactive state
       y: 0,
-      transition: { duration: 0.4 },
+      transition: {
+        duration: 0.25, // Faster transition
+        ease: [0.4, 0, 0.2, 1], // Material design standard easing
+      },
     },
     active: {
       scale: 1,
       opacity: 1,
-      y: -3,
+      y: -1.5, // Less extreme shift
       transition: {
-        type: "spring",
-        stiffness: 500,
-        damping: 20,
-        duration: 0.5,
+        type: "tween", // Using tween instead of spring for more predictable motion
+        duration: 0.2, // Faster response
+        ease: [0.2, 0, 0, 1], // Custom ease-out for smoother motion
       },
     },
     hover: {
-      scale: 1.05,
-      y: -5,
+      scale: 1.02, // Less extreme scale
+      y: -2, // Less extreme shift
       transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 8,
+        type: "tween", // Using tween instead of spring to prevent jitter
+        duration: 0.15, // Fast response
+        ease: [0.2, 0, 0, 1], // Custom ease-out for responsive feel
       },
     },
   };
 
-  // Enhanced skill level indicator animation
-  const levelIndicatorVariants = {
-    hidden: { scale: 0, opacity: 0 },
-    visible: (delay: number) => ({
-      scale: 1,
-      opacity: 1,
-      transition: {
-        delay: 0.3 + delay * 0.1,
-        type: "spring",
-        stiffness: 500,
-        damping: 15,
-      },
-    }),
-  };
-
-  // Enhanced skill level progress bar animations with gradient effect
-  const skillLevelBarVariants = {
-    hidden: { width: 0, opacity: 0 },
-    visible: (level: SkillLevel) => ({
-      width:
-        level === "Beginner" ? "30%" : level === "Intermediate" ? "60%" : "90%",
-      opacity: 1,
-      transition: {
-        delay: 0.4,
-        duration: 0.8,
-        ease: "easeOut",
-      },
-    }),
-    hover: (level: SkillLevel) => ({
-      width:
-        level === "Beginner" ? "35%" : level === "Intermediate" ? "65%" : "95%",
-      filter: "brightness(1.2)",
-      transition: {
-        duration: 0.3,
-        ease: "easeOut",
-      },
-    }),
-  };
-
-  // Animation for the gradient effect on skill level bars
-  const gradientShiftVariants = {
-    initial: { backgroundPosition: "0% 50%" },
-    animate: {
-      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-      transition: {
-        repeat: Infinity,
-        duration: 10,
-        ease: "easeInOut",
-      },
-    },
-  };
+  // Removed skill level related animations as we no longer show them
 
   const backgroundPulseVariants = {
-    initial: { opacity: 0.2, scale: 1 },
+    initial: { opacity: 0.12, scale: 1 },
     pulse: {
-      opacity: [0.2, 0.3, 0.2],
-      scale: [1, 1.02, 1],
+      opacity: [0.12, 0.18, 0.12], // Even subtler opacity change
+      scale: [1, 1.01, 1], // Even subtler scale change
       transition: {
         repeat: Infinity,
-        duration: 3,
-        ease: "easeInOut",
+        duration: 6, // Even slower, more subtle animation
+        ease: [0.4, 0, 0.2, 1], // Material design standard ease curve
+        times: [0, 0.5, 1], // Distributes keyframes evenly
       },
     },
   };
 
-  // Create a custom hook for scrolling animation
+  // Create a custom hook for scrolling animation with improved settings
   const useScrollAnimation = (threshold = 0.1) => {
     const [element, inView] = useInView({
       triggerOnce: false,
       threshold: threshold,
+      rootMargin: "0px 0px -5% 0px", // Trigger slightly earlier
     });
 
     return { ref: element, inView };
   };
 
   // Use multiple scroll animation references for different sections
-  const { ref: cardRef1, inView: cardInView1 } = useScrollAnimation(0.05);
-  const { ref: cardRef2, inView: cardInView2 } = useScrollAnimation(0.05);
+  const { ref: cardRef1, inView: cardInView1 } = useScrollAnimation(0.02); // Lower threshold for earlier trigger
+  const { ref: cardRef2, inView: cardInView2 } = useScrollAnimation(0.02);
 
   // Cursor effect for enhanced interactivity
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
@@ -470,8 +343,8 @@ const TechStack = () => {
       id="tech-stack"
       className={`section relative overflow-hidden py-24 ${
         theme === "dark"
-          ? "bg-gray-900 text-white"
-          : "bg-slate-50 text-gray-800"
+          ? "bg-gradient-to-b from-gray-900 to-gray-950 text-white"
+          : "bg-gradient-to-b from-gray-50 to-gray-100 text-gray-800"
       }`}
       style={{
         scrollMarginTop: "150px",
@@ -486,33 +359,69 @@ const TechStack = () => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Custom cursor effect that follows skill icons on hover */}
+      {/* Custom cursor effect that follows skill icons on hover - with ultra-smooth tracking */}
       {isHovering && (
         <motion.div
           className={`fixed w-8 h-8 rounded-full pointer-events-none z-50 ${
             theme === "dark"
-              ? "bg-gradient-to-r from-blue-500/30 to-purple-500/30 backdrop-blur-md"
-              : "bg-gradient-to-r from-blue-400/30 to-purple-400/30 backdrop-blur-md"
-          } border border-white/10`}
+              ? "bg-gradient-to-r from-blue-500/15 to-purple-500/15 backdrop-blur-sm"
+              : "bg-gradient-to-r from-blue-400/15 to-purple-400/15 backdrop-blur-sm"
+          } border border-white/8`}
+          style={{
+            translateX: cursorPos.x - 16,
+            translateY: cursorPos.y - 16,
+            transition: "none", // Removes default transition for exact cursor positioning
+          }}
           animate={{
-            x: cursorPos.x - 16,
-            y: cursorPos.y - 16,
-            scale: [1, 1.2, 1],
-            opacity: [0.6, 0.8, 0.6],
+            scale: [1, 1.05, 1], // Even subtler scale effect
+            opacity: [0.4, 0.5, 0.4], // Even subtler opacity change
           }}
           transition={{
-            x: { duration: 0.2, ease: "linear" },
-            y: { duration: 0.2, ease: "linear" },
-            opacity: { duration: 1.5, repeat: Infinity },
-            scale: { duration: 1.5, repeat: Infinity },
+            opacity: {
+              duration: 2.5, // Slower, subtler pulse
+              repeat: Infinity,
+              ease: "easeInOut",
+              times: [0, 0.5, 1], // Even distribution
+            },
+            scale: {
+              duration: 2.5, // Slower, subtler pulse
+              repeat: Infinity,
+              ease: "easeInOut",
+              times: [0, 0.5, 1], // Even distribution
+            },
           }}
         />
       )}
-      {/* Enhanced Glass morphism background elements */}
-      <div className="absolute inset-0 overflow-hidden opacity-30">
+      {/* Background Elements - Similar to Education/Experience */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Background pattern */}
+        <svg
+          className={`absolute left-0 top-0 h-full w-full ${
+            theme === "dark" ? "opacity-10" : "opacity-5"
+          }`}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <pattern
+              id="tech-stack-grid"
+              width="40"
+              height="40"
+              patternUnits="userSpaceOnUse"
+            >
+              <path
+                d="M0 40L40 0M20 40L40 20M0 20L20 0"
+                stroke={theme === "dark" ? "#4f46e5" : "#6366f1"}
+                strokeWidth="1"
+                fill="none"
+              />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#tech-stack-grid)" />
+        </svg>
+        
         {/* Animated background elements */}
         <motion.div
-          className="absolute left-1/4 top-1/4 h-64 w-64 rounded-full bg-purple-500 blur-3xl"
+          className="absolute left-1/4 top-1/4 h-64 w-64 rounded-full bg-indigo-500 blur-3xl"
           variants={backgroundPulseVariants}
           initial="initial"
           animate="pulse"
@@ -535,7 +444,7 @@ const TechStack = () => {
           }}
         />
         <motion.div
-          className="absolute left-2/3 top-1/3 h-72 w-72 rounded-full bg-teal-500 blur-3xl"
+          className="absolute left-2/3 top-1/3 h-72 w-72 rounded-full bg-purple-500 blur-3xl"
           variants={backgroundPulseVariants}
           initial="initial"
           animate="pulse"
@@ -546,36 +455,67 @@ const TechStack = () => {
             repeatType: "reverse",
           }}
         />
-
-        {/* Additional subtle pattern overlay */}
-        <div className="absolute inset-0 bg-gradient-radial from-transparent to-black/10 dark:to-black/20 mix-blend-overlay"></div>
       </div>
 
       <div className="container relative z-10 mx-auto max-w-6xl px-4">
-        {/* Enhanced Section Header */}
+        {/* Enhanced Section Header with smoother animations */}
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: -30 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -30 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          initial={{ opacity: 0, y: -20 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+          transition={{
+            duration: 0.5,
+            ease: "easeOut",
+            type: "spring",
+            stiffness: 100,
+            damping: 15,
+          }}
           className="mb-16 text-center"
         >
+          {/* Category Badge - Similar to Education/Experience */}
+          <motion.span
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium text-sm mb-6 ${
+              theme === "dark"
+                ? "bg-gradient-to-r from-blue-900/40 to-purple-900/40 text-blue-300 border border-blue-800/40"
+                : "bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 border border-blue-200"
+            } shadow-lg backdrop-blur-sm`}
+          >
+            <FaLaptopCode className="w-5 h-5" />
+            Technical Expertise
+          </motion.span>
+
           <motion.h2
-            className="mb-4 text-4xl font-bold md:text-5xl inline-block relative"
-            initial={{ opacity: 0, y: -20 }}
-            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            className="mb-4 text-4xl font-bold md:text-5xl inline-block relative font-heading"
+            initial={{ opacity: 0, y: -15 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -15 }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 15,
+              delay: 0.1,
+            }}
           >
             My{" "}
-            <span className="bg-gradient-to-r from-blue-600 via-purple-500 to-teal-400 bg-clip-text text-transparent relative">
+            <span className={`bg-gradient-to-r ${
+              theme === "dark"
+                ? "from-blue-400 to-purple-400"
+                : "from-blue-600 to-purple-600"
+            } bg-clip-text text-transparent relative`}>
               Tech Stack
               <motion.span
-                className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 via-purple-500 to-teal-400 rounded-full"
+                className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 via-purple-500 to-indigo-400 rounded-full"
                 initial={{ scaleX: 0, opacity: 0 }}
                 animate={
                   inView ? { scaleX: 1, opacity: 1 } : { scaleX: 0, opacity: 0 }
                 }
-                transition={{ duration: 0.8, delay: 0.5 }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.3,
+                  ease: "easeOut",
+                }}
               />
             </span>
           </motion.h2>
@@ -584,9 +524,14 @@ const TechStack = () => {
             className={`mx-auto max-w-2xl text-lg ${
               theme === "dark" ? "text-gray-300" : "text-gray-600"
             }`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
+            initial={{ opacity: 0, y: 15 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 15,
+              delay: 0.2,
+            }}
           >
             <span className="relative">
               The modern technologies and tools I use to build interactive and
@@ -597,21 +542,22 @@ const TechStack = () => {
                 } rounded-full`}
                 initial={{ scaleX: 0, transformOrigin: "left" }}
                 animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
-                transition={{ duration: 0.8, delay: 0.7 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
               />
             </span>
           </motion.p>
         </motion.div>
 
-        {/* Enhanced Category tabs */}
+        {/* Enhanced Category tabs with smoother animations */}
         <motion.div
           className="max-w-4xl mx-auto mb-12"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }} // Reduced initial offset
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: 0.6,
-            ease: "easeOut",
-            delay: 0.2,
+            type: "spring", // Spring physics for smoother animation
+            stiffness: 100,
+            damping: 15,
+            delay: 0.1, // Reduced delay
           }}
         >
           <motion.div
@@ -631,11 +577,11 @@ const TechStack = () => {
                   className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-medium transition-all ${
                     isActive
                       ? theme === "dark"
-                        ? "bg-gradient-to-r from-blue-700 to-purple-700 text-white shadow-lg shadow-blue-900/20"
-                        : "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/20"
+                        ? "bg-gradient-to-r from-blue-700 to-indigo-700 text-white shadow-lg shadow-blue-900/20 border border-blue-600/30"
+                        : "bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg shadow-blue-500/20 border border-blue-400/30"
                       : theme === "dark"
-                      ? "bg-gray-800/80 text-gray-300 hover:bg-gray-700/90 backdrop-blur-sm"
-                      : "bg-white/90 text-gray-700 hover:bg-gray-50/90 shadow backdrop-blur-sm"
+                      ? "bg-gray-800/80 text-gray-300 hover:bg-gray-700/90 backdrop-blur-sm border border-gray-700/60 hover:border-gray-600/80"
+                      : "bg-white/90 text-gray-700 hover:bg-gray-50/90 shadow backdrop-blur-sm border border-gray-200 hover:border-gray-300"
                   } relative overflow-hidden`}
                   variants={tabVariants}
                   initial="inactive"
@@ -649,19 +595,20 @@ const TechStack = () => {
                     delay: index * 0.1,
                   }}
                 >
-                  {/* Animated background glow effect for active tab */}
+                  {/* Animated background glow effect for active tab - with smoother animation */}
                   {isActive && (
                     <motion.div
-                      className="absolute inset-0 opacity-30"
+                      className="absolute inset-0 opacity-20" // Lower base opacity
                       initial={{ opacity: 0 }}
                       animate={{
-                        opacity: [0.2, 0.3, 0.2],
-                        scale: [1, 1.05, 1],
+                        opacity: [0.2, 0.25, 0.2], // Subtler opacity change
+                        scale: [1, 1.02, 1], // Subtler scale change
                       }}
                       transition={{
-                        duration: 2,
+                        duration: 3, // Slower, more subtle animation
                         repeat: Infinity,
                         repeatType: "reverse",
+                        ease: "easeInOut", // Smoother easing
                       }}
                     >
                       <div
@@ -673,10 +620,19 @@ const TechStack = () => {
                   {/* Tab Icon */}
                   <motion.span
                     className={`text-lg ${isActive ? "text-white" : ""}`}
-                    variants={iconFloatVariants}
-                    initial="initial"
-                    animate="float"
-                    whileHover="hover"
+                    initial={{ y: 0 }}
+                    animate={{ y: [0, -1, 0, 1, 0] }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 5,
+                      ease: "linear",
+                      times: [0, 0.25, 0.5, 0.75, 1],
+                    }}
+                    whileHover={{
+                      scale: 1.1,
+                      rotate: [-2, 2, -1, 1, 0],
+                      transition: { duration: 0.5 },
+                    }}
                   >
                     {category.icon}
                   </motion.span>
@@ -708,7 +664,7 @@ const TechStack = () => {
           </motion.div>
         </motion.div>
 
-        {/* Enhanced Tech stack grid with scroll and category transition animations */}
+        {/* Enhanced Tech stack grid with smoother scroll and category transition animations */}
         <motion.div
           ref={contentRef}
           variants={containerVariants}
@@ -719,11 +675,14 @@ const TechStack = () => {
           style={{
             opacity: isChangingCategory ? 0 : contentInView ? 1 : 0,
             transform: isChangingCategory
-              ? "translateY(20px)"
+              ? "translateY(5px)" // Even subtler transition
               : contentInView
               ? "translateY(0)"
-              : "translateY(20px)",
-            transition: "opacity 300ms ease, transform 300ms ease",
+              : "translateY(5px)", // Even subtler transition
+            transition: "opacity 150ms ease-out, transform 150ms ease-out", // Simple transition
+            willChange: "opacity, transform", // Performance optimization hint
+            transformStyle: "preserve-3d", // Better 3D performance
+            backfaceVisibility: "hidden", // Prevents flickering during transitions
           }}
         >
           {activeCategory === "Web Development" ? (
@@ -733,8 +692,8 @@ const TechStack = () => {
                 <div
                   className={`px-4 py-2 rounded-full font-medium ${
                     theme === "dark"
-                      ? "bg-gradient-to-r from-blue-900/40 to-indigo-900/40 text-blue-300 border border-blue-800/30"
-                      : "bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 border border-blue-200"
+                      ? "bg-indigo-900/30 text-indigo-400 border border-indigo-700/30"
+                      : "bg-indigo-100 text-indigo-700 border border-indigo-200"
                   } shadow-md`}
                 >
                   <span className="flex items-center gap-2">
@@ -745,8 +704,8 @@ const TechStack = () => {
                 <div
                   className={`px-4 py-2 rounded-full font-medium ${
                     theme === "dark"
-                      ? "bg-gradient-to-r from-teal-900/40 to-green-900/40 text-teal-300 border border-teal-800/30"
-                      : "bg-gradient-to-r from-teal-100 to-green-100 text-teal-700 border border-teal-200"
+                      ? "bg-teal-900/30 text-teal-400 border border-teal-700/30"
+                      : "bg-teal-100 text-teal-700 border border-teal-200"
                   } shadow-md`}
                 >
                   <span className="flex items-center gap-2">
@@ -765,72 +724,82 @@ const TechStack = () => {
                   <motion.div
                     key={tech.name}
                     custom={index}
-                    variants={itemVariants}
-                    className={`p-4 rounded-xl transition-all ${
+                    className={`p-4 rounded-xl ${
                       theme === "dark"
-                        ? "bg-gray-800/80 border border-gray-700 backdrop-blur-sm"
-                        : "bg-white/90 border border-gray-200 shadow-xl backdrop-blur-sm"
-                    } group relative overflow-hidden`}
-                    whileHover="hover"
-                    layout
-                    initial={{
-                      opacity: 0,
-                      y: 30,
-                      rotateX: 10,
-                      scale: 0.9,
-                    }}
+                        ? "bg-gray-800/80 border border-gray-700/60 hover:border-gray-600/80 backdrop-blur-sm"
+                        : "bg-white/90 border border-gray-200 hover:border-gray-300 shadow-lg backdrop-blur-sm"
+                    } group relative overflow-hidden transition-all duration-200`}
+                    initial={{ opacity: 0, y: 15 }} // Simpler initial state, no 3D transforms
                     animate={{
                       opacity: cardInView1 ? 1 : 0,
-                      y: cardInView1 ? 0 : 30,
-                      rotateX: cardInView1 ? 0 : 10,
-                      scale: cardInView1 ? 1 : 0.9,
+                      y: cardInView1 ? 0 : 15,
+                    }}
+                    transition={{
+                      type: "tween", // Using tween for stability
+                      duration: 0.4,
+                      ease: [0.25, 0.1, 0.25, 1], // Cubic bezier for smooth animation
+                      delay: index * 0.03, // Slight stagger
+                    }}
+                    style={{
+                      boxShadow:
+                        "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+                      transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                    }}
+                    whileHover={{
+                      y: -4,
+                      boxShadow:
+                        "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
                       transition: {
-                        duration: 0.6,
-                        delay: index * 0.08,
+                        type: "tween",
                         ease: "easeOut",
+                        duration: 0.2,
                       },
                     }}
                   >
                     {/* Background highlight effect on hover */}
-                    <motion.div
-                      className={`absolute inset-0 opacity-0 rounded-xl ${
+                    <div
+                      className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-out ${
                         theme === "dark"
                           ? tech.type === "Frontend"
-                            ? "bg-blue-700/20"
-                            : "bg-green-700/20"
+                            ? "bg-gradient-to-br from-indigo-900/30 to-blue-900/20"
+                            : "bg-gradient-to-br from-teal-900/30 to-green-900/20"
                           : tech.type === "Frontend"
-                          ? "bg-blue-500/10"
-                          : "bg-green-500/10"
+                          ? "bg-gradient-to-br from-indigo-50 to-blue-50"
+                          : "bg-gradient-to-br from-teal-50 to-green-50"
                       }`}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileHover={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.3 }}
                     />
 
                     <div className="flex items-center gap-3 relative z-10">
-                      <motion.div
+                      <div
                         className={`w-10 h-10 rounded-lg flex items-center justify-center ${
                           theme === "dark"
                             ? tech.type === "Frontend"
-                              ? "bg-blue-900/50"
-                              : "bg-green-900/50"
+                              ? "bg-gradient-to-br from-indigo-900/50 to-blue-900/50 border border-indigo-700/30"
+                              : "bg-gradient-to-br from-teal-900/50 to-green-900/50 border border-teal-700/30"
                             : tech.type === "Frontend"
-                            ? "bg-blue-100"
-                            : "bg-green-100"
-                        } shadow-inner group-hover:shadow-md overflow-hidden`}
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ type: "spring", stiffness: 400 }}
+                            ? "bg-gradient-to-br from-indigo-100 to-blue-100 border border-indigo-200"
+                            : "bg-gradient-to-br from-teal-100 to-green-100 border border-green-200"
+                        } shadow-inner group-hover:shadow-md overflow-hidden transition-all duration-200`}
+                        style={{ transform: "translateZ(0)" }} // Force hardware acceleration
                       >
                         <motion.span
                           className="text-xl"
-                          variants={iconFloatVariants}
-                          initial="initial"
-                          animate="float"
-                          whileHover="hover"
+                          initial={{ y: 0 }}
+                          animate={{ y: [0, -1, 0, 1, 0] }}
+                          transition={{
+                            repeat: Infinity,
+                            duration: 5,
+                            ease: "linear",
+                            times: [0, 0.25, 0.5, 0.75, 1],
+                          }}
+                          whileHover={{
+                            scale: 1.1,
+                            transition: { duration: 0.2, ease: "easeOut" },
+                          }}
                         >
                           {tech.icon}
                         </motion.span>
-                      </motion.div>
+                      </div>
 
                       <div className="flex-1">
                         <motion.h3
@@ -848,90 +817,22 @@ const TechStack = () => {
                           {tech.name}
                         </motion.h3>
 
-                        <div className="mt-1 relative">
-                          {" "}
-                          {/* Skill level bar with animated gradient */}
-                          <div className="h-[6px] w-full bg-gray-200/30 rounded-full overflow-hidden">
-                            <motion.div
-                              className={`h-full rounded-full ${
-                                tech.level === "Advanced"
-                                  ? "bg-gradient-to-r from-teal-500 via-teal-400 to-teal-500"
-                                  : tech.level === "Intermediate"
-                                  ? "bg-gradient-to-r from-blue-500 via-blue-400 to-blue-500"
-                                  : "bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-500"
-                              } bg-[length:200%_100%]`}
-                              variants={skillLevelBarVariants}
-                              custom={tech.level}
-                              initial="hidden"
-                              animate="visible"
-                              whileHover="hover"
-                            />
-                            <motion.div
-                              className="absolute inset-0 opacity-0 group-hover:opacity-100"
-                              variants={gradientShiftVariants}
-                              initial="initial"
-                              animate="animate"
-                              style={{
-                                background:
-                                  tech.level === "Advanced"
-                                    ? "linear-gradient(90deg, rgba(20,184,166,0.2) 0%, rgba(45,212,191,0.4) 50%, rgba(20,184,166,0.2) 100%)"
-                                    : tech.level === "Intermediate"
-                                    ? "linear-gradient(90deg, rgba(59,130,246,0.2) 0%, rgba(96,165,250,0.4) 50%, rgba(59,130,246,0.2) 100%)"
-                                    : "linear-gradient(90deg, rgba(234,179,8,0.2) 0%, rgba(250,204,21,0.4) 50%, rgba(234,179,8,0.2) 100%)",
-                                backgroundSize: "200% 100%",
-                              }}
-                            />
-                          </div>
-                          <div className="flex items-center justify-between mt-1">
-                            <motion.div
-                              className="flex items-center gap-1.5"
-                              custom={index}
-                              variants={levelIndicatorVariants}
-                            >gin
-                              <span
-                                className={`inline-flex w-2 h-2 rounded-full ${
-                                  levelColor[tech.level]
-                                }`}
-                              />
-                              <span
-                                className={`text-xs ${
-                                  theme === "dark"
-                                    ? "text-gray-400"
-                                    : "text-gray-500"
-                                }`}
-                              >
-                                {tech.level}
-                              </span>
-                            </motion.div>
-
-                            {/* Hot spot indicator that appears on hover */}
-                            <motion.div
-                              className="opacity-0 group-hover:opacity-100"
-                              initial={{ scale: 0 }}
-                              whileHover={{ scale: 1 }}
-                              transition={{ duration: 0.2 }}
-                            >
-                              <motion.span
-                                className={`inline-flex w-1.5 h-1.5 rounded-full ${
-                                  tech.level === "Advanced"
-                                    ? "bg-teal-500"
-                                    : tech.level === "Intermediate"
-                                    ? "bg-blue-500"
-                                    : "bg-yellow-500"
-                                }`}
-                                animate={{
-                                  scale: [1, 1.5, 1],
-                                  opacity: [1, 0.7, 1],
-                                }}
-                                transition={{
-                                  repeat: Infinity,
-                                  duration: 2,
-                                  ease: "easeInOut",
-                                }}
-                              />
-                            </motion.div>
-                          </div>
-                        </div>
+                        {/* Display tech type as a badge */}
+                        {tech.type && (
+                          <span
+                            className={`inline-block mt-1 text-xs px-2 py-0.5 rounded-full ${
+                              tech.type === "Frontend"
+                                ? theme === "dark"
+                                  ? "bg-indigo-900/30 text-indigo-400 border border-indigo-700/30"
+                                  : "bg-indigo-100 text-indigo-700 border border-indigo-200"
+                                : theme === "dark"
+                                ? "bg-teal-900/30 text-teal-400 border border-teal-700/30"
+                                : "bg-teal-100 text-teal-700 border border-teal-200"
+                            }`}
+                          >
+                            {tech.type}
+                          </span>
+                        )}
                       </div>
                     </div>
                   </motion.div>
@@ -947,81 +848,91 @@ const TechStack = () => {
                 <motion.div
                   key={tech.name}
                   custom={index}
-                  variants={itemVariants}
-                  className={`p-4 rounded-xl transition-all ${
+                  className={`p-4 rounded-xl ${
                     theme === "dark"
-                      ? "bg-gray-800/80 border border-gray-700 backdrop-blur-sm"
-                      : "bg-white/90 border border-gray-200 shadow-xl backdrop-blur-sm"
-                  } group relative overflow-hidden`}
-                  whileHover="hover"
-                  layout
-                  initial={{
-                    opacity: 0,
-                    y: 30,
-                    rotateX: 10,
-                    scale: 0.9,
-                  }}
+                      ? "bg-gray-800/80 border border-gray-700/60 hover:border-gray-600/80 backdrop-blur-sm"
+                      : "bg-white/90 border border-gray-200 hover:border-gray-300 shadow-lg backdrop-blur-sm"
+                  } group relative overflow-hidden transition-all duration-200`}
+                  initial={{ opacity: 0, y: 15 }} // Simpler initial state, no 3D transforms
                   animate={{
                     opacity: cardInView2 ? 1 : 0,
-                    y: cardInView2 ? 0 : 30,
-                    rotateX: cardInView2 ? 0 : 10,
-                    scale: cardInView2 ? 1 : 0.9,
+                    y: cardInView2 ? 0 : 15,
+                  }}
+                  transition={{
+                    type: "tween", // Using tween for stability
+                    duration: 0.4,
+                    ease: [0.25, 0.1, 0.25, 1], // Cubic bezier for smooth animation
+                    delay: index * 0.03, // Slight stagger
+                  }}
+                  style={{
+                    boxShadow:
+                      "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+                    transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                  }}
+                  whileHover={{
+                    y: -4,
+                    boxShadow:
+                      "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
                     transition: {
-                      duration: 0.6,
-                      delay: index * 0.08,
+                      type: "tween",
                       ease: "easeOut",
+                      duration: 0.2,
                     },
                   }}
                 >
                   {/* Background highlight effect on hover */}
-                  <motion.div
-                    className={`absolute inset-0 opacity-0 rounded-xl ${
+                  <div
+                    className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-out ${
                       theme === "dark"
                         ? activeCategory === "Database"
-                          ? "bg-indigo-700/20"
+                          ? "bg-gradient-to-br from-indigo-900/30 to-purple-900/20"
                           : activeCategory === "Languages"
-                          ? "bg-purple-700/20"
-                          : "bg-teal-700/20"
+                          ? "bg-gradient-to-br from-purple-900/30 to-indigo-900/20"
+                          : "bg-gradient-to-br from-teal-900/30 to-blue-900/20"
                         : activeCategory === "Database"
-                        ? "bg-indigo-500/10"
+                        ? "bg-gradient-to-br from-indigo-50 to-purple-50"
                         : activeCategory === "Languages"
-                        ? "bg-purple-500/10"
-                        : "bg-teal-500/10"
+                        ? "bg-gradient-to-br from-purple-50 to-indigo-50"
+                        : "bg-gradient-to-br from-teal-50 to-blue-50"
                     }`}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileHover={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3 }}
                   />
 
                   <div className="flex items-center gap-3 relative z-10">
-                    <motion.div
+                    {" "}
+                    <div
                       className={`w-10 h-10 rounded-lg flex items-center justify-center ${
                         theme === "dark"
                           ? activeCategory === "Database"
-                            ? "bg-indigo-900/50"
+                            ? "bg-gradient-to-br from-indigo-900/50 to-purple-900/50 border border-indigo-700/30"
                             : activeCategory === "Languages"
-                            ? "bg-purple-900/50"
-                            : "bg-teal-900/50"
+                            ? "bg-gradient-to-br from-purple-900/50 to-indigo-900/50 border border-purple-700/30"
+                            : "bg-gradient-to-br from-teal-900/50 to-blue-900/50 border border-teal-700/30"
                           : activeCategory === "Database"
-                          ? "bg-indigo-100"
+                          ? "bg-gradient-to-br from-indigo-100 to-purple-100 border border-indigo-200"
                           : activeCategory === "Languages"
-                          ? "bg-purple-100"
-                          : "bg-teal-100"
-                      } shadow-inner group-hover:shadow-md overflow-hidden`}
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ type: "spring", stiffness: 400 }}
+                          ? "bg-gradient-to-br from-purple-100 to-indigo-100 border border-purple-200"
+                          : "bg-gradient-to-br from-teal-100 to-blue-100 border border-teal-200"
+                      } shadow-inner group-hover:shadow-md overflow-hidden transition-all duration-200`}
+                      style={{ transform: "translateZ(0)" }} // Force hardware acceleration
                     >
                       <motion.span
                         className="text-xl"
-                        variants={iconFloatVariants}
-                        initial="initial"
-                        animate="float"
-                        whileHover="hover"
+                        initial={{ y: 0 }}
+                        animate={{ y: [0, -1, 0, 1, 0] }}
+                        transition={{
+                          repeat: Infinity,
+                          duration: 5,
+                          ease: "linear",
+                          times: [0, 0.25, 0.5, 0.75, 1],
+                        }}
+                        whileHover={{
+                          scale: 1.1,
+                          transition: { duration: 0.2, ease: "easeOut" },
+                        }}
                       >
                         {tech.icon}
                       </motion.span>
-                    </motion.div>
-
+                    </div>
                     <div className="flex-1">
                       <motion.h3
                         className={`text-sm font-semibold ${
@@ -1042,90 +953,24 @@ const TechStack = () => {
                         {tech.name}
                       </motion.h3>
 
-                      <div className="mt-1 relative">
-                        {/* Skill level bar with animated gradient */}
-                        <div className="h-[6px] w-full bg-gray-200/30 rounded-full overflow-hidden">
-                          <motion.div
-                            className={`h-full rounded-full ${
-                              tech.level === "Advanced"
-                                ? "bg-gradient-to-r from-teal-500 via-teal-400 to-teal-500"
-                                : tech.level === "Intermediate"
-                                ? "bg-gradient-to-r from-blue-500 via-blue-400 to-blue-500"
-                                : "bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-500"
-                            } bg-[length:200%_100%]`}
-                            variants={skillLevelBarVariants}
-                            custom={tech.level}
-                            initial="hidden"
-                            animate="visible"
-                            whileHover="hover"
-                          />
-                          <motion.div
-                            className="absolute inset-0 opacity-0 group-hover:opacity-100"
-                            variants={gradientShiftVariants}
-                            initial="initial"
-                            animate="animate"
-                            style={{
-                              background:
-                                tech.level === "Advanced"
-                                  ? "linear-gradient(90deg, rgba(20,184,166,0.2) 0%, rgba(45,212,191,0.4) 50%, rgba(20,184,166,0.2) 100%)"
-                                  : tech.level === "Intermediate"
-                                  ? "linear-gradient(90deg, rgba(59,130,246,0.2) 0%, rgba(96,165,250,0.4) 50%, rgba(59,130,246,0.2) 100%)"
-                                  : "linear-gradient(90deg, rgba(234,179,8,0.2) 0%, rgba(250,204,21,0.4) 50%, rgba(234,179,8,0.2) 100%)",
-                              backgroundSize: "200% 100%",
-                            }}
-                          />
-                        </div>
-
-                        <div className="flex items-center justify-between mt-1">
-                          <motion.div
-                            className="flex items-center gap-1.5"
-                            custom={index}
-                            variants={levelIndicatorVariants}
-                          >
-                            <span
-                              className={`inline-flex w-2 h-2 rounded-full ${
-                                levelColor[tech.level]
-                              }`}
-                            />
-                            <span
-                              className={`text-xs ${
-                                theme === "dark"
-                                  ? "text-gray-400"
-                                  : "text-gray-500"
-                              }`}
-                            >
-                              {tech.level}
-                            </span>
-                          </motion.div>
-
-                          {/* Hot spot indicator that appears on hover */}
-                          <motion.div
-                            className="opacity-0 group-hover:opacity-100"
-                            initial={{ scale: 0 }}
-                            whileHover={{ scale: 1 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <motion.span
-                              className={`inline-flex w-1.5 h-1.5 rounded-full ${
-                                tech.level === "Advanced"
-                                  ? "bg-teal-500"
-                                  : tech.level === "Intermediate"
-                                  ? "bg-blue-500"
-                                  : "bg-yellow-500"
-                              }`}
-                              animate={{
-                                scale: [1, 1.5, 1],
-                                opacity: [1, 0.7, 1],
-                              }}
-                              transition={{
-                                repeat: Infinity,
-                                duration: 2,
-                                ease: "easeInOut",
-                              }}
-                            />
-                          </motion.div>
-                        </div>
-                      </div>
+                      {/* Add category as subtle text */}
+                      <span
+                        className={`inline-block mt-2 text-xs px-2 py-0.5 rounded-full border ${
+                          theme === "dark"
+                            ? activeCategory === "Database"
+                              ? "bg-indigo-900/30 text-indigo-400 border-indigo-700/30"
+                              : activeCategory === "Languages"
+                              ? "bg-purple-900/30 text-purple-400 border-purple-700/30"
+                              : "bg-teal-900/30 text-teal-400 border-teal-700/30"
+                            : activeCategory === "Database"
+                            ? "bg-indigo-100 text-indigo-700 border-indigo-200"
+                            : activeCategory === "Languages"
+                            ? "bg-purple-100 text-purple-700 border-purple-200"
+                            : "bg-teal-100 text-teal-700 border-teal-200"
+                        }`}
+                      >
+                        {activeCategory}
+                      </span>
                     </div>
                   </div>
                 </motion.div>
