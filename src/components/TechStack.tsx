@@ -473,7 +473,7 @@ const TechStack = () => {
           className="mb-16 text-center"
         >
           {/* Category Badge - Similar to Education/Experience */}
-          <motion.span
+          {/* <motion.span
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -485,7 +485,7 @@ const TechStack = () => {
           >
             <FaLaptopCode className="w-5 h-5" />
             Technical Expertise
-          </motion.span>
+          </motion.span> */}
 
           <motion.h2
             className="mb-4 text-4xl font-bold md:text-5xl inline-block relative font-heading"

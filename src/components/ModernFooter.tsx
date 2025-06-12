@@ -16,7 +16,7 @@ import {
   FaCodeBranch,
   FaDownload,
 } from "react-icons/fa";
-import { SiLeetcode, SiGeeksforgeeks } from "react-icons/si";
+import { SiLeetcode, SiGeeksforgeeks, SiCodechef } from "react-icons/si";
 
 const ModernFooter = () => {
   const { theme } = useTheme();
@@ -75,70 +75,92 @@ const ModernFooter = () => {
   };
 
   const quickLinks = [
-    { name: "Resume", href: resume, icon: <FaDownload size={14} /> },
+    {
+      name: "Resume",
+      href: resume,
+      icon: <FaDownload size={16} />,
+      color: "blue",
+    },
     {
       name: "LeetCode",
       href: "https://leetcode.com/u/mythical-UV/",
-      icon: <SiLeetcode size={14} />,
+      icon: <SiLeetcode size={16} />,
+      color: "indigo",
     },
     {
       name: "GeeksforGeeks",
       href: "https://www.geeksforgeeks.org/user/yuvrajmevbrx/",
-      icon: <SiGeeksforgeeks size={14} />,
+      icon: <SiGeeksforgeeks size={16} />,
+      color: "green",
     },
-    { name: "Projects", href: "#projects", icon: <FaCodeBranch size={14} /> },
+    {
+      name: "CodeChef",
+      href: "https://www.codechef.com/",
+      icon: <SiCodechef size={16} />,
+      color: "purple",
+    },
+    {
+      name: "Projects",
+      href: "#projects",
+      icon: <FaCodeBranch size={16} />,
+      color: "teal",
+    },
   ];
 
   const socialLinks = [
     {
-      icon: <FaGithub size={18} />,
+      icon: <FaGithub size={20} />,
       href: "https://github.com/yuvraj-mehta",
       label: "GitHub",
+      color: "indigo",
     },
     {
-      icon: <FaLinkedin size={18} />,
+      icon: <FaLinkedin size={20} />,
       href: "https://linkedin.com/in/yuvraj-mehta-a0274528a/",
       label: "LinkedIn",
+      color: "blue",
     },
     {
-      icon: <FaTwitter size={18} />,
+      icon: <FaTwitter size={20} />,
       href: "https://twitter.com/",
       label: "Twitter",
+      color: "teal",
     },
     {
-      icon: <SiLeetcode size={18} />,
+      icon: <SiLeetcode size={20} />,
       href: "https://leetcode.com/u/mythical-UV/",
       label: "LeetCode",
+      color: "purple",
     },
     {
-      icon: <FaEnvelope size={18} />,
+      icon: <FaEnvelope size={20} />,
       href: "mailto:yuvraj.mehta532@gmail.com",
       label: "Email",
+      color: "green",
     },
   ];
 
   return (
     <footer
-      className={`relative mt-40 pt-16 overflow-hidden ${
+      className={`relative mt-16 pt-16 overflow-hidden ${
         theme === "dark"
           ? "bg-[#090014] text-white"
           : "bg-gray-50 text-gray-800"
       }`}
     >
-      {/* Wave Divider */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden leading-0">
-        <svg
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-          className={`relative block w-full h-[60px] ${
-            theme === "dark" ? "fill-gray-900" : "fill-white"
+      {/* Footer Border */}
+      <div className="absolute top-0 left-0 w-full h-[6px] overflow-hidden">
+        <div
+          className={`w-full h-full ${
+            theme === "dark"
+              ? "bg-gradient-to-r from-indigo-600 via-violet-500 to-purple-600"
+              : "bg-gradient-to-r from-indigo-400 via-violet-400 to-purple-400"
           }`}
-        >
-          <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"></path>
-        </svg>
+        ></div>
       </div>
+
+      {/* Top Shadow */}
+      <div className="absolute top-[6px] left-0 w-full h-[15px] shadow-[0_5px_15px_rgba(0,0,0,0.1)]"></div>
 
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -162,7 +184,7 @@ const ModernFooter = () => {
       </div>
 
       {/* Main Footer Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 md:pt-24 md:pb-20 relative z-10">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -205,7 +227,7 @@ const ModernFooter = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="flex flex-wrap gap-2 sm:gap-3"
+                className="flex flex-wrap gap-3 sm:gap-4"
               >
                 {socialLinks.map((item, index) => (
                   <motion.a
@@ -215,10 +237,12 @@ const ModernFooter = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={item.label}
-                    className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 ${
+                    whileHover={{ y: -5, scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className={`p-3 rounded-lg flex items-center justify-center transition-all duration-300 ${
                       theme === "dark"
-                        ? "bg-gray-800 hover:bg-indigo-900/70 text-gray-300 hover:text-indigo-300 hover:shadow-glow-sm"
-                        : "bg-gray-100 hover:bg-indigo-100 text-gray-700 hover:text-indigo-600 hover:shadow-md"
+                        ? `bg-${item.color}-900/30 text-${item.color}-400`
+                        : `bg-${item.color}-100 text-${item.color}-600`
                     }`}
                   >
                     {item.icon}
@@ -229,13 +253,14 @@ const ModernFooter = () => {
           </div>
 
           {/* Links & Contact Section */}
-          <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 md:pl-4">
             {/* Contact */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
+              className="min-w-0"
             >
               <h3
                 className={`text-lg font-semibold mb-4 md:mb-5 ${
@@ -246,12 +271,15 @@ const ModernFooter = () => {
               </h3>
               <div className="space-y-3 md:space-y-4">
                 {contactInfo.map((item, index) => (
-                  <div key={index} className="flex items-center gap-3">
+                  <div
+                    key={index}
+                    className="flex items-center gap-3 overflow-hidden"
+                  >
                     <div
-                      className={`w-9 h-9 rounded-md flex items-center justify-center ${
+                      className={`p-2 rounded-md flex-shrink-0 flex items-center justify-center ${
                         theme === "dark"
-                          ? "bg-gray-800/80 text-indigo-400"
-                          : "bg-gray-100 text-indigo-600"
+                          ? "bg-blue-900/30 text-blue-400"
+                          : "bg-blue-100 text-blue-600"
                       }`}
                     >
                       {item.icon}
@@ -263,15 +291,17 @@ const ModernFooter = () => {
                           theme === "dark"
                             ? "text-gray-300 hover:text-white"
                             : "text-gray-600 hover:text-gray-900"
-                        } transition-colors`}
+                        } transition-colors truncate max-w-[180px] sm:max-w-[200px] md:max-w-[160px] lg:max-w-full`}
+                        title={item.text}
                       >
                         {item.text}
                       </a>
                     ) : (
                       <span
-                        className={
+                        className={`${
                           theme === "dark" ? "text-gray-300" : "text-gray-600"
-                        }
+                        } truncate max-w-[180px] sm:max-w-[200px] md:max-w-[160px] lg:max-w-full`}
+                        title={item.text}
                       >
                         {item.text}
                       </span>
@@ -287,6 +317,7 @@ const ModernFooter = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.1 }}
+              className="min-w-0"
             >
               <h3
                 className={`text-lg font-semibold mb-4 md:mb-5 ${
@@ -295,16 +326,12 @@ const ModernFooter = () => {
               >
                 Quick Links
               </h3>
-              <ul className="space-y-2 md:space-y-3">
+              <ul className="space-y-3 md:space-y-4">
                 {quickLinks.map((link, index) => (
                   <li key={index}>
                     <a
                       href={link.href}
-                      className={`group flex items-center gap-2 ${
-                        theme === "dark"
-                          ? "text-gray-400 hover:text-indigo-300"
-                          : "text-gray-600 hover:text-indigo-700"
-                      } transition-colors`}
+                      className="group flex items-center gap-3"
                       target={
                         link.href.startsWith("http") ? "_blank" : undefined
                       }
@@ -314,16 +341,23 @@ const ModernFooter = () => {
                           : undefined
                       }
                     >
-                      <span
-                        className={`${
+                      <div
+                        className={`p-2 rounded-md flex items-center justify-center ${
                           theme === "dark"
-                            ? "text-indigo-400"
-                            : "text-indigo-500"
+                            ? `bg-${link.color}-900/30 text-${link.color}-400`
+                            : `bg-${link.color}-100 text-${link.color}-600`
                         }`}
                       >
                         {link.icon}
-                      </span>
-                      <span className="group-hover:translate-x-1 transition-transform duration-300">
+                      </div>
+                      <span
+                        className={`group-hover:translate-x-1 transition-transform duration-300 truncate ${
+                          theme === "dark"
+                            ? "text-gray-300 hover:text-white"
+                            : "text-gray-700 hover:text-gray-900"
+                        }`}
+                        title={link.name}
+                      >
                         {link.name}
                       </span>
                     </a>
@@ -338,6 +372,7 @@ const ModernFooter = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.2 }}
+              className="min-w-0"
             >
               <h3
                 className={`text-lg font-semibold mb-4 md:mb-5 ${
