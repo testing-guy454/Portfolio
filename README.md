@@ -1,7 +1,7 @@
 # Modern Developer Portfolio
 
-![GitHub last commit](https://img.shields.io/github/last-commit/yourusername/portfolio)
-![GitHub license](https://img.shields.io/github/license/yourusername/portfolio)
+![GitHub last commit](https://img.shields.io/github/last-commit/yuvraj-mehta/Portfolio)
+![GitHub license](https://img.shields.io/github/license/yuvraj-mehta/Portfolio)
 
 A modern, responsive portfolio website built with React, TypeScript, and Vite, designed to showcase my skills as a full stack developer with expertise in data structures and algorithms and a growing knowledge of Generative AI.
 
@@ -28,17 +28,17 @@ A modern, responsive portfolio website built with React, TypeScript, and Vite, d
 
 - **Frontend Framework**: React 18 with TypeScript
 - **Build Tool**: Vite
-- **CSS Framework**: [CSS-in-JS library or framework used]
-- **Animations**: [Animation library used, if any]
-- **Deployment**: [Deployment platform used]
+- **CSS Framework**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Deployment**: Vercel
 
 ## 🛠️ Installation & Setup
 
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/yourusername/portfolio.git
-cd portfolio
+git clone https://github.com/yuvraj-mehta/Portfolio.git
+cd Portfolio
 ```
 
 2. **Install dependencies**
@@ -68,31 +68,34 @@ npm run preview
 ## 📝 Project Structure
 
 ```
-Portfolio2/
+Portfolio/
 ├── public/                  # Static assets and favicon
+│   ├── icons/               # Technology icons (CSS, Docker, HTML, etc.)
+│   └── projectImages/       # Project screenshots and previews
 ├── src/
 │   ├── assets/              # Images, fonts, and other media
-│   ├── components/
-│   │   ├── common/          # Reusable UI components
-│   │   ├── layout/          # Layout components (Header, Footer, etc.)
-│   │   └── sections/        # Page section components
-│   ├── context/             # React context providers
+│   ├── components/          # React components for each section
+│   │   ├── About.tsx        # About me section
+│   │   ├── Contact.tsx      # Contact information
+│   │   ├── DSACounter.tsx   # Data structures & algorithms counter
+│   │   ├── Hero.tsx         # Hero section
+│   │   ├── Projects.tsx     # Projects showcase
+│   │   └── TechStack.tsx    # Technology skills display
+│   ├── contexts/            # React context providers
+│   │   └── ThemeContext.tsx # Theme management for dark/light mode
 │   ├── data/                # Static content and configuration
-│   ├── hooks/               # Custom React hooks
-│   ├── pages/               # Page components
-│   ├── styles/              # Global styles, themes, and variables
-│   ├── types/               # TypeScript type definitions
-│   ├── utils/               # Helper functions and utilities
+│   ├── styles/              # Global styles and custom CSS
 │   ├── App.tsx              # Main application component
 │   ├── main.tsx             # Entry point
 │   └── vite-env.d.ts        # Vite type declarations
-├── .eslintrc.cjs            # ESLint configuration
-├── .gitignore               # Git ignore file
+├── eslint.config.js         # ESLint configuration
 ├── DOCUMENTATION.md         # Project documentation
 ├── index.html               # HTML entry point
 ├── package.json             # Project dependencies and scripts
+├── tailwind.config.js       # Tailwind CSS configuration
 ├── tsconfig.json            # TypeScript configuration
 ├── tsconfig.node.json       # TypeScript configuration for Node
+├── vercel.json              # Vercel deployment configuration
 ├── vite.config.ts           # Vite configuration
 └── README.md                # Project readme
 ```
@@ -100,9 +103,9 @@ Portfolio2/
 ## 🔜 Upcoming Features
 
 - **Individual Project Pages** - Dedicated pages with in-depth information about each project
-- **Real-time Coding Stats** - Live integration with competitive programming platforms showing solved problems and ratings
+- **Real-time Coding Stats** - Live integration with competitive programming platforms showing solved problems and ratings (already started with DSACounter component)
 - **Blog Section** - Technical writing and insights
-- **Dark/Light Mode** - Theme toggle for user preference
+- **Dark/Light Mode** - Theme toggle for user preference (implementation in progress with ThemeContext)
 
 ## 🤝 Contributing
 
@@ -120,10 +123,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-Your Name - [your.email@example.com](mailto:your.email@example.com)
+Yuvraj Mehta - [yuvraj.mehta@example.com](mailto:yuvraj.mehta@example.com)
 
-Project Link: [https://github.com/yourusername/portfolio](https://github.com/yourusername/portfolio)
+Project Link: [https://github.com/yuvraj-mehta/Portfolio](https://github.com/yuvraj-mehta/Portfolio)
 
 ---
 
-⭐️ From [YourUsername](https://github.com/yourusername)
+⭐️ From [yuvraj-mehta](https://github.com/yuvraj-mehta)
