@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes, FaDownload } from "react-icons/fa";
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from "./ThemeSwitcher";
 
 interface NavbarEnhancedProps {
   scrolled: boolean;

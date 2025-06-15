@@ -1,7 +1,7 @@
 import React from "react";
 import { useTheme } from "../contexts/ThemeContext";
 
-interface BackgroundWrapperProps {
+interface SectionContainerProps {
   children: React.ReactNode;
   className?: string;
   id?: string;
@@ -10,9 +10,9 @@ interface BackgroundWrapperProps {
 }
 
 /**
- * Consistent background wrapper component for all sections
+ * Consistent section container component for all sections
  */
-const BackgroundWrapper: React.FC<BackgroundWrapperProps> = ({
+const SectionContainer: React.FC<SectionContainerProps> = ({
   children,
   className = "",
   id,
@@ -55,4 +55,4 @@ const BackgroundWrapper: React.FC<BackgroundWrapperProps> = ({
   );
 };
 
-export default BackgroundWrapper;
+export default SectionContainer;

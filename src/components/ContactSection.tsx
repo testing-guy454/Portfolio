@@ -3,7 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useTheme } from "../contexts/ThemeContext";
-import BackgroundWrapper from "./BackgroundWrapper";
+import SectionContainer from "./SectionContainer";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { HiMail, HiChatAlt2 } from "react-icons/hi";
@@ -114,7 +114,7 @@ const Contact = () => {
   };
 
   return (
-    <BackgroundWrapper
+    <SectionContainer
       id="contact"
       isAlt={true}
       style={{
@@ -629,7 +629,7 @@ const Contact = () => {
           </motion.div>
         </motion.div>
       </div>
-    </BackgroundWrapper>
+    </SectionContainer>
   );
 };
 

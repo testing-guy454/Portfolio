@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useTheme } from "../contexts/ThemeContext";
-import BackgroundWrapper from "./BackgroundWrapper";
+import SectionContainer from "./SectionContainer";
 import {
   FaReact,
   FaNodeJs,
@@ -340,7 +340,7 @@ const TechStack = () => {
   };
 
   return (
-    <BackgroundWrapper
+    <SectionContainer
       id="tech-stack"
       isAlt={true}
       className={theme === "dark" ? "text-white" : "text-gray-800"}
@@ -985,7 +985,7 @@ const TechStack = () => {
           </motion.div>
         </div>
       </motion.div>
-    </BackgroundWrapper>
+    </SectionContainer>
   );
 };
 

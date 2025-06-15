@@ -35,7 +35,7 @@ import {
 } from "react-icons/si";
 import { BiBrain } from "react-icons/bi";
 import { useTheme } from "../contexts/ThemeContext";
-import BackgroundWrapper from "./BackgroundWrapper";
+import SectionContainer from "./SectionContainer";
 // image imports
 import bookHiveImage from "../../public/projectImages/bookhive.png";
 import ecoGuardian from "../../public/projectImages/ecoGuardian.png";
@@ -266,7 +266,7 @@ const Projects = () => {
   };
 
   return (
-    <BackgroundWrapper
+    <SectionContainer
       id="projects"
       style={{
         scrollMarginTop: "150px",
@@ -919,7 +919,7 @@ const Projects = () => {
           </motion.div>
         </motion.div>
       )}
-    </BackgroundWrapper>
+    </SectionContainer>
   );
 };
 

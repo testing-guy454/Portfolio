@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useTheme } from "../contexts/ThemeContext";
-import BackgroundWrapper from "./BackgroundWrapper";
+import SectionContainer from "./SectionContainer";
 import {
   FaCode,
   FaUserGraduate,
@@ -27,7 +27,7 @@ const About = () => {
   ];
 
   return (
-    <BackgroundWrapper id="about">
+    <SectionContainer id="about">
       <div className="container relative z-10 mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -386,7 +386,7 @@ const About = () => {
           </motion.div>
         </div>
       </div>
-    </BackgroundWrapper>
+    </SectionContainer>
   );
 };
 

@@ -7,12 +7,12 @@ import {
   FaExternalLinkAlt,
 } from "react-icons/fa";
 import { useTheme } from "../contexts/ThemeContext";
-import BackgroundWrapper from "./BackgroundWrapper";
+import SectionContainer from "./SectionContainer";
 
 const Hero = () => {
   const { theme } = useTheme();
   return (
-    <BackgroundWrapper
+    <SectionContainer
       id="home"
       isAlt={true}
       className="min-h-screen flex items-center justify-center"
@@ -299,7 +299,7 @@ const Hero = () => {
           </div>
         </motion.div>
       </div>
-    </BackgroundWrapper>
+    </SectionContainer>
   );
 };
 

@@ -3,17 +3,16 @@ import { motion } from "framer-motion";
 import { FaArrowUp } from "react-icons/fa";
 import "./App.css";
 import "./styles/backgroundStyles.css";
-import "./styles/backgroundStyles.css";
-import NavbarEnhanced from "./components/NavbarEnhanced";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Experience from "./components/Experience";
-import EducationExperience from "./components/EducationExperience";
-import Coding from "./components/Coding";
-import TechStack from "./components/TechStack";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
-import ModernFooter from "./components/ModernFooter";
+import NavigationBar from "./components/NavigationBar";
+import HeroSection from "./components/HeroSection";
+import AboutSection from "./components/AboutSection";
+import WorkExperienceSection from "./components/WorkExperienceSection";
+import EducationSection from "./components/EducationSection";
+import CodingSkillsSection from "./components/CodingSkillsSection";
+import TechStackSection from "./components/TechStackSection";
+import ProjectsSection from "./components/ProjectsSection";
+import ContactSection from "./components/ContactSection";
+import PageFooter from "./components/PageFooter";
 import { useTheme } from "./contexts/ThemeContext";
 
 function App() {
@@ -91,7 +90,7 @@ function App() {
         }}
       ></div>
 
-      <NavbarEnhanced scrolled={scrolled} />
+      <NavigationBar scrolled={scrolled} />
       <main
         className={`${
           theme === "dark"
@@ -99,14 +98,14 @@ function App() {
             : "bg-gradient-to-b from-gray-50 to-white"
         }`}
       >
-        <Hero />
-        <About />
-        <Experience />
-        <EducationExperience />
-        <Coding />
-        <TechStack />
-        <Projects />
-        <Contact />
+        <HeroSection />
+        <AboutSection />
+        <WorkExperienceSection />
+        <EducationSection />
+        <CodingSkillsSection />
+        <TechStackSection />
+        <ProjectsSection />
+        <ContactSection />
         {scrolled && (
           <motion.a
             href="#home"
@@ -125,7 +124,7 @@ function App() {
           </motion.a>
         )}
       </main>
-      <ModernFooter />
+      <PageFooter />
     </div>
   );
 }

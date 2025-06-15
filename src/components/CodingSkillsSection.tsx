@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useTheme } from "../contexts/ThemeContext";
-import DSACounter from "./DSACounter";
+import DSACounter from "./DSAStatsCounter";
 import { FaMedal } from "react-icons/fa";
 import { SiCodechef, SiGeeksforgeeks, SiLeetcode } from "react-icons/si";
 
