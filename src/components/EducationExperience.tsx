@@ -707,7 +707,7 @@ const EducationExperience = () => {
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.4, duration: 0.8 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
               className="mb-8"
             >
               <h3
@@ -733,7 +733,7 @@ const EducationExperience = () => {
               <motion.div
                 initial={{ width: 0 }}
                 animate={inView ? { width: 40 } : {}}
-                transition={{ delay: 0.6, duration: 0.6 }}
+                transition={{ delay: 0.3, duration: 0.4 }}
                 className={`h-1 mb-6 rounded-full ${
                   theme === "dark"
                     ? "bg-gradient-to-r from-blue-500 to-indigo-500"
@@ -753,15 +753,8 @@ const EducationExperience = () => {
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  whileHover={{
-                    scale: 1.02,
-                    y: -5,
-                    transition: {
-                      type: "spring",
-                      stiffness: 400,
-                      damping: 15,
-                    },
-                  }}
+                  initial="rest"
+                  whileHover="hover"
                   className={`p-6 rounded-2xl border ${
                     theme === "dark"
                       ? "bg-gradient-to-br from-gray-800/80 to-gray-900/80 border-gray-700/50 hover:border-gray-600 hover:border-opacity-90"
@@ -774,7 +767,10 @@ const EducationExperience = () => {
                         : `radial-gradient(circle at top right, rgba(37, 99, 235, 0.03), transparent 80%)`,
                   }}
                 >
-                  <div className="flex items-start gap-4">
+                  <motion.div
+                    variants={cardHoverAnimation}
+                    className="flex items-start gap-4"
+                  >
                     <div
                       className={`p-3 rounded-xl ${
                         getColorClasses(cert.color).bg
@@ -838,7 +834,7 @@ const EducationExperience = () => {
                         </button>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </motion.div>
               ))}
             </motion.div>

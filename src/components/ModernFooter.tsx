@@ -50,7 +50,7 @@ const ModernFooter = () => {
   ];
 
   const contactInfo = [
-    { icon: <FaMapMarkerAlt />, text: "Patna, Bihar, India" },
+    { icon: <FaMapMarkerAlt />, text: "Gaya, Bihar, India" },
     {
       icon: <FaEnvelope />,
       text: "yuvraj.mehta532@gmail.com",
@@ -95,7 +95,7 @@ const ModernFooter = () => {
     },
     {
       name: "CodeChef",
-      href: "https://www.codechef.com/",
+      href: "https://www.codechef.com/users/quick_unity_53",
       icon: <SiCodechef size={16} />,
       color: "purple",
     },
