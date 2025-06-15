@@ -10,10 +10,10 @@ import {
   FaAward,
   FaCertificate,
   FaStar,
-  FaChalkboardTeacher,
-  FaLaptopCode,
   FaUsers,
+  FaUniversity,
 } from "react-icons/fa";
+import { SiUdemy, SiCoursera, SiFreecodecamp } from "react-icons/si";
 // No need to import educationData as we're using the enriched data defined in this component
 
 const EducationExperience = () => {
@@ -49,7 +49,7 @@ const EducationExperience = () => {
         "Merit List Recognition",
         "Technical Workshop Facilitation",
       ],
-      icon: <FaGraduationCap className="w-5 h-5" />,
+      icon: <FaUniversity className="w-5 h-5 text-indigo-600" />,
       status: "current",
       category: "higher_education",
       color: "indigo",
@@ -67,7 +67,7 @@ const EducationExperience = () => {
         "School Merit List",
         "Perfect Attendance",
       ],
-      icon: <FaSchool className="w-5 h-5" />,
+      icon: <FaSchool className="w-5 h-5 text-blue-600" />,
       status: "completed",
       category: "school_education",
       color: "blue",
@@ -84,7 +84,7 @@ const EducationExperience = () => {
         "Scored 90% in CBSE Class 10",
         "Academic Excellence Award",
       ],
-      icon: <FaSchool className="w-5 h-5" />,
+      icon: <FaGraduationCap className="w-5 h-5 text-green-600" />,
       status: "completed",
       category: "school_education",
       color: "cyan",
@@ -99,7 +99,7 @@ const EducationExperience = () => {
       year: "2023",
       description:
         "Comprehensive full-stack web development course covering HTML, CSS, JavaScript, React, and Node.js",
-      icon: <FaCertificate className="w-5 h-5" />,
+      icon: <SiUdemy className="w-5 h-5 text-purple-600" />,
       featured: true,
       color: "blue",
       category: "technical",
@@ -110,7 +110,7 @@ const EducationExperience = () => {
       year: "2023",
       description:
         "Advanced course on efficient algorithms and complex data structures implementation",
-      icon: <FaLaptopCode className="w-5 h-5" />,
+      icon: <SiCoursera className="w-5 h-5 text-blue-600" />,
       featured: true,
       color: "green",
       category: "technical",
@@ -121,7 +121,7 @@ const EducationExperience = () => {
       year: "2024",
       description:
         "Introduction to machine learning concepts and practical implementation",
-      icon: <FaChalkboardTeacher className="w-5 h-5" />,
+      icon: <SiFreecodecamp className="w-5 h-5 text-green-600" />,
       featured: false,
       color: "purple",
       category: "technical",
@@ -221,7 +221,7 @@ const EducationExperience = () => {
   const getColorClasses = (color: string) => {
     const colorMap: any = {
       indigo: {
-        icon: theme === "dark" ? "text-indigo-400" : "text-indigo-600",
+        icon: "text-indigo-600",
         bg:
           theme === "dark"
             ? "bg-gradient-to-br from-indigo-900/40 to-blue-900/30"
@@ -230,7 +230,7 @@ const EducationExperience = () => {
         glow: "",
       },
       blue: {
-        icon: theme === "dark" ? "text-blue-400" : "text-blue-600",
+        icon: "text-blue-600",
         bg:
           theme === "dark"
             ? "bg-gradient-to-br from-blue-900/40 to-indigo-900/30"
@@ -239,7 +239,7 @@ const EducationExperience = () => {
         glow: "",
       },
       green: {
-        icon: theme === "dark" ? "text-green-400" : "text-green-600",
+        icon: "text-green-600",
         bg:
           theme === "dark"
             ? "bg-gradient-to-br from-green-900/40 to-teal-900/30"
@@ -248,7 +248,7 @@ const EducationExperience = () => {
         glow: "",
       },
       purple: {
-        icon: theme === "dark" ? "text-purple-400" : "text-purple-600",
+        icon: "text-purple-600",
         bg:
           theme === "dark"
             ? "bg-gradient-to-br from-purple-900/40 to-pink-900/30"
@@ -257,7 +257,7 @@ const EducationExperience = () => {
         glow: "",
       },
       cyan: {
-        icon: theme === "dark" ? "text-cyan-400" : "text-cyan-600",
+        icon: "text-cyan-600",
         bg:
           theme === "dark"
             ? "bg-gradient-to-br from-cyan-900/40 to-blue-900/30"
@@ -413,11 +413,7 @@ const EducationExperience = () => {
                       : "bg-gradient-to-br from-indigo-100 to-purple-100 border border-indigo-200"
                   } backdrop-blur-sm`}
                 >
-                  <FaGraduationCap
-                    className={
-                      theme === "dark" ? "text-indigo-400" : "text-indigo-600"
-                    }
-                  />
+                  <FaGraduationCap className="text-indigo-600" />
                 </motion.span>
                 Academic Timeline
               </motion.h3>
@@ -722,11 +718,7 @@ const EducationExperience = () => {
                       : "bg-gradient-to-br from-blue-100 to-indigo-100 border border-blue-200"
                   }`}
                 >
-                  <FaCertificate
-                    className={
-                      theme === "dark" ? "text-blue-400" : "text-blue-600"
-                    }
-                  />
+                  <FaCertificate className="text-blue-600" />
                 </div>
                 Certifications
               </h3>
@@ -830,7 +822,8 @@ const EducationExperience = () => {
                               : "bg-indigo-50 text-indigo-600 hover:bg-indigo-100"
                           } transition-colors hover:transform hover:scale-105`}
                         >
-                          <FaStar className="w-3 h-3" /> View Certificate
+                          <FaStar className="w-3 h-3 text-yellow-600" /> View
+                          Certificate
                         </button>
                       </div>
                     </div>

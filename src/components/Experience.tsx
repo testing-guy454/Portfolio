@@ -11,6 +11,7 @@ import {
   FaMapMarkerAlt,
   FaStar,
   FaUsers,
+  FaRobot,
 } from "react-icons/fa";
 
 const Experience = () => {
@@ -70,7 +71,7 @@ const Experience = () => {
       year: "2023",
       description:
         "Represented the Republic of Poland at NIT Patna's Model United Nations. Earned the Best Delegate award for exceptional debate skills and impactful resolutions.",
-      icon: <FaTrophy className="w-5 h-5" />,
+      icon: <FaTrophy className="w-5 h-5 text-yellow-600" />,
       featured: true,
       color: "yellow",
       category: "competition",
@@ -80,7 +81,7 @@ const Experience = () => {
       year: "2023 - Present",
       description:
         "Active member of the Robotics Club, led team building combat and soccer bots, organized workshops.",
-      icon: <FaCode className="w-5 h-5" />,
+      icon: <FaRobot className="w-5 h-5 text-blue-600" />,
       featured: true,
       color: "blue",
       category: "technical",
@@ -90,7 +91,7 @@ const Experience = () => {
       year: "2023 - 2024",
       description:
         "Coordinated between faculty and students, organized department events.",
-      icon: <FaUserTie className="w-5 h-5" />,
+      icon: <FaUserTie className="w-5 h-5 text-purple-600" />,
       featured: false,
       color: "purple",
       category: "leadership",
@@ -99,7 +100,7 @@ const Experience = () => {
       title: "Bronze Medal - NIT Patna Intramurals",
       year: "2023",
       description: "Won Bronze in 50m Hurdles at the university sports event.",
-      icon: <FaMedal className="w-5 h-5" />,
+      icon: <FaMedal className="w-5 h-5 text-amber-600" />,
       featured: false,
       color: "amber",
       category: "sports",
@@ -166,7 +167,7 @@ const Experience = () => {
   const getColorClasses = (color: string) => {
     const colorMap = {
       yellow: {
-        icon: theme === "dark" ? "text-yellow-400" : "text-yellow-600",
+        icon: "text-yellow-600",
         bg:
           theme === "dark"
             ? "bg-gradient-to-br from-yellow-900/40 to-amber-900/30"
@@ -175,7 +176,7 @@ const Experience = () => {
         glow: "",
       },
       blue: {
-        icon: theme === "dark" ? "text-blue-400" : "text-blue-600",
+        icon: "text-blue-600",
         bg:
           theme === "dark"
             ? "bg-gradient-to-br from-blue-900/40 to-indigo-900/30"
@@ -184,7 +185,7 @@ const Experience = () => {
         glow: "",
       },
       purple: {
-        icon: theme === "dark" ? "text-purple-400" : "text-purple-600",
+        icon: "text-purple-600",
         bg:
           theme === "dark"
             ? "bg-gradient-to-br from-purple-900/40 to-pink-900/30"
@@ -193,7 +194,7 @@ const Experience = () => {
         glow: "",
       },
       amber: {
-        icon: theme === "dark" ? "text-amber-400" : "text-amber-600",
+        icon: "text-amber-600",
         bg:
           theme === "dark"
             ? "bg-gradient-to-br from-amber-900/40 to-orange-900/30"
@@ -567,11 +568,7 @@ const Experience = () => {
                       : "bg-gradient-to-br from-amber-100 to-yellow-100 border border-amber-200"
                   } backdrop-blur-sm`}
                 >
-                  <FaTrophy
-                    className={
-                      theme === "dark" ? "text-amber-400" : "text-amber-600"
-                    }
-                  />
+                  <FaTrophy className="text-amber-600" />
                 </motion.span>
                 Achievements
               </motion.h3>
@@ -630,7 +627,7 @@ const Experience = () => {
                               ease: "linear",
                             }}
                           >
-                            <FaStar className="w-3 h-3 text-yellow-400" />
+                            <FaStar className="w-3 h-3 text-yellow-600" />
                           </motion.div>
                           Featured
                         </motion.div>
