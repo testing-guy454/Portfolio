@@ -160,7 +160,6 @@ Portfolio/
 
 - **Individual Project Pages** - Dedicated pages with in-depth information about each project
 - **Real-time Coding Stats** - Live integration with competitive programming platforms showing solved problems and ratings (already started with DSACounter component)
-- **Blog Section** - Technical writing and insights
 - **Dark/Light Mode** - Theme toggle for user preference (implementation in progress with ThemeContext)
 
 ## 🤝 Contributing
@@ -179,7 +178,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-Yuvraj Mehta - [yuvraj.mehta@example.com](mailto:yuvraj.mehta@example.com)
+Yuvraj Mehta - [yuvraj.mehta532@gmail.com](mailto:yuvraj.mehta532@gmail.com)
 
 Project Link: [https://github.com/yuvraj-mehta/Portfolio](https://github.com/yuvraj-mehta/Portfolio)
 
@@ -189,14 +188,9 @@ Project Link: [https://github.com/yuvraj-mehta/Portfolio](https://github.com/yuv
 
 ## 🔮 Future Improvements
 
-- **Blog Integration** - Adding a technical blog section with MDX
-- **Internationalization** - Support for multiple languages
 - **Advanced Analytics** - Implement detailed visitor analytics
-- **Interactive 3D Elements** - Add Three.js for 3D interactive components
 - **API Integration** - Live GitHub contribution stats and project updates
-- **Testing Suite** - Comprehensive unit and integration tests
 - **Animation Enhancements** - More advanced scroll-triggered animations
-- **Accessibility Improvements** - Further WCAG compliance testing and updates
 - **Performance Monitoring** - Integration with performance monitoring services
 
 ## 📄 License
@@ -209,7 +203,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Framer Motion for the powerful animation library
 - Tailwind CSS for the utility-first CSS framework
 - Vercel for seamless deployment
-- All the open-source contributors whose libraries helped build this project
 
 ---
 
