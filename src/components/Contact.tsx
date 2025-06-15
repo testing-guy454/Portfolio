@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useTheme } from "../contexts/ThemeContext";
+import BackgroundWrapper from "./BackgroundWrapper";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { HiMail, HiChatAlt2 } from "react-icons/hi";
@@ -113,25 +114,15 @@ const Contact = () => {
   };
 
   return (
-    <section
+    <BackgroundWrapper
       id="contact"
-      className={`section relative overflow-hidden py-24 ${
-        theme === "dark"
-          ? "bg-gradient-to-b from-gray-900 to-gray-950"
-          : "bg-gradient-to-b from-gray-50 to-white"
-      }`}
+      isAlt={true}
       style={{
         scrollMarginTop: "150px",
         paddingTop: "40px",
         scrollBehavior: "smooth",
       }}
     >
-      {/* Background decoration */}
-      <div
-        className={`absolute top-40 right-0 w-96 h-96 rounded-full blur-3xl ${
-          theme === "dark" ? "bg-indigo-600/10" : "bg-primary/10"
-        }`}
-      ></div>
       <div
         className={`absolute bottom-20 left-20 w-64 h-64 rounded-full blur-3xl ${
           theme === "dark" ? "bg-purple-600/10" : "bg-accent/10"
@@ -638,7 +629,7 @@ const Contact = () => {
           </motion.div>
         </motion.div>
       </div>
-    </section>
+    </BackgroundWrapper>
   );
 };
 

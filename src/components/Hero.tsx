@@ -7,27 +7,16 @@ import {
   FaExternalLinkAlt,
 } from "react-icons/fa";
 import { useTheme } from "../contexts/ThemeContext";
+import BackgroundWrapper from "./BackgroundWrapper";
 
 const Hero = () => {
   const { theme } = useTheme();
   return (
-    <section
+    <BackgroundWrapper
       id="home"
-      className={`min-h-screen flex items-center justify-center hero-background overflow-hidden ${
-        theme === "dark" ? "bg-gray-900" : ""
-      }`}
+      isAlt={true}
+      className="min-h-screen flex items-center justify-center"
     >
-      <div
-        className={`absolute top-20 left-20 w-64 h-64 rounded-full ${
-          theme === "dark" ? "bg-indigo-600/10" : "bg-primary/10"
-        } filter blur-3xl`}
-      ></div>
-      <div
-        className={`absolute bottom-20 right-20 w-80 h-80 rounded-full ${
-          theme === "dark" ? "bg-purple-600/10" : "bg-accent/10"
-        } filter blur-3xl`}
-      ></div>
-
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between relative z-10">
         <motion.div
           className="md:w-1/2 text-center md:text-left"
@@ -310,7 +299,7 @@ const Hero = () => {
           </div>
         </motion.div>
       </div>
-    </section>
+    </BackgroundWrapper>
   );
 };
 

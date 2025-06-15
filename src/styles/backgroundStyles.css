@@ -1,0 +1,93 @@
+/* Background styles for consistent look across components */
+.portfolio-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/src/assets/grid-pattern.svg");
+  background-repeat: repeat;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Dark theme backgrounds */
+.dark-theme-section {
+  background: linear-gradient(to bottom, #111827, #0f172a);
+}
+
+.dark-theme-section-alt {
+  background: linear-gradient(to bottom, #0f172a, #111827);
+}
+
+/* Light theme backgrounds */
+.light-theme-section {
+  background: linear-gradient(to bottom, #f9fafb, #f3f4f6);
+}
+
+.light-theme-section-alt {
+  background: linear-gradient(to bottom, #f3f4f6, #f9fafb);
+}
+
+/* Common decoration blobs */
+.decoration-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.5s ease;
+}
+
+.dark-theme .decoration-blob {
+  opacity: 0.07;
+}
+
+/* Specific blob positions */
+.blob-top-right {
+  top: 10%;
+  right: 5%;
+  width: 30rem;
+  height: 30rem;
+}
+
+.blob-bottom-left {
+  bottom: 10%;
+  left: 5%;
+  width: 25rem;
+  height: 25rem;
+}
+
+.blob-center {
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40rem;
+  height: 40rem;
+  opacity: 0.06;
+}
+
+/* Color variations */
+.blob-primary {
+  background: #6366f1;
+}
+
+.blob-secondary {
+  background: #8b5cf6;
+}
+
+.blob-accent {
+  background: #ec4899;
+}
+
+.blob-alt {
+  background: #06b6d4;
+}

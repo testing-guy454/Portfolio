@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useTheme } from "../contexts/ThemeContext";
+import BackgroundWrapper from "./BackgroundWrapper";
 import {
   FaCode,
   FaUserGraduate,
@@ -26,23 +27,7 @@ const About = () => {
   ];
 
   return (
-    <section
-      id="about"
-      className={`section relative overflow-hidden py-24 ${
-        theme === "dark" ? "bg-gray-900" : "bg-gray-50"
-      }`}
-    >
-      {/* Background elements */}
-      <div
-        className={`absolute top-0 right-0 w-full h-full overflow-hidden opacity-10 select-none pointer-events-none ${
-          theme === "dark" ? "opacity-5" : ""
-        }`}
-      >
-        <div className="absolute top-24 right-24 w-96 h-96 rounded-full bg-blue-200 mix-blend-multiply filter blur-xl"></div>
-        <div className="absolute bottom-24 left-24 w-96 h-96 rounded-full bg-purple-200 mix-blend-multiply filter blur-xl"></div>
-        <div className="absolute top-1/4 left-1/3 w-64 h-64 rounded-full bg-pink-200 mix-blend-multiply filter blur-xl"></div>
-      </div>
-
+    <BackgroundWrapper id="about">
       <div className="container relative z-10 mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -171,38 +156,38 @@ const About = () => {
 
                 <motion.div
                   className={`absolute -left-4 bottom-6 glass-effect px-4 py-2 rounded-xl shadow-lg flex items-center gap-2 ${
-                  theme === "dark" ? "bg-gray-800/80" : "bg-white/80"
+                    theme === "dark" ? "bg-gray-800/80" : "bg-white/80"
                   }`}
                   initial={{ x: -50, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.4, duration: 0.5 }}
                 >
                   <div
-                  className={`p-2 rounded-full ${
-                    theme === "dark" ? "bg-purple-900/50" : "bg-purple-100"
-                  }`}
+                    className={`p-2 rounded-full ${
+                      theme === "dark" ? "bg-purple-900/50" : "bg-purple-100"
+                    }`}
                   >
-                  <FaCode
-                    className={
-                    theme === "dark" ? "text-purple-400" : "text-purple-600"
-                    }
-                  />
+                    <FaCode
+                      className={
+                        theme === "dark" ? "text-purple-400" : "text-purple-600"
+                      }
+                    />
                   </div>
                   <div>
-                  <div
-                    className={`font-bold ${
-                    theme === "dark" ? "text-white" : "text-gray-900"
-                    }`}
-                  >
-                    Coding
-                  </div>
-                  <div
-                    className={`text-xs ${
-                    theme === "dark" ? "text-gray-400" : "text-gray-500"
-                    }`}
-                  >
-                    2+ years of coding
-                  </div>
+                    <div
+                      className={`font-bold ${
+                        theme === "dark" ? "text-white" : "text-gray-900"
+                      }`}
+                    >
+                      Coding
+                    </div>
+                    <div
+                      className={`text-xs ${
+                        theme === "dark" ? "text-gray-400" : "text-gray-500"
+                      }`}
+                    >
+                      2+ years of coding
+                    </div>
                   </div>
                 </motion.div>
               </div>
@@ -401,7 +386,7 @@ const About = () => {
           </motion.div>
         </div>
       </div>
-    </section>
+    </BackgroundWrapper>
   );
 };
 

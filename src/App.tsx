@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaArrowUp } from "react-icons/fa";
 import "./App.css";
+import "./styles/backgroundStyles.css";
+import "./styles/backgroundStyles.css";
 import NavbarEnhanced from "./components/NavbarEnhanced";
 import Hero from "./components/Hero";
 import About from "./components/About";

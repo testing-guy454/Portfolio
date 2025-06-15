@@ -156,22 +156,33 @@ const EducationExperience = () => {
     rest: {
       scale: 1,
       y: 0,
-      boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+      boxShadow: "none",
       rotate: 0,
     },
     hover: {
       scale: 1.03,
       y: -8,
-      boxShadow:
-        theme === "dark"
-          ? "0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 15px rgba(79, 70, 229, 0.3)"
-          : "0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 15px rgba(79, 70, 229, 0.15)",
+      boxShadow: "none",
       rotate: 0.5, // Very subtle rotation for a more dynamic effect
       transition: {
         type: "spring",
         stiffness: 350,
         damping: 25,
         mass: 1.2,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      y: 40,
+      scale: 0.95,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.7,
+        ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
   };
@@ -204,25 +215,7 @@ const EducationExperience = () => {
     },
   };
 
-  // Badge animation for courses and activities
-  const badgeVariants = {
-    initial: { opacity: 0, scale: 0.8 },
-    animate: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.4,
-        type: "spring",
-      },
-    },
-    hover: {
-      y: -4,
-      transition: {
-        duration: 0.2,
-        ease: "easeOut",
-      },
-    },
-  };
+  // Badge animation is now applied directly on the elements
 
   // Helper function for color classes, following the Experience component pattern
   const getColorClasses = (color: string) => {
@@ -234,8 +227,7 @@ const EducationExperience = () => {
             ? "bg-gradient-to-br from-indigo-900/40 to-blue-900/30"
             : "bg-gradient-to-br from-indigo-50 to-blue-50",
         border: theme === "dark" ? "border-indigo-500/40" : "border-indigo-200",
-        glow:
-          theme === "dark" ? "shadow-indigo-500/20" : "shadow-indigo-200/50",
+        glow: "",
       },
       blue: {
         icon: theme === "dark" ? "text-blue-400" : "text-blue-600",
@@ -244,7 +236,7 @@ const EducationExperience = () => {
             ? "bg-gradient-to-br from-blue-900/40 to-indigo-900/30"
             : "bg-gradient-to-br from-blue-50 to-indigo-50",
         border: theme === "dark" ? "border-blue-500/40" : "border-blue-200",
-        glow: theme === "dark" ? "shadow-blue-500/20" : "shadow-blue-200/50",
+        glow: "",
       },
       green: {
         icon: theme === "dark" ? "text-green-400" : "text-green-600",
@@ -253,7 +245,7 @@ const EducationExperience = () => {
             ? "bg-gradient-to-br from-green-900/40 to-teal-900/30"
             : "bg-gradient-to-br from-green-50 to-teal-50",
         border: theme === "dark" ? "border-green-500/40" : "border-green-200",
-        glow: theme === "dark" ? "shadow-green-500/20" : "shadow-green-200/50",
+        glow: "",
       },
       purple: {
         icon: theme === "dark" ? "text-purple-400" : "text-purple-600",
@@ -262,8 +254,7 @@ const EducationExperience = () => {
             ? "bg-gradient-to-br from-purple-900/40 to-pink-900/30"
             : "bg-gradient-to-br from-purple-50 to-pink-50",
         border: theme === "dark" ? "border-purple-500/40" : "border-purple-200",
-        glow:
-          theme === "dark" ? "shadow-purple-500/20" : "shadow-purple-200/50",
+        glow: "",
       },
       cyan: {
         icon: theme === "dark" ? "text-cyan-400" : "text-cyan-600",
@@ -272,7 +263,7 @@ const EducationExperience = () => {
             ? "bg-gradient-to-br from-cyan-900/40 to-blue-900/30"
             : "bg-gradient-to-br from-cyan-50 to-blue-50",
         border: theme === "dark" ? "border-cyan-500/40" : "border-cyan-200",
-        glow: theme === "dark" ? "shadow-cyan-500/20" : "shadow-cyan-200/50",
+        glow: "",
       },
     };
 
@@ -373,7 +364,7 @@ const EducationExperience = () => {
               theme === "dark"
                 ? "bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600"
                 : "bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
-            } shadow-lg`}
+            }`}
           ></motion.div>
 
           <motion.p
@@ -420,7 +411,7 @@ const EducationExperience = () => {
                     theme === "dark"
                       ? "bg-gradient-to-br from-indigo-900/50 to-purple-900/40 border border-indigo-500/20"
                       : "bg-gradient-to-br from-indigo-100 to-purple-100 border border-indigo-200"
-                  } shadow-lg backdrop-blur-sm`}
+                  } backdrop-blur-sm`}
                 >
                   <FaGraduationCap
                     className={
@@ -438,7 +429,7 @@ const EducationExperience = () => {
                   theme === "dark"
                     ? "bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
                     : "bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
-                } shadow-md`}
+                }`}
               ></motion.div>
             </motion.div>
 
@@ -447,9 +438,8 @@ const EducationExperience = () => {
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  initial="rest"
                   whileHover="hover"
-                  className={`group rounded-3xl overflow-hidden shadow-xl border backdrop-blur-sm ${
+                  className={`group rounded-3xl overflow-hidden border backdrop-blur-sm ${
                     theme === "dark"
                       ? "bg-gradient-to-br from-gray-800/90 to-gray-900/90 border-gray-700/50 hover:border-gray-600/60 hover:border-opacity-80"
                       : "bg-gradient-to-br from-white/95 to-gray-50/95 border-gray-200/60 hover:border-gray-300/80"
@@ -464,6 +454,8 @@ const EducationExperience = () => {
                   }}
                 >
                   <motion.div
+                    whileHover="hover"
+                    initial="rest"
                     variants={cardHoverAnimation}
                     className="p-8 lg:p-10 relative"
                   >
@@ -484,9 +476,9 @@ const EducationExperience = () => {
                           variants={pulseVariants}
                           className={`px-5 py-2.5 rounded-full text-sm font-medium border ${
                             theme === "dark"
-                              ? "bg-gradient-to-r from-green-900/40 to-emerald-900/30 text-green-400 border-green-500/40 shadow-green-500/20"
-                              : "bg-gradient-to-r from-green-50 to-emerald-50 text-green-700 border-green-200 shadow-green-200/50"
-                          } flex items-center gap-2 shadow-lg backdrop-blur-sm`}
+                              ? "bg-gradient-to-r from-green-900/40 to-emerald-900/30 text-green-400 border-green-500/40"
+                              : "bg-gradient-to-r from-green-50 to-emerald-50 text-green-700 border-green-200"
+                          } flex items-center gap-2 backdrop-blur-sm`}
                         >
                           <motion.span
                             animate={{ scale: [1, 1.2, 1] }}
@@ -502,8 +494,6 @@ const EducationExperience = () => {
                           getColorClasses(edu.color).bg
                         } ${getColorClasses(edu.color).border} ${
                           getColorClasses(edu.color).icon
-                        } shadow-lg ${
-                          getColorClasses(edu.color).glow
                         } backdrop-blur-sm`}
                       >
                         {edu.level}
@@ -517,9 +507,7 @@ const EducationExperience = () => {
                         <div
                           className={`p-4 rounded-2xl ${
                             getColorClasses(edu.color).bg
-                          } border ${
-                            getColorClasses(edu.color).border
-                          } shadow-lg ${getColorClasses(edu.color).glow}`}
+                          } border ${getColorClasses(edu.color).border}`}
                         >
                           <div
                             className={`w-10 h-10 flex items-center justify-center ${
@@ -584,7 +572,7 @@ const EducationExperience = () => {
                               theme === "dark"
                                 ? "border-gray-700/50"
                                 : "border-gray-200"
-                            } hover:shadow-md transition-shadow duration-300`}
+                            } transition-all duration-300`}
                           >
                             <h6
                               className={`flex items-center gap-2 text-sm font-bold mb-3 ${
@@ -631,7 +619,7 @@ const EducationExperience = () => {
                               theme === "dark"
                                 ? "border-gray-700/50"
                                 : "border-gray-200"
-                            } hover:shadow-md transition-shadow duration-300`}
+                            } transition-all duration-300`}
                           >
                             <h6
                               className={`flex items-center gap-2 text-sm font-bold mb-3 ${
@@ -687,16 +675,19 @@ const EducationExperience = () => {
                             {edu.activities.map((activity, idx) => (
                               <motion.span
                                 key={idx}
-                                initial="initial"
-                                animate="animate"
-                                whileHover="hover"
-                                variants={badgeVariants}
-                                custom={idx * 0.1}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{
+                                  delay: idx * 0.1,
+                                  duration: 0.4,
+                                  type: "spring",
+                                }}
+                                whileHover={{ y: -4 }}
                                 className={`px-3.5 py-1.5 text-xs font-medium rounded-full backdrop-blur-sm ${
                                   theme === "dark"
                                     ? "bg-gray-800/90 text-gray-300 border border-gray-700/80 hover:border-gray-600 hover:text-white"
                                     : "bg-gray-100/90 text-gray-700 border border-gray-200/80 hover:border-gray-300 hover:text-gray-900"
-                                } transition-all duration-300 hover:shadow-md`}
+                                } transition-all duration-300`}
                               >
                                 {activity}
                               </motion.span>
@@ -729,7 +720,7 @@ const EducationExperience = () => {
                     theme === "dark"
                       ? "bg-gradient-to-br from-blue-900/40 to-indigo-900/30 border border-blue-500/20"
                       : "bg-gradient-to-br from-blue-100 to-indigo-100 border border-blue-200"
-                  } shadow-md`}
+                  }`}
                 >
                   <FaCertificate
                     className={
@@ -747,7 +738,7 @@ const EducationExperience = () => {
                   theme === "dark"
                     ? "bg-gradient-to-r from-blue-500 to-indigo-500"
                     : "bg-gradient-to-r from-blue-500 to-indigo-500"
-                } shadow-md`}
+                }`}
               ></motion.div>
             </motion.div>
 
@@ -775,7 +766,7 @@ const EducationExperience = () => {
                     theme === "dark"
                       ? "bg-gradient-to-br from-gray-800/80 to-gray-900/80 border-gray-700/50 hover:border-gray-600 hover:border-opacity-90"
                       : "bg-white border-gray-200/70 hover:border-gray-300"
-                  } transition-all duration-300 shadow-lg hover:shadow-xl group`}
+                  } transition-all duration-300 group`}
                   style={{
                     backgroundImage:
                       theme === "dark"
@@ -861,7 +852,7 @@ const EducationExperience = () => {
                 theme === "dark"
                   ? "bg-gradient-to-br from-gray-800/80 to-gray-900/80 border-gray-700/50"
                   : "bg-white border-gray-200/70"
-              } shadow-lg mt-10 hover:shadow-xl transition-shadow`}
+              } mt-10 transition-all duration-300`}
             >
               <h4
                 className={`text-xl font-semibold tracking-tight mb-5 ${
