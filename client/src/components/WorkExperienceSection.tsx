@@ -300,7 +300,7 @@ const Experience = () => {
         </motion.div>
 
         {/* Main Content Grid - 2/3 for Experience, 1/3 for Achievements */}
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8 workexp-section-main">
           {/* Professional Experience Cards (Left - 2/3) */}
           <motion.div
             ref={ref}

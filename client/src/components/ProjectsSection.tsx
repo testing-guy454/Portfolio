@@ -508,7 +508,7 @@ const Projects = () => {
                 theme === "dark"
                   ? "bg-gradient-to-br from-gray-800/90 to-gray-900/90 border border-gray-700/50 shadow-xl shadow-black/20"
                   : "bg-white border border-gray-200/50 shadow-xl shadow-gray-200/40"
-              } h-full backdrop-blur-lg`}
+              } h-full backdrop-blur-lg max-w-full w-full sm:w-auto`}
             >
               <div className="relative group overflow-hidden h-48">
                 {/* Project featured badge - only for featured projects */}
@@ -553,7 +553,8 @@ const Projects = () => {
                       e.currentTarget.src = project.fallbackImage;
                     }
                   }}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full max-w-full h-48 sm:h-56 md:h-64 lg:h-72 object-cover transition-transform duration-700 group-hover:scale-110 rounded-t-2xl"
+                  style={{ objectFit: "cover" }}
                 />
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -811,7 +812,8 @@ const Projects = () => {
                       e.currentTarget.src = selectedProject.fallbackImage;
                     }
                   }}
-                  className="w-full h-64 object-cover"
+                  className="w-full max-w-full h-48 sm:h-56 md:h-64 lg:h-72 object-cover rounded-2xl"
+                  style={{ objectFit: "cover" }}
                 />
               </div>
 

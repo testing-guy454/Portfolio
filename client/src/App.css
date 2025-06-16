@@ -24,9 +24,129 @@ body {
   overflow: hidden;
 }
 
+@media (max-width: 1024px) {
+  .section {
+    padding: 4rem 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 2rem 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .section {
+    padding: 0.5rem 0;
+  }
+  .section-title {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .container {
+    padding: 0 0.1rem !important;
+    min-width: 0 !important;
+  }
+  header {
+    padding-left: 0.1rem !important;
+    padding-right: 0.1rem !important;
+  }
+  .card {
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+  }
+  nav {
+    flex-wrap: wrap !important;
+    gap: 0.25rem !important;
+  }
+  .navbar-brand,
+  .navbar-profile,
+  .navbar-link,
+  .navbar-btn,
+  .navbar-theme-toggle {
+    font-size: 0.9rem !important;
+    min-width: 0 !important;
+    max-width: 90vw !important;
+  }
+  .navbar-profile-img,
+  .navbar-profile {
+    width: 2rem !important;
+    height: 2rem !important;
+    min-width: 2rem !important;
+    min-height: 2rem !important;
+  }
+  .navbar-mobile-menu {
+    max-width: 95vw !important;
+    width: 95vw !important;
+  }
+}
+
+@media (max-width: 350px) {
+  .section {
+    padding: 0.25rem 0;
+  }
+  .section-title {
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+  }
+  .container {
+    padding: 0 0.05rem !important;
+    min-width: 0 !important;
+  }
+  header {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .card {
+    border-radius: 0.4rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  }
+  nav {
+    flex-wrap: wrap !important;
+    gap: 0.1rem !important;
+  }
+  .navbar-brand,
+  .navbar-profile,
+  .navbar-link,
+  .navbar-btn,
+  .navbar-theme-toggle {
+    font-size: 0.75rem !important;
+    min-width: 0 !important;
+    max-width: 95vw !important;
+  }
+  .navbar-profile-img,
+  .navbar-profile {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    min-width: 1.5rem !important;
+    min-height: 1.5rem !important;
+  }
+  .navbar-mobile-menu {
+    max-width: 99vw !important;
+    width: 99vw !important;
+  }
+  .navbar-btn,
+  .navbar-link {
+    padding: 0.15rem 0.25rem !important;
+  }
+}
+
 /* Navbar spacing for fixed header */
 main {
-  padding-top: 5rem;
+  padding-top: 3.5rem;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding-top: 2.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding-top: 2.25rem;
+  }
 }
 
 /* Animation keyframes */
@@ -133,6 +253,266 @@ main {
 
   .container {
     padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-section .container {
+    flex-direction: column !important;
+    padding: 0 0.1rem !important;
+  }
+  .hero-section h1,
+  .hero-section .font-heading {
+    font-size: 1.3rem !important;
+    line-height: 1.1 !important;
+  }
+  .hero-section .text-lg,
+  .hero-section .text-xl {
+    font-size: 1rem !important;
+  }
+  .hero-section .w-12,
+  .hero-section .h-12 {
+    width: 2.2rem !important;
+    height: 2.2rem !important;
+  }
+  .hero-section .w-24,
+  .hero-section .h-24,
+  .hero-section .w-20,
+  .hero-section .h-20 {
+    width: 3.5rem !important;
+    height: 3.5rem !important;
+  }
+  .hero-img {
+    width: 90vw !important;
+    height: 90vw !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+  }
+  .hero-section .px-8,
+  .hero-section .py-3 {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    padding-top: 0.4rem !important;
+    padding-bottom: 0.4rem !important;
+    font-size: 0.9rem !important;
+  }
+  .hero-section .gap-4 {
+    gap: 0.3rem !important;
+  }
+  .hero-section .mt-8 {
+    margin-top: 0.7rem !important;
+  }
+}
+@media (max-width: 350px) {
+  .hero-section h1,
+  .hero-section .font-heading {
+    font-size: 1.05rem !important;
+  }
+  .hero-section .text-lg,
+  .hero-section .text-xl {
+    font-size: 0.85rem !important;
+  }
+  .hero-section .w-12,
+  .hero-section .h-12 {
+    width: 1.7rem !important;
+    height: 1.7rem !important;
+  }
+  .hero-img {
+    width: 96vw !important;
+    height: 96vw !important;
+  }
+  .hero-section .px-8,
+  .hero-section .py-3 {
+    padding-left: 0.3rem !important;
+    padding-right: 0.3rem !important;
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+/* About Section styles */
+.about-section-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.about-profile-img-container {
+  overflow: hidden;
+  border-radius: 1rem;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.about-profile-img {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  transition: transform 0.4s ease;
+}
+
+.about-section-main h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+}
+
+.about-section-main h2:after {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3rem;
+  height: 0.2rem;
+  background: linear-gradient(to right, #6366f1, #ec4899);
+  border-radius: 1rem;
+}
+
+@media (max-width: 768px) {
+  .about-section-main {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 400px) {
+  .about-section-main {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  .about-profile-img {
+    width: 60vw !important;
+    height: 60vw !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    max-width: 220px !important;
+    max-height: 220px !important;
+  }
+  .about-profile-img-container {
+    max-width: 220px !important;
+  }
+  .about-section-main h2,
+  .about-section-main .font-heading {
+    font-size: 1.1rem !important;
+  }
+  .about-section-main .w-24 {
+    width: 3.5rem !important;
+  }
+}
+@media (max-width: 350px) {
+  .about-profile-img {
+    width: 80vw !important;
+    height: 80vw !important;
+    max-width: 150px !important;
+    max-height: 150px !important;
+  }
+  .about-profile-img-container {
+    max-width: 150px !important;
+  }
+  .about-section-main h2,
+  .about-section-main .font-heading {
+    font-size: 0.9rem !important;
+  }
+  .about-section-main .w-24 {
+    width: 2.2rem !important;
+  }
+}
+
+/* Work Experience Section styles */
+.workexp-section-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.workexp-company-logo {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  transition: transform 0.4s ease;
+}
+
+.workexp-section-main h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+}
+
+.workexp-section-main h3:after {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3rem;
+  height: 0.2rem;
+  background: linear-gradient(to right, #6366f1, #ec4899);
+  border-radius: 1rem;
+}
+
+@media (max-width: 768px) {
+  .workexp-section-main {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 400px) {
+  .workexp-section-main {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  .workexp-section-main h2,
+  .workexp-section-main h3,
+  .workexp-section-main h4,
+  .workexp-section-main .font-heading {
+    font-size: 1.1rem !important;
+  }
+  .workexp-section-main .experience-card,
+  .workexp-section-main .achievement-card {
+    padding: 0.7rem !important;
+    border-radius: 0.5rem !important;
+  }
+  .workexp-section-main .badge,
+  .workexp-section-main .exp-badge {
+    font-size: 0.85rem !important;
+    padding: 0.2rem 0.3rem !important;
+    border-radius: 0.4rem !important;
+  }
+  .workexp-section-main .icon,
+  .workexp-section-main .exp-icon {
+    width: 1.2rem !important;
+    height: 1.2rem !important;
+  }
+}
+@media (max-width: 350px) {
+  .workexp-section-main h2,
+  .workexp-section-main h3,
+  .workexp-section-main h4,
+  .workexp-section-main .font-heading {
+    font-size: 0.9rem !important;
+  }
+  .workexp-section-main .experience-card,
+  .workexp-section-main .achievement-card {
+    padding: 0.4rem !important;
+  }
+  .workexp-section-main .badge,
+  .workexp-section-main .exp-badge {
+    font-size: 0.7rem !important;
+    padding: 0.15rem 0.2rem !important;
+  }
+  .workexp-section-main .icon,
+  .workexp-section-main .exp-icon {
+    width: 0.8rem !important;
+    height: 0.8rem !important;
   }
 }
 

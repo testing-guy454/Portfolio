@@ -217,7 +217,7 @@ const Hero = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="relative w-full max-w-md mx-auto">
+          <div className="relative w-full max-w-md mx-auto hero-img-container">
             {/* Hero image with animated decoration */}
             <motion.div
               className={`absolute -inset-4 rounded-full blur-2xl opacity-30 ${
@@ -242,7 +242,7 @@ const Hero = () => {
                 theme === "dark"
                   ? "bg-gradient-to-br from-indigo-600 to-purple-600"
                   : "bg-gradient-to-br from-primary to-accent"
-              }`}
+              } hero-img`}
             >
               <motion.div
                 className={`absolute inset-0 mix-blend-overlay ${

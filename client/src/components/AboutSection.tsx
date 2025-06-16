@@ -72,7 +72,7 @@ const About = () => {
         </motion.div>
 
         {/* Main Content Area */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 about-section-main">
           {/* Left Column - Profile Picture with Decorative Elements */}
           <motion.div
             ref={ref}
@@ -83,7 +83,7 @@ const About = () => {
           >
             <div className="sticky top-24 space-y-6">
               {/* Profile Image with Animation */}
-              <div className="relative mx-auto max-w-sm">
+              <div className="relative mx-auto max-w-sm about-profile-img-container">
                 <motion.div
                   className={`absolute -inset-4 rounded-2xl opacity-20 blur-lg z-0 ${
                     theme === "dark"
@@ -103,7 +103,7 @@ const About = () => {
                 <div
                   className={`relative h-80 w-80 mx-auto overflow-hidden rounded-2xl shadow-custom border-4 ${
                     theme === "dark" ? "border-gray-800" : "border-white"
-                  }`}
+                  } about-profile-img`}
                 >
                   <img
                     src={"/yuvraj2.png"}

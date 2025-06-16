@@ -1,0 +1,42 @@
+LeetCode Platform Model:
+-----------------------
+{
+  name: "LeetCode",
+  rating: String,
+  problemsSolved: String,
+  progress: String,
+  icon: String,        // icon name or URL
+  iconColor: String,
+  categories: [
+    {
+      name: String,    // "Easy", "Medium", "Hard"
+      count: Number,
+      color: String
+    }
+  ]
+}
+
+CodeChef Platform Model:
+-----------------------
+{
+  name: "CodeChef",
+  rating: String,
+  problemsSolved: String,
+  progress: String,
+  icon: String,
+  iconColor: String,
+  rank: String,        // e.g. "2★ Coder (Division 3)"
+  contests: String     // e.g. "5+"
+}
+
+GeeksForGeeks Platform Model:
+----------------------------
+{
+  name: "GeeksForGeeks",
+  institutionRank: String,
+  problemsSolved: String,
+  progress: String,
+  icon: String,
+  iconColor: String,
+  achievement: String  // e.g. "GfG 160 - 160 Days of Problem Solving"
+}

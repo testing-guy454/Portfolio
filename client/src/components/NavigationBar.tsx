@@ -122,15 +122,15 @@ const NavbarEnhanced = ({ scrolled = false }: NavbarEnhancedProps) => {
       ref={navRef}
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrollStatus
-          ? "bg-white/90 dark:bg-gray-900/95 backdrop-blur-md py-2"
-          : "bg-transparent py-4"
+          ? "bg-white/90 dark:bg-gray-900/95 backdrop-blur-md py-1 md:py-2"
+          : "bg-transparent py-2 md:py-3"
       } ${showNavShadow ? "shadow-lg" : ""}`}
     >
-      <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+      <div className="container mx-auto px-2 sm:px-4 flex flex-nowrap justify-between items-center min-w-0">
         {/* Brand with profile photo */}
         <motion.a
           href="#home"
-          className="flex items-center gap-3 group"
+          className="flex items-center gap-2 sm:gap-3 group min-w-0 flex-shrink"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -148,7 +148,7 @@ const NavbarEnhanced = ({ scrolled = false }: NavbarEnhancedProps) => {
               }}
             />
           </div>
-          <span className="text-lg sm:text-xl md:text-2xl font-bold text-gradient font-heading relative">
+          <span className="text-base sm:text-lg md:text-xl font-bold text-gradient font-heading relative truncate block max-w-[80px] sm:max-w-[120px] md:max-w-none">
             Yuvraj
             <span className="text-gray-900 dark:text-white">.</span>
             <motion.span
@@ -161,9 +161,9 @@ const NavbarEnhanced = ({ scrolled = false }: NavbarEnhancedProps) => {
         </motion.a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-4 ml-auto">
+        <nav className="hidden lg:flex items-center space-x-2 ml-auto min-w-0">
           <motion.ul
-            className="flex space-x-1"
+            className="flex space-x-1 min-w-0 flex-wrap"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -264,7 +264,7 @@ const NavbarEnhanced = ({ scrolled = false }: NavbarEnhancedProps) => {
 
             {/* Mobile menu */}
             <motion.nav
-              className="lg:hidden fixed right-0 top-0 h-full w-[80%] max-w-sm bg-white dark:bg-gray-900 shadow-xl z-50 overflow-y-auto"
+              className="lg:hidden fixed right-0 top-0 h-full w-full max-w-xs bg-white dark:bg-gray-900 shadow-xl z-50 overflow-y-auto"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
