@@ -1,0 +1,34 @@
+{
+  "handle": "yuvraj.mehta532",
+  "profile": {
+    "name": "Yuvraj Mehta",
+    "rating": 795,
+    "maxRating": 795,
+    "rank": "newbie",
+    "globalRanking": null,
+    "avatar": "https://userpic.codeforces.org/4277927/avatar/2fd6a7dfe0ff5dce.jpg",
+    "country": "India",
+    "organization": "National Institute of technology, Patna",
+    "contribution": 0
+  },
+  "problemsSolved": {
+    "total": 6,
+    "easy": 4,
+    "medium": 0,
+    "hard": 0,
+    "unrated": 2
+  },
+  "contests": {
+    "rating": 795,
+    "attendedCount": 3,
+    "globalRanking": null,
+    "bestRank": 13055,
+    "topPercentage": null
+  },
+  "achievements": {
+    "stars": null,
+    "badges": "newbie",
+    "streaks": null
+  },
+  "lastUpdated": "2025-06-18T01:48:30.951Z"
+}

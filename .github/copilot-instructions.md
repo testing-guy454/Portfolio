@@ -82,6 +82,7 @@ Modern React + Vite + TypeScript portfolio for a full stack developer with stron
 - Rate-limit or throttle endpoints if exposed publicly.
 - Avoid blocking operations; use non-blocking I/O and efficient queries.
 - Log errors and important events for debugging.
+-for writing testing codes, use the test folder inside the server folder.
 
 ## Best Practices
 - Modularize: keep routes, controllers, models, and data separate.

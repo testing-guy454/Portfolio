@@ -1,0 +1,34 @@
+{
+  "handle": "mythical-UV",
+  "profile": {
+    "name": null,
+    "rating": 1570.434906412852,
+    "maxRating": null,
+    "rank": null,
+    "globalRanking": 551446,
+    "avatar": null,
+    "country": null,
+    "organization": null,
+    "reputation": null,
+    "starRating": 2
+  },
+  "problemsSolved": {
+    "total": 218,
+    "easy": 106,
+    "medium": 108,
+    "hard": 4
+  },
+  "contests": {
+    "rating": 1570.434906412852,
+    "attendedCount": 9,
+    "globalRanking": 192595,
+    "bestRank": null,
+    "topPercentage": "27.8"
+  },
+  "achievements": {
+    "stars": "2⭐",
+    "badges": null,
+    "streaks": null
+  },
+  "lastUpdated": "2025-06-18T01:48:31.740Z"
+}
