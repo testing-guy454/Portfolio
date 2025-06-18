@@ -7,15 +7,12 @@ import {
   errorHandler,
   notFound
 } from './middleware/index.js';
+import { corsConfig } from './config/index.js';
 
 const app = express();
 
 // Middleware
-app.use(cors({
-  origin: process.env.ALLOWED_ORIGINS?.split(',') || 'http://localhost:3000',
-  credentials: true,
-  optionsSuccessStatus: 200
-}));
+app.use(cors(corsConfig));
 app.use(express.json());
 
 // Routes

@@ -5,7 +5,7 @@
     "rating": 1570.434906412852,
     "maxRating": null,
     "rank": null,
-    "globalRanking": 551446,
+    "globalRanking": 551951,
     "avatar": null,
     "country": null,
     "organization": null,
@@ -13,9 +13,9 @@
     "starRating": 2
   },
   "problemsSolved": {
-    "total": 218,
+    "total": 221,
     "easy": 106,
-    "medium": 108,
+    "medium": 111,
     "hard": 4
   },
   "contests": {
@@ -30,5 +30,5 @@
     "badges": null,
     "streaks": null
   },
-  "lastUpdated": "2025-06-18T02:16:42.861Z"
+  "lastUpdated": "2025-06-18T21:02:43.497Z"
 }

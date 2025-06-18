@@ -2,6 +2,7 @@ import cron from 'node-cron';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import config from '../config/index.js';
 
 // Import scrapers
 import { getLeetcodeUserInfo } from '../utils/leetcodeScraper.js';
@@ -29,11 +30,6 @@ const updatePlatform = async (platform, scraper) => {
   } catch (error) {
     console.error(`❌ ${platform} failed:`, error.message);
     return false;
-  } finally {
-    // Force garbage collection hint (if available)
-    if (global.gc) {
-      global.gc();
-    }
   }
 };
 
@@ -57,7 +53,7 @@ const updateAllPlatforms = async () => {
 
 // Start scheduler
 const startScheduler = () => {
-  // Run every 6 hours
+  // Run every 6 hours using cron pattern (0 */6 * * *)
   cron.schedule('0 */6 * * *', async () => {
     console.log(`⏰ Scheduled update: ${new Date().toLocaleString()}`);
     try {
@@ -67,7 +63,7 @@ const startScheduler = () => {
     }
   });
 
-  console.log("⏰ Scheduler started - updates every 6 hours");
+  console.log(`⏰ Scheduler started - updates every ${config.UPDATE_INTERVAL_HOURS} hours`);
 };
 
 export { startScheduler, updateAllPlatforms };

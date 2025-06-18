@@ -7,17 +7,16 @@ import axios from 'axios';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import config from '../config/index.js';
 
 // Get current file and directory paths
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// API configuration
-const API_ENDPOINT = 'https://leetcode.com/graphql';
-const API_TIMEOUT = 10000;
-
-// Personal username configuration
-const MY_USERNAME = 'mythical-UV';
+// Configuration from centralized config
+const API_ENDPOINT = config.ENDPOINTS.LEETCODE;
+const API_TIMEOUT = config.TIMEOUTS.LEETCODE;
+const MY_USERNAME = config.USERNAMES.LEETCODE;
 
 /**
  * Save user data to JSON file (single user format for portfolio)

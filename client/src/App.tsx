@@ -19,6 +19,9 @@ function App() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [scrolled, setScrolled] = useState(false);
   const { theme } = useTheme();
+  const [count, setCount] = useState(0);
+  // console.log(`Render count: ${count}`);
+  // setCount(count + 1);
 
   useEffect(() => {
     // Using a timer for smooth cursor following effect

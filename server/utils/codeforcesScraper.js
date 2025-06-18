@@ -7,17 +7,16 @@ import axios from 'axios';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import config from '../config/index.js';
 
 // Get current file and directory paths
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// API configuration
-const API_BASE_URL = 'https://codeforces.com/api';
-const API_TIMEOUT = 10000;
-
-// Personal username configuration
-const MY_USERNAME = 'yuvraj.mehta532';
+// Configuration from centralized config
+const API_BASE_URL = config.ENDPOINTS.CODEFORCES;
+const API_TIMEOUT = config.TIMEOUTS.CODEFORCES;
+const MY_USERNAME = config.USERNAMES.CODEFORCES;
 
 /**
  * Save user data to JSON file (single user format for portfolio)

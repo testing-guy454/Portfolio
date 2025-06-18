@@ -1,20 +1,17 @@
-import dotenv from 'dotenv';
 import app, { startScheduler, updateAllPlatforms } from "./app.js";
 import connectDB from "./database/db.js";
-
-// Load environment variables
-dotenv.config();
+import config from './config/index.js';
 
 // Connect to database
 connectDB();
-const PORT = process.env.PORT || 3000;
+const PORT = config.PORT;
 const server = app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 
   // Start simple scheduler
   startScheduler();
 
-  // Run initial update after 10 seconds
+  // Run initial update after configured delay
   setTimeout(async () => {
     try {
       console.log("🎯 Running initial update...");
@@ -22,7 +19,7 @@ const server = app.listen(PORT, () => {
     } catch (error) {
       console.error("❌ Initial update failed:", error.message);
     }
-  }, 10000);
+  }, config.INITIAL_DELAY_MS);
 });
 
 // // Log memory usage periodically

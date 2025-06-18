@@ -3,6 +3,7 @@ import * as cheerio from 'cheerio';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import config from '../config/index.js';
 
 // Get current file and directory paths
 const __filename = fileURLToPath(import.meta.url);
@@ -41,11 +42,9 @@ const extractNumberFromParentheses = (text) => {
   return match && match[1] ? parseInt(match[1], 10) : 0;
 };
 
-// Personal username configuration
-const MY_USERNAME = 'quick_unity_53';
-
-// Timeout configuration
-const API_TIMEOUT = 15000; // 15 seconds
+// Configuration from centralized config
+const MY_USERNAME = config.USERNAMES.CODECHEF;
+const API_TIMEOUT = config.TIMEOUTS.CODECHEF;
 
 /**
  * Save user data to JSON file (single user format for portfolio)

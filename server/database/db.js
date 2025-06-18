@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import config from "../config/index.js";
 
 const connectDB = async () => {
   try {
@@ -7,7 +8,7 @@ const connectDB = async () => {
       return;
     }
 
-    await mongoose.connect(process.env.MONGO_URI, {
+    await mongoose.connect(process.env.MONGO_URI || config.MONGODB_URI, {
       dbName: process.env.DB_NAME,
     });
     console.log("✅ MongoDB connected successfully");

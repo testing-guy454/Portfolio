@@ -8,11 +8,12 @@ import * as cheerio from 'cheerio';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import config from '../config/index.js';
 
-// Configuration
+// Configuration from centralized config
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const MY_USERNAME = 'yuvrajmevbrx';
+const MY_USERNAME = config.USERNAMES.GFG;
 
 // Constants
 const DEFAULT_VALUES = {
@@ -261,7 +262,7 @@ export const getGFGUserInfo = async (username = MY_USERNAME) => {
     // Fetch page with timeout and memory optimization
     const { data: html } = await axios.get(url, {
       headers: HTTP_HEADERS,
-      timeout: 15000,
+      timeout: config.TIMEOUTS.GFG,
       maxRedirects: 5,
       maxContentLength: 10 * 1024 * 1024 // 10MB limit
     });
