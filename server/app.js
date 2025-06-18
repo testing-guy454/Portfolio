@@ -1,22 +1,28 @@
 import express from 'express';
 import cors from 'cors';
-import config from './config/index.js';
 import codingPlatformsRouter from './routes/codingPlatforms.js';
 import { startScheduler, updateAllPlatforms } from './services/simpleScheduler.js';
-import { errorHandler, notFound } from './middleware/errorHandler.js';
-import asyncHandler from './middleware/asyncHandler.js';
+import {
+  asyncHandler,
+  errorHandler,
+  notFound
+} from './middleware/index.js';
 
 const app = express();
 
 // Middleware
-app.use(cors(config.cors));
-app.use(express.json({ limit: config.api.maxRequestSize }));
+app.use(cors({
+  origin: process.env.ALLOWED_ORIGINS?.split(',') || 'http://localhost:3000',
+  credentials: true,
+  optionsSuccessStatus: 200
+}));
+app.use(express.json());
 
 // Routes
-app.use(config.api.prefix + "/codingPlatforms", codingPlatformsRouter);
+app.use("/api/v1/codingPlatforms", codingPlatformsRouter);
 
 // Admin routes for data updates
-app.get(config.api.prefix + '/admin/update-status', (req, res) => {
+app.get('/api/v1/admin/update-status', (req, res) => {
   res.json({
     success: true,
     message: 'Scheduler is running',
@@ -24,7 +30,7 @@ app.get(config.api.prefix + '/admin/update-status', (req, res) => {
   });
 });
 
-app.post(config.api.prefix + '/admin/trigger-update', asyncHandler(async (req, res) => {
+app.post('/api/v1/admin/trigger-update', asyncHandler(async (req, res) => {
   const result = await updateAllPlatforms();
   res.json({
     success: true,
@@ -34,7 +40,7 @@ app.post(config.api.prefix + '/admin/trigger-update', asyncHandler(async (req, r
 }));
 
 // Health check endpoint
-app.get(config.health.endpoint, (req, res) => {
+app.get('/health', (req, res) => {
   res.status(200).json({
     status: 'healthy',
     timestamp: new Date().toISOString(),
