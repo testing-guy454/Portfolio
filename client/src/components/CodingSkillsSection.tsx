@@ -562,12 +562,6 @@ const Coding = () => {
                   position: "relative",
                   background:
                     theme === "dark" ? "rgba(17, 24, 39, 0.8)" : "#ffffff",
-                  backgroundImage: `url("/src/assets/grid-pattern.svg")`,
-                  backgroundSize: "24px 24px",
-                  backgroundRepeat: "repeat",
-                  backgroundPosition: "center center",
-                  backgroundBlendMode:
-                    theme === "dark" ? "luminosity" : "multiply",
                   boxShadow:
                     theme === "dark"
                       ? `0 0 20px rgba(0, 0, 0, 0.2), inset 0 0 60px ${platform.iconColor}15`
