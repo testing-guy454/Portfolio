@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useTheme } from "../contexts/ThemeContext";
-import PlatformDetailsModal from "./PlatformDetailsModal";
 import { FaMedal, FaTrophy, FaCode, FaFire } from "react-icons/fa";
 import {
   SiCodechef,
@@ -20,9 +19,8 @@ const codingData = {
       name: "LeetCode",
       rating: "1550+",
       problemsSolved: "183",
-      progress: "75%",
       icon: SiLeetcode,
-      iconColor: "orange",
+      iconColor: "#FFA116", // Updated to match LeetCode's actual brand color
       url: "https://leetcode.com/",
       rank: "Top 26%",
       categories: [
@@ -31,41 +29,227 @@ const codingData = {
         { name: "Hard", count: 4, color: "red" },
       ],
       contests: "Weekly Contests",
+      problems: {
+        easy: [
+          {
+            title: "Two Sum",
+            difficulty: "Easy",
+            url: "https://leetcode.com/problems/two-sum/",
+            description: "Find indices of two numbers that add up to target",
+          },
+          {
+            title: "Valid Parentheses",
+            difficulty: "Easy",
+            url: "https://leetcode.com/problems/valid-parentheses/",
+            description: "Determine if string has valid parentheses ordering",
+          },
+          {
+            title: "Merge Two Sorted Lists",
+            difficulty: "Easy",
+            url: "https://leetcode.com/problems/merge-two-sorted-lists/",
+            description: "Merge two sorted linked lists",
+          },
+        ],
+        medium: [
+          {
+            title: "Add Two Numbers",
+            difficulty: "Medium",
+            url: "https://leetcode.com/problems/add-two-numbers/",
+            description: "Add two numbers represented as linked lists",
+          },
+          {
+            title: "Longest Substring Without Repeating Characters",
+            difficulty: "Medium",
+            url: "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+            description: "Find length of longest substring without repeats",
+          },
+          {
+            title: "LRU Cache",
+            difficulty: "Medium",
+            url: "https://leetcode.com/problems/lru-cache/",
+            description: "Design a data structure that implements LRU cache",
+          },
+        ],
+        hard: [
+          {
+            title: "Median of Two Sorted Arrays",
+            difficulty: "Hard",
+            url: "https://leetcode.com/problems/median-of-two-sorted-arrays/",
+            description: "Find median of two sorted arrays in O(log(m+n))",
+          },
+          {
+            title: "Merge k Sorted Lists",
+            difficulty: "Hard",
+            url: "https://leetcode.com/problems/merge-k-sorted-lists/",
+            description: "Merge k sorted linked lists into one sorted list",
+          },
+        ],
+      },
     },
     {
       id: "codechef",
       name: "CodeChef",
       rating: "1270+",
       problemsSolved: "25",
-      progress: "60%",
       icon: SiCodechef,
-      iconColor: "brown",
+      iconColor: "#5B4638", // Updated to match CodeChef's actual brand color
       url: "https://www.codechef.com/",
       rank: "2★ Coder (Division 3)",
       contests: "5+",
+      categories: [
+        { name: "Easy", count: 14, color: "green" },
+        { name: "Medium", count: 8, color: "yellow" },
+        { name: "Hard", count: 3, color: "red" },
+      ],
+      problems: {
+        easy: [
+          {
+            title: "Chef and Digits of a Number",
+            difficulty: "Easy",
+            url: "https://www.codechef.com/problems/LONGSEQ",
+            description:
+              "Check if flipping exactly one digit makes all the same",
+          },
+          {
+            title: "Enormous Input Test",
+            difficulty: "Easy",
+            url: "https://www.codechef.com/problems/INTEST",
+            description: "Test for handling large inputs quickly",
+          },
+        ],
+        medium: [
+          {
+            title: "Chef and String",
+            difficulty: "Medium",
+            url: "https://www.codechef.com/problems/CHEFSTR1",
+            description: "Calculate force required to play a string instrument",
+          },
+          {
+            title: "Chef and Remissness",
+            difficulty: "Medium",
+            url: "https://www.codechef.com/problems/REMISS",
+            description: "Calculate minimum and maximum number of visitors",
+          },
+        ],
+        hard: [
+          {
+            title: "Kth Path",
+            difficulty: "Hard",
+            url: "https://www.codechef.com/problems/KPATHS",
+            description: "Find the kth shortest path in a graph",
+          },
+        ],
+      },
     },
     {
       id: "geeksforgeeks",
       name: "GeeksForGeeks",
       institutionRank: "#1455",
       problemsSolved: "70",
-      progress: "75%",
       icon: SiGeeksforgeeks,
-      iconColor: "green",
+      iconColor: "#2F8D46", // Updated to match GeeksforGeeks actual brand color
       url: "https://www.geeksforgeeks.org/",
       achievement: "GfG 160 - 160 Days of Problem Solving",
+      categories: [
+        { name: "Easy", count: 32, color: "green" },
+        { name: "Medium", count: 30, color: "yellow" },
+        { name: "Hard", count: 8, color: "red" },
+      ],
+      problems: {
+        easy: [
+          {
+            title: "Find Missing in Second Array",
+            difficulty: "Easy",
+            url: "https://practice.geeksforgeeks.org/problems/find-missing-in-second-array/1",
+            description:
+              "Find elements in first array that are missing in second",
+          },
+          {
+            title: "Remove Duplicates",
+            difficulty: "Easy",
+            url: "https://practice.geeksforgeeks.org/problems/remove-duplicate-elements-from-sorted-array/1",
+            description: "Remove duplicates from sorted array",
+          },
+        ],
+        medium: [
+          {
+            title: "Minimum Platforms",
+            difficulty: "Medium",
+            url: "https://practice.geeksforgeeks.org/problems/minimum-platforms/0",
+            description:
+              "Find minimum number of platforms required for a station",
+          },
+          {
+            title: "Job Sequencing Problem",
+            difficulty: "Medium",
+            url: "https://practice.geeksforgeeks.org/problems/job-sequencing-problem/0",
+            description: "Find maximum profit from jobs with deadlines",
+          },
+        ],
+        hard: [
+          {
+            title: "The N-Queens Puzzle",
+            difficulty: "Hard",
+            url: "https://practice.geeksforgeeks.org/problems/n-queen-problem0315/1",
+            description: "Place N queens on an NxN chessboard so no two attack",
+          },
+        ],
+      },
     },
     {
       id: "codeforces",
       name: "Codeforces",
       rating: "900+",
       problemsSolved: "10",
-      progress: "40%",
       icon: SiCodeforces,
-      iconColor: "blue",
+      iconColor: "#1F8ACB", // Updated to match Codeforces actual brand color
       url: "https://codeforces.com/",
       rank: "Newbie",
       contests: "3+",
+      categories: [
+        { name: "Easy", count: 5, color: "green" },
+        { name: "Medium", count: 4, color: "yellow" },
+        { name: "Hard", count: 1, color: "red" },
+      ],
+      problems: {
+        easy: [
+          {
+            title: "Watermelon",
+            difficulty: "Easy",
+            url: "https://codeforces.com/problemset/problem/4/A",
+            description: "Can the weight be divided into two even parts?",
+          },
+          {
+            title: "Way Too Long Words",
+            difficulty: "Easy",
+            url: "https://codeforces.com/problemset/problem/71/A",
+            description: "Abbreviate words that are too long",
+          },
+        ],
+        medium: [
+          {
+            title: "Theatre Square",
+            difficulty: "Medium",
+            url: "https://codeforces.com/problemset/problem/1/A",
+            description: "Cover a rectangular area with square flagstones",
+          },
+          {
+            title: "Next Round",
+            difficulty: "Medium",
+            url: "https://codeforces.com/problemset/problem/158/A",
+            description: "Who advances to the next round of competition?",
+          },
+        ],
+        hard: [
+          {
+            title: "Maximum Submatrix 2",
+            difficulty: "Hard",
+            url: "https://codeforces.com/problemset/problem/375/B",
+            description:
+              "Find the maximum number of non-decreasing subsegments",
+          },
+        ],
+      },
     },
   ],
   stats: {
@@ -111,7 +295,6 @@ const Coding = () => {
   });
 
   const { theme } = useTheme();
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [totalCounter, setTotalCounter] = useState(0);
 
   // Calculate total problems
@@ -147,13 +330,7 @@ const Coding = () => {
     }
   }, [inView, totalProblems]);
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
+  // No toggle function needed anymore
 
   return (
     <SectionContainer
@@ -176,15 +353,39 @@ const Coding = () => {
           {/* Get to know label style matching About section */}
           <div className="flex justify-center mb-3">
             <div
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${
-                theme === "dark" ? "bg-indigo-900/30" : "bg-indigo-100/60"
-              }`}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full relative overflow-hidden"
+              style={{
+                background:
+                  theme === "dark"
+                    ? "linear-gradient(90deg, rgba(79, 70, 229, 0.3) 0%, rgba(139, 92, 246, 0.3) 100%)"
+                    : "linear-gradient(90deg, rgba(224, 231, 255, 0.8) 0%, rgba(199, 210, 254, 0.8) 100%)",
+                border:
+                  theme === "dark"
+                    ? "1px solid rgba(139, 92, 246, 0.3)"
+                    : "1px solid rgba(199, 210, 254, 0.5)",
+              }}
             >
-              <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
               <span
-                className={
-                  theme === "dark" ? "text-indigo-400" : "text-indigo-700"
-                }
+                className="w-2 h-2 rounded-full animate-pulse"
+                style={{
+                  background:
+                    theme === "dark"
+                      ? "linear-gradient(90deg, rgb(129, 140, 248), rgb(167, 139, 250))"
+                      : "linear-gradient(90deg, rgb(79, 70, 229), rgb(124, 58, 237))",
+                  boxShadow:
+                    theme === "dark"
+                      ? "0 0 10px rgba(139, 92, 246, 0.6)"
+                      : "0 0 5px rgba(79, 70, 229, 0.4)",
+                }}
+              ></span>
+              <span
+                style={{
+                  color:
+                    theme === "dark"
+                      ? "rgb(167, 139, 250)"
+                      : "rgb(79, 70, 229)",
+                  fontWeight: 600,
+                }}
               >
                 Competitive Programming
               </span>
@@ -192,9 +393,15 @@ const Coding = () => {
           </div>
 
           <h2
-            className={`text-4xl font-bold mb-3 ${
-              theme === "dark" ? "text-white" : "text-gray-900"
-            }`}
+            className="text-4xl font-bold mb-3 relative inline-block"
+            style={{
+              background:
+                theme === "dark"
+                  ? "linear-gradient(90deg, rgb(129, 140, 248), rgb(167, 139, 250), rgb(236, 72, 153))"
+                  : "linear-gradient(90deg, rgb(79, 70, 229), rgb(124, 58, 237), rgb(219, 39, 119))",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
           >
             Coding{" "}
             <span
@@ -217,148 +424,79 @@ const Coding = () => {
           </p>
         </motion.div>
 
-        {/* Total Problems Counter - Horizontal Banner Design with Energy Motion Effect */}
+        {/* Total Problems Counter - Horizontal Banner Design */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
           className="mb-12"
-          whileInView={{
-            scale: [0.97, 1],
-            transition: { duration: 0.8, ease: "easeOut" },
-          }}
         >
           <div className="max-w-4xl mx-auto">
-            <motion.div
+            <div
               className={`relative ${
                 theme === "dark"
                   ? "bg-slate-800/80 border border-gray-700"
                   : "bg-white border border-gray-100"
-              } rounded-xl shadow-md overflow-hidden flex flex-col sm:flex-row`}
-              whileHover={{
-                scale: 1.02,
-                boxShadow:
-                  theme === "dark"
-                    ? "0 20px 25px -5px rgba(79, 70, 229, 0.1), 0 10px 10px -5px rgba(79, 70, 229, 0.04)"
-                    : "0 20px 25px -5px rgba(99, 102, 241, 0.1), 0 10px 10px -5px rgba(99, 102, 241, 0.04)",
-                transition: { duration: 0.3 },
-              }}
+              } rounded-xl shadow-md overflow-hidden flex flex-col sm:flex-row counter-effect`}
             >
-              {/* Animated particles in background */}
-              <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div
-                  className="absolute w-3 h-3 rounded-full bg-indigo-500/20 animate-ping"
-                  style={{
-                    top: "30%",
-                    left: "40%",
-                    animationDuration: "3s",
-                    animationDelay: "0.5s",
-                  }}
-                ></div>
-                <div
-                  className="absolute w-2 h-2 rounded-full bg-purple-500/20 animate-ping"
-                  style={{ top: "70%", left: "20%", animationDuration: "2.7s" }}
-                ></div>
-                <div
-                  className="absolute w-2 h-2 rounded-full bg-indigo-500/20 animate-ping"
-                  style={{
-                    top: "20%",
-                    right: "30%",
-                    animationDuration: "4s",
-                    animationDelay: "1s",
-                  }}
-                ></div>
-                <div
-                  className="absolute w-1 h-1 rounded-full bg-purple-500/20 animate-ping"
-                  style={{
-                    bottom: "20%",
-                    right: "20%",
-                    animationDuration: "5s",
-                    animationDelay: "0.7s",
-                  }}
-                ></div>
-              </div>
-
               {/* Left side decorative element */}
               <div className="absolute left-0 inset-y-0 w-1/3 overflow-hidden">
-                <motion.div
+                <div
                   className={`absolute inset-0 ${
                     theme === "dark"
                       ? "bg-gradient-to-r from-indigo-900/30 to-transparent"
                       : "bg-gradient-to-r from-indigo-100/50 to-transparent"
                   }`}
-                  animate={{
-                    opacity: [0.6, 0.8, 0.6],
-                    backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"],
-                  }}
-                  transition={{
-                    duration: 8,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                  }}
-                ></motion.div>
+                ></div>
               </div>
 
               {/* Code icon */}
-              <motion.div
-                className="relative z-10 p-6 md:p-8 flex-shrink-0 flex justify-center sm:justify-start"
-                whileHover={{ scale: 1.05, rotate: -2 }}
-                transition={{ type: "spring", stiffness: 300, damping: 15 }}
-              >
-                <motion.div
-                  className={`h-16 w-16 md:h-20 md:w-20 ${
-                    theme === "dark"
-                      ? "bg-gradient-to-br from-indigo-500 to-purple-600"
-                      : "bg-gradient-to-br from-indigo-500 to-indigo-700"
-                  } rounded-xl flex items-center justify-center shadow-md transform -rotate-3 light-tracking icon-badge`}
-                  animate={{
-                    boxShadow: [
-                      "0 4px 6px -1px rgba(99, 102, 241, 0.3), 0 2px 4px -1px rgba(99, 102, 241, 0.2)",
-                      "0 10px 15px -3px rgba(99, 102, 241, 0.4), 0 4px 6px -2px rgba(99, 102, 241, 0.2)",
-                      "0 4px 6px -1px rgba(99, 102, 241, 0.3), 0 2px 4px -1px rgba(99, 102, 241, 0.2)",
-                    ],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    repeatType: "reverse",
+              <div className="relative z-10 p-6 md:p-8 flex-shrink-0 flex justify-center sm:justify-start">
+                <div
+                  className="h-16 w-16 md:h-20 md:w-20 rounded-xl flex items-center justify-center shadow-md transform -rotate-3 light-tracking icon-badge relative overflow-hidden"
+                  style={{
+                    background:
+                      theme === "dark"
+                        ? "linear-gradient(135deg, rgb(99, 102, 241), rgb(139, 92, 246))"
+                        : "linear-gradient(135deg, rgb(79, 70, 229), rgb(139, 92, 246))",
+                    boxShadow:
+                      theme === "dark"
+                        ? "0 0 15px rgba(139, 92, 246, 0.4)"
+                        : "0 10px 15px -3px rgba(79, 70, 229, 0.2)",
                   }}
                 >
-                  <motion.div
-                    animate={{ scale: [1, 1.15, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    <FaCode className="text-white text-2xl md:text-3xl" />
-                  </motion.div>
-                </motion.div>
-              </motion.div>
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.3), transparent 50%)",
+                    }}
+                  ></div>
+                  <FaCode className="text-white text-2xl md:text-3xl relative z-10" />
+                </div>
+              </div>
 
               {/* Counter text */}
               <div className="flex-1 py-6 sm:py-6 md:py-8 px-6 md:pr-8 flex flex-col justify-center items-center sm:items-start">
                 <div className="flex flex-col sm:flex-row items-center sm:items-baseline flex-wrap">
-                  <motion.h3
-                    className={`text-4xl md:text-5xl font-bold mb-2 sm:mb-0 sm:mr-4 ${
-                      theme === "dark" ? "text-indigo-400" : "text-indigo-600"
-                    }`}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 0.2,
-                      type: "spring",
-                      stiffness: 400,
-                      damping: 10,
+                  <h3
+                    className="text-4xl md:text-5xl font-bold mb-2 sm:mb-0 sm:mr-4 count-animate"
+                    style={{
+                      background:
+                        theme === "dark"
+                          ? "linear-gradient(90deg, rgb(129, 140, 248), rgb(167, 139, 250))"
+                          : "linear-gradient(90deg, rgb(79, 70, 229), rgb(124, 58, 237))",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      textShadow:
+                        theme === "dark"
+                          ? "0 0 15px rgba(139, 92, 246, 0.4)"
+                          : "none",
                     }}
                   >
                     {totalCounter}
-                  </motion.h3>
-                  <motion.div
-                    className="text-center sm:text-left"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                  >
+                  </h3>
+                  <div className="text-center sm:text-left">
                     <p
                       className={`text-lg md:text-xl font-bold ${
                         theme === "dark" ? "text-white" : "text-gray-900"
@@ -373,25 +511,17 @@ const Coding = () => {
                     >
                       across multiple competitive programming platforms
                     </p>
-                  </motion.div>
+                  </div>
                 </div>
               </div>
 
               {/* Right side accent */}
-              <motion.div
+              <div
                 className={`hidden lg:flex items-center pr-8 ${
-                  theme === "dark" ? "text-indigo-400" : "text-indigo-500"
+                  theme === "dark"
+                    ? "text-indigo-400 pulse-animate"
+                    : "text-indigo-500 pulse-animate"
                 }`}
-                animate={{
-                  scale: [1, 1.05, 1],
-                  rotate: [0, 5, 0, -5, 0],
-                }}
-                transition={{
-                  duration: 8,
-                  ease: "easeInOut",
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
               >
                 <svg
                   width="60"
@@ -407,8 +537,8 @@ const Coding = () => {
                   <polyline points="8 6 2 12 8 18"></polyline>
                   <line x1="2" y1="12" x2="22" y2="12"></line>
                 </svg>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
         </motion.div>
 
@@ -425,20 +555,63 @@ const Coding = () => {
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                 className={`relative rounded-xl p-5 ${
                   theme === "dark"
-                    ? "bg-gray-800/70 border border-gray-700/50"
-                    : "bg-white border border-gray-100"
-                } shadow-md platform-card-hover transition-all duration-300 enhanced-card`}
+                    ? "border border-gray-700/50"
+                    : "border border-gray-200"
+                } shadow-md platform-card-hover transition-all duration-300 enhanced-card overflow-hidden`}
+                style={{
+                  position: "relative",
+                  background:
+                    theme === "dark" ? "rgba(17, 24, 39, 0.8)" : "#ffffff",
+                  backgroundImage: `url("/src/assets/grid-pattern.svg")`,
+                  backgroundSize: "24px 24px",
+                  backgroundRepeat: "repeat",
+                  backgroundPosition: "center center",
+                  backgroundBlendMode:
+                    theme === "dark" ? "luminosity" : "multiply",
+                  boxShadow:
+                    theme === "dark"
+                      ? `0 0 20px rgba(0, 0, 0, 0.2), inset 0 0 60px ${platform.iconColor}15`
+                      : `0 10px 25px -5px rgba(0, 0, 0, 0.05), inset 0 0 60px ${platform.iconColor}09`,
+                }}
               >
-                <div className="flex items-start">
+                {/* Decorative gradients */}
+                <div className="absolute inset-0 overflow-hidden">
                   <div
-                    onClick={() => handleOpenModal()}
-                    className={`h-12 w-12 rounded-lg bg-gradient-to-br ${
-                      theme === "dark"
-                        ? "from-indigo-500 to-purple-600"
-                        : "from-indigo-400 to-indigo-600"
-                    } flex items-center justify-center shadow-md cursor-pointer hover:scale-105 transition-transform light-tracking icon-badge mt-0.5`}
+                    className="absolute -inset-1 opacity-40"
+                    style={{
+                      background: `radial-gradient(circle at top right, ${platform.iconColor}30 0%, transparent 70%)`,
+                      filter: "blur(20px)",
+                    }}
+                  ></div>
+                  <div
+                    className="absolute right-0 bottom-0 w-24 h-24 opacity-10 rounded-full transform translate-x-1/4 translate-y-1/4"
+                    style={{
+                      background: platform.iconColor,
+                      filter: "blur(25px)",
+                    }}
+                  ></div>
+                </div>
+
+                <div className="flex items-start relative z-10">
+                  <div
+                    className={`h-12 w-12 rounded-lg flex items-center justify-center shadow-md hover:scale-105 transition-transform light-tracking icon-badge mt-0.5`}
+                    style={{
+                      background:
+                        theme === "dark"
+                          ? `linear-gradient(135deg, ${platform.iconColor}DD, ${platform.iconColor})`
+                          : `linear-gradient(135deg, ${platform.iconColor}CC, ${platform.iconColor})`,
+                      boxShadow:
+                        theme === "dark"
+                          ? `0 0 10px ${platform.iconColor}66`
+                          : `0 4px 6px -1px ${platform.iconColor}33`,
+                    }}
                   >
-                    <IconComponent className="text-white text-lg" />
+                    <IconComponent
+                      className="text-white text-lg"
+                      style={{
+                        filter: "drop-shadow(0px 1px 1px rgba(0,0,0,0.2))",
+                      }}
+                    />
                   </div>
 
                   <div className="ml-4 flex-1">
@@ -467,11 +640,10 @@ const Coding = () => {
 
                     <div className="flex items-baseline mt-2">
                       <span
-                        className={`text-3xl font-bold ${
-                          theme === "dark"
-                            ? "text-indigo-400"
-                            : "text-indigo-600"
-                        } count-animate`}
+                        className="text-3xl font-bold count-animate"
+                        style={{
+                          color: platform.iconColor,
+                        }}
                       >
                         {platform.problemsSolved}
                       </span>
@@ -484,17 +656,16 @@ const Coding = () => {
                       </span>
                     </div>
 
-                    {/* Progress bar */}
-                    <div
-                      className={`w-full h-1.5 ${
-                        theme === "dark" ? "bg-gray-700" : "bg-gray-200"
-                      } rounded-full mt-3 overflow-hidden`}
-                    >
+                    {/* Horizontal divider line */}
+                    <div className="mt-4 mb-4">
                       <div
-                        className={`h-full rounded-full ${
-                          theme === "dark" ? "bg-indigo-500" : "bg-indigo-600"
-                        } animate-progress`}
-                        style={{ width: platform.progress }}
+                        className="h-px w-full"
+                        style={{
+                          background:
+                            theme === "dark"
+                              ? `linear-gradient(to right, ${platform.iconColor}40, ${platform.iconColor}20, transparent)`
+                              : `linear-gradient(to right, ${platform.iconColor}30, ${platform.iconColor}10, transparent)`,
+                        }}
                       ></div>
                     </div>
 
@@ -563,14 +734,26 @@ const Coding = () => {
                       )}
                     </div>
 
-                    {/* Categories - only for LeetCode */}
+                    {/* Problem difficulty categories */}
                     {platform.categories && (
                       <div className="mt-4 grid grid-cols-3 gap-3">
                         {platform.categories.map((category, catIdx) => (
                           <div
                             key={catIdx}
                             className={`text-center p-2 rounded-lg shadow-sm transition-all duration-300 hover:scale-105 ${
-                              theme === "dark"
+                              category.color === "green"
+                                ? theme === "dark"
+                                  ? "bg-green-900/30 text-green-300 border border-green-800/30"
+                                  : "bg-green-50 text-green-700 border border-green-100"
+                                : category.color === "yellow"
+                                ? theme === "dark"
+                                  ? "bg-yellow-900/30 text-yellow-300 border border-yellow-800/30"
+                                  : "bg-yellow-50 text-yellow-700 border border-yellow-100"
+                                : category.color === "red"
+                                ? theme === "dark"
+                                  ? "bg-red-900/30 text-red-300 border border-red-800/30"
+                                  : "bg-red-50 text-red-700 border border-red-100"
+                                : theme === "dark"
                                 ? "bg-indigo-900/30 text-indigo-300 border border-indigo-800/30"
                                 : "bg-indigo-50 text-indigo-700 border border-indigo-100"
                             } stats-item`}
@@ -581,7 +764,19 @@ const Coding = () => {
                             <div
                               className={`text-base font-bold count-animate ${
                                 theme === "dark"
-                                  ? "text-white"
+                                  ? category.color === "green"
+                                    ? "text-green-300"
+                                    : category.color === "yellow"
+                                    ? "text-yellow-300"
+                                    : category.color === "red"
+                                    ? "text-red-300"
+                                    : "text-white"
+                                  : category.color === "green"
+                                  ? "text-green-700"
+                                  : category.color === "yellow"
+                                  ? "text-yellow-700"
+                                  : category.color === "red"
+                                  ? "text-red-700"
                                   : "text-gray-900"
                               }`}
                             >
@@ -591,6 +786,39 @@ const Coding = () => {
                         ))}
                       </div>
                     )}
+                  </div>
+                </div>
+
+                {/* Simple Achievement Line */}
+                <div className="mt-4">
+                  <div
+                    className="py-3 px-4 rounded-md text-center"
+                    style={{
+                      background:
+                        theme === "dark"
+                          ? `linear-gradient(to right, ${platform.iconColor}33, rgba(31, 41, 55, 0.8))`
+                          : `linear-gradient(to right, ${platform.iconColor}12, rgba(249, 250, 251, 0.9))`,
+                      borderLeft: `3px solid ${platform.iconColor}`,
+                    }}
+                  >
+                    <p
+                      className="text-sm"
+                      style={{
+                        color:
+                          theme === "dark"
+                            ? `${platform.iconColor}DD`
+                            : platform.iconColor,
+                      }}
+                    >
+                      {platform.id === "leetcode" &&
+                        "Solved 183+ problems across all difficulty levels"}
+                      {platform.id === "codechef" &&
+                        "Global Rank 1238 in CodeChef Starters 186"}
+                      {platform.id === "geeksforgeeks" &&
+                        "35+ day streak in GfG 160 challenge"}
+                      {platform.id === "codeforces" &&
+                        "Participated in 3+ competitive contests"}
+                    </p>
                   </div>
                 </div>
               </motion.div>
@@ -705,24 +933,7 @@ const Coding = () => {
         </div>
       </div>
 
-      {/* Platform Details Modal */}
-      <PlatformDetailsModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        platforms={codingData.platforms.map((p) => ({
-          name: p.name,
-          rating: p.rating,
-          problemsSolved: p.problemsSolved,
-          progress: p.progress,
-          icon: p.icon,
-          iconColor: p.iconColor,
-          categories: p.categories,
-          rank: p.rank,
-          contests: p.contests,
-          achievement: p.achievement,
-          institutionRank: p.institutionRank,
-        }))}
-      />
+      {/* No modal needed */}
     </SectionContainer>
   );
 };

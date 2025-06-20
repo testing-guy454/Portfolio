@@ -16,66 +16,80 @@
   }
 }
 
+/* Counter card animations - combined and optimized */
+@keyframes counter-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 2px rgba(99, 102, 241, 0.4);
+    border-color: rgba(99, 102, 241, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
+    border-color: rgba(139, 92, 246, 0.8);
+  }
+}
+
+@keyframes counter-shine {
+  0% {
+    transform: translateX(-100%) rotate(30deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(30deg);
+  }
+}
+
+/* Combined counter effect class for better performance */
+.counter-effect {
+  position: relative;
+  overflow: hidden;
+  animation: counter-glow 4s ease-in-out infinite;
+  will-change: box-shadow, border-color;
+  z-index: 1;
+}
+
+.counter-effect::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.03) 0%,
+    rgba(139, 92, 246, 0.02) 100%
+  );
+  opacity: 0;
+  animation: pulse 4s ease-in-out infinite;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.counter-effect::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 15%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: counter-shine 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation-delay: 1s;
+  transform: rotate(30deg);
+  z-index: 2;
+  pointer-events: none;
+  will-change: transform;
+}
+
 .gradient-animate {
   background-size: 200% 200%;
   animation: gradient-pulse 6s ease-in-out infinite;
-}
-
-/* Energetic particle animations */
-@keyframes energetic-float {
-  0% {
-    transform: translateY(0) translateX(0);
-  }
-  25% {
-    transform: translateY(-10px) translateX(5px);
-  }
-  50% {
-    transform: translateY(0) translateX(10px);
-  }
-  75% {
-    transform: translateY(10px) translateX(5px);
-  }
-  100% {
-    transform: translateY(0) translateX(0);
-  }
-}
-
-.energetic-motion {
-  animation: energetic-float 8s ease-in-out infinite;
-  position: relative;
-}
-
-@keyframes particle-ping {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  75%,
-  100% {
-    transform: scale(2);
-    opacity: 0;
-  }
-}
-
-.animate-ping {
-  animation: particle-ping 3s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
-
-/* Enhanced glow animation */
-@keyframes glow-pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
-    opacity: 0.7;
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.6);
-    opacity: 1;
-  }
-}
-
-.glow-animate {
-  animation: glow-pulse 2s ease-in-out infinite;
 }
 
 /* Typing animation for text elements */
@@ -108,10 +122,12 @@
     blink-caret 0.75s step-end infinite;
 }
 
-/* Card hover effects consistent with portfolio style */
+/* Card hover effects - optimized */
 .platform-card-hover {
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.3s ease;
   position: relative;
+  will-change: transform, box-shadow;
 }
 
 .platform-card-hover:hover {
@@ -119,7 +135,7 @@
   box-shadow: 0 15px 25px -10px rgba(99, 102, 241, 0.2);
 }
 
-/* Light effect on hover */
+/* Light effect on hover - optimized */
 .light-tracking {
   position: relative;
   overflow: hidden;
@@ -137,76 +153,65 @@
     rgba(139, 92, 246, 0.15),
     transparent
   );
-  animation: light-track 3s infinite linear;
   transform: skewX(-20deg);
   opacity: 0;
   transition: opacity 0.3s ease;
+  will-change: opacity, left;
+  left: -150px;
 }
 
 @keyframes light-track {
-  0% {
-    left: -150px;
-  }
-  100% {
+  to {
     left: 100%;
   }
 }
 
 .light-tracking:hover::before {
   opacity: 1;
+  animation: light-track 1.2s forwards;
 }
 
-/* Progress bar with indigo theme */
+/* Progress bar with indigo theme - optimized */
 @keyframes fill-progress {
   0% {
     width: 0;
     opacity: 0.6;
-  }
-  50% {
-    opacity: 0.9;
   }
   100% {
     opacity: 1;
   }
 }
 
+@keyframes progress-shine {
+  to {
+    background-position: -200% 0;
+  }
+}
+
 .animate-progress {
-  animation: fill-progress 1.8s cubic-bezier(0.37, 0, 0.63, 1) forwards;
+  animation: fill-progress 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   position: relative;
+  will-change: width, opacity;
+  transform: translateZ(0); /* Hardware acceleration */
 }
 
 .animate-progress::after {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0; /* Shorthand for top, right, bottom, left */
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.2) 50%,
-    rgba(255, 255, 255, 0)
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0) 100%
   );
-  animation: progress-shine 2s infinite linear;
   background-size: 200% 100%;
+  animation: progress-shine 2s infinite linear;
+  will-change: background-position;
 }
 
-@keyframes progress-shine {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
-}
-
-/* Badge and pill animations */
+/* Badge and pill animations - optimized */
 @keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
   50% {
     transform: translateY(-3px);
   }
@@ -214,29 +219,24 @@
 
 .floating-badge {
   animation: float 4s ease-in-out infinite;
+  will-change: transform;
 }
 
-/* Subtle pulse animation consistent with AboutSection */
+/* Subtle pulse animation - optimized */
 @keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
   50% {
     transform: scale(1.03);
+    opacity: 0.9;
   }
 }
 
 .pulse-animate {
   animation: pulse 3s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
-/* Counter animation */
+/* Counter animation - optimized */
 @keyframes count-up {
-  from {
-    transform: translateY(6px);
-    opacity: 0;
-  }
   to {
     transform: translateY(0);
     opacity: 1;
@@ -244,7 +244,10 @@
 }
 
 .count-animate {
+  transform: translateY(6px);
+  opacity: 0;
   animation: count-up 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  will-change: transform, opacity;
 }
 
 /* Enhanced card design to match portfolio cards */
@@ -321,6 +324,70 @@
 
 .skill-badge:hover {
   transform: translateY(-2px);
+}
+
+/* Problem difficulty indicators */
+.difficulty-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+
+.difficulty-easy {
+  background-color: rgba(34, 197, 94, 0.2);
+  color: rgb(34, 197, 94);
+}
+
+.difficulty-medium {
+  background-color: rgba(234, 179, 8, 0.2);
+  color: rgb(234, 179, 8);
+}
+
+.difficulty-hard {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: rgb(239, 68, 68);
+}
+
+.dark .difficulty-easy {
+  background-color: rgba(34, 197, 94, 0.2);
+  color: rgb(74, 222, 128);
+}
+
+.dark .difficulty-medium {
+  background-color: rgba(234, 179, 8, 0.2);
+  color: rgb(250, 204, 21);
+}
+
+.dark .difficulty-hard {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: rgb(248, 113, 113);
+}
+
+/* Problem card styling */
+.problem-card {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.problem-card:hover {
+  transform: translateY(-2px);
+}
+
+.light .problem-card {
+  background-color: rgba(249, 250, 251, 1);
+  border: 1px solid rgba(229, 231, 235, 1);
+}
+
+.dark .problem-card {
+  background-color: rgba(31, 41, 55, 0.5);
+  border: 1px solid rgba(55, 65, 81, 0.5);
 }
 
 /* Category pills styling */
