@@ -1,0 +1,423 @@
+/* Coding skills animations that match the portfolio design */
+
+/* Gradient animations that match the indigo/purple theme */
+@keyframes gradient-pulse {
+  0% {
+    background-position: 0% 50%;
+    background-size: 100% 100%;
+  }
+  50% {
+    background-position: 100% 50%;
+    background-size: 110% 110%;
+  }
+  100% {
+    background-position: 0% 50%;
+    background-size: 100% 100%;
+  }
+}
+
+.gradient-animate {
+  background-size: 200% 200%;
+  animation: gradient-pulse 6s ease-in-out infinite;
+}
+
+/* Energetic particle animations */
+@keyframes energetic-float {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  50% {
+    transform: translateY(0) translateX(10px);
+  }
+  75% {
+    transform: translateY(10px) translateX(5px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
+
+.energetic-motion {
+  animation: energetic-float 8s ease-in-out infinite;
+  position: relative;
+}
+
+@keyframes particle-ping {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.animate-ping {
+  animation: particle-ping 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Enhanced glow animation */
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
+    opacity: 0.7;
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.6);
+    opacity: 1;
+  }
+}
+
+.glow-animate {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Typing animation for text elements */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: currentColor;
+  }
+}
+
+.typing-animation {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid;
+  width: 0;
+  animation: typing 2.5s steps(40, end) forwards,
+    blink-caret 0.75s step-end infinite;
+}
+
+/* Card hover effects consistent with portfolio style */
+.platform-card-hover {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+
+.platform-card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px -10px rgba(99, 102, 241, 0.2);
+}
+
+/* Light effect on hover */
+.light-tracking {
+  position: relative;
+  overflow: hidden;
+}
+
+.light-tracking::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(139, 92, 246, 0.15),
+    transparent
+  );
+  animation: light-track 3s infinite linear;
+  transform: skewX(-20deg);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+@keyframes light-track {
+  0% {
+    left: -150px;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.light-tracking:hover::before {
+  opacity: 1;
+}
+
+/* Progress bar with indigo theme */
+@keyframes fill-progress {
+  0% {
+    width: 0;
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-progress {
+  animation: fill-progress 1.8s cubic-bezier(0.37, 0, 0.63, 1) forwards;
+  position: relative;
+}
+
+.animate-progress::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: progress-shine 2s infinite linear;
+  background-size: 200% 100%;
+}
+
+@keyframes progress-shine {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Badge and pill animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.floating-badge {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Subtle pulse animation consistent with AboutSection */
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+.pulse-animate {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* Counter animation */
+@keyframes count-up {
+  from {
+    transform: translateY(6px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.count-animate {
+  animation: count-up 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Enhanced card design to match portfolio cards */
+.enhanced-card {
+  transition: all 0.3s ease;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.dark .enhanced-card {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(71, 85, 105, 0.3);
+}
+
+.light .enhanced-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(226, 232, 240, 0.7);
+}
+
+/* Subtle animated borders that match indigo theme */
+.animated-border {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.animated-border::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -50%;
+  top: -100%;
+  width: 200%;
+  height: 200%;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-image: conic-gradient(
+    transparent,
+    rgba(99, 102, 241, 0.1),
+    transparent 30%
+  );
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+/* Skill badges for coding platforms */
+.skill-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.375rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.dark .skill-badge {
+  background-color: rgba(99, 102, 241, 0.2);
+  color: rgba(165, 180, 252, 1);
+}
+
+.light .skill-badge {
+  background-color: rgba(224, 231, 255, 0.6);
+  color: rgba(79, 70, 229, 1);
+}
+
+.skill-badge:hover {
+  transform: translateY(-2px);
+}
+
+/* Category pills styling */
+.category-pill {
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  transition: all 0.2s ease;
+}
+
+.dark .category-pill {
+  background-color: rgba(99, 102, 241, 0.2);
+  color: rgba(139, 92, 246, 0.9);
+}
+
+.light .category-pill {
+  background-color: rgba(238, 242, 255, 0.8);
+  color: rgba(79, 70, 229, 0.9);
+}
+
+/* Achievement card effects */
+.achievement-card {
+  transition: all 0.3s ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-3px);
+}
+
+.dark .achievement-card {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(71, 85, 105, 0.3);
+}
+
+.light .achievement-card {
+  background: white;
+  border: 1px solid rgba(226, 232, 240, 0.7);
+}
+
+/* Icon badge animations */
+.icon-badge {
+  display: grid;
+  place-items: center;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.icon-badge svg {
+  transition: all 0.3s ease;
+}
+
+.icon-badge:hover svg {
+  transform: scale(1.1);
+}
+
+.dark .icon-badge {
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.8),
+    rgba(139, 92, 246, 0.8)
+  );
+}
+
+.light .icon-badge {
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.9),
+    rgba(139, 92, 246, 0.9)
+  );
+}
+
+/* Platform stats card styling */
+.stats-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.stats-item {
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.dark .stats-item {
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(71, 85, 105, 0.2);
+}
+
+.light .stats-item {
+  background: rgba(248, 250, 252, 0.8);
+  border: 1px solid rgba(226, 232, 240, 0.7);
+}
+
+.stats-item:hover {
+  transform: translateY(-2px);
+}
