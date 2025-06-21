@@ -1,28 +1,12 @@
-import fs from "fs/promises";
-import path from "path";
-import { fileURLToPath } from "url";
+import { codechefData } from "../data/ResponseReady/index.js";
 import { ApiError, asyncHandler } from "../middleware/index.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-/**
- * Handler for CodeChef user data requests (Personal Portfolio)
- * Serves data from the local codechef.json file
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- */
 const codechefHandler = asyncHandler(async (req, res) => {
-  // Read data from the JSON file
-  const dataPath = path.join(__dirname, "../data/codechef.json");
-  const fileData = await fs.readFile(dataPath, "utf8");
-  const userData = JSON.parse(fileData);
-
-  if (!userData) {
+  if (!codechefData) {
     throw new ApiError(404, "CodeChef user data not found");
   }
 
-  res.json(userData);
+  res.status(200).json(codechefData);
 });
 
 export default codechefHandler;

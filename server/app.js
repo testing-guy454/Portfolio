@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import codingPlatformsRouter from './routes/codingPlatforms.js';
-import { startScheduler, updateAllPlatforms } from './services/simpleScheduler.js';
+import admin from './routes/admin.js';
 import {
   asyncHandler,
   errorHandler,
@@ -17,24 +17,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/v1/codingPlatforms", codingPlatformsRouter);
-
-// Admin routes for data updates
-app.get('/api/v1/admin/update-status', (req, res) => {
-  res.json({
-    success: true,
-    message: 'Scheduler is running',
-    schedule: 'Every 6 hours'
-  });
-});
-
-app.post('/api/v1/admin/trigger-update', asyncHandler(async (req, res) => {
-  const result = await updateAllPlatforms();
-  res.json({
-    success: true,
-    message: 'Manual update completed',
-    result
-  });
-}));
+app.use("/api/v1/admin", admin)
 
 // Health check endpoint
 app.get('/health', (req, res) => {
@@ -57,4 +40,3 @@ app.use(errorHandler);
 
 // Export both app and scheduler functions
 export default app;
-export { startScheduler, updateAllPlatforms };

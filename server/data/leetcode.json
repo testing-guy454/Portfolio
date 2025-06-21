@@ -5,7 +5,7 @@
     "rating": 1570.434906412852,
     "maxRating": null,
     "rank": null,
-    "globalRanking": 551951,
+    "globalRanking": 526240,
     "avatar": null,
     "country": null,
     "organization": null,
@@ -13,22 +13,25 @@
     "starRating": 2
   },
   "problemsSolved": {
-    "total": 221,
-    "easy": 106,
-    "medium": 111,
+    "total": 228,
+    "easy": 109,
+    "medium": 115,
     "hard": 4
   },
   "contests": {
     "rating": 1570.434906412852,
     "attendedCount": 9,
-    "globalRanking": 192595,
-    "bestRank": null,
-    "topPercentage": "27.8"
+    "globalRanking": 193103,
+    "bestRank": 6851,
+    "topPercentage": "27.7"
   },
   "achievements": {
     "stars": "2⭐",
-    "badges": null,
-    "streaks": null
+    "streaks": {
+      "currentStreak": 3,
+      "maxStreak": 18,
+      "totalActiveDays": 121
+    }
   },
-  "lastUpdated": "2025-06-18T21:12:31.361Z"
+  "lastUpdated": "2025-06-21T20:17:03.467Z"
 }

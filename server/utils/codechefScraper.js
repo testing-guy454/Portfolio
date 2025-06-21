@@ -262,5 +262,3 @@ export const getCodechefUserInfo = async (username = MY_USERNAME) => {
     return null;
   }
 };
-
-

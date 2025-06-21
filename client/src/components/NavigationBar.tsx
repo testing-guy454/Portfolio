@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes, FaDownload } from "react-icons/fa";
 import ThemeToggle from "./ThemeSwitcher";
+import * as personalDataModule from "../data/personalData";
 
 interface NavbarEnhancedProps {
   scrolled: boolean;
@@ -14,19 +15,18 @@ const NavbarEnhanced = ({ scrolled = false }: NavbarEnhancedProps) => {
   const [showNavShadow, setShowNavShadow] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
 
-  // Main navigation items
-  const navLinks = [
-    { title: "Home", href: "#home" },
-    { title: "About", href: "#about" },
-    { title: "Experience", href: "#experience" },
-    { title: "Education", href: "#education" },
-    { title: "Skills", href: "#tech-stack" },
-    { title: "Projects", href: "#projects" },
-    { title: "Contact", href: "#contact" },
-  ];
+  // Import data from personalData.ts
+  const navigationLinks = personalDataModule.navLinks;
+
+  // Main navigation items - Map from personal data to the format needed for the navbar
+  const navLinks = navigationLinks.map((link) => ({
+    title: link.name,
+    href: link.href,
+  }));
 
   // Optional navigation that appears in dropdown on smaller screens
-  const secondaryNavLinks = [{ title: "Coding", href: "#coding" }];
+  // If the navigation grows too large, we could move items here
+  const secondaryNavLinks: { title: string; href: string }[] = [];
 
   const handleScrollSpy = () => {
     const sections = document.querySelectorAll("section");

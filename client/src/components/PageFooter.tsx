@@ -41,20 +41,23 @@ const ModernFooter = () => {
     );
   }, []);
 
+  // Navigation links
   const links = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
+    { name: "Experience", href: "#experience" },
     { name: "Contact", href: "#contact" },
   ];
 
-  const contactInfo = [
-    { icon: <FaMapMarkerAlt />, text: "Gaya, Bihar, India" },
+  // Footer contact info
+  const footerContactInfo = [
+    { icon: <FaMapMarkerAlt />, text: "New Delhi, India" },
     {
       icon: <FaEnvelope />,
-      text: "yuvraj.mehta532@gmail.com",
-      href: "mailto:yuvraj.mehta532@gmail.com",
+      text: "yuvrajmehta2003@gmail.com",
+      href: "mailto:yuvrajmehta2003@gmail.com",
     },
   ];
 
@@ -83,19 +86,19 @@ const ModernFooter = () => {
     },
     {
       name: "LeetCode",
-      href: "https://leetcode.com/u/mythical-UV/",
+      href: "https://leetcode.com/yuvrajmehta07/",
       icon: <SiLeetcode size={16} />,
       color: "indigo",
     },
     {
       name: "GeeksforGeeks",
-      href: "https://www.geeksforgeeks.org/user/yuvrajmevbrx/",
+      href: "https://auth.geeksforgeeks.org/user/yuvrajmehta07/practice",
       icon: <SiGeeksforgeeks size={16} />,
       color: "green",
     },
     {
       name: "CodeChef",
-      href: "https://www.codechef.com/users/quick_unity_53",
+      href: "https://www.codechef.com/users/yuvrajmehta07",
       icon: <SiCodechef size={16} />,
       color: "purple",
     },
@@ -107,34 +110,34 @@ const ModernFooter = () => {
     },
   ];
 
-  const socialLinks = [
+  const footerSocialLinks = [
     {
       icon: <FaGithub size={20} />,
-      href: "https://github.com/yuvraj-mehta",
+      href: "https://github.com/Yuvrajchandra",
       label: "GitHub",
       color: "indigo",
     },
     {
       icon: <FaLinkedin size={20} />,
-      href: "https://linkedin.com/in/yuvraj-mehta-a0274528a/",
+      href: "https://www.linkedin.com/in/yuvraj-mehta-07/",
       label: "LinkedIn",
       color: "blue",
     },
     {
       icon: <FaTwitter size={20} />,
-      href: "https://twitter.com/",
+      href: "https://twitter.com/yuvraj_mehta07",
       label: "Twitter",
       color: "teal",
     },
     {
       icon: <SiLeetcode size={20} />,
-      href: "https://leetcode.com/u/mythical-UV/",
+      href: "https://leetcode.com/yuvrajmehta07/",
       label: "LeetCode",
       color: "purple",
     },
     {
       icon: <FaEnvelope size={20} />,
-      href: "mailto:yuvraj.mehta532@gmail.com",
+      href: "mailto:yuvrajmehta2003@gmail.com",
       label: "Email",
       color: "green",
     },
@@ -229,7 +232,7 @@ const ModernFooter = () => {
                 viewport={{ once: true }}
                 className="flex flex-wrap gap-3 sm:gap-4"
               >
-                {socialLinks.map((item, index) => (
+                {footerSocialLinks.map((item, index) => (
                   <motion.a
                     key={index}
                     variants={fadeIn}
@@ -270,7 +273,7 @@ const ModernFooter = () => {
                 Contact
               </h3>
               <div className="space-y-3 md:space-y-4">
-                {contactInfo.map((item, index) => (
+                {footerContactInfo.map((item, index) => (
                   <div
                     key={index}
                     className="flex items-center gap-3 overflow-hidden"

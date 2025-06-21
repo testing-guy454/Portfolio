@@ -1,6 +1,7 @@
-import app, { startScheduler, updateAllPlatforms } from "./app.js";
-import connectDB from "./database/db.js";
+import app from './app.js';
 import config from './config/index.js';
+import connectDB from "./database/db.js";
+import { startScheduler, updateAllPlatforms } from "./services/simpleScheduler.js";
 
 // Connect to database
 connectDB();

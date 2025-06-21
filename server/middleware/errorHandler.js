@@ -88,6 +88,7 @@ const errorHandler = (err, req, res, next) => {
  * @param {Function} next - Express next function
  */
 const notFound = (req, res, next) => {
+  
   const message = `Route ${req.originalUrl} not found`;
   const error = new ApiError(404, message);
   next(error);

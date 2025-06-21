@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useTheme } from "../contexts/ThemeContext";
+import * as personalDataModule from "../data/personalData";
 import {
   FaGraduationCap,
   FaSchool,
@@ -24,6 +25,9 @@ const EducationExperience = () => {
   });
 
   const { theme } = useTheme();
+
+  // Import data from personalData.ts
+  const codeStats = personalDataModule.codeStats;
 
   // Additional education information to enrich the existing data
   const enrichedEducationData = [
@@ -897,7 +901,7 @@ const EducationExperience = () => {
                       theme === "dark" ? "text-indigo-400" : "text-indigo-600"
                     }`}
                   >
-                    8+
+                    {codeStats.techBooksRead}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
@@ -913,7 +917,7 @@ const EducationExperience = () => {
                       theme === "dark" ? "text-indigo-400" : "text-indigo-600"
                     }`}
                   >
-                    5+
+                    {codeStats.techCommunitiesJoined}
                   </span>
                 </div>
               </div>

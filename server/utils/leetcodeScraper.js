@@ -60,6 +60,17 @@ const QUERIES = {
       }
     }
   `,
+  streak: `
+    query userProfileCalendar($username: String!) {
+      matchedUser(username: $username) {
+        userCalendar {
+          streak
+          totalActiveDays
+          submissionCalendar
+        }
+      }
+    }
+  `,
   contest: `
     query userContestRankingInfo($username: String!) {
       userContestRanking(username: $username) {
@@ -68,9 +79,6 @@ const QUERIES = {
         globalRanking
         totalParticipants
         topPercentage
-        badge {
-          name
-        }
       }
       userContestRankingHistory(username: $username) {
         attended
@@ -153,9 +161,10 @@ export const getLeetcodeUserInfo = async (username = MY_USERNAME) => {
 
     console.log(`Fetching LeetCode data for: ${username}`);
 
-    // Fetch both profile and contest data in parallel
-    const [profileData, contestData] = await Promise.all([
+    // Fetch profile, streak and contest data in parallel
+    const [profileData, streakData, contestData] = await Promise.all([
       makeApiRequest(username, 'profile'),
+      makeApiRequest(username, 'streak'),
       makeApiRequest(username, 'contest')
     ]);
 
@@ -192,13 +201,16 @@ export const getLeetcodeUserInfo = async (username = MY_USERNAME) => {
         rating: contestData?.userContestRanking?.rating || null,
         attendedCount: contestData?.userContestRanking?.attendedContestsCount || 0,
         globalRanking: contestData?.userContestRanking?.globalRanking || null,
-        bestRank: null, // LeetCode doesn't provide best rank
+        bestRank: 6851, // Hard-coded as requested
         topPercentage: contestData?.userContestRanking?.topPercentage?.toFixed(1) || null
       },
       achievements: {
         stars: profile?.starRating ? `${profile.starRating}⭐` : null,
-        badges: contestData?.userContestRanking?.badge?.name || null,
-        streaks: null // LeetCode doesn't provide streak info
+        streaks: streakData?.matchedUser?.userCalendar ? {
+          currentStreak: 3, // Hard-coded per user request
+          maxStreak: 18, // Hard-coded per user request
+          totalActiveDays: streakData.matchedUser.userCalendar.totalActiveDays
+        } : null
       },
       lastUpdated: new Date().toISOString()
     };

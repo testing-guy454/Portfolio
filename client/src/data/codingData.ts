@@ -1,0 +1,110 @@
+import { FaMedal, FaTrophy, FaFire } from "react-icons/fa";
+import {
+  SiCodechef,
+  SiGeeksforgeeks,
+  SiLeetcode,
+  SiCodeforces,
+} from "react-icons/si";
+
+// Enhanced coding data structure
+export const codingData = {
+  platforms: [
+    {
+      id: "leetcode",
+      name: "LeetCode",
+      rating: "1550+",
+      problemsSolved: "183",
+      icon: SiLeetcode,
+      iconColor: "#FFA116",
+      url: "https://leetcode.com/",
+      rank: "Top 26%",
+      categories: [
+        { name: "Easy", count: 86, color: "green" },
+        { name: "Medium", count: 93, color: "yellow" },
+        { name: "Hard", count: 4, color: "red" },
+      ],
+      contests: "Weekly Contests",
+    },
+    {
+      id: "codechef",
+      name: "CodeChef",
+      rating: "1270+",
+      problemsSolved: "25",
+      icon: SiCodechef,
+      iconColor: "#5B4638",
+      url: "https://www.codechef.com/",
+      rank: "2★ Coder (Division 3)",
+      contests: "5+",
+      categories: [
+        { name: "Easy", count: 14, color: "green" },
+        { name: "Medium", count: 8, color: "yellow" },
+        { name: "Hard", count: 3, color: "red" },
+      ],
+    },
+    {
+      id: "geeksforgeeks",
+      name: "GeeksForGeeks",
+      institutionRank: "#1455",
+      problemsSolved: "70",
+      icon: SiGeeksforgeeks,
+      iconColor: "#2F8D46",
+      url: "https://www.geeksforgeeks.org/",
+      achievement: "GfG 160 - 160 Days of Problem Solving",
+      categories: [
+        { name: "Easy", count: 32, color: "green" },
+        { name: "Medium", count: 30, color: "yellow" },
+        { name: "Hard", count: 8, color: "red" },
+      ],
+    },
+    {
+      id: "codeforces",
+      name: "Codeforces",
+      rating: "900+",
+      problemsSolved: "10",
+      icon: SiCodeforces,
+      iconColor: "#1F8ACB",
+      url: "https://codeforces.com/",
+      rank: "Newbie",
+      contests: "3+",
+      categories: [
+        { name: "Easy", count: 5, color: "green" },
+        { name: "Medium", count: 4, color: "yellow" },
+        { name: "Hard", count: 1, color: "red" },
+      ],
+    },
+  ],
+  stats: {
+    totalProblems: "288",
+    activeDays: "180+",
+    leetcodeRating: "1550+",
+    leetcodeRank: "Top 26%",
+    codechefRating: "1270+",
+    codeforcesRating: "900+",
+  },
+  achievements: [
+    {
+      id: 1,
+      title: "LeetCode Weekly Contest",
+      description: "Ranked in the top 26.1% globally on LeetCode",
+      color: "orange",
+      icon: FaTrophy,
+      badge: "Global Top 26%",
+    },
+    {
+      id: 2,
+      title: "CodeChef Starters",
+      description: "Achieved Global Rank 1238 in CodeChef Starters 186",
+      color: "brown",
+      icon: FaMedal,
+      badge: "Rank 1238",
+    },
+    {
+      id: 3,
+      title: "GfG 160 Challenge",
+      description: "Completed 35+ days of GfG 160 with 40+ problems solved",
+      color: "green",
+      icon: FaFire,
+      badge: "35+ Days",
+    },
+  ],
+};

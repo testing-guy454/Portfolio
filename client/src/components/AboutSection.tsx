@@ -2,15 +2,22 @@ import { motion } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
 import SectionContainer from "./SectionContainer";
 import { FaCode, FaUserGraduate, FaDownload, FaEnvelope } from "react-icons/fa";
+import * as personalDataModule from "../data/personalData";
 
 const About = () => {
   const { theme } = useTheme();
 
-  // Define skills data
+  // Import data from personalData.ts
+  const personalInfo = personalDataModule.personalInfo;
+  const resumeInfo = personalDataModule.resumeInfo;
+  const codeStats = personalDataModule.codeStats;
+  const codingSkills = personalDataModule.codingSkills;
+
+  // Use skills data from centralized store
   const skills = [
-    { name: "Web Development", level: 80, label: "80%" },
-    { name: "Data Structures", level: 85, label: "85%" },
-    { name: "Algorithms", level: 75, label: "75%" },
+    codingSkills.webDevelopment,
+    codingSkills.dataStructures,
+    codingSkills.algorithms,
   ];
 
   return (
@@ -77,7 +84,7 @@ const About = () => {
                   </div>
                   <div>
                     <div className="text-white text-sm font-medium">
-                      Top 26%
+                      {codeStats.leetcodeRank}
                     </div>
                     <div className="text-xs text-gray-400">LeetCode Global</div>
                   </div>
@@ -91,7 +98,7 @@ const About = () => {
                   <div>
                     <div className="text-white text-sm font-medium">Coding</div>
                     <div className="text-xs text-gray-400">
-                      2+ years of coding
+                      {personalInfo.yearsOfCoding}
                     </div>
                   </div>
                 </div>
@@ -107,8 +114,8 @@ const About = () => {
                   Get In Touch
                 </a>
                 <a
-                  href="/Yuvraj_Resume_v2_1%20(1).pdf"
-                  download="Yuvraj_Mehta_Resume.pdf"
+                  href={resumeInfo.downloadPath}
+                  download={resumeInfo.downloadName}
                   className={`w-full py-3 rounded-lg font-medium flex items-center justify-center gap-2 border ${
                     theme === "dark"
                       ? "border-indigo-600/60 text-indigo-400 hover:bg-indigo-600/10"
@@ -135,7 +142,7 @@ const About = () => {
                   theme === "dark" ? "text-indigo-400" : "text-indigo-600"
                 }
               >
-                Full Stack Developer
+                {personalInfo.title}
               </span>{" "}
               & CS Student
             </h3>
@@ -143,32 +150,26 @@ const About = () => {
             {/* Bio paragraphs */}
             <div className="mb-8 space-y-4">
               <p className={theme === "dark" ? "text-white" : "text-gray-700"}>
-                Computer Science student at{" "}
+                {personalInfo.aboutBio.first}
                 <span
                   className={
                     theme === "dark" ? "text-indigo-400" : "text-indigo-600"
                   }
                 >
-                  NIT Patna
+                  {personalInfo.aboutBio.firstHighlight}
                 </span>{" "}
-                passionate about full stack development with a strong foundation
-                in Data Structures & Algorithms. I approach technical challenges
-                analytically and continually expand my skills in GenAI and
-                modern web technologies.
+                {personalInfo.aboutBio.firstPart}
               </p>
               <p className={theme === "dark" ? "text-white" : "text-gray-700"}>
-                As a{" "}
+                {personalInfo.aboutBio.second}
                 <span
                   className={
                     theme === "dark" ? "text-indigo-400" : "text-indigo-600"
                   }
                 >
-                  Robotics Club member
+                  {personalInfo.aboutBio.secondHighlight}
                 </span>
-                , I've organized workshops and led teams building combat and
-                soccer bots. Outside coding, I enjoy competitive programming and
-                sports, having won Bronze in 50m Hurdles at NIT Patna
-                Intramurals.
+                {personalInfo.aboutBio.secondPart}
               </p>
             </div>
 

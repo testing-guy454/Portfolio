@@ -2,23 +2,23 @@
   "handle": "yuvrajmevbrx",
   "profile": {
     "name": "Yuvraj Mehta National Institute of Technology, Patna (NIT Patna)",
-    "rating": 350,
+    "rating": 372,
     "maxRating": 0,
     "rank": "Ace",
     "globalRanking": null,
     "avatar": null,
     "country": null,
     "organization": "National Institute of Technology, Patna (NIT Patna)",
-    "codingScore": 350,
+    "codingScore": 372,
     "contestRating": 0,
-    "instituteRank": "1199",
-    "totalProblems": 105,
+    "instituteRank": "1153",
+    "totalProblems": 112,
     "currentStreak": 7,
-    "maxStreak": 1415,
-    "yearlySubmissions": 118
+    "maxStreak": 1419,
+    "yearlySubmissions": 140
   },
   "problemsSolved": {
-    "total": 105,
+    "total": 112,
     "easy": 33,
     "medium": 66,
     "hard": 4,
@@ -36,8 +36,8 @@
     "badges": "Ace",
     "streaks": {
       "current": 7,
-      "max": 1415
+      "max": 1419
     }
   },
-  "lastUpdated": "2025-06-18T21:12:29.173Z"
+  "lastUpdated": "2025-06-21T20:17:02.133Z"
 }

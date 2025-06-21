@@ -36,7 +36,7 @@ Here are prioritized improvement suggestions to enhance an already excellent fou
   ```javascript
   // config/index.js
   export const config = {
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 9000,
     mongoUri: process.env.MONGO_URI,
     dbName: process.env.DB_NAME || "portfolio",
     usernames: {
@@ -64,7 +64,7 @@ Here are prioritized improvement suggestions to enhance an already excellent fou
 
   ```bash
   # Server Configuration
-  PORT=3000
+  PORT=9000
   NODE_ENV=development
 
   # Database
@@ -86,7 +86,7 @@ Here are prioritized improvement suggestions to enhance an already excellent fou
   MAX_RETRIES=3
 
   # CORS
-  ALLOWED_ORIGINS=http://localhost:3000,https://yourdomain.com
+  ALLOWED_ORIGINS=http://localhost:9000,https://yourdomain.com
 
   # Logging
   LOG_LEVEL=info
@@ -309,7 +309,7 @@ Here are prioritized improvement suggestions to enhance an already excellent fou
   ## Base URL
   ```
 
-  http://localhost:3000/api/v1
+  http://localhost:9000/api/v1
 
   ````
 
@@ -549,7 +549,7 @@ Here are prioritized improvement suggestions to enhance an already excellent fou
 
   COPY . .
 
-  EXPOSE 3000
+  EXPOSE 9000
 
   USER node
 
@@ -564,7 +564,7 @@ Here are prioritized improvement suggestions to enhance an already excellent fou
     app:
       build: .
       ports:
-        - "3000:3000"
+        - "9000:9000"
       environment:
         - NODE_ENV=production
       volumes:

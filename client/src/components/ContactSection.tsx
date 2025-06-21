@@ -11,9 +11,7 @@ import { IoMailOutline, IoSendSharp, IoCallOutline } from "react-icons/io5";
 import { BiLoaderAlt } from "react-icons/bi";
 import { RiMailSendLine } from "react-icons/ri";
 
-// Contact information for easier access when changing
-const CONTACT_EMAIL = "yuvraj.mehta532@gmail.com";
-const CONTACT_PHONE = "+91-9334083113";
+import * as personalDataModule from "../data/personalData";
 
 const Contact = () => {
   const { theme } = useTheme();
@@ -21,6 +19,10 @@ const Contact = () => {
     triggerOnce: true,
     threshold: 0.1,
   });
+
+  // Import data from personalData.ts
+  const contactData = personalDataModule.contactInfo;
+  const socialLinks = personalDataModule.socialLinks;
 
   // Form state
   const [formData, setFormData] = useState({
@@ -69,11 +71,11 @@ const Contact = () => {
           }`}
         />
       ),
-      text: CONTACT_EMAIL,
-      href: `mailto:${CONTACT_EMAIL}`,
+      text: contactData.email,
+      href: `mailto:${contactData.email}`,
       gradient: "from-indigo-500 to-purple-500",
       title: "Email",
-      value: CONTACT_EMAIL,
+      value: contactData.email,
     },
     {
       icon: (
@@ -83,11 +85,11 @@ const Contact = () => {
           }`}
         />
       ),
-      text: CONTACT_PHONE,
-      href: `tel:${CONTACT_PHONE.replace(/-/g, "")}`,
+      text: contactData.phone,
+      href: `tel:${contactData.phone.replace(/-/g, "")}`,
       gradient: "from-green-500 to-teal-500",
       title: "Phone",
-      value: CONTACT_PHONE,
+      value: contactData.phone,
     },
   ];
 
@@ -303,7 +305,7 @@ const Contact = () => {
 
               <div className="flex gap-4 mt-5">
                 <motion.a
-                  href="https://github.com/"
+                  href={socialLinks.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`w-14 h-14 flex items-center justify-center rounded-xl text-white shadow-lg backdrop-blur-sm transition-all duration-300 relative overflow-hidden contact-social-icon ${
@@ -327,7 +329,7 @@ const Contact = () => {
                 </motion.a>
 
                 <motion.a
-                  href="https://linkedin.com/in/yuvraj-mehta-a0274528a//"
+                  href={socialLinks.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`w-14 h-14 flex items-center justify-center rounded-xl text-white shadow-lg backdrop-blur-sm transition-all duration-300 relative overflow-hidden contact-social-icon ${
@@ -351,7 +353,7 @@ const Contact = () => {
                 </motion.a>
 
                 <motion.a
-                  href="https://twitter.com/"
+                  href={socialLinks.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`w-14 h-14 flex items-center justify-center rounded-xl text-white shadow-lg backdrop-blur-sm transition-all duration-300 relative overflow-hidden contact-social-icon ${

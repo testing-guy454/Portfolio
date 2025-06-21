@@ -4,6 +4,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import config from '../config/index.js';
 
+import { updateResponseData } from '../data/ResponseReady/index.js'
+
 // Import scrapers
 import { getLeetcodeUserInfo } from '../utils/leetcodeScraper.js';
 import { getCodeforcesUserInfo } from '../utils/codeforcesScraper.js';
@@ -15,7 +17,7 @@ const __dirname = path.dirname(__filename);
 const dataDir = path.join(__dirname, '../data');
 
 // Simple update function with memory optimization
-const updatePlatform = async (platform, scraper) => {
+const updatePlatform = async (platform, scraper, responseDataUpdater = null) => {
   try {
     console.log(`🔄 Updating ${platform}...`);
     const data = await scraper();
@@ -24,6 +26,13 @@ const updatePlatform = async (platform, scraper) => {
       const filePath = path.join(dataDir, `${platform}.json`);
       await fs.writeFile(filePath, JSON.stringify(data, null, 2));
       console.log(`✅ ${platform} updated`);
+
+      // If we have a response data updater function, call it
+      if (responseDataUpdater && typeof responseDataUpdater === 'function') {
+        await responseDataUpdater();
+        console.log(`✅ ${platform} response data updated`);
+      }
+
       return true;
     }
     return false;
@@ -47,7 +56,10 @@ const updateAllPlatforms = async () => {
   const results = await Promise.all(updates);
   const successful = results.filter(r => r).length;
 
+
+
   console.log(`📊 Update complete: ${successful}/4 platforms updated`);
+  updateResponseData();
   return { successful, total: 4 };
 };
 
@@ -58,6 +70,7 @@ const startScheduler = () => {
     console.log(`⏰ Scheduled update: ${new Date().toLocaleString()}`);
     try {
       await updateAllPlatforms();
+      updateResponseData();
     } catch (error) {
       console.error("❌ Scheduled update failed:", error.message);
     }

@@ -8,9 +8,14 @@ import {
 } from "react-icons/fa";
 import { useTheme } from "../contexts/ThemeContext";
 import SectionContainer from "./SectionContainer";
+import * as personalDataModule from "../data/personalData";
 
 const Hero = () => {
   const { theme } = useTheme();
+
+  // Import data from personalData.ts
+  const personalInfo = personalDataModule.personalInfo;
+  const socialLinks = personalDataModule.socialLinks;
   return (
     <SectionContainer
       id="home"
@@ -37,7 +42,7 @@ const Hero = () => {
                   : "bg-gradient-to-r from-primary/10 to-secondary/10 text-primary"
               }`}
             >
-              Full Stack Developer
+              {personalInfo.title}
             </span>
           </motion.div>
 
@@ -62,7 +67,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
             >
-              Yuvraj Mehta
+              {personalInfo.name}
             </motion.span>
           </h1>
 
@@ -74,31 +79,31 @@ const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.8 }}
           >
-            B.Tech CS student at{" "}
+            {personalInfo.shortBio.intro}
             <span
               className={`font-semibold ${
                 theme === "dark" ? "text-indigo-400" : "text-primary"
               }`}
             >
-              NIT Patna
+              {personalInfo.shortBio.school}
             </span>{" "}
-            passionate about building{" "}
+            {personalInfo.shortBio.passion}
             <span
               className={`font-semibold ${
                 theme === "dark" ? "text-purple-400" : "text-secondary"
               }`}
             >
-              full stack applications
+              {personalInfo.shortBio.passionHighlight}
             </span>{" "}
-            with a focus on{" "}
+            {personalInfo.shortBio.focus}
             <span
               className={`font-semibold ${
                 theme === "dark" ? "text-pink-400" : "text-accent"
               }`}
             >
-              user-friendly interfaces
+              {personalInfo.shortBio.focusHighlight}
             </span>
-            . Skilled in{" "}
+            {personalInfo.shortBio.skill}
             <span className="relative inline-block">
               <span
                 className={`absolute -bottom-1 left-0 w-full h-1 ${
@@ -107,9 +112,9 @@ const Hero = () => {
                     : "bg-gradient-to-r from-primary to-accent"
                 }`}
               ></span>
-              MERN Stack
+              {personalInfo.shortBio.skillHighlight}
             </span>
-            .
+            {personalInfo.shortBio.end}
           </motion.p>
 
           <motion.div
@@ -161,7 +166,7 @@ const Hero = () => {
             transition={{ delay: 1.1, duration: 0.8 }}
           >
             <motion.a
-              href="https://github.com/yuvraj-mehta"
+              href={socialLinks.github}
               target="_blank"
               rel="noopener noreferrer"
               className={`w-12 h-12 rounded-lg flex items-center justify-center shadow-sm hover:shadow-lg icon-glow ${
@@ -177,7 +182,7 @@ const Hero = () => {
               </div>
             </motion.a>
             <motion.a
-              href="https://www.linkedin.com/in/yuvraj-mehta-a0274528a/"
+              href={socialLinks.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className={`w-12 h-12 rounded-lg flex items-center justify-center shadow-sm hover:shadow-lg icon-glow ${
@@ -193,7 +198,7 @@ const Hero = () => {
               </div>
             </motion.a>
             <motion.a
-              href="https://www.instagram.com/yuvraj.mehta4261/"
+              href={socialLinks.instagram}
               target="_blank"
               rel="noopener noreferrer"
               className={`w-12 h-12 rounded-lg flex items-center justify-center shadow-sm hover:shadow-lg icon-glow ${
