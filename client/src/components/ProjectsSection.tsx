@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import {
@@ -55,6 +55,14 @@ interface Project {
   featured?: boolean;
   category?: string;
 }
+
+// Function to preload images
+const preloadImages = (images: string[]) => {
+  images.forEach((src) => {
+    const img = new Image();
+    img.src = src;
+  });
+};
 
 // Projects data
 const projects: Project[] = [
@@ -125,6 +133,21 @@ const Projects = () => {
   const [activeTab, setActiveTab] = useState("featured"); // Default to 'all'
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loadedImages, setLoadedImages] = useState<Record<string, boolean>>({});
+
+  // Preload project images
+  useEffect(() => {
+    const imageUrls = projects.map((project) => project.image);
+    preloadImages(imageUrls);
+  }, []);
+
+  // Handle image load
+  const handleImageLoad = (projectTitle: string) => {
+    setLoadedImages((prev) => ({
+      ...prev,
+      [projectTitle]: true,
+    }));
+  };
 
   const projectTabs = [
     { id: "all", label: "All Projects" },
@@ -510,7 +533,7 @@ const Projects = () => {
                   : "bg-white border border-gray-200/50 shadow-xl shadow-gray-200/40"
               } h-full backdrop-blur-lg max-w-full w-full sm:w-auto`}
             >
-              <div className="relative group overflow-hidden h-48">
+              <div className="relative group overflow-hidden h-48 sm:h-56 md:h-64 lg:h-56 project-card-image-container">
                 {/* Project featured badge - only for featured projects */}
                 {project.featured && (
                   <div className="absolute top-2 left-2 z-20">
@@ -545,16 +568,21 @@ const Projects = () => {
 
                 {/* Project image with shine effect */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-shine"></div>
+                {!loadedImages[project.title] && (
+                  <div className="image-loading-skeleton"></div>
+                )}
                 <img
                   src={project.image}
                   alt={project.title}
                   onError={(e) => {
                     if (project.fallbackImage) {
                       e.currentTarget.src = project.fallbackImage;
+                      handleImageLoad(project.title);
                     }
                   }}
-                  className="w-full max-w-full h-48 sm:h-56 md:h-64 lg:h-72 object-cover transition-transform duration-700 group-hover:scale-110 rounded-t-2xl"
-                  style={{ objectFit: "cover" }}
+                  className="project-card-image rounded-t-2xl group-hover:scale-110"
+                  loading="lazy"
+                  onLoad={() => handleImageLoad(project.title)}
                 />
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -798,22 +826,33 @@ const Projects = () => {
             <div className="p-6">
               {/* Project Image */}
               <div
-                className={`mb-6 rounded-2xl overflow-hidden ${
+                className={`mb-6 rounded-2xl overflow-hidden project-card-image-container ${
                   theme === "dark"
                     ? "border border-gray-700/50 shadow-lg shadow-black/20"
                     : "border border-gray-200/70 shadow-xl shadow-gray-300/30"
                 }`}
+                style={{ height: "auto", maxHeight: "400px" }}
               >
+                {!loadedImages[selectedProject.title] && (
+                  <div className="image-loading-skeleton"></div>
+                )}
                 <img
                   src={selectedProject.image}
                   alt={selectedProject.title}
                   onError={(e) => {
                     if (selectedProject.fallbackImage) {
                       e.currentTarget.src = selectedProject.fallbackImage;
+                      handleImageLoad(selectedProject.title);
                     }
                   }}
-                  className="w-full max-w-full h-48 sm:h-56 md:h-64 lg:h-72 object-cover rounded-2xl"
-                  style={{ objectFit: "cover" }}
+                  className="project-card-image rounded-2xl"
+                  loading="lazy"
+                  style={{
+                    maxHeight: "400px",
+                    width: "100%",
+                    objectPosition: "top center",
+                  }}
+                  onLoad={() => handleImageLoad(selectedProject.title)}
                 />
               </div>
 

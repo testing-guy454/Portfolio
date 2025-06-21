@@ -568,17 +568,17 @@ const Coding = () => {
                       : `0 10px 25px -5px rgba(0, 0, 0, 0.05), inset 0 0 60px ${platform.iconColor}09`,
                 }}
               >
-                {/* Decorative gradients */}
+                {/* Decorative gradients - toned down */}
                 <div className="absolute inset-0 overflow-hidden">
                   <div
-                    className="absolute -inset-1 opacity-40"
+                    className="absolute -inset-1 opacity-20"
                     style={{
-                      background: `radial-gradient(circle at top right, ${platform.iconColor}30 0%, transparent 70%)`,
+                      background: `radial-gradient(circle at top right, ${platform.iconColor}15 0%, transparent 70%)`,
                       filter: "blur(20px)",
                     }}
                   ></div>
                   <div
-                    className="absolute right-0 bottom-0 w-24 h-24 opacity-10 rounded-full transform translate-x-1/4 translate-y-1/4"
+                    className="absolute right-0 bottom-0 w-24 h-24 opacity-5 rounded-full transform translate-x-1/4 translate-y-1/4"
                     style={{
                       background: platform.iconColor,
                       filter: "blur(25px)",
@@ -592,12 +592,12 @@ const Coding = () => {
                     style={{
                       background:
                         theme === "dark"
-                          ? `linear-gradient(135deg, ${platform.iconColor}DD, ${platform.iconColor})`
-                          : `linear-gradient(135deg, ${platform.iconColor}CC, ${platform.iconColor})`,
+                          ? `linear-gradient(135deg, ${platform.iconColor}99, ${platform.iconColor}CC)`
+                          : `linear-gradient(135deg, ${platform.iconColor}88, ${platform.iconColor}BB)`,
                       boxShadow:
                         theme === "dark"
-                          ? `0 0 10px ${platform.iconColor}66`
-                          : `0 4px 6px -1px ${platform.iconColor}33`,
+                          ? `0 0 8px ${platform.iconColor}33`
+                          : `0 4px 6px -1px ${platform.iconColor}22`,
                     }}
                   >
                     <IconComponent
@@ -636,7 +636,11 @@ const Coding = () => {
                       <span
                         className="text-3xl font-bold count-animate"
                         style={{
-                          color: platform.iconColor,
+                          color:
+                            theme === "dark"
+                              ? `${platform.iconColor}CC`
+                              : `${platform.iconColor}99`,
+                          opacity: 0.85,
                         }}
                       >
                         {platform.problemsSolved}
