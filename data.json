@@ -1,0 +1,11 @@
+{
+  "rating": 1450.5,
+  "topPercentage": 0.75,
+  "problemsSolved": {
+    "total": 228,
+    "easy": 109,
+    "medium": 115,
+    "hard": 4
+  },
+  "leetcodeAchievement": "Solved ${problemsSolved.total}+ problems across all difficulty levels"
+}
