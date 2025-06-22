@@ -1,19 +1,35 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { apiEndpoints } from "../../config/environment";
+import { fetchWithRetry } from "../../utils/apiRetry";
 
 /**
- * Simple hook for fetching Codeforces data from API
+ * Simple hook for fetching Codeforces data from API with retry mechanism
  */
 export const useCodeforcesData = (
   fallbackData: any,
   updateCallback: (data: any) => void
 ) => {
+  const fallbackDataRef = useRef(fallbackData);
+  const updateCallbackRef = useRef(updateCallback);
+
+  // Update refs whenever props change
+  fallbackDataRef.current = fallbackData;
+  updateCallbackRef.current = updateCallback;
+
   useEffect(() => {
     const fetchCodeforcesData = async () => {
       try {
-        const response = await fetch(apiEndpoints.codingPlatforms.codeforces);
-
-        if (!response.ok) throw new Error("API failed");
+        // Use retry mechanism with max 3 attempts
+        const response = await fetchWithRetry(
+          apiEndpoints.codingPlatforms.codeforces,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          },
+          { maxAttempts: 3, delayMs: 1000, backoffMultiplier: 1.5 }
+        );
 
         const apiData = await response.json();
 
@@ -27,7 +43,7 @@ export const useCodeforcesData = (
         };
 
         const updatedCodeforces = {
-          ...fallbackData,
+          ...fallbackDataRef.current,
           rating: apiData.contests.rating,
           problemsSolved: {
             total: apiData.problemsSolved.total,
@@ -41,12 +57,16 @@ export const useCodeforcesData = (
           } contests and best rank ${apiData.contests.bestRank}`,
         };
 
-        updateCallback(updatedCodeforces);
+        updateCallbackRef.current(updatedCodeforces);
       } catch (err) {
-        console.error("Failed to fetch Codeforces data:", err);
+        console.error(
+          "Failed to fetch Codeforces data after all retry attempts:",
+          err
+        );
+        // Keep using fallback data when all retries fail
       }
     };
 
     fetchCodeforcesData();
-  }, [fallbackData, updateCallback]);
+  }, []); // Empty dependency array - run only once on mount
 };

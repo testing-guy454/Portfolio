@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useTheme } from "../contexts/ThemeContext";
 import { FaCode, FaMedal, FaTrophy, FaFire } from "react-icons/fa";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import SectionContainer from "./SectionContainer";
 import codingData from "../data/codingPlatfrom.ts";
 import { useCodingPlatformData } from "../hooks/useCodingPlatformData";
@@ -17,8 +17,13 @@ const Coding = () => {
   const [totalCounter, setTotalCounter] = useState(0);
   const [codingPlatformData, setCodingPlatformData] = useState(codingData);
 
+  // Create a stable update callback
+  const updatePlatformData = useCallback((newData: any) => {
+    setCodingPlatformData(newData);
+  }, []);
+
   // Use unified hook that orchestrates all individual platform hooks
-  useCodingPlatformData(codingData, setCodingPlatformData);
+  useCodingPlatformData(codingData, updatePlatformData);
 
   // Consolidated coding platform data
 

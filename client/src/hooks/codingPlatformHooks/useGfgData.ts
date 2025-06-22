@@ -1,26 +1,40 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { apiEndpoints } from "../../config/environment";
+import { fetchWithRetry } from "../../utils/apiRetry";
 
 /**
- * Simple hook for fetching GeeksforGeeks data from API
+ * Simple hook for fetching GeeksforGeeks data from API with retry mechanism
  */
 export const useGfGData = (
   fallbackData: any,
   updateCallback: (data: any) => void
 ) => {
+  const fallbackDataRef = useRef(fallbackData);
+  const updateCallbackRef = useRef(updateCallback);
+
+  // Update refs whenever props change
+  fallbackDataRef.current = fallbackData;
+  updateCallbackRef.current = updateCallback;
+
   useEffect(() => {
     const fetchGfGData = async () => {
       try {
-        const response = await fetch(
-          apiEndpoints.codingPlatforms.geeksforgeeks
+        // Use retry mechanism with max 3 attempts
+        const response = await fetchWithRetry(
+          apiEndpoints.codingPlatforms.geeksforgeeks,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          },
+          { maxAttempts: 3, delayMs: 1000, backoffMultiplier: 1.5 }
         );
-
-        if (!response.ok) throw new Error("API failed");
 
         const apiData = await response.json();
 
         const updatedGfG = {
-          ...fallbackData,
+          ...fallbackDataRef.current,
           problemsSolved: {
             total: apiData.problemsSolved.total,
             easy: apiData.problemsSolved.easy,
@@ -29,16 +43,20 @@ export const useGfGData = (
           },
           rank: apiData.instituteRank
             ? `Institute Rank: ${apiData.instituteRank}`
-            : fallbackData.rank,
+            : fallbackDataRef.current.rank,
           leetcodeAchievement: `Solved ${apiData.problemsSolved.total}+ problems with ${apiData.achievements.streaks.currentStreak} day current streak`,
         };
 
-        updateCallback(updatedGfG);
+        updateCallbackRef.current(updatedGfG);
       } catch (err) {
-        console.error("Failed to fetch GfG data:", err);
+        console.error(
+          "Failed to fetch GfG data after all retry attempts:",
+          err
+        );
+        // Keep using fallback data when all retries fail
       }
     };
 
     fetchGfGData();
-  }, [fallbackData, updateCallback]);
+  }, []); // Empty dependency array - run only once on mount
 };

@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useRef } from "react";
 import { useLeetCodeData } from "./codingPlatformHooks/useLeetCodeData";
 import { useGfGData } from "./codingPlatformHooks/useGfgData";
 import { useCodeChefData } from "./codingPlatformHooks/useCodeChefData";
@@ -11,20 +11,41 @@ export const useCodingPlatformData = (
   fallbackData: any,
   updateCallback: (data: any) => void
 ) => {
-  // Create a memoized callback to avoid unnecessary re-renders
-  const handleUpdate = useCallback(
-    (platform: string) => (updatedPlatformData: any) => {
-      updateCallback((prevData: any) => ({
-        ...prevData,
-        [platform]: updatedPlatformData,
-      }));
-    },
-    [updateCallback]
-  );
+  const updateCallbackRef = useRef(updateCallback);
+  updateCallbackRef.current = updateCallback;
 
-  // Use individual hooks for each platform
-  useLeetCodeData(fallbackData.leetcode, handleUpdate("leetcode"));
-  useGfGData(fallbackData.geeksforgeeks, handleUpdate("geeksforgeeks"));
-  useCodeChefData(fallbackData.codechef, handleUpdate("codechef"));
-  useCodeforcesData(fallbackData.codeforces, handleUpdate("codeforces"));
+  // Create stable callback functions to avoid re-renders
+  const handleLeetcodeUpdate = useCallback((updatedPlatformData: any) => {
+    updateCallbackRef.current((prevData: any) => ({
+      ...prevData,
+      leetcode: updatedPlatformData,
+    }));
+  }, []);
+
+  const handleGeeksforGeeksUpdate = useCallback((updatedPlatformData: any) => {
+    updateCallbackRef.current((prevData: any) => ({
+      ...prevData,
+      geeksforgeeks: updatedPlatformData,
+    }));
+  }, []);
+
+  const handleCodechefUpdate = useCallback((updatedPlatformData: any) => {
+    updateCallbackRef.current((prevData: any) => ({
+      ...prevData,
+      codechef: updatedPlatformData,
+    }));
+  }, []);
+
+  const handleCodeforcesUpdate = useCallback((updatedPlatformData: any) => {
+    updateCallbackRef.current((prevData: any) => ({
+      ...prevData,
+      codeforces: updatedPlatformData,
+    }));
+  }, []);
+
+  // Use individual hooks for each platform with stable callbacks
+  useLeetCodeData(fallbackData.leetcode, handleLeetcodeUpdate);
+  useGfGData(fallbackData.geeksforgeeks, handleGeeksforGeeksUpdate);
+  useCodeChefData(fallbackData.codechef, handleCodechefUpdate);
+  useCodeforcesData(fallbackData.codeforces, handleCodeforcesUpdate);
 };

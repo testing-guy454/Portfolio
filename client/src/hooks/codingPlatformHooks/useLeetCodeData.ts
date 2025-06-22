@@ -1,24 +1,40 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { apiEndpoints } from "../../config/environment";
+import { fetchWithRetry } from "../../utils/apiRetry";
 
 /**
- * Simple hook for fetching LeetCode data from API
+ * Simple hook for fetching LeetCode data from API with retry mechanism
  */
 export const useLeetCodeData = (
   fallbackData: any,
   updateCallback: (data: any) => void
 ) => {
+  const fallbackDataRef = useRef(fallbackData);
+  const updateCallbackRef = useRef(updateCallback);
+
+  // Update refs whenever props change
+  fallbackDataRef.current = fallbackData;
+  updateCallbackRef.current = updateCallback;
+
   useEffect(() => {
     const fetchLeetCodeData = async () => {
       try {
-        const response = await fetch(apiEndpoints.codingPlatforms.leetcode);
-
-        if (!response.ok) throw new Error("API failed");
+        // Use retry mechanism with max 3 attempts
+        const response = await fetchWithRetry(
+          apiEndpoints.codingPlatforms.leetcode,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          },
+          { maxAttempts: 3, delayMs: 1000, backoffMultiplier: 1.5 }
+        );
 
         const apiData = await response.json();
 
         const updatedLeetCode = {
-          ...fallbackData,
+          ...fallbackDataRef.current,
           rating: apiData.contests.rating,
           topPercentage: parseFloat(apiData.contests.topPercentage),
           problemsSolved: apiData.problemsSolved,
@@ -26,12 +42,16 @@ export const useLeetCodeData = (
           leetcodeAchievement: `Solved ${apiData.problemsSolved.total}+ problems across all difficulty levels`,
         };
 
-        updateCallback(updatedLeetCode);
+        updateCallbackRef.current(updatedLeetCode);
       } catch (err) {
-        console.error("Failed to fetch LeetCode data:", err);
+        console.error(
+          "Failed to fetch LeetCode data after all retry attempts:",
+          err
+        );
+        // Keep using fallback data when all retries fail
       }
     };
 
     fetchLeetCodeData();
-  }, [fallbackData, updateCallback]);
+  }, []); // Empty dependency array - run only once on mount
 };

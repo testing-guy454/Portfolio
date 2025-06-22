@@ -74,7 +74,7 @@ export const apiEndpoints = {
     leetcode: `${config.apiBaseUrl}/codingPlatforms/leetcode`,
     codechef: `${config.apiBaseUrl}/codingPlatforms/codechef`,
     codeforces: `${config.apiBaseUrl}/codingPlatforms/codeforces`,
-    geeksforgeeks: `${config.apiBaseUrl}/codingPlatforms/geeksforgeeks`,
+    geeksforgeeks: `${config.apiBaseUrl}/codingPlatforms/gfg`,
     all: `${config.apiBaseUrl}/codingPlatforms/all`,
   },
 };
