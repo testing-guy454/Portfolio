@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { apiEndpoints } from "../../config/environment";
 
 /**
  * Simple hook for fetching CodeChef data from API
@@ -10,9 +11,7 @@ export const useCodeChefData = (
   useEffect(() => {
     const fetchCodeChefData = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:9000/api/v1/codingPlatforms/codechef"
-        );
+        const response = await fetch(apiEndpoints.codingPlatforms.codechef);
 
         if (!response.ok) throw new Error("API failed");
 

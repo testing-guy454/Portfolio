@@ -1,6 +1,8 @@
 // Personal information for the portfolio website
 // This file centralizes all frequently used data to make updates easier
 
+import { config } from "../config/environment";
+
 // Basic personal info
 export const personalInfo = {
   name: "Yuvraj Mehta",
@@ -32,14 +34,15 @@ export const personalInfo = {
 
 // Contact information
 export const contactInfo = {
-  email: "yuvraj.mehta532@gmail.com",
+  email: config.contactEmail || "yuvraj.mehta532@gmail.com",
   phone: "+91-9334083113",
 };
 
 // Social media links
 export const socialLinks = {
-  github: "https://github.com/yuvraj-mehta",
-  linkedin: "https://www.linkedin.com/in/yuvraj-mehta-a0274528a/",
+  github: config.githubUrl || "https://github.com/yuvraj-mehta",
+  linkedin:
+    config.linkedinUrl || "https://www.linkedin.com/in/yuvraj-mehta-a0274528a/",
   instagram: "https://www.instagram.com/yuvraj.mehta4261/",
   twitter: "https://twitter.com/",
   leetcode: "https://leetcode.com/u/mythical-UV/",
@@ -49,7 +52,7 @@ export const socialLinks = {
 
 // Resume information
 export const resumeInfo = {
-  downloadPath: "/Yuvraj_Resume_v2_1 (1).pdf",
+  downloadPath: config.resumeUrl || "/Yuvraj_Resume_v2_1 (1).pdf",
   downloadName: "Yuvraj_Mehta_Resume.pdf",
 };
 

@@ -56,19 +56,27 @@ cd Portfolio
 npm install
 ```
 
-3. **Run development server**
+3. **Set up environment variables**
+
+```bash
+cp .env.example .env
+```
+
+Edit the `.env` file with your specific configuration. See [ENV_SETUP.md](./ENV_SETUP.md) for detailed instructions.
+
+4. **Run development server**
 
 ```bash
 npm run dev
 ```
 
-4. **Build for production**
+5. **Build for production**
 
 ```bash
 npm run build
 ```
 
-5. **Preview production build**
+6. **Preview production build**
 
 ```bash
 npm run preview

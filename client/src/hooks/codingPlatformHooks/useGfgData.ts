@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { apiEndpoints } from "../../config/environment";
 
 /**
  * Simple hook for fetching GeeksforGeeks data from API
@@ -11,7 +12,7 @@ export const useGfGData = (
     const fetchGfGData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:9000/api/v1/codingPlatforms/gfg"
+          apiEndpoints.codingPlatforms.geeksforgeeks
         );
 
         if (!response.ok) throw new Error("API failed");
