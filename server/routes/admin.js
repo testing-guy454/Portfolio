@@ -1,6 +1,6 @@
 import express from 'express';
 import { asyncHandler, notFound } from '../middleware/index.js';
-import { updateAllPlatforms } from '../services/simpleScheduler.js';
+import { updateResponseData} from '../data/ResponseReady/index.js';
 
 const router = express.Router();
 
@@ -20,7 +20,7 @@ router.get('/check-status', (req, res) => {
 });
 
 router.post('/trigger-update', asyncHandler(async (req, res) => {
-  const result = await updateAllPlatforms();
+  const result = await updateResponseData();
   res.json({
     success: true,
     message: 'Manual update completed',

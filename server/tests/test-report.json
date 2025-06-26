@@ -1,0 +1,32 @@
+{
+  "timestamp": "2025-06-22T16:35:52.837Z",
+  "duration": 664,
+  "results": [
+    {
+      "description": "API Functionality Tests",
+      "command": "node /Users/yuvrajmehta/Developer/GitHub Desktop/Portfolio/server/tests/apiTests.js",
+      "exitCode": 1,
+      "duration": 264,
+      "success": false
+    },
+    {
+      "description": "Individual Endpoint Tests",
+      "command": "node /Users/yuvrajmehta/Developer/GitHub Desktop/Portfolio/server/tests/endpointTests.js",
+      "exitCode": 0,
+      "duration": 163,
+      "success": true
+    },
+    {
+      "description": "Quick Load Tests",
+      "command": "node /Users/yuvrajmehta/Developer/GitHub Desktop/Portfolio/server/tests/loadTests.js --quick",
+      "exitCode": 0,
+      "duration": 163,
+      "success": true
+    }
+  ],
+  "summary": {
+    "total": 3,
+    "successful": 2,
+    "failed": 1
+  }
+}
