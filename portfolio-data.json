@@ -1,0 +1,496 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2025-07-05",
+    "description": "Comprehensive portfolio data for Yuvraj Mehta - Full Stack Developer",
+    "author": "Yuvraj Mehta",
+    "dataStructure": "Complete portfolio information including personal details, projects, skills, education, and experience"
+  },
+  "personalInfo": {
+    "name": "Yuvraj Mehta",
+    "title": "Full Stack Developer",
+    "tagline": "B.Tech CS student passionate about building full stack applications",
+    "shortBio": {
+      "intro": "B.Tech CS student at ",
+      "school": "NIT Patna",
+      "passion": "passionate about building ",
+      "passionHighlight": "full stack applications",
+      "focus": "with a focus on ",
+      "focusHighlight": "user-friendly interfaces",
+      "skill": ". Skilled in ",
+      "skillHighlight": "MERN Stack",
+      "end": "."
+    },
+    "aboutBio": {
+      "first": "Computer Science student at ",
+      "firstHighlight": "NIT Patna",
+      "firstPart": " passionate about full stack development with a strong foundation in Data Structures & Algorithms. I approach technical challenges analytically and continually expand my skills in GenAI and modern web technologies.",
+      "second": "As a ",
+      "secondHighlight": "Robotics Club member",
+      "secondPart": ", I've organized workshops and led teams building combat and soccer bots. Outside coding, I enjoy competitive programming and sports, having won Bronze in 50m Hurdles at NIT Patna Intramurals."
+    },
+    "location": "Gaya, Bihar, India",
+    "yearsOfCoding": "2+ years of coding",
+    "profileImages": {
+      "primary": "/yuvraj.png",
+      "secondary": "/yuvraj2.png",
+      "ogImage": "/yuvraj.png"
+    }
+  },
+  "contactInfo": {
+    "email": "yuvraj.mehta532@gmail.com",
+    "phone": "+91-9334083113",
+    "socialLinks": {
+      "github": "https://github.com/yuvraj-mehta",
+      "linkedin": "https://www.linkedin.com/in/yuvraj-mehta-a0274528a/",
+      "instagram": "https://www.instagram.com/yuvraj.mehta4261/",
+      "twitter": "https://twitter.com/",
+      "leetcode": "https://leetcode.com/u/mythical-UV/",
+      "geeksforgeeks": "https://www.geeksforgeeks.org/user/yuvrajmevbrx/",
+      "codechef": "https://www.codechef.com/users/quick_unity_53",
+      "codeforces": "https://codeforces.com/"
+    }
+  },
+  "resume": {
+    "downloadPath": "/Yuvraj_Resume_v2_1 (1).pdf",
+    "downloadName": "Yuvraj_Mehta_Resume.pdf",
+    "lastUpdated": "2025-01-01"
+  },
+  "seo": {
+    "title": "Yuvraj Mehta - Full Stack Developer | Portfolio",
+    "description": "Full Stack Developer specializing in React, TypeScript, Node.js, and modern web technologies. Currently exploring Generative AI. Strong background in Data Structures and Algorithms.",
+    "keywords": "Full Stack Developer, React, TypeScript, Node.js, JavaScript, Web Development, Frontend, Backend, Portfolio, Yuvraj Mehta, GenAI, Data Structures, Algorithms",
+    "author": "Yuvraj Mehta",
+    "siteUrl": "https://yuvrajmehta.codes/",
+    "twitterHandle": "@yuvrajm",
+    "themeColor": "#6366f1"
+  },
+  "navigation": [
+    { "name": "Home", "href": "#home" },
+    { "name": "About", "href": "#about" },
+    { "name": "Experience", "href": "#experience" },
+    { "name": "Education", "href": "#education" },
+    { "name": "Skills", "href": "#tech-stack" },
+    { "name": "Coding", "href": "#coding" },
+    { "name": "Projects", "href": "#projects" },
+    { "name": "Contact", "href": "#contact" }
+  ],
+  "techStack": {
+    "webDevelopment": [
+      { "name": "React", "category": "Frontend", "proficiency": 85 },
+      { "name": "Node.js", "category": "Backend", "proficiency": 80 },
+      { "name": "TypeScript", "category": "Frontend", "proficiency": 85 },
+      { "name": "Express.js", "category": "Backend", "proficiency": 80 },
+      { "name": "JavaScript", "category": "Frontend", "proficiency": 90 },
+      { "name": "RESTful APIs", "category": "Backend", "proficiency": 80 },
+      { "name": "HTML5", "category": "Frontend", "proficiency": 95 },
+      { "name": "CSS3", "category": "Frontend", "proficiency": 90 },
+      { "name": "Tailwind CSS", "category": "Frontend", "proficiency": 90 },
+      { "name": "Next.js", "category": "Frontend", "proficiency": 75 },
+      { "name": "Redux", "category": "Frontend", "proficiency": 80 },
+      { "name": "Vite", "category": "Frontend", "proficiency": 85 }
+    ],
+    "databases": [
+      { "name": "MongoDB", "proficiency": 80 },
+      { "name": "SQL", "proficiency": 75 },
+      { "name": "Database Design", "proficiency": 75 }
+    ],
+    "languages": [
+      { "name": "JavaScript", "proficiency": 90 },
+      { "name": "TypeScript", "proficiency": 85 },
+      { "name": "C++", "proficiency": 85 },
+      { "name": "Java", "proficiency": 80 },
+      { "name": "Python", "proficiency": 75 }
+    ],
+    "tools": [
+      { "name": "Git", "proficiency": 85 },
+      { "name": "GitHub", "proficiency": 85 },
+      { "name": "VS Code", "proficiency": 95 },
+      { "name": "Postman", "proficiency": 80 }
+    ]
+  },
+  "codingPlatforms": {
+    "leetcode": {
+      "name": "LeetCode",
+      "url": "https://leetcode.com/u/mythical-UV/",
+      "rating": 1570,
+      "topPercentage": 27.7,
+      "problemsSolved": {
+        "total": 228,
+        "easy": 109,
+        "medium": 115,
+        "hard": 4
+      },
+      "rank": "Top 27.7%",
+      "achievement": "Solved 228+ problems across all difficulty levels",
+      "iconColor": "#FFA116"
+    },
+    "codechef": {
+      "name": "CodeChef",
+      "url": "https://www.codechef.com/users/quick_unity_53",
+      "rating": 1270,
+      "problemsSolved": {
+        "total": 25,
+        "easy": 14,
+        "medium": 8,
+        "hard": 3
+      },
+      "rank": "2★ Coder (Division 3)",
+      "achievement": "Global Rank 1238 in CodeChef Starters 186",
+      "iconColor": "#5B4638"
+    },
+    "geeksforgeeks": {
+      "name": "GeeksForGeeks",
+      "url": "https://www.geeksforgeeks.org/user/yuvrajmevbrx/",
+      "problemsSolved": {
+        "total": 70,
+        "easy": 32,
+        "medium": 30,
+        "hard": 8
+      },
+      "rank": "#1455",
+      "achievement": "35+ day streak in GfG 160 challenge",
+      "iconColor": "#2F8D46"
+    },
+    "codeforces": {
+      "name": "Codeforces",
+      "url": "https://codeforces.com/",
+      "rating": 900,
+      "problemsSolved": {
+        "total": 10,
+        "unrated": 2,
+        "easy": 2,
+        "medium": 0,
+        "hard": 0
+      },
+      "rank": "Newbie",
+      "achievement": "Participated in 3+ competitive contests",
+      "iconColor": "#1F8ACB"
+    }
+  },
+  "projects": [
+    {
+      "title": "BookHive",
+      "description": "BookNest is a full-stack library management system with distinct user and admin roles. It features book and PYQ management, a borrowing system, OTP-verified authentication, and separate dashboards. Built with React, Node.js, Express.js, and MongoDB.",
+      "shortDescription": "Full-stack library management system with user/admin roles, book management, and secure authentication.",
+      "image": "/projectImages/bookhive.png",
+      "fallbackImage": "https://placehold.co/600x400/6366F1/FFFFFF/png?text=BookHive",
+      "tags": ["React", "Redux Toolkit", "Node.js", "Express", "MongoDB", "JWT"],
+      "github": "https://github.com/yuvraj-mehta/Byteverse_NandiNinjas",
+      "live": "https://bookhive-manager.vercel.app",
+      "featured": true,
+      "category": "fullstack",
+      "techHighlights": [
+        "Full-stack MERN application",
+        "Role-based authentication",
+        "OTP verification system",
+        "Separate admin and user dashboards",
+        "Book borrowing system"
+      ]
+    },
+    {
+      "title": "Portfolio Website",
+      "description": "Personal developer portfolio showcasing projects and skills. Designed and built a responsive single-page portfolio with smooth animations and dynamic navigation. Integrated a contact form using EmailJS and added a downloadable resume feature.",
+      "shortDescription": "Responsive developer portfolio with smooth animations, dynamic navigation, and integrated contact form.",
+      "image": "/projectImages/portfolio.png",
+      "fallbackImage": "https://placehold.co/600x400/6366F1/FFFFFF/png?text=Portfolio",
+      "tags": ["React", "Tailwind CSS", "Framer Motion", "Vite"],
+      "github": "https://github.com/yuvraj-mehta/My-Portfolio",
+      "live": "https://yuvrajmehta.codes",
+      "featured": true,
+      "category": "frontend",
+      "techHighlights": [
+        "Responsive design with Tailwind CSS",
+        "Smooth animations with Framer Motion",
+        "Dynamic navigation and sections",
+        "Contact form integration",
+        "SEO optimized"
+      ]
+    },
+    {
+      "title": "Stickify",
+      "description": "This is a simple notes application built with React and Vite. It allows users to create, update, delete, and manage notes with different colors. The application uses Appwrite as the backend service for managing notes.",
+      "shortDescription": "Simple notes app with color-coded organization, CRUD operations, and Appwrite backend integration.",
+      "image": "/projectImages/stickify.png",
+      "fallbackImage": "https://placehold.co/600x400/8B5CF6/FFFFFF/png?text=Stickify",
+      "tags": ["React", "Vite", "Tailwind CSS", "Appwrite"],
+      "github": "https://github.com/yuvraj-mehta/Stickify",
+      "live": "https://stickify-git-master-yuvraj-mehtas-projects.vercel.app/",
+      "featured": false,
+      "category": "frontend",
+      "techHighlights": [
+        "Full CRUD operations",
+        "Color-coded note organization",
+        "Appwrite backend integration",
+        "Responsive design"
+      ]
+    },
+    {
+      "title": "EcoGuardian",
+      "description": "An online community platform empowering individuals to collaborate on environmental projects, report cleanliness issues, access educational resources, and drive positive change for a cleaner, greener future. 🌍",
+      "shortDescription": "Environmental community platform for project collaboration, issue reporting, and educational resources.",
+      "image": "/projectImages/ecoGuardian.png",
+      "fallbackImage": "https://placehold.co/600x400/EC4899/FFFFFF/png?text=EcoGuardian",
+      "tags": ["HTML", "CSS", "JavaScript", "Node.js", "Express", "MongoDB"],
+      "github": "https://github.com/yuvraj-mehta/EcoGuardian_prototype",
+      "live": "https://yuvraj-mehta.github.io/EcoGuardian_prototype/",
+      "featured": true,
+      "category": "fullstack",
+      "techHighlights": [
+        "Community-driven platform",
+        "Issue reporting system",
+        "Educational resources",
+        "Environmental project collaboration"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "level": "Bachelor of Technology",
+      "title": "B.Tech in Computer Science and Engineering",
+      "institution": "National Institute of Technology, Patna",
+      "location": "Patna, Bihar",
+      "duration": "2023 - 2027",
+      "cgpa": "7.69/10",
+      "activities": [
+        "Class Representative for CSE Department",
+        "Member of Technical Club",
+        "Competitive Programming Participant"
+      ],
+      "courses": [
+        "Data Structures & Algorithms",
+        "Database Management Systems",
+        "Operating Systems",
+        "Computer Networks"
+      ],
+      "achievements": [
+        "Maintaining CGPA of 7.69/10",
+        "Merit List Recognition",
+        "Technical Workshop Facilitation"
+      ],
+      "status": "current",
+      "category": "higher_education"
+    },
+    {
+      "level": "Higher Secondary",
+      "title": "Class XII (CBSE)",
+      "institution": "Pragya Bharti Public School, Gaya",
+      "location": "Gaya, Bihar",
+      "duration": "2021 - 2022",
+      "percentage": "88.8%",
+      "activities": ["Science Club Member", "Mathematics Olympiad Participant"],
+      "courses": ["Physics", "Chemistry", "Mathematics", "Computer Science"],
+      "achievements": [
+        "Scored 88.8% in CBSE Class 12",
+        "School Merit List",
+        "Perfect Attendance"
+      ],
+      "status": "completed",
+      "category": "school_education"
+    },
+    {
+      "level": "Secondary",
+      "title": "Class X (CBSE)",
+      "institution": "Pragya Bharti Public School, Gaya",
+      "location": "Gaya, Bihar",
+      "duration": "2019 - 2020",
+      "percentage": "90%",
+      "activities": ["Science Exhibitions", "Sports Competitions"],
+      "courses": ["Science", "Mathematics", "Social Studies", "English", "Hindi"],
+      "achievements": [
+        "Scored 90% in CBSE Class 10",
+        "Academic Excellence Award"
+      ],
+      "status": "completed",
+      "category": "school_education"
+    }
+  ],
+  "certifications": [
+    {
+      "title": "Web Development Bootcamp",
+      "issuer": "Udemy",
+      "year": "2023",
+      "description": "Comprehensive full-stack web development course covering HTML, CSS, JavaScript, React, and Node.js",
+      "featured": true,
+      "category": "technical"
+    },
+    {
+      "title": "Data Structures & Algorithms",
+      "issuer": "Coursera",
+      "year": "2023",
+      "description": "Advanced course on efficient algorithms and complex data structures implementation",
+      "featured": true,
+      "category": "technical"
+    },
+    {
+      "title": "Machine Learning Fundamentals",
+      "issuer": "freeCodeCamp",
+      "year": "2024",
+      "description": "Introduction to machine learning concepts and practical implementation",
+      "featured": false,
+      "category": "technical"
+    }
+  ],
+  "workExperience": [
+    {
+      "role": "Technical Member",
+      "company": "Robotics Club, NIT Patna",
+      "period": "December 2023 - Present",
+      "location": "NIT Patna",
+      "description": "Organized and facilitated 3+ workshops on designing and building robotic bots. Led a team of 4 to build a combat-ready battle bot, achieving 4th place among 15+ teams at NIT Patna's tech fest. Directed a team of 3 in designing and developing a soccer bot for the annual tech fest, enhancing hands-on robotics and teamwork skills.",
+      "technologies": ["Arduino", "C++", "Mechanical Design", "Team Leadership"],
+      "highlights": [
+        "4th place in tech fest",
+        "3+ workshops organized",
+        "Team of 4-7 members"
+      ],
+      "status": "current",
+      "category": "technical"
+    },
+    {
+      "role": "Team Leader",
+      "company": "Hackathons (including Smart India Hackathon)",
+      "period": "2023",
+      "location": "NIT Patna & Remote",
+      "description": "Led teams in 3 major hackathons, including the prestigious Smart India Hackathon. Guided my team to qualify at the internal NIT Patna hackathon and advance to the national level. Oversaw all phases from ideation to development and presentation, ensuring effective collaboration and timely delivery of innovative solutions.",
+      "technologies": [
+        "Problem Solving",
+        "Team Management",
+        "Presentation",
+        "Innovation"
+      ],
+      "highlights": [
+        "National level qualification",
+        "3 major hackathons",
+        "End-to-end project management"
+      ],
+      "status": "completed",
+      "category": "leadership"
+    }
+  ],
+  "achievements": [
+    {
+      "title": "Winner - Model United Nations",
+      "year": "2023",
+      "description": "Represented the Republic of Poland at NIT Patna's Model United Nations. Earned the Best Delegate award for exceptional debate skills and impactful resolutions.",
+      "featured": true,
+      "category": "competition"
+    },
+    {
+      "title": "Technical Member - Robotics Club",
+      "year": "2023 - Present",
+      "description": "Active member of the Robotics Club, led team building combat and soccer bots, organized workshops.",
+      "featured": true,
+      "category": "technical"
+    },
+    {
+      "title": "Class Representative",
+      "year": "2023 - 2024",
+      "description": "Coordinated between faculty and students, organized department events.",
+      "featured": false,
+      "category": "leadership"
+    },
+    {
+      "title": "Bronze Medal - NIT Patna Intramurals",
+      "year": "2023",
+      "description": "Won Bronze in 50m Hurdles at the university sports event.",
+      "featured": false,
+      "category": "sports"
+    }
+  ],
+  "codeStats": {
+    "leetcodeRank": "Top 26%",
+    "techBooksRead": "8+",
+    "techCommunitiesJoined": "5+",
+    "totalProblemsolved": 333,
+    "contestsParticipated": 10,
+    "activeStreak": "35+ days"
+  },
+  "skillsOverview": {
+    "webDevelopment": { "name": "Web Development", "level": 80, "label": "80%" },
+    "dataStructures": { "name": "Data Structures", "level": 85, "label": "85%" },
+    "algorithms": { "name": "Algorithms", "level": 75, "label": "75%" },
+    "frontendDevelopment": { "name": "Frontend Development", "level": 85, "label": "85%" },
+    "backendDevelopment": { "name": "Backend Development", "level": 80, "label": "80%" },
+    "databaseDesign": { "name": "Database Design", "level": 75, "label": "75%" }
+  },
+  "designSystem": {
+    "colors": {
+      "primary": "#6366F1",
+      "secondary": "#8B5CF6",
+      "accent": "#EC4899",
+      "dark": "#111827",
+      "light": "#F9FAFB",
+      "darkBlue": "#1E3A8A",
+      "gradStart": "#6366F1",
+      "gradEnd": "#EC4899"
+    },
+    "fonts": {
+      "primary": "Inter, sans-serif",
+      "heading": "Poppins, sans-serif"
+    },
+    "breakpoints": {
+      "mobile": "640px",
+      "tablet": "768px",
+      "laptop": "1024px",
+      "desktop": "1280px"
+    }
+  },
+  "api": {
+    "endpoints": {
+      "codingPlatforms": {
+        "leetcode": "/api/v1/codingPlatforms/leetcode",
+        "codechef": "/api/v1/codingPlatforms/codechef",
+        "codeforces": "/api/v1/codingPlatforms/codeforces",
+        "geeksforgeeks": "/api/v1/codingPlatforms/gfg",
+        "all": "/api/v1/codingPlatforms/all"
+      }
+    },
+    "baseUrl": "http://localhost:9000"
+  },
+  "projectSetup": {
+    "client": {
+      "framework": "React 18",
+      "buildTool": "Vite",
+      "language": "TypeScript",
+      "styling": "Tailwind CSS",
+      "animations": "Framer Motion",
+      "icons": "React Icons",
+      "seo": "React Helmet Async",
+      "dependencies": [
+        "framer-motion",
+        "react",
+        "react-dom",
+        "react-helmet-async",
+        "react-icons",
+        "react-intersection-observer"
+      ]
+    },
+    "server": {
+      "runtime": "Node.js",
+      "framework": "Express.js",
+      "database": "MongoDB",
+      "scraping": "Cheerio",
+      "scheduler": "node-cron",
+      "dependencies": [
+        "axios",
+        "cheerio",
+        "cors",
+        "dotenv",
+        "express",
+        "mongoose",
+        "node-cron"
+      ]
+    }
+  },
+  "deployment": {
+    "client": {
+      "platform": "Vercel",
+      "domain": "yuvrajmehta.codes"
+    },
+    "server": {
+      "platform": "To be determined",
+      "environment": "Production ready"
+    }
+  }
+}
